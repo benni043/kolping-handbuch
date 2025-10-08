@@ -34,7 +34,7 @@ onMounted(async () => {
           class="w-full h-[100vh] rounded border-1 pl-1"
       />
 
-      <div ref="render" class="markdown" :hidden="isEditing"></div>
+      <div ref="render" class="markdown test" :hidden="isEditing"></div>
     </div>
   </div>
 </template>
