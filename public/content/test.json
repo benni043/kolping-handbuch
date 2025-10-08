@@ -1,0 +1,177 @@
+{
+  "categories": [
+    {
+      "id": "01",
+      "title": "Vereinsführung",
+      "sub_categories": [
+        {
+          "id": "01.1",
+          "title": "Jahresplanung",
+          "topics": [
+            "Inhalt und Zweck",
+            "Hinführung",
+            "Kernprozess",
+            "Checkliste",
+            "Best Practise",
+            "Arbeitshilfen"
+          ]
+        },
+        {
+          "id": "01.2",
+          "title": "Nachfolge/Ein- und Entbinden von Funktionären",
+          "topics": [
+            "Inhalt und Zweck",
+            "Hinführung",
+            "Kernprozess",
+            "Checkliste",
+            "Best Practice",
+            "Arbeitshilfen"
+          ]
+        },
+        {
+          "id": "01.3",
+          "title": "Professionell Wirtschaften im Verein",
+          "topics": [
+            "Inhalt und Zweck",
+            "Hinführung",
+            "Kernprozess",
+            "Best Practice",
+            "Arbeitshilfen"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "02",
+      "title": "Verein und Haus verbinden",
+      "sub_categories": [
+        {
+          "id": "02.1",
+          "title": "Das Haus im Sinne der Idee führen",
+          "topics": [
+            "Inhalt und Zweck",
+            "Hinführung",
+            "Kernprozess",
+            "Checkliste",
+            "Best Practice",
+            "Arbeitshilfen"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "03",
+      "title": "Vereinsentwicklung",
+      "sub_categories": [
+        {
+          "id": "03.1",
+          "title": "Vereinsprojekte",
+          "topics": [
+            "Inhalt und Zweck",
+            "Hinführung",
+            "Kernprozess",
+            "Checkliste",
+            "Best Practice",
+            "Arbeitshilfen"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "04",
+      "title": "Jugendarbeit",
+      "sub_categories": [
+        {
+          "id": "04.1",
+          "title": "Jugendprojekte",
+          "topics": [
+            "Inhalt und Zweck",
+            "Hinführung",
+            "Kernprozess",
+            "Checkliste",
+            "Best Practise",
+            "Arbeitshilfen"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "05",
+      "title": "Steuerung durch Evaluierung",
+      "sub_categories": [
+        {
+          "id": "05.1",
+          "title": "„Hinschauen und reagieren“",
+          "topics": [
+            "Inhalt und Zweck",
+            "Hinführung",
+            "Kernprozess",
+            "Checkliste",
+            "Best Practice",
+            "Arbeitshilfen"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "06",
+      "title": "Mitglieder finden/Ehrenamtliche fördern",
+      "sub_categories": [
+        {
+          "id": "06.1",
+          "title": "Mitglieder finden",
+          "topics": [
+            "Inhalt und Zweck",
+            "Hinführung",
+            "Kernprozess",
+            "Checkliste",
+            "Best Practice",
+            "Arbeitshilfen"
+          ]
+        },
+        {
+          "id": "06.2",
+          "title": "Ehrenamtliche fördern",
+          "topics": [
+            "Inhalt und Zweck",
+            "Hinführung",
+            "Kernprozess",
+            "Checkliste",
+            "Best Practice",
+            "Arbeitshilfen"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "07",
+      "title": "Weiterbildung und Öffentlichkeitsarbeit",
+      "sub_categories": [
+        {
+          "id": "07.1",
+          "title": "Weiterbildung für Mitglieder und Funktionäre",
+          "topics": [
+            "Inhalt und Zweck",
+            "Hinführung",
+            "Kernprozess",
+            "Checkliste",
+            "Best Practice",
+            "Arbeitshilfen"
+          ]
+        },
+        {
+          "id": "07.2",
+          "title": "Presse- und Öffentlichkeitsarbeit",
+          "topics": [
+            "Inhalt und Zweck",
+            "Hinführung",
+            "Kernprozess",
+            "Checkliste",
+            "Best Practice",
+            "Arbeitshilfen"
+          ]
+        }
+      ]
+    }
+  ]
+}
