@@ -12,11 +12,14 @@ watch(isEditing, async () => {
   }
 });
 
-onMounted(async () => {
-  const res = await fetch("/content/hinfuehrung.md");
-  note.value = await res.text();
-  render.value!.innerHTML = await marked.parse(note.value);
-});
+const { data } = await useFetch('/api/files/01/01-1/hinfuehrung.md')
+
+watchEffect(async () => {
+  if (data.value && render.value) {
+    render.value.innerHTML = await marked.parse(data.value)
+  }
+})
+
 </script>
 
 <template>
