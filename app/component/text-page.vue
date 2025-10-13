@@ -1,24 +1,27 @@
 <script setup lang="ts">
 import {marked} from "marked";
 
-const note = defineModel<string>("note");
-
-const isEditing = ref(note.value === "");
+const note = ref("");
+const isEditing = ref(false);
 const render = useTemplateRef("render");
 
-watch(isEditing, async () => {
-  if (!isEditing.value) {
-    render.value!.innerHTML = await marked.parse(note.value ?? "");
+const {data} = await useFetch('/api/files/01/01-1/hinfuehrung.md');
+
+watchEffect(async () => {
+  if (data.value) {
+    note.value = data.value;
+    if (render.value && !isEditing.value) {
+      render.value.innerHTML = await marked.parse(note.value);
+    }
   }
 });
 
-const { data } = await useFetch('/api/files/01/01-1/hinfuehrung.md')
-
-watchEffect(async () => {
-  if (data.value && render.value) {
-    render.value.innerHTML = await marked.parse(data.value)
+watch(isEditing, async () => {
+  if (!isEditing.value && render.value) {
+    render.value.innerHTML = await marked.parse(note.value);
   }
-})
+});
+
 
 </script>
 
