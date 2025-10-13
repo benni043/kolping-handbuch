@@ -4,7 +4,7 @@ import Top from "~/component/nav/top.vue";
 </script>
 
 <template>
-  <top/>
+<!--  <top/>-->
   <main id="main">
     <router-view/>
   </main>

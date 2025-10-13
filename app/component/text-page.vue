@@ -5,7 +5,7 @@ const note = ref("");
 const isEditing = ref(false);
 const render = useTemplateRef("render");
 
-const {data} = await useFetch('/api/files/01/01-1/hinfuehrung.md');
+const {data} = await useFetch('/api/files/01/01-1/arbeitshilfen.md');
 
 watchEffect(async () => {
   if (data.value) {

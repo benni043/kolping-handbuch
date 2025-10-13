@@ -23,7 +23,7 @@ function test() {
 
 <template>
   <div class="flex justify-evenly items-start bg-red-200 h-80">
-    <DropdownMenuRoot :open="toggleState">
+    <DropdownMenuRoot :open="true">
       <DropdownMenuTrigger class="flex-1 h-6"></DropdownMenuTrigger>
 
       <DropdownMenuPortal>
