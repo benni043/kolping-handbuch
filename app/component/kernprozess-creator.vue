@@ -11,91 +11,110 @@ let aufzeichnungOrange: Ref<{ text: string, isLink: boolean }[]> = ref([]);
 let verantwortlicherOrange: Ref<string> = ref("");
 let informationOrange: Ref<string> = ref("");
 
-function submit() {
-
-}
-
 import * as z from 'zod'
 import type {FormSubmitEvent} from '@nuxt/ui'
 
-const schema = z.object({
-  vorgaben: z.string()
-})
-
-type Schema = z.output<typeof schema>
-
-const itemSchema = z.object({
-  test1: z.string(),
-  test2: z.string()
-})
-
-type ItemSchema = z.output<typeof itemSchema>
-
-
-const state = reactive<Partial<Schema & { items: Partial<ItemSchema>[] }>>({})
+const vorgaben = ref<{ text: string; link?: string; hasLink: boolean }[]>([]);
+const newItem = ref({ text: "", hasLink: false, link: "" });
 
 function addItem() {
-  if (!state.items) {
-    state.items = []
-  }
-  state.items.push({})
+  if (!newItem.value.text) return;
+  vorgaben.value.push({
+    text: newItem.value.text,
+    hasLink: newItem.value.hasLink,
+    link: newItem.value.hasLink ? newItem.value.link : undefined,
+  });
+  newItem.value = { text: "", hasLink: false, link: "" };
 }
 
-function removeItem() {
-  if (state.items) {
-    state.items.pop()
-  }
+function removeItem(index: number) {
+  vorgaben.value.splice(index, 1);
 }
 
-function onSubmit() {
-
+function send() {
+  console.log(vorgaben.value);
 }
 </script>
 
 <template>
-<!--  <UForm-->
-<!--      :state="state"-->
-<!--      :schema="schema"-->
-<!--      class="gap-4 flex flex-col w-60"-->
-<!--      @submit="onSubmit"-->
-<!--  >-->
-<!--    <UFormField label="Vorgaben / Arbeitshilfen" name="vorgaben">-->
-<!--      <UInput v-model="state.vorgaben" placeholder="Vorgaben / Arbeitshilfen" />-->
-<!--    </UFormField>-->
+  <UCard class="max-w-xl mx-auto mt-10 shadow-lg border border-gray-200 rounded-2xl">
+    <UCardHeader>
+      <h2 class="text-lg font-semibold text-gray-800">Vorgaben hinzufügen</h2>
+    </UCardHeader>
 
-    <UForm
-        v-for="(item, count) in state.items"
-        :key="count"
-        :name="`items.${count}`"
-        :schema="itemSchema"
-        class="flex gap-4"
-        :state="state"
-        @submit="onSubmit"
-    >
-      <UFormField :label="!count ? 'Vorgaben / Arbeitshilfen' : undefined" name="vorgaben">
-        <UInput v-model="item.test1" placeholder="Vorgaben / Arbeitshilfen"/>
-      </UFormField>
+    <UCardBody>
+      <UForm class="space-y-5">
+        <UFormGroup label="Vorgabetext">
+          <UInput
+              v-model="newItem.text"
+              placeholder="Titel oder Beschreibung..."
+              icon="i-heroicons-document-text"
+          />
+        </UFormGroup>
 
-      <UFormField :label="!count ? 'Price' : undefined" name="price" class="w-20">
-        <UInput v-model="item.test2" type="number" />
-      </UFormField>
-    </UForm>
+        <div class="flex items-center gap-2">
+          <UCheckbox v-model="newItem.hasLink" label="Mit Link hinzufügen" />
+        </div>
 
-    <div class="flex gap-2">
-      <UButton color="neutral" variant="subtle" size="sm" @click="addItem()">
-        Add Item
-      </UButton>
+        <UFormGroup v-if="newItem.hasLink" label="Link">
+          <UInput
+              v-model="newItem.link"
+              placeholder="https://..."
+              icon="i-heroicons-link"
+          />
+        </UFormGroup>
 
-      <UButton color="neutral" variant="ghost" size="sm" @click="removeItem()">
-        Remove Item
-      </UButton>
-    </div>
-    <div>
-      <UButton type="submit">
-        Submit
-      </UButton>
-    </div>
-<!--  </UForm>-->
+        <div class="flex justify-end">
+          <UButton
+              @click="addItem"
+              color="primary"
+              variant="solid"
+              icon="i-heroicons-plus-circle"
+          >
+            Hinzufügen
+          </UButton>
+        </div>
+
+        <div v-if="vorgaben.length" class="mt-6 space-y-3">
+          <div
+              v-for="(item, i) in vorgaben"
+              :key="i"
+              class="flex justify-between items-center bg-gray-50 border border-gray-200 rounded-xl p-3 hover:bg-gray-100 transition"
+          >
+            <div>
+              <div class="font-medium text-gray-800">{{ item.text }}</div>
+              <div
+                  v-if="item.hasLink"
+                  class="text-sm text-blue-600 underline truncate max-w-[250px]"
+              >
+                {{ item.link }}
+              </div>
+            </div>
+            <UButton
+                color="red"
+                variant="soft"
+                size="xs"
+                icon="i-heroicons-trash"
+                @click="removeItem(i)"
+            >
+              Entfernen
+            </UButton>
+          </div>
+        </div>
+
+        <div class="flex justify-end mt-6">
+          <UButton
+              @click="send"
+              color="green"
+              variant="solid"
+              icon="i-heroicons-paper-airplane"
+          >
+            Senden
+          </UButton>
+        </div>
+      </UForm>
+    </UCardBody>
+  </UCard>
 
     <!--  <form onsubmit="submit()">-->
     <!--    <div>-->
