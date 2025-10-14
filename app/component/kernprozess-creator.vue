@@ -72,7 +72,7 @@ function postForm() {
   <UCard class="max-w-xl mx-auto mt-10">
     <UForm class="space-y-5">
       <UCard>
-        <h1 class="mb-2">Schritt</h1>
+        <h1 class="mb-4 text-xl">Schritt</h1>
 
         <UInput
             v-model="schrittCount"
@@ -83,7 +83,7 @@ function postForm() {
       </UCard>
 
       <UCard>
-        <h1 class="mb-2">Vorgaben / Arbeitshilfen</h1>
+        <h1 class="mb-4 text-xl">Vorgaben / Arbeitshilfen</h1>
 
         <div v-for="(item, index) in vorgabenBlue" :key="index" class="mb-8 space-y-3 relative">
           <UInput
@@ -122,7 +122,7 @@ function postForm() {
       </UCard>
 
       <UCard>
-        <h1 class="mb-2">Vorlagen Schlussberichte</h1>
+        <h1 class="mb-4 text-xl">Vorlagen Schlussberichte</h1>
 
         <div v-for="(item, index) in vorlagenBlue" :key="index" class="mb-8 space-y-3 relative">
           <UInput
@@ -161,7 +161,7 @@ function postForm() {
       </UCard>
 
       <UCard>
-        <h1 class="mb-2">Überschrift Kernprozess</h1>
+        <h1 class="mb-4 text-xl">Überschrift Kernprozess</h1>
 
         <UInput
             v-model="middleHead"
@@ -172,7 +172,7 @@ function postForm() {
       </UCard>
 
       <UCard>
-        <h1 class="mb-2">Kernprozess Inhalt</h1>
+        <h1 class="mb-4 text-xl">Kernprozess Inhalt</h1>
 
         <div v-for="(item, index) in middleList" :key="index" class="mb-8 space-y-3 relative">
           <UInput
@@ -202,7 +202,7 @@ function postForm() {
       </UCard>
 
       <UCard>
-        <h1 class="mb-2">Aufzeichnungen / Dokumentation</h1>
+        <h1 class="mb-4 text-xl">Aufzeichnungen / Dokumentation</h1>
 
         <div v-for="(item, index) in aufzeichnungOrange" :key="index" class="mb-8 space-y-3 relative">
           <UInput
@@ -241,7 +241,7 @@ function postForm() {
       </UCard>
 
       <UCard>
-        <h1 class="mb-2">Verantwortliche/r</h1>
+        <h1 class="mb-4 text-xl">Verantwortliche/r</h1>
 
         <UTextarea
             v-model="verantwortlicherOrange"
@@ -253,7 +253,7 @@ function postForm() {
       </UCard>
 
       <UCard>
-        <h1 class="mb-2">Information an</h1>
+        <h1 class="mb-4 text-xl">Information an</h1>
 
         <UTextarea
             v-model="informationOrange"
