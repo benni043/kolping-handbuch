@@ -2,19 +2,21 @@
 import {ref} from "vue";
 
 let schrittCount: Ref<number | undefined> = ref(undefined);
-
-const vorgabenBlue = ref<{ text: string; link?: string; hasLink: boolean }[]>([
+let vorgabenBlue = ref<{ text: string; link?: string; hasLink: boolean }[]>([
   {text: "", hasLink: false, link: ""}
 ]);
-
 let vorlagenBlue = ref<{ text: string; link?: string; hasLink: boolean }[]>([
   {text: "", hasLink: false, link: ""}
 ]);
 
 let middleHead: Ref<string> = ref("");
-let middleList: Ref<string[]> = ref([]);
+let middleList = ref<{ text: string }[]>([
+  {text: ""}
+]);
 
-let aufzeichnungOrange: Ref<{ text: string, isLink: boolean }[]> = ref([]);
+let aufzeichnungOrange = ref<{ text: string; link?: string; hasLink: boolean }[]>([
+  {text: "", hasLink: false, link: ""}
+]);
 let verantwortlicherOrange: Ref<string> = ref("");
 let informationOrange: Ref<string> = ref("");
 
@@ -36,10 +38,33 @@ function removeVorlagenBlue(index: number) {
   vorlagenBlue.value.splice(index, 1);
 }
 
+
+function addMiddleList() {
+  middleList.value.push({text: ""});
+}
+
+function removeMiddleList(index: number) {
+  middleList.value.splice(index, 1);
+}
+
+
+function addAufzeichnungOrange() {
+  aufzeichnungOrange.value.push({text: "", hasLink: false, link: ""});
+}
+
+function removeAufzeichnungOrange(index: number) {
+  aufzeichnungOrange.value.splice(index, 1);
+}
+
 function postForm() {
-  console.log(schrittCount)
+  console.log(schrittCount.value)
   console.log(vorgabenBlue.value);
   console.log(vorlagenBlue.value);
+  console.log(middleHead.value);
+  console.log(middleList.value);
+  console.log(aufzeichnungOrange.value)
+  console.log(verantwortlicherOrange.value)
+  console.log(informationOrange.value)
 }
 </script>
 
@@ -133,6 +158,110 @@ function postForm() {
         >
           Hinzufügen
         </UButton>
+      </UCard>
+
+      <UCard>
+        <h1 class="mb-2">Überschrift Kernprozess</h1>
+
+        <UInput
+            v-model="middleHead"
+            placeholder="Überschrift Kernprozess"
+            type="text"
+            icon="i-heroicons-document-text"
+        />
+      </UCard>
+
+      <UCard>
+        <h1 class="mb-2">Kernprozess Inhalt</h1>
+
+        <div v-for="(item, index) in middleList" :key="index" class="mb-8 space-y-3 relative">
+          <UInput
+              v-model="item.text"
+              placeholder="Kernprozess Inhalt..."
+              icon="i-heroicons-document-text"
+          />
+
+          <UButton
+              color="error"
+              variant="soft"
+              icon="i-heroicons-trash"
+              class="absolute top-2 right-2"
+              @click="removeMiddleList(index)"
+          />
+        </div>
+
+        <UButton
+            @click="addMiddleList"
+            color="neutral"
+            variant="soft"
+            class="mt-2"
+            icon="i-heroicons-plus"
+        >
+          Hinzufügen
+        </UButton>
+      </UCard>
+
+      <UCard>
+        <h1 class="mb-2">Aufzeichnungen / Dokumentation</h1>
+
+        <div v-for="(item, index) in aufzeichnungOrange" :key="index" class="mb-8 space-y-3 relative">
+          <UInput
+              v-model="item.text"
+              placeholder="Aufzeichnungen / Dokumentation..."
+              icon="i-heroicons-document-text"
+          />
+
+          <UCheckbox v-model="item.hasLink" label="Als Link hinzufügen"/>
+
+          <UInput
+              v-if="item.hasLink"
+              v-model="item.link"
+              placeholder="https://..."
+              icon="i-heroicons-link"
+          />
+
+          <UButton
+              color="error"
+              variant="soft"
+              icon="i-heroicons-trash"
+              class="absolute top-2 right-2"
+              @click="removeAufzeichnungOrange(index)"
+          />
+        </div>
+
+        <UButton
+            @click="addAufzeichnungOrange"
+            color="neutral"
+            variant="soft"
+            class="mt-2"
+            icon="i-heroicons-plus"
+        >
+          Hinzufügen
+        </UButton>
+      </UCard>
+
+      <UCard>
+        <h1 class="mb-2">Verantwortliche/r</h1>
+
+        <UTextarea
+            v-model="verantwortlicherOrange"
+            placeholder="Verantwortliche/r"
+            type="text"
+            icon="i-heroicons-document-text"
+            autoresize
+        />
+      </UCard>
+
+      <UCard>
+        <h1 class="mb-2">Information an</h1>
+
+        <UTextarea
+            v-model="informationOrange"
+            placeholder="Information an"
+            type="text"
+            icon="i-heroicons-document-text"
+            autoresize
+        />
       </UCard>
 
       <UButton
