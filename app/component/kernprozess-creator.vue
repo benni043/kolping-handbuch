@@ -56,7 +56,7 @@ function removeAufzeichnungOrange(index: number) {
   aufzeichnungOrange.value.splice(index, 1);
 }
 
-function postForm() {
+async function postForm() {
   const data = {
     schrittCount: schrittCount.value,
     vorgabenBlue: vorgabenBlue.value,
@@ -68,8 +68,14 @@ function postForm() {
     informationOrange: informationOrange.value,
   }
 
-  const json = JSON.stringify(data, null, 2)
-  console.log(json)
+  const res = await fetch("/api/saveForm", {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify(data),
+  })
+
+  const result = await res.json()
+  console.log(result)
 }
 
 function clearForm() {

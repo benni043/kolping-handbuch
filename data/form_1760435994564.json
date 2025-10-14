@@ -1,0 +1,35 @@
+{
+  "schrittCount": 3,
+  "vorgabenBlue": [
+    {
+      "text": "fgdgdfgf",
+      "hasLink": false,
+      "link": ""
+    }
+  ],
+  "vorlagenBlue": [
+    {
+      "text": "",
+      "hasLink": false,
+      "link": ""
+    }
+  ],
+  "middleHead": "",
+  "middleList": [
+    {
+      "text": "gfdghf"
+    },
+    {
+      "text": "ghgh"
+    }
+  ],
+  "aufzeichnungOrange": [
+    {
+      "text": "gfdgfdh",
+      "hasLink": true,
+      "link": "dfghgfd"
+    }
+  ],
+  "verantwortlicherOrange": "gdfhgfdh",
+  "informationOrange": "dgfhdgfh"
+}
