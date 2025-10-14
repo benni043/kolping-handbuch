@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import {ref} from "vue";
 
-let schrittCount: Ref<number | undefined> = ref(undefined);
+let schrittCount: Ref<number> = ref(0);
 let vorgabenBlue = ref<{ text: string; link?: string; hasLink: boolean }[]>([
   {text: "", hasLink: false, link: ""}
 ]);
@@ -57,14 +57,30 @@ function removeAufzeichnungOrange(index: number) {
 }
 
 function postForm() {
-  console.log(schrittCount.value)
-  console.log(vorgabenBlue.value);
-  console.log(vorlagenBlue.value);
-  console.log(middleHead.value);
-  console.log(middleList.value);
-  console.log(aufzeichnungOrange.value)
-  console.log(verantwortlicherOrange.value)
-  console.log(informationOrange.value)
+  const data = {
+    schrittCount: schrittCount.value,
+    vorgabenBlue: vorgabenBlue.value,
+    vorlagenBlue: vorlagenBlue.value,
+    middleHead: middleHead.value,
+    middleList: middleList.value,
+    aufzeichnungOrange: aufzeichnungOrange.value,
+    verantwortlicherOrange: verantwortlicherOrange.value,
+    informationOrange: informationOrange.value,
+  }
+
+  const json = JSON.stringify(data, null, 2)
+  console.log(json)
+}
+
+function clearForm() {
+  schrittCount.value = 0;
+  vorgabenBlue.value = [];
+  vorlagenBlue.value = [];
+  middleHead.value = "";
+  middleList.value = [];
+  aufzeichnungOrange.value = [];
+  verantwortlicherOrange.value = "";
+  informationOrange.value = "";
 }
 </script>
 
@@ -264,14 +280,25 @@ function postForm() {
         />
       </UCard>
 
-      <UButton
-          @click="postForm"
-          color="primary"
-          variant="solid"
-          icon="i-heroicons-paper-airplane"
-      >
-        Senden
-      </UButton>
+      <div class="flex justify-around">
+        <UButton
+            @click="postForm"
+            color="primary"
+            variant="solid"
+            icon="i-heroicons-paper-airplane"
+        >
+          Senden
+        </UButton>
+
+        <UButton
+            @click="clearForm"
+            color="error"
+            variant="solid"
+            icon="i-heroicons-x-mark"
+        >
+          Löschen
+        </UButton>
+      </div>
     </UForm>
   </UCard>
 </template>
