@@ -2,7 +2,14 @@
 import {ref} from "vue";
 
 let schrittCount: Ref<number | undefined> = ref(undefined);
-let vorlagenBlue: Ref<{ text: string, isLink: boolean }[]> = ref([]);
+
+const vorgabenBlue = ref<{ text: string; link?: string; hasLink: boolean }[]>([
+  {text: "", hasLink: false, link: ""}
+]);
+
+let vorlagenBlue = ref<{ text: string; link?: string; hasLink: boolean }[]>([
+  {text: "", hasLink: false, link: ""}
+]);
 
 let middleHead: Ref<string> = ref("");
 let middleList: Ref<string[]> = ref([]);
@@ -12,10 +19,6 @@ let verantwortlicherOrange: Ref<string> = ref("");
 let informationOrange: Ref<string> = ref("");
 
 
-const vorgabenBlue = ref<{ text: string; link?: string; hasLink: boolean }[]>([
-  {text: "", hasLink: false, link: ""}
-]);
-
 function addVorgabeBlue() {
   vorgabenBlue.value.push({text: "", hasLink: false, link: ""});
 }
@@ -24,8 +27,19 @@ function removeVorgabeBlue(index: number) {
   vorgabenBlue.value.splice(index, 1);
 }
 
+
+function addVorlagenBlue() {
+  vorlagenBlue.value.push({text: "", hasLink: false, link: ""});
+}
+
+function removeVorlagenBlue(index: number) {
+  vorlagenBlue.value.splice(index, 1);
+}
+
 function postForm() {
+  console.log(schrittCount)
   console.log(vorgabenBlue.value);
+  console.log(vorlagenBlue.value);
 }
 </script>
 
@@ -82,6 +96,44 @@ function postForm() {
         </UButton>
       </UCard>
 
+      <UCard>
+        <h1 class="mb-2">Vorlagen Schlussberichte</h1>
+
+        <div v-for="(item, index) in vorlagenBlue" :key="index" class="mb-8 space-y-3 relative">
+          <UInput
+              v-model="item.text"
+              placeholder="Vorlagen Schlussberichte..."
+              icon="i-heroicons-document-text"
+          />
+
+          <UCheckbox v-model="item.hasLink" label="Als Link hinzufügen"/>
+
+          <UInput
+              v-if="item.hasLink"
+              v-model="item.link"
+              placeholder="https://..."
+              icon="i-heroicons-link"
+          />
+
+          <UButton
+              color="error"
+              variant="soft"
+              icon="i-heroicons-trash"
+              class="absolute top-2 right-2"
+              @click="removeVorlagenBlue(index)"
+          />
+        </div>
+
+        <UButton
+            @click="addVorlagenBlue"
+            color="neutral"
+            variant="soft"
+            class="mt-2"
+            icon="i-heroicons-plus"
+        >
+          Hinzufügen
+        </UButton>
+      </UCard>
 
       <UButton
           @click="postForm"
