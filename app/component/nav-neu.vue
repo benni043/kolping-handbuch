@@ -67,6 +67,7 @@ function leaveSubSub() {
           :class="{ 'text-[#F18700]': hoveredCategory === index }"
           @click="test"
         >
+          <b class="text-[#F18700]">{{ category.id }}&emsp;</b>
           <b>{{ category.title }}</b>
         </div>
 
@@ -86,6 +87,7 @@ function leaveSubSub() {
               :class="{ 'text-[#F18700]': hoveredSub === subIndex }"
               @click="test"
             >
+              <b class="text-[#F18700]">{{ sub.id }}&emsp;</b>
               <b>{{ sub.title }}</b>
             </div>
 

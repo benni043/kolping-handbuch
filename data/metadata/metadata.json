@@ -2,11 +2,11 @@
   "categories": [
     {
       "id": "01",
-      "title": "01 Vereinsführung",
+      "title": "Vereinsführung",
       "sub_categories": [
         {
           "id": "01.1",
-          "title": "01.1 Jahresplanung",
+          "title": "Jahresplanung",
           "topics": [
             "Inhalt und Zweck",
             "Hinführung",
@@ -18,7 +18,7 @@
         },
         {
           "id": "01.2",
-          "title": "01.2 Nachfolge/Ein- und Entbinden von Funktionären",
+          "title": "Nachfolge/Ein- und Entbinden von Funktionären",
           "topics": [
             "Inhalt und Zweck",
             "Hinführung",
@@ -30,7 +30,7 @@
         },
         {
           "id": "01.3",
-          "title": "01.3 Professionell Wirtschaften im Verein",
+          "title": "Professionell Wirtschaften im Verein",
           "topics": [
             "Inhalt und Zweck",
             "Hinführung",
@@ -43,11 +43,11 @@
     },
     {
       "id": "02",
-      "title": "02 Verein und Haus verbinden",
+      "title": "Verein und Haus verbinden",
       "sub_categories": [
         {
           "id": "02.1",
-          "title": "02.1 Das Haus im Sinne der Idee führen",
+          "title": "Das Haus im Sinne der Idee führen",
           "topics": [
             "Inhalt und Zweck",
             "Hinführung",
@@ -61,11 +61,11 @@
     },
     {
       "id": "03",
-      "title": "03 Vereinsentwicklung",
+      "title": "Vereinsentwicklung",
       "sub_categories": [
         {
           "id": "03.1",
-          "title": "03.1 Vereinsprojekte",
+          "title": "Vereinsprojekte",
           "topics": [
             "Inhalt und Zweck",
             "Hinführung",
@@ -79,11 +79,11 @@
     },
     {
       "id": "04",
-      "title": "04 Jugendarbeit",
+      "title": "Jugendarbeit",
       "sub_categories": [
         {
           "id": "04.1",
-          "title": "04.1 Jugendprojekte",
+          "title": "Jugendprojekte",
           "topics": [
             "Inhalt und Zweck",
             "Hinführung",
@@ -97,11 +97,11 @@
     },
     {
       "id": "05",
-      "title": "05 Steuerung durch Evaluierung",
+      "title": "Steuerung durch Evaluierung",
       "sub_categories": [
         {
           "id": "05.1",
-          "title": "05.1 „Hinschauen und reagieren“",
+          "title": "„Hinschauen und reagieren“",
           "topics": [
             "Inhalt und Zweck",
             "Hinführung",
@@ -115,11 +115,11 @@
     },
     {
       "id": "06",
-      "title": "06 Mitglieder finden/Ehrenamtliche fördern",
+      "title": "Mitglieder finden/Ehrenamtliche fördern",
       "sub_categories": [
         {
           "id": "06.1",
-          "title": "06.1 Mitglieder finden",
+          "title": "Mitglieder finden",
           "topics": [
             "Inhalt und Zweck",
             "Hinführung",
@@ -131,7 +131,7 @@
         },
         {
           "id": "06.2",
-          "title": "06.2 Ehrenamtliche fördern",
+          "title": "Ehrenamtliche fördern",
           "topics": [
             "Inhalt und Zweck",
             "Hinführung",
@@ -145,11 +145,11 @@
     },
     {
       "id": "07",
-      "title": "07 Weiterbildung und Öffentlichkeitsarbeit",
+      "title": "Weiterbildung und Öffentlichkeitsarbeit",
       "sub_categories": [
         {
           "id": "07.1",
-          "title": "07.1 Weiterbildung für Mitglieder und Funktionäre",
+          "title": "Weiterbildung für Mitglieder und Funktionäre",
           "topics": [
             "Inhalt und Zweck",
             "Hinführung",
@@ -161,7 +161,7 @@
         },
         {
           "id": "07.2",
-          "title": "07.2 Presse- und Öffentlichkeitsarbeit",
+          "title": "Presse- und Öffentlichkeitsarbeit",
           "topics": [
             "Inhalt und Zweck",
             "Hinführung",
