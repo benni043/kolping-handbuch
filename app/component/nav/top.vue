@@ -1,31 +1,5 @@
 <script setup lang="ts">
-import {
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuPortal,
-  DropdownMenuRoot,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
-  DropdownMenuTrigger,
-} from "reka-ui";
-
-import {ref} from "vue";
-
-const colorMode = useColorMode()
-
-const isDark = computed({
-  get() {
-    return colorMode.value === 'dark'
-  },
-  set(_isDark) {
-    colorMode.preference = _isDark ? 'dark' : 'light'
-  }
-})
-
-const {data} = await useFetch("/api/files/metadata/metadata.json");
-
-const toggleState = ref(true);
+import NavNeu from "~/component/nav-neu.vue";
 
 function test() {
   alert("hoii");
@@ -33,84 +7,29 @@ function test() {
 </script>
 
 <template>
-  <ClientOnly v-if="!colorMode?.forced">
-    <UButton
-        :icon="isDark ? 'i-lucide-moon' : 'i-lucide-sun'"
-        color="neutral"
-        variant="ghost"
-        :aria-label="`Switch to ${isDark ? 'light' : 'dark'} mode`"
-        @click="isDark = !isDark"
-    />
+  <div class="mt-5 ml-5 mb-10 flex justify-between">
+    <img class="w-60" src="/img/logo.png" alt="logo" />
 
-    <template #fallback>
-      <div class="size-8"/>
-    </template>
-  </ClientOnly>
+    <div class="mr-5 flex gap-5">
+      <button class="text-2xl">Login</button>
+      <button class="text-2xl">Einleitung</button>
+    </div>
+  </div>
 
-  <!--  <div class="flex justify-evenly items-start bg-blue-300 h-80">-->
-  <!--    <DropdownMenuRoot :open="true">-->
-  <!--      <DropdownMenuTrigger class="flex-1 h-6"></DropdownMenuTrigger>-->
+  <div class="b-5 flex justify-center items-start gap-1">
+    <nav-neu></nav-neu>
 
-  <!--      <DropdownMenuPortal>-->
-  <!--        <DropdownMenuContent-->
-  <!--            class="bg-white border border-gray-200 shadow-lg py-2 min-w-[200px] text-sm"-->
-  <!--        >-->
-  <!--          <DropdownMenuSub-->
-  <!--              v-for="category in data.categories"-->
-  <!--              :key="category.id"-->
-  <!--          >-->
-  <!--            <DropdownMenuSubTrigger-->
-  <!--                class="px-4 py-2 text-gray-700 cursor-pointer hover:bg-gray-100 transition-colors"-->
-  <!--                @click="test"-->
-  <!--                value="inner1"-->
-  <!--            >-->
-  <!--              {{ category.title }}-->
-  <!--            </DropdownMenuSubTrigger>-->
+    <div class="relative">
+      <div class="flex flex-col absolute h-full justify-center ml-5">
+        <h1 class="text-6xl">
+          <b>Kolping</b>
+        </h1>
+        <h1 class="text-6xl"><b>Handbuch</b></h1>
+      </div>
 
-  <!--            <DropdownMenuPortal>-->
-  <!--              <DropdownMenuSubContent-->
-  <!--                  class="bg-white border border-gray-200 shadow-lg min-w-[200px] text-sm"-->
-  <!--              >-->
-  <!--                <DropdownMenuSub-->
-  <!--                    v-for="sub in category.sub_categories"-->
-  <!--                    :key="sub.id"-->
-  <!--                >-->
-  <!--                  <DropdownMenuSubTrigger-->
-  <!--                      class="px-4 py-2 text-gray-700 cursor-pointer hover:bg-gray-100 transition-colors"-->
-  <!--                      value="inner1"-->
-  <!--                      @click="test"-->
-  <!--                  >-->
-  <!--                    {{ sub.title }}-->
-  <!--                  </DropdownMenuSubTrigger>-->
-
-  <!--                  <DropdownMenuPortal>-->
-  <!--                    <DropdownMenuSubContent-->
-  <!--                        class="bg-white border border-gray-200 shadow-lg min-w-[200px] text-sm"-->
-  <!--                    >-->
-  <!--                      <DropdownMenuItem-->
-  <!--                          @select="test"-->
-  <!--                          v-for="topic in sub.topics"-->
-  <!--                          :key="topic"-->
-  <!--                          class="px-4 py-2 text-gray-700 cursor-pointer hover:bg-gray-100 transition-colors"-->
-  <!--                      >-->
-  <!--                        {{ topic }}-->
-  <!--                      </DropdownMenuItem>-->
-  <!--                    </DropdownMenuSubContent>-->
-  <!--                  </DropdownMenuPortal>-->
-  <!--                </DropdownMenuSub>-->
-  <!--              </DropdownMenuSubContent>-->
-  <!--            </DropdownMenuPortal>-->
-  <!--          </DropdownMenuSub>-->
-  <!--        </DropdownMenuContent>-->
-  <!--      </DropdownMenuPortal>-->
-  <!--    </DropdownMenuRoot>-->
-
-  <!--    <div class="flex-1 h-full flex flex-col items-center justify-center">-->
-  <!--      <h1 class="text-5xl">Kolping Handbuch</h1>-->
-  <!--    </div>-->
-
-  <!--    <img class="pl-77" src="/img/header.png" alt="header">-->
-  <!--  </div>-->
+      <img class="h-64" src="/img/header.png" alt="header" />
+    </div>
+  </div>
 </template>
 
 <style scoped></style>

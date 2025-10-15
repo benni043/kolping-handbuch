@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import {marked} from "marked";
+import { marked } from "marked";
 
 const note = ref("");
 const isEditing = ref(false);
 const render = useTemplateRef("render");
 
-const {data} = await useFetch('/api/files/01/01-1/arbeitshilfen.md');
+const { data } = await useFetch("/api/files/01/01-1/hinfuehrung.md");
 
 watchEffect(async () => {
   if (data.value) {
@@ -21,8 +21,6 @@ watch(isEditing, async () => {
     render.value.innerHTML = await marked.parse(note.value);
   }
 });
-
-
 </script>
 
 <template>
@@ -34,10 +32,10 @@ watch(isEditing, async () => {
 
     <div class="ml-[10vw] mr-[20vw]">
       <textarea
-          v-if="isEditing"
-          v-model="note"
-          data-testid="note-input"
-          class="w-full h-[100vh] rounded border-1 pl-1"
+        v-if="isEditing"
+        v-model="note"
+        data-testid="note-input"
+        class="w-full h-[100vh] rounded border-1 pl-1"
       />
 
       <div ref="render" class="markdown test" :hidden="isEditing"></div>
