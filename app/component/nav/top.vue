@@ -16,7 +16,7 @@ function test() {
     </div>
   </div>
 
-  <div class="b-5 flex justify-center items-start gap-1">
+  <div class="mb-15 flex justify-center items-start gap-1">
     <nav-neu></nav-neu>
 
     <div class="relative">
@@ -30,6 +30,8 @@ function test() {
       <img class="h-64" src="/img/header.png" alt="header" />
     </div>
   </div>
+
+  <div class="h-10 bg-gray-300"></div>
 </template>
 
 <style scoped></style>

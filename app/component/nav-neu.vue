@@ -54,7 +54,9 @@ function leaveSubSub() {
 
 <template>
   <div class="h-65 z-10">
-    <ul class="min-w-70 text-sm relative bg-white divide-y divide-gray-200">
+    <ul
+      class="rounded-tl-4xl rounded-bl-4xl min-w-70 text-sm relative bg-white divide-y divide-gray-200"
+    >
       <li
         v-for="(category, index) in data.categories"
         :key="category.id"
