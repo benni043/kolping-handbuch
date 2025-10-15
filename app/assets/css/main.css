@@ -2,8 +2,8 @@
 @import "@nuxt/ui";
 
 body {
-    /*background-image: url("/img/background.png");*/
-    background-color: rgba(80, 169, 206, 0.33);
+    background-image: url("/img/background.png");
+    /*background-color: rgba(80, 169, 206, 0.33);*/
     background-repeat: no-repeat;
 
     color: black;
