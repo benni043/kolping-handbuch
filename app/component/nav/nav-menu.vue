@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
+import { useRoute } from "#imports";
 
 const { data } = await useFetch("/api/files/metadata/metadata.json");
 
@@ -12,6 +13,8 @@ let subTimeout: ReturnType<typeof setTimeout> | null = null;
 let subSubTimeout: ReturnType<typeof setTimeout> | null = null;
 
 const timeout = 500;
+
+const router = useRouter();
 
 function getFile(categoryId: string, subId: string, index: number) {
   const fileNames = [
@@ -28,10 +31,8 @@ function getFile(categoryId: string, subId: string, index: number) {
   const file = fileNames[index];
   if (!file) return;
 
-  // nur Category + Sub + File
-  navigateTo(`/${categoryId}/${subId}/${file}`);
+  router.push(`/${categoryId}/${subId}/${file}`);
 
-  // optional Hover reset
   hoveredCategory.value = null;
   hoveredSub.value = null;
   hoveredSubSub.value = null;

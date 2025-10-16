@@ -6,7 +6,7 @@ import Bottom from "~/component/footer/bottom.vue";
 <template>
   <top />
   <main id="main">
-    <router-view />
+    <NuxtPage />
   </main>
   <bottom />
 </template>

@@ -6,8 +6,6 @@ export default defineEventHandler((event) => {
   const baseDir = join(process.cwd(), "data");
   const filePath = join(baseDir, params.path);
 
-  console.log(filePath);
-
   if (!existsSync(filePath)) {
     throw createError({ statusCode: 404, statusMessage: "File not found" });
   }

@@ -21,9 +21,10 @@ async function loadFile(path: string, subPath: string, file: string) {
 }
 
 watch(
-  () => route.params.file,
+  () => route.params,
   (newFile) => {
-    if (newFile) loadFile(newFile as string);
+    if (newFile)
+      loadFile(route.params.path, route.params.subpath, route.params.text);
   },
   { immediate: true },
 );
