@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Menu from "~/component/nav/menu.vue";
+import NavMenu from "~/component/nav/nav-menu.vue";
 
 function test() {
   alert("hoii");
@@ -17,7 +17,7 @@ function test() {
   </div>
 
   <div class="mb-15 flex justify-center items-start gap-1">
-    <menu></menu>
+    <nav-menu></nav-menu>
 
     <div class="relative">
       <div class="flex flex-col absolute h-full justify-center ml-20">
@@ -27,7 +27,7 @@ function test() {
         <h1 class="text-6xl"><b>Handbuch</b></h1>
       </div>
 
-      <img class="h-77" src="/img/header.png" alt="header" />
+      <img class="h-77 w-150" src="/img/header.png" alt="header" />
     </div>
   </div>
 
