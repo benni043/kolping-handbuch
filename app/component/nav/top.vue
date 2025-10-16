@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import NavNeu from "~/component/nav-neu.vue";
+import Menu from "~/component/nav/menu.vue";
 
 function test() {
   alert("hoii");
@@ -17,7 +17,7 @@ function test() {
   </div>
 
   <div class="mb-15 flex justify-center items-start gap-1">
-    <nav-neu></nav-neu>
+    <menu></menu>
 
     <div class="relative">
       <div class="flex flex-col absolute h-full justify-center ml-20">

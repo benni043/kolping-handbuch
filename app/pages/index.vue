@@ -1,10 +1,9 @@
 <script setup lang="ts">
-import KernprozessCreator from "~/component/kernprozess-creator.vue";
+import KernprozessCreator from "~/component/kernprozess/kernprozess-creator.vue";
 import TextPage from "~/component/text-page.vue";
-import Kernprozess from "~/component/kernprozess.vue";
+import Kernprozess from "~/component/kernprozess/kernprozess.vue";
 
 const colorMode = useColorMode();
-
 colorMode.preference = "light";
 </script>
 
