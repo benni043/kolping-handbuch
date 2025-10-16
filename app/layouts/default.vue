@@ -8,7 +8,7 @@ import Bottom from "~/component/footer/bottom.vue";
   <main id="main">
     <router-view />
   </main>
-  <bottom></bottom>
+  <bottom />
 </template>
 
 <style scoped></style>
