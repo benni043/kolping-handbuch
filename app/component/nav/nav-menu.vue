@@ -1,13 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
 
-import { useRouter } from "#imports";
-const router = useRouter();
-
-function goToFile(file: string) {
-  router.push(`${file}`);
-}
-
 const { data } = await useFetch("/api/files/metadata/metadata.json");
 
 const hoveredCategory = ref<number | null>(null);
@@ -20,35 +13,28 @@ let subSubTimeout: ReturnType<typeof setTimeout> | null = null;
 
 const timeout = 500;
 
-function getFile(path: string, subPath: string, index: number) {
-  let str = `${path}/${subPath}/`;
+function getFile(categoryId: string, subId: string, index: number) {
+  const fileNames = [
+    "inhalt-und-zweck.md",
+    "hinfuehrung.md",
+    "kernprozess.md",
+    "checkliste.md",
+    "best-practise.md",
+    "arbeitshilfen.md",
+  ];
 
-  switch (index) {
-    case 0: {
-      router.push(`${str}/inhalt-und-zweck.md`);
-      break;
-    }
-    case 1: {
-      router.push(`${str}/hinfuehrung.md`);
-      break;
-    }
-    case 2: {
-      router.push(`${str}/kernprozess.md`);
-      break;
-    }
-    case 3: {
-      router.push(`${str}/checkliste.md`);
-      break;
-    }
-    case 4: {
-      router.push(`${str}/best-practise.md`);
-      break;
-    }
-    case 5: {
-      router.push(`${str}/arbeitshilfen.md`);
-      break;
-    }
-  }
+  subId = subId.replace(".", "-");
+
+  const file = fileNames[index];
+  if (!file) return;
+
+  // nur Category + Sub + File
+  navigateTo(`/${categoryId}/${subId}/${file}`);
+
+  // optional Hover reset
+  hoveredCategory.value = null;
+  hoveredSub.value = null;
+  hoveredSubSub.value = null;
 }
 
 function enterCategory(index: number) {
@@ -135,10 +121,10 @@ function leaveSubSub() {
                 class="relative h-11 bg-[#50A9CE]/[0.33]"
                 @mouseenter="enterSubSub(subSubIndex)"
                 @mouseleave="leaveSubSub"
+                @click.stop="getFile(category.id, sub.id, subSubIndex)"
               >
                 <div
                   class="h-full w-full flex items-center cursor-pointer ml-5"
-                  @click="getFile(category.id, sub.id, subSubIndex)"
                   :class="{ 'text-[#F18700]': hoveredSubSub === subSubIndex }"
                 >
                   <b>{{ topic }}</b>

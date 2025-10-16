@@ -15,6 +15,7 @@ async function loadFile(path: string, subPath: string, file: string) {
   }
 
   const { data } = await useFetch(`/api/files/${path}/${subPath}/${file}`);
+
   cache.set(file, data.value);
   content.value = data.value;
 }
