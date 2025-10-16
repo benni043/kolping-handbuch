@@ -1,6 +1,13 @@
 <script setup lang="ts">
 import { ref } from "vue";
 
+import { useRouter } from "#imports";
+const router = useRouter();
+
+function goToFile(file: string) {
+  router.push(`${file}`);
+}
+
 const { data } = await useFetch("/api/files/metadata/metadata.json");
 
 const hoveredCategory = ref<number | null>(null);
@@ -13,8 +20,35 @@ let subSubTimeout: ReturnType<typeof setTimeout> | null = null;
 
 const timeout = 500;
 
-function test() {
-  alert("hoii");
+function getFile(path: string, subPath: string, index: number) {
+  let str = `${path}/${subPath}/`;
+
+  switch (index) {
+    case 0: {
+      router.push(`${str}/inhalt-und-zweck.md`);
+      break;
+    }
+    case 1: {
+      router.push(`${str}/hinfuehrung.md`);
+      break;
+    }
+    case 2: {
+      router.push(`${str}/kernprozess.md`);
+      break;
+    }
+    case 3: {
+      router.push(`${str}/checkliste.md`);
+      break;
+    }
+    case 4: {
+      router.push(`${str}/best-practise.md`);
+      break;
+    }
+    case 5: {
+      router.push(`${str}/arbeitshilfen.md`);
+      break;
+    }
+  }
 }
 
 function enterCategory(index: number) {
@@ -67,7 +101,6 @@ function leaveSubSub() {
         <div
           class="h-full w-full flex items-center ml-5 cursor-pointer"
           :class="{ 'text-[#F18700]': hoveredCategory === index }"
-          @click="test"
         >
           <b class="text-[#F18700]">{{ category.id }}&emsp;</b>
           <b>{{ category.title }}</b>
@@ -87,7 +120,6 @@ function leaveSubSub() {
             <div
               class="h-full w-full flex items-center cursor-pointer ml-5"
               :class="{ 'text-[#F18700]': hoveredSub === subIndex }"
-              @click="test"
             >
               <b class="text-[#F18700]">{{ sub.id }}&emsp;</b>
               <b>{{ sub.title }}</b>
@@ -106,7 +138,7 @@ function leaveSubSub() {
               >
                 <div
                   class="h-full w-full flex items-center cursor-pointer ml-5"
-                  @click="test"
+                  @click="getFile(category.id, sub.id, subSubIndex)"
                   :class="{ 'text-[#F18700]': hoveredSubSub === subSubIndex }"
                 >
                   <b>{{ topic }}</b>

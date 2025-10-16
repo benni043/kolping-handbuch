@@ -1,15 +1,40 @@
 <script setup lang="ts">
+import { ref, watch } from "vue";
+import { useRoute } from "#imports";
 import { marked } from "marked";
+
+const route = useRoute();
+const content = ref();
+
+const cache = new Map<string, string>();
+
+async function loadFile(path: string, subPath: string, file: string) {
+  if (cache.has(file)) {
+    content.value = cache.get(file)!;
+    return;
+  }
+
+  const { data } = await useFetch(`/api/files/${path}/${subPath}/${file}`);
+  cache.set(file, data.value);
+  content.value = data.value;
+}
+
+watch(
+  () => route.params.file,
+  (newFile) => {
+    if (newFile) loadFile(newFile as string);
+  },
+  { immediate: true },
+);
 
 const note = ref("");
 const isEditing = ref(false);
 const render = useTemplateRef("render");
 
-const { data } = await useFetch("/api/files/01/01-1/hinfuehrung.md");
-
 watchEffect(async () => {
-  if (data.value) {
-    note.value = data.value;
+  if (content.value) {
+    note.value = content.value;
+
     if (render.value && !isEditing.value) {
       render.value.innerHTML = await marked.parse(note.value);
     }

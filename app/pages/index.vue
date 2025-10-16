@@ -8,7 +8,7 @@ colorMode.preference = "light";
 </script>
 
 <template>
-  <text-page></text-page>
+  <!--  <text-page></text-page>-->
   <!--  <kernprozess></kernprozess>-->
 
   <!--  <kernprozess-creator></kernprozess-creator>-->
