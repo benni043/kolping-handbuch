@@ -20,18 +20,18 @@ function test() {
     <nav-neu></nav-neu>
 
     <div class="relative">
-      <div class="flex flex-col absolute h-full justify-center ml-5">
+      <div class="flex flex-col absolute h-full justify-center ml-20">
         <h1 class="text-6xl">
           <b>Kolping</b>
         </h1>
         <h1 class="text-6xl"><b>Handbuch</b></h1>
       </div>
 
-      <img class="h-64" src="/img/header.png" alt="header" />
+      <img class="h-77" src="/img/header.png" alt="header" />
     </div>
   </div>
 
-  <div class="h-10 bg-gray-300"></div>
+  <div class="h-10 bg-gray-200"></div>
 </template>
 
 <style scoped></style>

@@ -53,19 +53,19 @@ function leaveSubSub() {
 </script>
 
 <template>
-  <div class="h-65 z-10">
+  <div class="z-10">
     <ul
-      class="rounded-tl-4xl rounded-bl-4xl min-w-70 text-sm relative bg-white divide-y divide-gray-200"
+      class="rounded-tl-4xl rounded-bl-4xl min-w-85 bg-[#50A9CE]/[0.33] text-sm divide-y divide-gray-200"
     >
       <li
         v-for="(category, index) in data.categories"
         :key="category.id"
-        class="relative"
+        class="relative h-11"
         @mouseenter="enterCategory(index)"
         @mouseleave="leaveCategory"
       >
         <div
-          class="px-4 py-2 cursor-pointer transition-colors"
+          class="h-full w-full flex items-center ml-5 cursor-pointer"
           :class="{ 'text-[#F18700]': hoveredCategory === index }"
           @click="test"
         >
@@ -75,17 +75,17 @@ function leaveSubSub() {
 
         <ul
           v-if="hoveredCategory === index"
-          class="absolute ml-1 top-0 left-full min-w-60 max-w-max text-sm bg-white divide-y divide-gray-200"
+          class="absolute ml-1 top-0 left-full min-w-85 max-w-max text-sm bg-white divide-y divide-gray-200"
         >
           <li
             v-for="(sub, subIndex) in category.sub_categories"
             :key="sub.id"
-            class="relative"
+            class="relative h-11 bg-[#50A9CE]/[0.33]"
             @mouseenter="enterSub(subIndex)"
             @mouseleave="leaveSub"
           >
             <div
-              class="px-4 py-2 cursor-pointer transition-colors"
+              class="h-full w-full flex items-center cursor-pointer ml-5"
               :class="{ 'text-[#F18700]': hoveredSub === subIndex }"
               @click="test"
             >
@@ -95,17 +95,17 @@ function leaveSubSub() {
 
             <ul
               v-if="hoveredSub === subIndex"
-              class="absolute ml-1 top-0 left-full min-w-60 max-w-max text-sm bg-white divide-y divide-gray-200"
+              class="absolute ml-1 top-0 left-full min-w-40 max-w-max text-sm bg-white divide-y divide-gray-200"
             >
               <li
                 v-for="(topic, subSubIndex) in sub.topics"
                 :key="topic"
-                class="relative"
+                class="relative h-11 bg-[#50A9CE]/[0.33]"
                 @mouseenter="enterSubSub(subSubIndex)"
                 @mouseleave="leaveSubSub"
               >
                 <div
-                  class="px-4 py-2 cursor-pointer transition-colors"
+                  class="h-full w-full flex items-center cursor-pointer ml-5"
                   @click="test"
                   :class="{ 'text-[#F18700]': hoveredSubSub === subSubIndex }"
                 >
