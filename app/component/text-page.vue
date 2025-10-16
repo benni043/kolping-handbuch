@@ -24,7 +24,7 @@ watch(isEditing, async () => {
 </script>
 
 <template>
-  <div class="flex flex-col h-screen">
+  <div class="flex flex-col">
     <button class="" type="button" @click.prevent="isEditing = !isEditing">
       <span v-if="isEditing">editing</span>
       <span v-if="!isEditing">md</span>

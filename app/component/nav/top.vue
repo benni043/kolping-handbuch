@@ -31,7 +31,7 @@ function test() {
     </div>
   </div>
 
-  <div class="h-10 bg-gray-200"></div>
+  <div class="h-10 bg-gray-200 mb-10"></div>
 </template>
 
 <style scoped></style>

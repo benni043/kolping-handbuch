@@ -1,15 +1,14 @@
 <script setup lang="ts">
-
 import Top from "~/component/nav/top.vue";
+import Bottom from "~/component/footer/bottom.vue";
 </script>
 
 <template>
-  <top/>
+  <top />
   <main id="main">
-    <router-view/>
+    <router-view />
   </main>
+  <bottom></bottom>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

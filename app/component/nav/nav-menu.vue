@@ -75,7 +75,7 @@ function leaveSubSub() {
 
         <ul
           v-if="hoveredCategory === index"
-          class="absolute ml-1 top-0 left-full min-w-85 max-w-max text-sm bg-white divide-y divide-gray-400"
+          class="absolute ml-1 top-0 left-full min-w-85 max-w-max text-sm divide-y bg-white divide-gray-400"
         >
           <li
             v-for="(sub, subIndex) in category.sub_categories"
@@ -95,7 +95,7 @@ function leaveSubSub() {
 
             <ul
               v-if="hoveredSub === subIndex"
-              class="absolute ml-1 top-0 left-full min-w-40 max-w-max text-sm bg-white divide-y divide-gray-400"
+              class="rounded-tr-4xl rounded-br-4xl overflow-hidden bg-white absolute ml-1 top-0 left-full min-w-40 max-w-max text-sm divide-y divide-gray-400"
             >
               <li
                 v-for="(topic, subSubIndex) in sub.topics"
