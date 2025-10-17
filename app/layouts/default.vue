@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import TopComponent from "~/component/nav/top-component.vue";
 import BottomComponent from "~/component/footer/bottom-component.vue";
+
+const colorMode = useColorMode();
+colorMode.preference = "light";
 </script>
 
 <template>

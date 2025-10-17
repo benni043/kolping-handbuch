@@ -8,7 +8,7 @@ router.push(`/menu/menu/startpage`);
 </script>
 
 <template>
-  <div></div>
+  <div class="light"></div>
 </template>
 
 <style scoped></style>

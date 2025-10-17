@@ -6,8 +6,18 @@ import { marked } from "marked";
 const route = useRoute();
 const content = ref();
 
-async function loadFile(path: string, subPath: string, file: string) {
-  const { data } = await useFetch(`/api/files/${path}/${subPath}/${file}`);
+const note = ref("");
+const isEditing = ref(false);
+const render = useTemplateRef("render");
+
+const path = ref("");
+const subPath = ref("");
+const subSubPath = ref("");
+
+async function loadFile() {
+  const { data } = await useFetch(
+    `/api/files/${path.value}/${subPath.value}/${subSubPath.value}`,
+  );
 
   content.value = data.value;
 }
@@ -23,19 +33,15 @@ watch(
         return;
       }
 
-      await loadFile(
-        route.params.path,
-        route.params.subpath,
-        route.params.text,
-      );
+      path.value = route.params.path as string;
+      subPath.value = route.params.subpath as string;
+      subSubPath.value = route.params.text as string;
+
+      await loadFile();
     }
   },
   { immediate: true },
 );
-
-const note = ref("");
-const isEditing = ref(false);
-const render = useTemplateRef("render");
 
 watchEffect(async () => {
   if (content.value) {
@@ -55,6 +61,16 @@ watch(isEditing, async () => {
 </script>
 
 <template>
+  <div class="flex gap-3">
+    <span>Handbuch</span>
+    <span>></span>
+    <span>{{ path }}</span>
+    <span>></span>
+    <span>{{ subPath }}</span>
+    <span>></span>
+    <span>{{ subSubPath }}</span>
+  </div>
+
   <div class="flex flex-col mr-[20vw]">
     <button @click.prevent="isEditing = !isEditing">
       <span v-if="isEditing">editing</span>
