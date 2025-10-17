@@ -9,13 +9,14 @@
 /*    color: black;*/
 /*}*/
 
-html, body {
-    /*background: linear-gradient(*/
-    /*        to bottom,*/
-    /*        rgba(80, 169, 206, 0.33) 0%,*/
-    /*        rgba(80, 169, 206, 0) 100%*/
-    /*);*/
+html,
+body {
+  /*background: linear-gradient(*/
+  /*        to bottom,*/
+  /*        rgba(80, 169, 206, 0.33) 0%,*/
+  /*        rgba(80, 169, 206, 0) 100%*/
+  /*);*/
 
-    color: black;
-    background-repeat: no-repeat;
+  color: black;
+  background-repeat: no-repeat;
 }

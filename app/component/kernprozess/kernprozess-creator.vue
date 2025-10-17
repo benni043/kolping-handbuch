@@ -1,22 +1,22 @@
 <script setup lang="ts">
 import { ref } from "vue";
 
-let schrittCount: Ref<number> = ref(0);
-let vorgabenBlue = ref<{ text: string; link?: string; hasLink: boolean }[]>([
+const schrittCount: Ref<number> = ref(0);
+const vorgabenBlue = ref<{ text: string; link?: string; hasLink: boolean }[]>([
   { text: "", hasLink: false, link: "" },
 ]);
-let vorlagenBlue = ref<{ text: string; link?: string; hasLink: boolean }[]>([
+const vorlagenBlue = ref<{ text: string; link?: string; hasLink: boolean }[]>([
   { text: "", hasLink: false, link: "" },
 ]);
 
-let middleHead: Ref<string> = ref("");
-let middleList = ref<{ text: string }[]>([{ text: "" }]);
+const middleHead: Ref<string> = ref("");
+const middleList = ref<{ text: string }[]>([{ text: "" }]);
 
-let aufzeichnungOrange = ref<
+const aufzeichnungOrange = ref<
   { text: string; link?: string; hasLink: boolean }[]
 >([{ text: "", hasLink: false, link: "" }]);
-let verantwortlicherOrange: Ref<string> = ref("");
-let informationOrange: Ref<string> = ref("");
+const verantwortlicherOrange: Ref<string> = ref("");
+const informationOrange: Ref<string> = ref("");
 
 function addVorgabeBlue() {
   vorgabenBlue.value.push({ text: "", hasLink: false, link: "" });
@@ -69,6 +69,7 @@ async function postForm() {
   });
 
   const result = await res.json();
+  console.log(result);
 }
 
 function clearForm() {
@@ -130,11 +131,11 @@ function clearForm() {
         </div>
 
         <UButton
-          @click="addVorgabeBlue"
           color="neutral"
           variant="soft"
           class="mt-2"
           icon="i-heroicons-plus"
+          @click="addVorgabeBlue"
         >
           Hinzufügen
         </UButton>
@@ -173,11 +174,11 @@ function clearForm() {
         </div>
 
         <UButton
-          @click="addVorlagenBlue"
           color="neutral"
           variant="soft"
           class="mt-2"
           icon="i-heroicons-plus"
+          @click="addVorlagenBlue"
         >
           Hinzufügen
         </UButton>
@@ -218,11 +219,11 @@ function clearForm() {
         </div>
 
         <UButton
-          @click="addMiddleList"
           color="neutral"
           variant="soft"
           class="mt-2"
           icon="i-heroicons-plus"
+          @click="addMiddleList"
         >
           Hinzufügen
         </UButton>
@@ -261,11 +262,11 @@ function clearForm() {
         </div>
 
         <UButton
-          @click="addAufzeichnungOrange"
           color="neutral"
           variant="soft"
           class="mt-2"
           icon="i-heroicons-plus"
+          @click="addAufzeichnungOrange"
         >
           Hinzufügen
         </UButton>
@@ -297,19 +298,19 @@ function clearForm() {
 
       <div class="flex justify-around">
         <UButton
-          @click="postForm"
           color="primary"
           variant="solid"
           icon="i-heroicons-paper-airplane"
+          @click="postForm"
         >
           Senden
         </UButton>
 
         <UButton
-          @click="clearForm"
           color="error"
           variant="solid"
           icon="i-heroicons-x-mark"
+          @click="clearForm"
         >
           Löschen
         </UButton>

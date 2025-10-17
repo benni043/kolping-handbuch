@@ -19,5 +19,3 @@ des Kernprozesses leichter zu bewältigen:
 
 - [KP 03.1 „Vereinsentwicklung“]()
 - [KP 05.1 „Steuerung der Kolpingarbeit“]()
-
-

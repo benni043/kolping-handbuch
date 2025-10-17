@@ -6,25 +6,29 @@ import { marked } from "marked";
 const route = useRoute();
 const content = ref();
 
-const cache = new Map<string, string>();
-
 async function loadFile(path: string, subPath: string, file: string) {
-  if (cache.has(file)) {
-    content.value = cache.get(file)!;
-    return;
-  }
-
   const { data } = await useFetch(`/api/files/${path}/${subPath}/${file}`);
 
-  cache.set(file, data.value);
   content.value = data.value;
 }
 
 watch(
   () => route.params,
-  (newFile) => {
-    if (newFile)
-      loadFile(route.params.path, route.params.subpath, route.params.text);
+  async (newFile) => {
+    if (newFile) {
+      if (route.params.text === "startpage") {
+        const { data } = await useFetch("/api/files/startpage.md");
+
+        content.value = data.value;
+        return;
+      }
+
+      await loadFile(
+        route.params.path,
+        route.params.subpath,
+        route.params.text,
+      );
+    }
   },
   { immediate: true },
 );
@@ -51,8 +55,8 @@ watch(isEditing, async () => {
 </script>
 
 <template>
-  <div class="flex flex-col">
-    <button class="" type="button" @click.prevent="isEditing = !isEditing">
+  <div class="flex flex-col mr-[20vw]">
+    <button @click.prevent="isEditing = !isEditing">
       <span v-if="isEditing">editing</span>
       <span v-if="!isEditing">md</span>
     </button>

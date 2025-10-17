@@ -4,7 +4,6 @@
 
 Bitte nicht vergessen: Die wichtigsten Punkte der „To-do-Liste“ zu diesem Kernprozess:
 
-
 - Haben wir im Hinblick auf die Generalversammlung unsere Themen klar formuliert und unsere Ziele abgesteckt? Ist uns klar a) WAS wir erreichen wollen? Bis WANN? Und welche RESSOURCEN (zeitlich, finanziell, ...) wir haben?
 - Passen die Themen und Ziele für das nächste Arbeitsjahr zur „Kolping-Idee“? Haben sie einen Ankerpunkt im „Daseinszweck“ von Kolping? Diese Fragen sind besonders dringlich, wenn die Ziele die Kolpingarbeit für viele Jahre prägen werden; in diesem Falle ist auch ein „Austausch unter Kolping-Freunden“ (benachbarte Kolpingsfamilien, Diözesanverband, Bundesverband) empfehlenswert.
 - Haben wir bei der Auswahl unserer Themen und Ziele unsere Zielgruppen in ausreichendem Maß berücksichtigt? Ist die Frage geklärt: Wer hat einen konkreten Nutzen davon, wenn das Vorhaben gelingt/das Ziel verwirklicht/der Jahresschwerpunkt umgesetzt wird?“

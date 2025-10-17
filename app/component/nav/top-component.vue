@@ -1,9 +1,5 @@
 <script setup lang="ts">
 import NavMenu from "~/component/nav/nav-menu.vue";
-
-function test() {
-  alert("hoii");
-}
 </script>
 
 <template>

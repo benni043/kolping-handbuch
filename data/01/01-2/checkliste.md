@@ -15,14 +15,14 @@ Die wichtigsten Punkte der „To-do-Liste“ zu diesem Kernprozess:
   Grund ? Versuchen wir, aus den Reaktionen der angesprochenen Muster zu erkennen, und passen wir unsere Strategie
   diesen Erkenntnissen an?
 - Sind wir darauf vorbereitet, kompetent Antworten geben zu können auf Fragen wie:
-    - „Wie viel Zeit brauche ich dafür?“
-    - „Was kostet mich das?“
-    - „Welche Risiken kommen da auf mich zu?“ (Haftungen)
+  - „Wie viel Zeit brauche ich dafür?“
+  - „Was kostet mich das?“
+  - „Welche Risiken kommen da auf mich zu?“ (Haftungen)
 - Haben wir für jede Funktion Aufgaben definiert, anhand derer potentielle KandidatInnen schrittweise hineinwachsen
   können in das Leben des Vereins und in ihr künftiges Tätigkeitsfeld? Nach erfolgter Übergabe:
-    - Alle evtl. behördlichen Meldungen gemacht?
-    - Info an DV, BV geschickt?
-    - Frage der Nachfolge bereits zum Thema gemacht?
+  - Alle evtl. behördlichen Meldungen gemacht?
+  - Info an DV, BV geschickt?
+  - Frage der Nachfolge bereits zum Thema gemacht?
 
 <br>
 

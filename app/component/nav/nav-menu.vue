@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { useRoute } from "#imports";
 
 const { data } = await useFetch("/api/files/metadata/metadata.json");
 
@@ -29,6 +28,7 @@ function getFile(categoryId: string, subId: string, index: number) {
   subId = subId.replace(".", "-");
 
   const file = fileNames[index];
+
   if (!file) return;
 
   router.push(`/${categoryId}/${subId}/${file}`);

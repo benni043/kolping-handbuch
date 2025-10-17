@@ -1,14 +1,16 @@
 <script setup lang="ts">
-import Top from "~/component/nav/top.vue";
-import Bottom from "~/component/footer/bottom.vue";
+import TopComponent from "~/component/nav/top-component.vue";
+import BottomComponent from "~/component/footer/bottom-component.vue";
 </script>
 
 <template>
-  <top />
-  <main id="main">
-    <NuxtPage />
-  </main>
-  <bottom />
+  <div>
+    <top-component />
+    <main id="main">
+      <NuxtPage />
+    </main>
+    <bottom-component />
+  </div>
 </template>
 
 <style scoped></style>
