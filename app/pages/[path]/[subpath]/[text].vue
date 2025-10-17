@@ -61,31 +61,33 @@ watch(isEditing, async () => {
 </script>
 
 <template>
-  <div class="flex gap-3">
-    <span>Handbuch</span>
-    <span>></span>
-    <span>{{ path }}</span>
-    <span>></span>
-    <span>{{ subPath }}</span>
-    <span>></span>
-    <span>{{ subSubPath }}</span>
-  </div>
+  <div>
+    <div class="flex gap-3">
+      <span>Handbuch</span>
+      <span>></span>
+      <span>{{ path }}</span>
+      <span>></span>
+      <span>{{ subPath }}</span>
+      <span>></span>
+      <span>{{ subSubPath }}</span>
+    </div>
 
-  <div class="flex flex-col mr-[20vw]">
-    <button @click.prevent="isEditing = !isEditing">
-      <span v-if="isEditing">editing</span>
-      <span v-if="!isEditing">md</span>
-    </button>
+    <div class="flex flex-col mr-[20vw]">
+      <button @click.prevent="isEditing = !isEditing">
+        <span v-if="isEditing">editing</span>
+        <span v-if="!isEditing">md</span>
+      </button>
 
-    <div class="ml-[10vw] mr-[20vw]">
-      <textarea
-        v-if="isEditing"
-        v-model="note"
-        data-testid="note-input"
-        class="w-full h-[100vh] rounded border-1 pl-1"
-      />
+      <div class="ml-[10vw] mr-[20vw]">
+        <textarea
+          v-if="isEditing"
+          v-model="note"
+          data-testid="note-input"
+          class="w-full h-[100vh] rounded border-1 pl-1"
+        />
 
-      <div ref="render" class="markdown test" :hidden="isEditing"></div>
+        <div ref="render" class="markdown test" :hidden="isEditing"></div>
+      </div>
     </div>
   </div>
 </template>
