@@ -62,22 +62,27 @@ watch(isEditing, async () => {
 
 <template>
   <div>
-    <div class="flex gap-3">
-      <span>Handbuch</span>
+    <div class="flex gap-3 ml-[10vw] mb-10">
+      <a class="cursor-pointer">Handbuch</a>
       <span>></span>
-      <span>{{ path }}</span>
+      <a class="cursor-pointer">{{ path }}</a>
       <span>></span>
-      <span>{{ subPath }}</span>
+      <a class="cursor-pointer">{{ subPath }}</a>
       <span>></span>
       <span>{{ subSubPath }}</span>
     </div>
 
-    <div class="flex flex-col mr-[20vw]">
-      <button @click.prevent="isEditing = !isEditing">
+    <div class="">
+      <button
+        class="absolute mr-10 right-0"
+        @click.prevent="isEditing = !isEditing"
+      >
         <span v-if="isEditing">editing</span>
         <span v-if="!isEditing">md</span>
       </button>
+    </div>
 
+    <div class="mr-[20vw]">
       <div class="ml-[10vw] mr-[20vw]">
         <textarea
           v-if="isEditing"
