@@ -9,6 +9,8 @@ const router = useRouter();
 // router.push(`/menu/menu/startpage`);
 
 const { data } = await useFetch(`/api/structure`);
+
+console.log(data.value);
 </script>
 
 <template>
