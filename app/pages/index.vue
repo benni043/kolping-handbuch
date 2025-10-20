@@ -7,6 +7,8 @@ colorMode.preference = "light";
 const router = useRouter();
 
 // router.push(`/menu/menu/startpage`);
+
+const { data } = await useFetch(`/api/structure`);
 </script>
 
 <template>
