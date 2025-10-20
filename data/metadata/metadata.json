@@ -2,11 +2,13 @@
   "categories": [
     {
       "id": "01",
-      "title": "Vereinsführung",
+      "title": "01_vereinsfuehrung",
+      "title_display": "Vereinsführung",
       "sub_categories": [
         {
           "id": "01.1",
-          "title": "Jahresplanung",
+          "title": "01-1_jahresplanung",
+          "title_display": "Jahresplanung",
           "topics": [
             "Inhalt und Zweck",
             "Hinführung",
@@ -14,11 +16,13 @@
             "Checkliste",
             "Best Practise",
             "Arbeitshilfen"
-          ]
+          ],
+          "kernprozessCount": 1
         },
         {
           "id": "01.2",
-          "title": "Nachfolge/Ein- und Entbinden von Funktionären",
+          "title": "01-2_nachfolge_ein_und_entbinden_von_funktionaeren",
+          "title_display": "Nachfolge/Ein- und Entbinden von Funktionären",
           "topics": [
             "Inhalt und Zweck",
             "Hinführung",
@@ -26,11 +30,13 @@
             "Checkliste",
             "Best Practice",
             "Arbeitshilfen"
-          ]
+          ],
+          "kernprozessCount": 1
         },
         {
           "id": "01.3",
-          "title": "Professionell Wirtschaften im Verein",
+          "title": "01-3_professionell_wirtschaften_im_verein",
+          "title_display": "Professionell Wirtschaften im Verein",
           "topics": [
             "Inhalt und Zweck",
             "Hinführung",
@@ -38,17 +44,20 @@
             "Checkliste",
             "Best Practice",
             "Arbeitshilfen"
-          ]
+          ],
+          "kernprozessCount": 1
         }
       ]
     },
     {
       "id": "02",
-      "title": "Verein und Haus verbinden",
+      "title": "02_verein_und_haus_verbinden",
+      "title_display": "Verein und Haus verbinden",
       "sub_categories": [
         {
           "id": "02.1",
-          "title": "Das Haus im Sinne der Idee führen",
+          "title": "02-1_das_haus_im_sinne_der_idee_fuehren",
+          "title_display": "Das Haus im Sinne der Idee führen",
           "topics": [
             "Inhalt und Zweck",
             "Hinführung",
@@ -56,17 +65,20 @@
             "Checkliste",
             "Best Practice",
             "Arbeitshilfen"
-          ]
+          ],
+          "kernprozessCount": 1
         }
       ]
     },
     {
       "id": "03",
-      "title": "Vereinsentwicklung",
+      "title": "03_vereinsentwicklung",
+      "title_display": "Vereinsentwicklung",
       "sub_categories": [
         {
           "id": "03.1",
-          "title": "Vereinsprojekte",
+          "title": "03-1_vereinsprojekte",
+          "title_display": "Vereinsprojekte",
           "topics": [
             "Inhalt und Zweck",
             "Hinführung",
@@ -74,17 +86,20 @@
             "Checkliste",
             "Best Practice",
             "Arbeitshilfen"
-          ]
+          ],
+          "kernprozessCount": 1
         }
       ]
     },
     {
       "id": "04",
-      "title": "Jugendarbeit",
+      "title": "04_jugendarbeit",
+      "title_display": "Jugendarbeit",
       "sub_categories": [
         {
           "id": "04.1",
-          "title": "Jugendprojekte",
+          "title": "04-1_jugendprojekte",
+          "title_display": "Jugendprojekte",
           "topics": [
             "Inhalt und Zweck",
             "Hinführung",
@@ -92,17 +107,20 @@
             "Checkliste",
             "Best Practise",
             "Arbeitshilfen"
-          ]
+          ],
+          "kernprozessCount": 1
         }
       ]
     },
     {
       "id": "05",
-      "title": "Steuerung durch Evaluierung",
+      "title": "05_steuerung_durch_evaluierung",
+      "title_display": "Steuerung durch Evaluierung",
       "sub_categories": [
         {
           "id": "05.1",
-          "title": "„Hinschauen und reagieren“",
+          "title": "05-1_hinschauen_und_reagieren",
+          "title_display": "„Hinschauen und reagieren“",
           "topics": [
             "Inhalt und Zweck",
             "Hinführung",
@@ -110,17 +128,20 @@
             "Checkliste",
             "Best Practice",
             "Arbeitshilfen"
-          ]
+          ],
+          "kernprozessCount": 1
         }
       ]
     },
     {
       "id": "06",
-      "title": "Mitglieder finden/Ehrenamtliche fördern",
+      "title": "06_mitglieder_finden_ehrenamtliche_foerdern",
+      "title_display": "Mitglieder finden/Ehrenamtliche fördern",
       "sub_categories": [
         {
           "id": "06.1",
-          "title": "Mitglieder finden",
+          "title": "06-1_mitglieder_finden",
+          "title_display": "Mitglieder finden",
           "topics": [
             "Inhalt und Zweck",
             "Hinführung",
@@ -128,11 +149,13 @@
             "Checkliste",
             "Best Practice",
             "Arbeitshilfen"
-          ]
+          ],
+          "kernprozessCount": 1
         },
         {
           "id": "06.2",
-          "title": "Ehrenamtliche fördern",
+          "title": "06-2_ehrenamtliche_foerdern",
+          "title_display": "Ehrenamtliche fördern",
           "topics": [
             "Inhalt und Zweck",
             "Hinführung",
@@ -140,17 +163,20 @@
             "Checkliste",
             "Best Practice",
             "Arbeitshilfen"
-          ]
+          ],
+          "kernprozessCount": 1
         }
       ]
     },
     {
       "id": "07",
-      "title": "Weiterbildung und Öffentlichkeitsarbeit",
+      "title": "07_weiterbildung_und_oeffentlichkeitsarbeit",
+      "title_display": "Weiterbildung und Öffentlichkeitsarbeit",
       "sub_categories": [
         {
           "id": "07.1",
-          "title": "Weiterbildung für Mitglieder und Funktionäre",
+          "title": "07-1_weiterbildung_fuer_mitglieder_und_funktionaere",
+          "title_display": "Weiterbildung für Mitglieder und Funktionäre",
           "topics": [
             "Inhalt und Zweck",
             "Hinführung",
@@ -158,11 +184,13 @@
             "Checkliste",
             "Best Practice",
             "Arbeitshilfen"
-          ]
+          ],
+          "kernprozessCount": 1
         },
         {
           "id": "07.2",
-          "title": "Presse- und Öffentlichkeitsarbeit",
+          "title": "07-2_presse_und_oeffentlichkeitsarbeit",
+          "title_display": "Presse- und Öffentlichkeitsarbeit",
           "topics": [
             "Inhalt und Zweck",
             "Hinführung",
@@ -170,7 +198,8 @@
             "Checkliste",
             "Best Practice",
             "Arbeitshilfen"
-          ]
+          ],
+          "kernprozessCount": 1
         }
       ]
     }

@@ -2,7 +2,7 @@
 import type { Kernprozess } from "~/types/kernprozess";
 
 const { data: kernprozess } = await useFetch<Kernprozess>(
-  `/api/files/test/form_1760943557450.json`,
+  `/api/files/01/vereinsfuehrung/kernprozesse/kernprozess_1.json`,
 );
 
 const kernprozesses = ref<Kernprozess[]>([]);

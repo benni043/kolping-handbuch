@@ -60,6 +60,8 @@ async function postForm() {
     aufzeichnungOrange: aufzeichnungOrange.value,
     verantwortlicherOrange: verantwortlicherOrange.value,
     informationOrange: informationOrange.value,
+    path: "01-vereinsfuehrung",
+    subPath: "01-011-jahresplanung",
   };
 
   const res = await $fetch("/api/saveForm", {

@@ -5,7 +5,7 @@ export default defineEventHandler(async (event) => {
   const body = await readBody(event);
   const filePath = join(
     process.cwd(),
-    "data/test",
+    `data/${body.path}/${body.subPath}/kernprozesse`,
     `kernprozess_${body.schrittCount}.json`,
   );
 

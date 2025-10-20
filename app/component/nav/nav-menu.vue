@@ -17,12 +17,12 @@ const router = useRouter();
 
 function getFile(categoryId: string, subId: string, index: number) {
   const fileNames = [
-    "inhalt-und-zweck.md",
-    "hinfuehrung.md",
-    "kernprozess.md",
-    "checkliste.md",
-    "best-practise.md",
-    "arbeitshilfen.md",
+    "inhalt-und-zweck",
+    "hinfuehrung",
+    "kernprozess",
+    "checkliste",
+    "best-practise",
+    "arbeitshilfen",
   ];
 
   subId = subId.replace(".", "-");
@@ -90,7 +90,7 @@ function leaveSubSub() {
           :class="{ 'text-[#F18700]': hoveredCategory === index }"
         >
           <b class="text-[#F18700]">{{ category.id }}&emsp;</b>
-          <b>{{ category.title }}</b>
+          <b>{{ category.title_display }}</b>
         </div>
 
         <ul
@@ -109,7 +109,7 @@ function leaveSubSub() {
               :class="{ 'text-[#F18700]': hoveredSub === subIndex }"
             >
               <b class="text-[#F18700]">{{ sub.id }}&emsp;</b>
-              <b>{{ sub.title }}</b>
+              <b>{{ sub.title_display }}</b>
             </div>
 
             <ul
@@ -122,7 +122,7 @@ function leaveSubSub() {
                 class="relative h-11 bg-[#50A9CE]/[0.33]"
                 @mouseenter="enterSubSub(subSubIndex)"
                 @mouseleave="leaveSubSub"
-                @click.stop="getFile(category.id, sub.id, subSubIndex)"
+                @click.stop="getFile(category.title, sub.title, subSubIndex)"
               >
                 <div
                   class="h-full w-full flex items-center cursor-pointer ml-5"

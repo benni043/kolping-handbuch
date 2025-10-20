@@ -16,7 +16,7 @@ const subSubPath = ref("");
 
 async function loadFile() {
   const { data } = await useFetch(
-    `/api/files/${path.value}/${subPath.value}/${subSubPath.value}`,
+    `/api/files/${path.value}/${subPath.value}/${subSubPath.value}.md`,
   );
 
   content.value = data.value;
