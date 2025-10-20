@@ -1,30 +1,12 @@
 <script setup lang="ts">
-export interface TestLink {
-  text: string;
-  hasLink: boolean;
-  link: string;
-}
+import type { Kernprozess } from "~/types/kernprozess";
 
-export interface Kernprozess {
-  schrittCount: number;
-  vorgabenBlue: TestLink[];
-  vorlagenBlue: TestLink[];
-  middleHead: string;
-  middleList: TestLink[];
-  aufzeichnungOrange: TestLink[];
-  verantwortlicherOrange: string;
-  informationOrange: string;
-}
+const { data: kernprozess } = await useFetch<Kernprozess>(
+  `/api/files/test/form_1760943557450.json`,
+);
 
-const kernprozesses: Ref<Kernprozess[]> = ref([]);
-
-async function loadFile() {
-  const { data } = await useFetch(`/api/files/test/form_1760943557450.json`);
-
-  kernprozesses.value.push(data.value);
-}
-
-loadFile();
+const kernprozesses = ref<Kernprozess[]>([]);
+if (kernprozess.value) kernprozesses.value.push(kernprozess.value);
 </script>
 
 <template>
