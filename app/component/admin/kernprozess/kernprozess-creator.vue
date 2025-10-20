@@ -62,14 +62,13 @@ async function postForm() {
     informationOrange: informationOrange.value,
   };
 
-  const res = await fetch("/api/saveForm", {
+  const res = await $fetch("/api/saveForm", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
   });
 
-  const result = await res.json();
-  console.log(result);
+  console.log(res);
 }
 
 function clearForm() {
