@@ -25,6 +25,14 @@ function post(
 
   router.push(`${pathNewId}/${subPathNewId}/${mapping[category.value]}`);
 }
+
+function login() {
+  alert("clicked login");
+}
+
+function einleitung() {
+  alert("clicked einleitung");
+}
 </script>
 
 <template>
@@ -32,8 +40,10 @@ function post(
     <img class="w-60" src="/img/logo.png" alt="logo" />
 
     <div class="mr-5 flex gap-5">
-      <button class="text-2xl">Login</button>
-      <button class="text-2xl">Einleitung</button>
+      <button class="text-xl cursor-pointer" @click="login()">Login</button>
+      <button class="text-xl cursor-pointer" @click="einleitung()">
+        Einleitung
+      </button>
     </div>
   </div>
 
@@ -62,12 +72,12 @@ function post(
 
   <div class="flex gap-3 ml-[10vw] mb-10">
     <a class="cursor-pointer">Handbuch</a>
-    <span>></span>
-    <a class="cursor-pointer">{{ path }}</a>
-    <span>></span>
-    <a class="cursor-pointer">{{ subPath }}</a>
-    <span>></span>
-    <span>{{ category }}</span>
+    <span v-if="path !== ''">></span>
+    <a class="cursor-pointer" v-if="path !== ''">{{ path }}</a>
+    <span v-if="subPath !== ''">></span>
+    <a class="cursor-pointer" v-if="subPath !== ''">{{ subPath }}</a>
+    <span v-if="category !== ''">></span>
+    <span v-if="category !== ''">{{ category }}</span>
   </div>
 </template>
 
