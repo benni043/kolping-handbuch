@@ -51,7 +51,7 @@ if (res) kernprozesses.value = res;
               :key="elem.text"
               class="marker:text-[#50A9CE]"
             >
-              <a v-if="elem.hasLink">{{ elem.text }}</a>
+              <a v-if="elem.hasLink" class="cursor-pointer">{{ elem.text }}</a>
               <span v-if="!elem.hasLink">{{ elem.text }}</span>
             </li>
           </ul>
@@ -68,7 +68,7 @@ if (res) kernprozesses.value = res;
               :key="elem.text"
               class="marker:text-[#50A9CE]"
             >
-              <a v-if="elem.hasLink">{{ elem.text }}</a>
+              <a v-if="elem.hasLink" class="cursor-pointer">{{ elem.text }}</a>
               <span v-if="!elem.hasLink">{{ elem.text }}</span>
             </li>
           </ul>
@@ -96,7 +96,7 @@ if (res) kernprozesses.value = res;
               :key="elem.text"
               class="text-white ml-3"
             >
-              <a v-if="elem.hasLink">{{ elem.text }}</a>
+              <a v-if="elem.hasLink" class="cursor-pointer">{{ elem.text }}</a>
               <span v-if="!elem.hasLink">{{ elem.text }}</span>
             </li>
           </ul>
@@ -120,7 +120,7 @@ if (res) kernprozesses.value = res;
               :key="elem.text"
               class="marker:text-[#F18700]"
             >
-              <a v-if="elem.hasLink">{{ elem.text }}</a>
+              <a v-if="elem.hasLink" class="cursor-pointer">{{ elem.text }}</a>
               <span v-if="!elem.hasLink">{{ elem.text }}</span>
             </li>
           </ul>
