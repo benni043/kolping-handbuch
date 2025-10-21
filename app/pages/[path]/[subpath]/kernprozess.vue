@@ -34,8 +34,8 @@ if (res) kernprozesses.value = res;
 
 <template>
   <div v-for="kernprozess in kernprozesses">
-    <div class="flex mt-10 ml-[10vw] mr-[10vw] gap-5">
-      <div>
+    <div class="flex justify-around mt-10 ml-[10vw] mr-[10vw] gap-5">
+      <div class="max-w-100">
         <h2 class="text-[#50A9CE] font-bold text-2xl">
           Schritt {{ kernprozess.schrittCount }}
         </h2>
@@ -75,7 +75,7 @@ if (res) kernprozesses.value = res;
         </div>
       </div>
 
-      <div class="relative w-[450px] flex flex-col">
+      <div class="relative w-[450px] flex flex-col min-w-120 max-w-120">
         <h3 class="absolute top-2 left-3 text-white font-bold text-2xl z-10">
           {{ kernprozess.middleHead }}
         </h3>
@@ -105,10 +105,11 @@ if (res) kernprozesses.value = res;
         <img
           src="https://handbuch.kolping.at/tl_files/kolping_handbuch/kernprozess_bottom_orange.png"
           alt="orange"
+          class=""
         />
       </div>
 
-      <div>
+      <div class="max-w-100">
         <div>
           <h2 class="text-[#F18700] font-bold">
             AUFZEICHNUNGEN / DOKUMENTATION
