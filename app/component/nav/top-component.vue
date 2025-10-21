@@ -2,8 +2,6 @@
 import NavMenu from "~/component/nav/nav-menu.vue";
 import { mapping } from "~/utils/utils";
 
-const router = useRouter();
-
 const { data } = await useFetch(`/api/structure`);
 
 const path = ref("");
@@ -23,7 +21,7 @@ function post(
 
   subPathNewId = subPathNewId.replace(".", "-");
 
-  router.push(`${pathNewId}/${subPathNewId}/${mapping[category.value]}`);
+  navigateTo(`/${pathNewId}/${subPathNewId}/${mapping[category.value]}`);
 }
 
 function login() {
@@ -49,6 +47,7 @@ function einleitung() {
 
   <div class="mb-15 flex justify-center items-start gap-1">
     <nav-menu
+      v-if="data"
       :data="data"
       @emit-route="
         (pathNew, pathIdNew, subPathNew, subPathNewId, categoryNew) =>

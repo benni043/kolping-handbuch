@@ -1,12 +1,35 @@
 <script setup lang="ts">
 import type { Kernprozess } from "~/types/kernprozess";
+import { ref, watch } from "vue";
+import { useRoute } from "#imports";
 
-const { data: kernprozess } = await useFetch<Kernprozess>(
-  `/api/files/01/vereinsfuehrung/kernprozesse/kernprozess_1.json`,
-);
+const route = useRoute();
+
+const path = ref("");
+const subPath = ref("");
+
+path.value = route.params.path as string;
+subPath.value = route.params.subpath as string;
+
+// const res = await $fetch("/api/kernprozess", {
+//   method: "GET",
+//   params: {
+//     path: path.value,
+//     subPath: subPath.value,
+//     kernprozessNum: 1,
+//   },
+// });
+
+const res = await $fetch("/api/kernprozess/all", {
+  method: "GET",
+  params: {
+    path: path.value,
+    subPath: subPath.value,
+  },
+});
 
 const kernprozesses = ref<Kernprozess[]>([]);
-if (kernprozess.value) kernprozesses.value.push(kernprozess.value);
+if (res) kernprozesses.value = res;
 </script>
 
 <template>
