@@ -1,5 +1,6 @@
 import { readdir } from "fs/promises";
 import { join } from "path";
+import { readFile } from "fs/promises";
 
 const basePath = join(process.cwd(), "data");
 
@@ -7,25 +8,23 @@ async function buildStructure() {
   const entries = await readdir(`${basePath}/content`, { withFileTypes: true });
   const result: Record<string, any> = {};
 
+  const json = JSON.parse(await readFile(`${basePath}/metadata`, "utf-8"));
+
   for (const e of entries) {
     if (!e.isDirectory()) continue;
     const id = e.name;
+    const title = json[id] || id;
 
-    // const title = mapping[id] || id;
-    const title = id;
-
-    const subdirs = (
+    const subDir = (
       await readdir(`${basePath}/content/${id}`, { withFileTypes: true })
     ).filter((x) => x.isDirectory() && x.name.startsWith(`${id}-`));
 
     const children = [];
-    for (const sub of subdirs) {
+    for (const sub of subDir) {
       if (!e.isDirectory()) continue;
 
       const subId = sub.name;
-
-      // const subTitle = mapping[subId] || subId;
-      const subTitle = subId;
+      const subTitle = json[subId] || subId;
 
       let kernCount = 0;
       const files = await readdir(

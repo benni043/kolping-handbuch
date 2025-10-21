@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import NavMenu from "~/component/nav/nav-menu.vue";
+
+const { data } = await useFetch("/api/structure");
 </script>
 
 <template>
@@ -28,6 +30,16 @@ import NavMenu from "~/component/nav/nav-menu.vue";
   </div>
 
   <div class="h-10 bg-gray-200 mb-10"></div>
+
+  <div class="flex gap-3 ml-[10vw] mb-10">
+    <a class="cursor-pointer">Handbuch</a>
+    <span>></span>
+    <a class="cursor-pointer">{{ path }}</a>
+    <span>></span>
+    <a class="cursor-pointer">{{ subPath }}</a>
+    <span>></span>
+    <span>{{ subSubPath }}</span>
+  </div>
 </template>
 
 <style scoped></style>
