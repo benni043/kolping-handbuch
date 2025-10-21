@@ -62,16 +62,6 @@ watch(isEditing, async () => {
 
 <template>
   <div>
-    <div class="flex gap-3 ml-[10vw] mb-10">
-      <a class="cursor-pointer">Handbuch</a>
-      <span>></span>
-      <a class="cursor-pointer">{{ path }}</a>
-      <span>></span>
-      <a class="cursor-pointer">{{ subPath }}</a>
-      <span>></span>
-      <span>{{ subSubPath }}</span>
-    </div>
-
     <div class="">
       <button
         class="absolute mr-10 right-0"

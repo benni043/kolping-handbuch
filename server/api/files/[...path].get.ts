@@ -4,7 +4,7 @@ import { join } from "path";
 export default defineEventHandler((event) => {
   const params = getRouterParams(event);
 
-  const baseDir = join(process.cwd(), "data");
+  const baseDir = join(process.cwd(), "data/content");
   const filePath = join(baseDir, params.path);
 
   if (!existsSync(filePath)) {

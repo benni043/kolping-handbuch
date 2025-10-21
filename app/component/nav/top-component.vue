@@ -1,7 +1,30 @@
 <script setup lang="ts">
 import NavMenu from "~/component/nav/nav-menu.vue";
+import { mapping } from "~/utils/utils";
 
-const { data } = await useFetch("/api/structure");
+const router = useRouter();
+
+const { data } = await useFetch(`/api/structure`);
+
+const path = ref("");
+const subPath = ref("");
+const category = ref("");
+
+function post(
+  pathNew: string,
+  pathNewId: string,
+  subPathNew: string,
+  subPathNewId: string,
+  categoryNew: string,
+) {
+  path.value = pathNew;
+  subPath.value = subPathNew;
+  category.value = categoryNew;
+
+  subPathNewId = subPathNewId.replace(".", "-");
+
+  router.push(`${pathNewId}/${subPathNewId}/${mapping[category.value]}`);
+}
 </script>
 
 <template>
@@ -15,7 +38,13 @@ const { data } = await useFetch("/api/structure");
   </div>
 
   <div class="mb-15 flex justify-center items-start gap-1">
-    <nav-menu></nav-menu>
+    <nav-menu
+      :data="data"
+      @emit-route="
+        (pathNew, pathIdNew, subPathNew, subPathNewId, categoryNew) =>
+          post(pathNew, pathIdNew, subPathNew, subPathNewId, categoryNew)
+      "
+    ></nav-menu>
 
     <div class="relative">
       <div class="flex flex-col absolute h-full justify-center ml-20">
@@ -38,7 +67,7 @@ const { data } = await useFetch("/api/structure");
     <span>></span>
     <a class="cursor-pointer">{{ subPath }}</a>
     <span>></span>
-    <span>{{ subSubPath }}</span>
+    <span>{{ category }}</span>
   </div>
 </template>
 

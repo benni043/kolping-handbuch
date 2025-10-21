@@ -1,7 +1,13 @@
 <script setup lang="ts">
 import { ref } from "vue";
+import type { Structure } from "~/types/structure";
+import { categories } from "~/utils/utils";
 
-const { data } = await useFetch("/api/files/metadata/metadata.json");
+defineProps<{
+  data: Structure[];
+}>();
+
+const emit = defineEmits(["emit-route"]);
 
 const hoveredCategory = ref<number | null>(null);
 const hoveredSub = ref<number | null>(null);
@@ -13,29 +19,18 @@ let subSubTimeout: ReturnType<typeof setTimeout> | null = null;
 
 const timeout = 500;
 
-const router = useRouter();
+function click(
+  path: string,
+  pathId: string,
+  subPath: string,
+  subPathId: string,
+  category: string,
+) {
+  emit("emit-route", path, pathId, subPath, subPathId, category);
 
-function getFile(categoryId: string, subId: string, index: number) {
-  const fileNames = [
-    "inhalt-und-zweck",
-    "hinfuehrung",
-    "kernprozess",
-    "checkliste",
-    "best-practise",
-    "arbeitshilfen",
-  ];
-
-  subId = subId.replace(".", "-");
-
-  const file = fileNames[index];
-
-  if (!file) return;
-
-  router.push(`/${categoryId}/${subId}/${file}`);
-
-  hoveredCategory.value = null;
   hoveredSub.value = null;
   hoveredSubSub.value = null;
+  hoveredCategory.value = null;
 }
 
 function enterCategory(index: number) {
@@ -79,8 +74,8 @@ function leaveSubSub() {
       class="rounded-tl-2xl rounded-bl-2xl min-w-85 bg-[#50A9CE]/[0.33] text-sm divide-y divide-gray-400"
     >
       <li
-        v-for="(category, index) in data.categories"
-        :key="category.id"
+        v-for="(path, index) in data"
+        :key="path.id"
         class="relative h-11"
         @mouseenter="enterCategory(index)"
         @mouseleave="leaveCategory"
@@ -89,8 +84,8 @@ function leaveSubSub() {
           class="h-full w-full flex items-center ml-5 cursor-pointer"
           :class="{ 'text-[#F18700]': hoveredCategory === index }"
         >
-          <b class="text-[#F18700]">{{ category.id }}&emsp;</b>
-          <b>{{ category.title_display }}</b>
+          <b class="text-[#F18700]">{{ path.id }}&emsp;</b>
+          <b>{{ path.title }}</b>
         </div>
 
         <ul
@@ -98,8 +93,8 @@ function leaveSubSub() {
           class="absolute ml-1 top-0 left-full min-w-85 max-w-max text-sm divide-y bg-white divide-gray-400"
         >
           <li
-            v-for="(sub, subIndex) in category.sub_categories"
-            :key="sub.id"
+            v-for="(subPath, subIndex) in path.children"
+            :key="subPath.id"
             class="relative h-11 bg-[#50A9CE]/[0.33]"
             @mouseenter="enterSub(subIndex)"
             @mouseleave="leaveSub"
@@ -108,8 +103,8 @@ function leaveSubSub() {
               class="h-full w-full flex items-center cursor-pointer ml-5"
               :class="{ 'text-[#F18700]': hoveredSub === subIndex }"
             >
-              <b class="text-[#F18700]">{{ sub.id }}&emsp;</b>
-              <b>{{ sub.title_display }}</b>
+              <b class="text-[#F18700]">{{ subPath.id }}&emsp;</b>
+              <b>{{ subPath.title }}</b>
             </div>
 
             <ul
@@ -117,18 +112,26 @@ function leaveSubSub() {
               class="bg-white absolute ml-1 top-0 left-full min-w-40 max-w-max text-sm divide-y divide-gray-400"
             >
               <li
-                v-for="(topic, subSubIndex) in sub.topics"
-                :key="topic"
+                v-for="(category, subSubIndex) in categories"
+                :key="category"
                 class="relative h-11 bg-[#50A9CE]/[0.33]"
                 @mouseenter="enterSubSub(subSubIndex)"
                 @mouseleave="leaveSubSub"
-                @click.stop="getFile(category.title, sub.title, subSubIndex)"
+                @click.stop="
+                  click(
+                    path.title,
+                    path.id,
+                    subPath.title,
+                    subPath.id,
+                    category,
+                  )
+                "
               >
                 <div
                   class="h-full w-full flex items-center cursor-pointer ml-5"
                   :class="{ 'text-[#F18700]': hoveredSubSub === subSubIndex }"
                 >
-                  <b>{{ topic }}</b>
+                  <b>{{ category }}</b>
                 </div>
               </li>
             </ul>

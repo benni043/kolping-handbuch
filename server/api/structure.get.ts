@@ -6,9 +6,11 @@ const basePath = join(process.cwd(), "data");
 
 async function buildStructure() {
   const entries = await readdir(`${basePath}/content`, { withFileTypes: true });
-  const result: Record<string, any> = {};
+  const result = [];
 
-  const json = JSON.parse(await readFile(`${basePath}/metadata`, "utf-8"));
+  const json = JSON.parse(
+    await readFile(`${basePath}/metadata/mappings.json`, "utf-8"),
+  );
 
   for (const e of entries) {
     if (!e.isDirectory()) continue;
@@ -39,11 +41,11 @@ async function buildStructure() {
       });
     }
 
-    result[id] = {
+    result.push({
       id,
       title,
       children,
-    };
+    });
   }
 
   return result;
