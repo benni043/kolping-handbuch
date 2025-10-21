@@ -34,7 +34,6 @@ if (res) kernprozesses.value = res;
 
 <template>
   <div v-for="kernprozess in kernprozesses">
-    <!--    ml-[10vw] mr-[10vw] gap-5-->
     <div class="flex justify-center gap-10 mt-10">
       <div class="w-50 xl:w-80">
         <h2 class="text-[#50A9CE] font-bold text-2xl">
@@ -88,7 +87,7 @@ if (res) kernprozesses.value = res;
         />
 
         <div class="bg-[#F18700]">
-          <p class="text-white font-bold ml-3">
+          <p class="text-white font-bold ml-3 pt-3">
             TÄTIGKEIT / ENTSCHEIDUNG / PRÜFSCHRITT
           </p>
 

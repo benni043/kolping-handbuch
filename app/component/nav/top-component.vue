@@ -69,7 +69,7 @@ function einleitung() {
 
   <div class="h-10 bg-gray-200 mb-10"></div>
 
-  <div class="flex gap-3 ml-[10vw] mb-10">
+  <div class="flex gap-3 ml-20 mb-10">
     <a class="cursor-pointer">Handbuch</a>
     <span v-if="path !== ''">></span>
     <a class="cursor-pointer" v-if="path !== ''">{{ path }}</a>

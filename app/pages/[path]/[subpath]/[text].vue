@@ -62,7 +62,7 @@ watch(isEditing, async () => {
 
 <template>
   <div>
-    <div class="">
+    <div>
       <button
         class="absolute mr-10 right-0"
         @click.prevent="isEditing = !isEditing"
@@ -72,17 +72,15 @@ watch(isEditing, async () => {
       </button>
     </div>
 
-    <div class="mr-[20vw]">
-      <div class="ml-[10vw] mr-[20vw]">
-        <textarea
-          v-if="isEditing"
-          v-model="note"
-          data-testid="note-input"
-          class="w-full h-[100vh] rounded border-1 pl-1"
-        />
+    <div class="ml-20 mr-60 lg:mr-100 xl:mr-150">
+      <textarea
+        v-if="isEditing"
+        v-model="note"
+        data-testid="note-input"
+        class="w-full h-[100vh] rounded border-1 pl-1"
+      />
 
-        <div ref="render" class="markdown test" :hidden="isEditing"></div>
-      </div>
+      <div ref="render" class="markdown test" :hidden="isEditing"></div>
     </div>
   </div>
 </template>
