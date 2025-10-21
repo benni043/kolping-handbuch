@@ -4,7 +4,7 @@ import { join } from "path";
 const basePath = join(process.cwd(), "data");
 
 async function buildStructure() {
-  const entries = await readdir(basePath, { withFileTypes: true });
+  const entries = await readdir(`${basePath}/content`, { withFileTypes: true });
   const result: Record<string, any> = {};
 
   for (const e of entries) {
@@ -15,18 +15,22 @@ async function buildStructure() {
     const title = id;
 
     const subdirs = (
-      await readdir(`${basePath}/${id}`, { withFileTypes: true })
+      await readdir(`${basePath}/content/${id}`, { withFileTypes: true })
     ).filter((x) => x.isDirectory() && x.name.startsWith(`${id}-`));
 
     const children = [];
     for (const sub of subdirs) {
+      if (!e.isDirectory()) continue;
+
       const subId = sub.name;
 
       // const subTitle = mapping[subId] || subId;
       const subTitle = subId;
 
       let kernCount = 0;
-      const files = await readdir(`${basePath}/${id}/${subId}/kernprozesse`);
+      const files = await readdir(
+        `${basePath}/content/${id}/${subId}/kernprozesse`,
+      );
       kernCount = files.length;
 
       children.push({

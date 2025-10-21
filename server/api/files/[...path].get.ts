@@ -4,8 +4,6 @@ import { join } from "path";
 export default defineEventHandler((event) => {
   const params = getRouterParams(event);
 
-  console.log(params);
-
   const baseDir = join(process.cwd(), "data");
   const filePath = join(baseDir, params.path);
 
