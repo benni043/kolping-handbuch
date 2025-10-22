@@ -2,7 +2,9 @@
 import NavMenu from "~/component/nav/nav-menu.vue";
 import { mapping } from "~/utils/utils";
 
-const { data } = await useFetch(`/api/structure`);
+const { data } = await useFetch(`/api/structure`, {
+  method: "GET",
+});
 
 const path = ref("");
 const subPath = ref("");
