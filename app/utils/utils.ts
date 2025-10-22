@@ -12,7 +12,7 @@ export const categoriesLower = [
   "hinfuehrung",
   "kernprozess",
   "checkliste",
-  "best-practice",
+  "best-practise",
   "arbeitshilfen",
 ];
 

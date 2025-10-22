@@ -1,25 +1,13 @@
 <script setup lang="ts">
 import { ref, watch } from "vue";
 import { marked } from "marked";
-import { useRoute } from "#imports";
-
-const route = useRoute();
-
-const url = computed(() => {
-  return `/api/files/${route.params.path}/${route.params.subPath}/${route.params.page}.md`;
-});
-
-const { data } = await useFetch(url);
-
-const content = computed(() => data.value);
 
 const note = defineModel<string>("note");
-
 const isEditing = ref(note.value === "");
 const render = useTemplateRef("render");
 
 watch(isEditing, async () => {
-  if (!isEditing.value) {
+  if (!isEditing.value && render.value) {
     render.value!.innerHTML = await marked.parse(note.value ?? "");
   }
 });
@@ -54,4 +42,48 @@ onMounted(async () => {
   </div>
 </template>
 
-<style scoped></style>
+<style>
+@reference "~/assets/css/main.css";
+
+.markdown {
+  h1 {
+    @apply mt-6 mb-4 text-3xl leading-tight font-bold;
+  }
+
+  h2 {
+    @apply mt-6 mb-3 text-2xl leading-snug font-semibold text-[#F18700];
+  }
+
+  h3 {
+    @apply mt-5 mb-2 text-xl leading-snug font-semibold;
+  }
+
+  h4 {
+    @apply mt-4 mb-2 text-lg font-medium;
+  }
+
+  p {
+    @apply mb-4 text-base leading-relaxed;
+  }
+
+  ul {
+    @apply list-disc pl-6;
+  }
+
+  ol {
+    @apply list-decimal pl-6;
+  }
+
+  li {
+    @apply mb-1;
+  }
+
+  li::marker {
+    @apply text-[#F18700];
+  }
+
+  hr {
+    @apply my-6 border-t-4 border-dotted text-gray-400;
+  }
+}
+</style>

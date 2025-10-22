@@ -28,18 +28,27 @@ function login() {
   alert("clicked login");
 }
 
-function einleitung() {
-  alert("clicked einleitung");
+function introduction() {
+  navigateTo("/introduction");
+}
+
+function returnToHome() {
+  navigateTo("/");
 }
 </script>
 
 <template>
   <div class="mt-5 ml-5 mb-10 flex justify-between">
-    <img class="w-60" src="/img/logo.png" alt="logo" />
+    <img
+      class="w-60 cursor-pointer"
+      src="/img/logo.png"
+      alt="logo"
+      @click="returnToHome()"
+    />
 
     <div class="mr-5 flex gap-5">
       <button class="text-xl cursor-pointer" @click="login()">Login</button>
-      <button class="text-xl cursor-pointer" @click="einleitung()">
+      <button class="text-xl cursor-pointer" @click="introduction()">
         Einleitung
       </button>
     </div>
@@ -72,9 +81,9 @@ function einleitung() {
   <div class="flex gap-3 ml-20 mb-10">
     <a class="cursor-pointer">Handbuch</a>
     <span v-if="path !== ''">></span>
-    <a class="cursor-pointer" v-if="path !== ''">{{ path }}</a>
+    <a v-if="path !== ''" class="cursor-pointer">{{ path }}</a>
     <span v-if="subPath !== ''">></span>
-    <a class="cursor-pointer" v-if="subPath !== ''">{{ subPath }}</a>
+    <a v-if="subPath !== ''" class="cursor-pointer">{{ subPath }}</a>
     <span v-if="category !== ''">></span>
     <span v-if="category !== ''">{{ category }}</span>
   </div>

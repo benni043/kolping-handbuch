@@ -1,6 +1,5 @@
-import { readdir } from "fs/promises";
+import { readdir, readFile } from "fs/promises";
 import { join } from "path";
-import { readFile } from "fs/promises";
 
 const basePath = join(process.cwd(), "data");
 

@@ -7,7 +7,7 @@ colorMode.preference = "light";
 const { data } = await useFetch<string>("/api/content/startpage", {
   method: "GET",
   query: {
-    file: "startpage",
+    file: "introduction",
   },
 });
 </script>
