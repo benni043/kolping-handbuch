@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import NavMenu from "~/component/nav/nav-menu.vue";
 import { mapping } from "~/utils/utils";
+import type { Structure } from "~/types/structure";
 
-const { data } = await useFetch(`/api/structure`, {
+const { data } = await useFetch<Structure[]>(`/api/structure`, {
   method: "GET",
 });
 
