@@ -6,13 +6,17 @@ function contact() {
 function impressum() {
   navigateTo("/impressum");
 }
+
+function scrollToTop() {
+  window.scrollTo(0, 0);
+}
 </script>
 
 <template>
   <div class="h-20 bg-[#F18700] mt-10 mb-10"></div>
 
   <div class="flex justify-center items-center text-3xl text-[#F18700]">
-    &#708;
+    <button @click="scrollToTop()" class="cursor-pointer">&#708;</button>
   </div>
 
   <div class="flex justify-between items-center ml-5">
