@@ -2,9 +2,12 @@
 import NavMenu from "~/component/nav/nav-menu.vue";
 import { mapping } from "~/utils/utils";
 import type { Structure } from "~/types/structure";
+import { useRoute } from "#imports";
 
 const uiStore = useUiStore();
 const structureStore = useStructureStore();
+
+const route = useRoute();
 
 uiStore.triggerTopAction = (value: string) => {
   clearPaths();
