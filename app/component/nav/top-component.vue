@@ -3,9 +3,10 @@ import NavMenu from "~/component/nav/nav-menu.vue";
 import { mapping } from "~/utils/utils";
 import type { Structure } from "~/types/structure";
 
-const ui = useUiStore();
+const uiStore = useUiStore();
+const structureStore = useStructureStore();
 
-ui.triggerTopAction = (value: string) => {
+uiStore.triggerTopAction = (value: string) => {
   clearPaths();
   path.value = value;
 };
@@ -13,6 +14,14 @@ ui.triggerTopAction = (value: string) => {
 const { data } = await useFetch<Structure[]>(`/api/structure`, {
   method: "GET",
 });
+
+watch(
+  data,
+  (newVal) => {
+    if (newVal) structureStore.setStructure(newVal);
+  },
+  { immediate: true },
+);
 
 const path = ref("Startseite");
 const subPath = ref("");
@@ -79,7 +88,7 @@ function clearPaths() {
   <div class="mb-15 flex justify-center items-start gap-1">
     <nav-menu
       v-if="data"
-      :data="data"
+      :data="structureStore.structure"
       @emit-route="
         (pathNew, pathIdNew, subPathNew, subPathNewId, categoryNew) =>
           post(pathNew, pathIdNew, subPathNew, subPathNewId, categoryNew)
