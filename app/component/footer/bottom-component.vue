@@ -1,9 +1,13 @@
 <script setup lang="ts">
+const ui = useUiStore();
+
 function contact() {
+  ui.triggerTopAction("Kontakt");
   navigateTo("/contact");
 }
 
 function impressum() {
+  ui.triggerTopAction("Impressum");
   navigateTo("/impressum");
 }
 

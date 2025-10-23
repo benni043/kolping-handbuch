@@ -3,11 +3,18 @@ import NavMenu from "~/component/nav/nav-menu.vue";
 import { mapping } from "~/utils/utils";
 import type { Structure } from "~/types/structure";
 
+const ui = useUiStore();
+
+ui.triggerTopAction = (value: string) => {
+  clearPaths();
+  path.value = value;
+};
+
 const { data } = await useFetch<Structure[]>(`/api/structure`, {
   method: "GET",
 });
 
-const path = ref("");
+const path = ref("Startseite");
 const subPath = ref("");
 const category = ref("");
 
@@ -32,11 +39,23 @@ function login() {
 }
 
 function introduction() {
+  clearPaths();
+  path.value = "Einleitung";
+
   navigateTo("/introduction");
 }
 
 function returnToHome() {
+  clearPaths();
+  path.value = "Startseite";
+
   navigateTo("/");
+}
+
+function clearPaths() {
+  path.value = "";
+  subPath.value = "";
+  category.value = "";
 }
 </script>
 
