@@ -3,7 +3,6 @@ import { useRoute } from "#imports";
 
 const route = useRoute();
 
-const ui = useUiStore();
 const structureStore = useStructureStore();
 
 function navigateToSubPath(subPath: string) {

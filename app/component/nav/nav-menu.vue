@@ -19,14 +19,8 @@ let subSubTimeout: ReturnType<typeof setTimeout> | null = null;
 
 const timeout = 500;
 
-function click(
-  path: string,
-  pathId: string,
-  subPath: string,
-  subPathId: string,
-  category: string,
-) {
-  emit("emit-route", path, pathId, subPath, subPathId, category);
+function click(pathId: string, subPathId: string, category: string) {
+  emit("emit-route", pathId, subPathId, category);
 
   hoveredSub.value = null;
   hoveredSubSub.value = null;
@@ -117,15 +111,7 @@ function leaveSubSub() {
                 class="relative h-11 bg-[#50A9CE]/[0.33]"
                 @mouseenter="enterSubSub(subSubIndex)"
                 @mouseleave="leaveSubSub"
-                @click.stop="
-                  click(
-                    path.title,
-                    path.id,
-                    subPath.title,
-                    subPath.id,
-                    category,
-                  )
-                "
+                @click.stop="click(path.id, subPath.id, category)"
               >
                 <div
                   class="h-full w-full flex items-center cursor-pointer ml-5"

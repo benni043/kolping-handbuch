@@ -19,3 +19,7 @@ export const categoriesLower = [
 export const mapping = Object.fromEntries(
   categories.map((c, i) => [c, categoriesLower[i]]),
 );
+
+export const mappingLower = Object.fromEntries(
+  categoriesLower.map((c, i) => [c, categories[i]]),
+);

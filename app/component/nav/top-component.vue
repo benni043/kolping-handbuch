@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import NavMenu from "~/component/nav/nav-menu.vue";
-import { mapping } from "~/utils/utils";
+import { mapping, mappingLower } from "~/utils/utils";
 import type { Structure } from "~/types/structure";
 import { useRoute } from "#imports";
 
@@ -9,9 +9,16 @@ const structureStore = useStructureStore();
 
 const route = useRoute();
 
+const path = ref("");
+const subPath = ref("");
+const category = ref("");
+
+const pathId = ref("");
+const subPathId = ref("");
+
 uiStore.triggerTopAction = (value: string) => {
-  clearPaths();
-  path.value = value;
+  // clearPaths();
+  // path.value = value;
 };
 
 const { data } = await useFetch<Structure[]>(`/api/structure`, {
@@ -26,28 +33,71 @@ watch(
   { immediate: true },
 );
 
-const path = ref("Startseite");
-const subPath = ref("");
-const category = ref("");
+watch(
+  () => route.params,
+  () => {
+    clearPaths();
 
-const pathId = ref("");
-const subPathId = ref("");
+    if (route.params.path) {
+      // switch (route.params.path) {
+      //   case "/": {
+      //     path.value = "Startseite";
+      //     break;
+      //   }
+      //   case "/contact": {
+      //     path.value = "Kontakt";
+      //     break;
+      //   }
+      //   case "/impressum": {
+      //     path.value = "Impressum";
+      //     break;
+      //   }
+      //   case "introduction": {
+      //     path.value = "Einleitung";
+      //     break;
+      //   }
+      // }
 
-function post(
-  pathNew: string,
-  pathNewId: string,
-  subPathNew: string,
-  subPathNewId: string,
-  categoryNew: string,
-) {
-  path.value = pathNew;
-  subPath.value = subPathNew;
-  category.value = categoryNew;
+      path.value = structureStore.getTitleById(route.params.path as string)!;
+    }
 
+    if (route.params.subPath) {
+      subPath.value = structureStore.getChildTitleById(
+        route.params.path as string,
+        route.params.subPath as string,
+      )!;
+    }
+
+    if (route.params.page) {
+      category.value = mappingLower[route.params.page as string]!;
+    }
+  },
+);
+
+onMounted(() => {
+  clearPaths();
+
+  if (route.params.path) {
+    path.value = structureStore.getTitleById(route.params.path as string)!;
+  }
+
+  if (route.params.subPath) {
+    subPath.value = structureStore.getChildTitleById(
+      route.params.path as string,
+      route.params.subPath as string,
+    )!;
+  }
+
+  if (route.params.page) {
+    category.value = mappingLower[route.params.page as string]!;
+  }
+});
+
+function post(pathNewId: string, subPathNewId: string, categoryNew: string) {
   pathId.value = pathNewId;
   subPathId.value = subPathNewId;
 
-  navigateTo(`/${pathNewId}/${subPathNewId}/${mapping[category.value]}`);
+  navigateTo(`/${pathNewId}/${subPathNewId}/${mapping[categoryNew]}`);
 }
 
 function login() {
@@ -55,29 +105,22 @@ function login() {
 }
 
 function introduction() {
-  clearPaths();
-  path.value = "Einleitung";
+  // clearPaths();
+  // path.value = "Einleitung";
 
   navigateTo("/introduction");
 }
 
 function returnToHome() {
-  clearPaths();
-  path.value = "Startseite";
-
   navigateTo("/");
 }
 
 function navigateOneStepBack() {
-  category.value = "";
-
+  //hat er ned wenn die leer sind -_-
   navigateTo(`/${pathId.value}/${subPathId.value}`);
 }
 
 function navigateTwoStepsBack() {
-  category.value = "";
-  subPath.value = "";
-
   navigateTo(`/${pathId.value}`);
 }
 
@@ -110,8 +153,8 @@ function clearPaths() {
       v-if="data"
       :data="structureStore.structure"
       @emit-route="
-        (pathNew, pathIdNew, subPathNew, subPathNewId, categoryNew) =>
-          post(pathNew, pathIdNew, subPathNew, subPathNewId, categoryNew)
+        (pathIdNew, subPathNewId, categoryNew) =>
+          post(pathIdNew, subPathNewId, categoryNew)
       "
     ></nav-menu>
 
