@@ -34,7 +34,7 @@ async function buildStructure() {
       kernCount = files.length;
 
       children.push({
-        id: subId.replace("-", "."),
+        id: subId,
         title: subTitle,
         kernprozessCount: kernCount,
       });

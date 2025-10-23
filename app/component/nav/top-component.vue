@@ -27,6 +27,9 @@ const path = ref("Startseite");
 const subPath = ref("");
 const category = ref("");
 
+const pathId = ref("");
+const subPathId = ref("");
+
 function post(
   pathNew: string,
   pathNewId: string,
@@ -38,7 +41,8 @@ function post(
   subPath.value = subPathNew;
   category.value = categoryNew;
 
-  subPathNewId = subPathNewId.replace(".", "-");
+  pathId.value = pathNewId;
+  subPathId.value = subPathNewId;
 
   navigateTo(`/${pathNewId}/${subPathNewId}/${mapping[category.value]}`);
 }
@@ -59,6 +63,19 @@ function returnToHome() {
   path.value = "Startseite";
 
   navigateTo("/");
+}
+
+function navigateOneStepBack() {
+  category.value = "";
+
+  navigateTo(`/${pathId.value}/${subPathId.value}`);
+}
+
+function navigateTwoStepsBack() {
+  category.value = "";
+  subPath.value = "";
+
+  navigateTo(`/${pathId.value}`);
 }
 
 function clearPaths() {
@@ -110,11 +127,21 @@ function clearPaths() {
   <div class="h-10 bg-gray-200 mb-10"></div>
 
   <div class="flex gap-3 ml-20 mb-10">
-    <a class="cursor-pointer">Handbuch</a>
+    <a class="cursor-pointer" @click="returnToHome()">Handbuch</a>
     <span v-if="path !== ''">></span>
-    <a v-if="path !== ''" class="cursor-pointer">{{ path }}</a>
+    <a
+      v-if="path !== ''"
+      class="cursor-pointer"
+      @click="navigateTwoStepsBack()"
+      >{{ path }}</a
+    >
     <span v-if="subPath !== ''">></span>
-    <a v-if="subPath !== ''" class="cursor-pointer">{{ subPath }}</a>
+    <a
+      v-if="subPath !== ''"
+      class="cursor-pointer"
+      @click="navigateOneStepBack()"
+      >{{ subPath }}</a
+    >
     <span v-if="category !== ''">></span>
     <span v-if="category !== ''">{{ category }}</span>
   </div>
