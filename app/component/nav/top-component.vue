@@ -36,45 +36,34 @@ watch(
 watch(
   () => route.params,
   () => {
-    clearPaths();
+    handleRouting();
 
-    if (route.params.path) {
-      // switch (route.params.path) {
-      //   case "/": {
-      //     path.value = "Startseite";
-      //     break;
-      //   }
-      //   case "/contact": {
-      //     path.value = "Kontakt";
-      //     break;
-      //   }
-      //   case "/impressum": {
-      //     path.value = "Impressum";
-      //     break;
-      //   }
-      //   case "introduction": {
-      //     path.value = "Einleitung";
-      //     break;
-      //   }
-      // }
-
-      path.value = structureStore.getTitleById(route.params.path as string)!;
-    }
-
-    if (route.params.subPath) {
-      subPath.value = structureStore.getChildTitleById(
-        route.params.path as string,
-        route.params.subPath as string,
-      )!;
-    }
-
-    if (route.params.page) {
-      category.value = mappingLower[route.params.page as string]!;
-    }
+    // switch (route.params.path) {
+    //   case "/": {
+    //     path.value = "Startseite";
+    //     break;
+    //   }
+    //   case "/contact": {
+    //     path.value = "Kontakt";
+    //     break;
+    //   }
+    //   case "/impressum": {
+    //     path.value = "Impressum";
+    //     break;
+    //   }
+    //   case "introduction": {
+    //     path.value = "Einleitung";
+    //     break;
+    //   }
+    // }
   },
 );
 
 onMounted(() => {
+  handleRouting();
+});
+
+function handleRouting() {
   clearPaths();
 
   if (route.params.path) {
@@ -91,7 +80,7 @@ onMounted(() => {
   if (route.params.page) {
     category.value = mappingLower[route.params.page as string]!;
   }
-});
+}
 
 function post(pathNewId: string, subPathNewId: string, categoryNew: string) {
   pathId.value = pathNewId;
@@ -116,7 +105,7 @@ function returnToHome() {
 }
 
 function navigateOneStepBack() {
-  //hat er ned wenn die leer sind -_-
+  //hat er ned wenn die leer sind -_- :D :P ;C :O
   navigateTo(`/${pathId.value}/${subPathId.value}`);
 }
 
