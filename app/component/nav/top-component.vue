@@ -1,6 +1,15 @@
 <script setup lang="ts">
 import NavMenu from "~/component/nav/nav-menu.vue";
-import { mapping, mappingLower } from "~/utils/utils";
+import {
+  contactLower,
+  contactUpper,
+  impressumLower,
+  impressumUpper,
+  introductionLower,
+  introductionUpper,
+  mapping,
+  mappingLower,
+} from "~/utils/utils";
 import type { Structure } from "~/types/structure";
 import { useRoute } from "#imports";
 
@@ -52,6 +61,29 @@ function getSegment(index: number) {
 }
 
 function handleRouting() {
+  const segment0 = getSegment(0);
+
+  switch (segment0) {
+    case introductionLower: {
+      clearPaths();
+      path.value = introductionUpper;
+      pathId.value = introductionLower;
+      return;
+    }
+    case contactLower: {
+      clearPaths();
+      path.value = contactUpper;
+      pathId.value = contactLower;
+      return;
+    }
+    case impressumLower: {
+      clearPaths();
+      path.value = impressumUpper;
+      pathId.value = impressumLower;
+      return;
+    }
+  }
+
   const segment2 = getSegment(2);
 
   if (route.params.path || route.params.subPath || segment2) clearPaths();
@@ -93,8 +125,8 @@ function login() {
 
 function introduction() {
   clearPaths();
-  path.value = "Einleitung";
-  pathId.value = "introduction";
+  path.value = introductionUpper;
+  pathId.value = introductionLower;
 
   navigateTo("/introduction");
 }

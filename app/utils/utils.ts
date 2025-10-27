@@ -23,3 +23,12 @@ export const mapping = Object.fromEntries(
 export const mappingLower = Object.fromEntries(
   categoriesLower.map((c, i) => [c, categories[i]]),
 );
+
+export const contactLower = "contact";
+export const contactUpper = "Kontakt";
+
+export const impressumLower = "impressum";
+export const impressumUpper = "Impressum";
+
+export const introductionLower = "introduction";
+export const introductionUpper = "Einleitung";
