@@ -9,9 +9,6 @@ export const useStructureStore = defineStore("structure", {
     setStructure(data: Structure[]) {
       this.structure = data;
     },
-    clearStructure() {
-      this.structure = [];
-    },
     getTitleById(id: string) {
       const s = this.structure.find((item) => item.id === id);
       return s ? s.title : null;
