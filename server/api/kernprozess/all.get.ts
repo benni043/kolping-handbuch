@@ -2,6 +2,8 @@ import { join } from "path";
 import { existsSync, readFileSync, readdirSync } from "fs";
 
 export default defineEventHandler(async (event) => {
+  const { user } = await requireUserSession(event);
+
   const query = getQuery(event);
 
   const path = query.path as string;
