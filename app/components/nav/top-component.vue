@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import NavMenu from "~/component/nav/nav-menu.vue";
+import NavMenu from "~/components/nav/nav-menu.vue";
 import {
   contactLower,
   contactUpper,
@@ -16,6 +16,8 @@ import { useRoute } from "#imports";
 const uiStore = useUiStore();
 const structureStore = useStructureStore();
 
+const { user, clear: clearSession } = useUserSession();
+
 const route = useRoute();
 
 const path = ref("");
@@ -25,6 +27,10 @@ const category = ref("");
 const pathId = ref("");
 const subPathId = ref("");
 
+const { data } = await useFetch<Structure[]>(`/api/structure`, {
+  method: "GET",
+});
+
 uiStore.triggerTopAction = (pathNew: string, pathIdNew: string) => {
   clearPaths();
 
@@ -32,9 +38,19 @@ uiStore.triggerTopAction = (pathNew: string, pathIdNew: string) => {
   pathId.value = pathIdNew;
 };
 
-const { data } = await useFetch<Structure[]>(`/api/structure`, {
-  method: "GET",
-});
+async function logout() {
+  await clearSession();
+
+  await login();
+}
+
+async function login() {
+  clearPaths();
+  path.value = "Login";
+  pathId.value = "login";
+
+  await navigateTo("/login");
+}
 
 watch(
   data,
@@ -119,10 +135,6 @@ function post(pathNewId: string, subPathNewId: string, categoryNew: string) {
   navigateTo(`/${pathNewId}/${subPathNewId}/${mapping[categoryNew]}`);
 }
 
-function login() {
-  alert("clicked login");
-}
-
 function introduction() {
   clearPaths();
   path.value = introductionUpper;
@@ -156,6 +168,7 @@ function navigateTwoStepsBack() {
 
     <div class="mr-5 flex gap-5">
       <button class="text-xl cursor-pointer" @click="login()">Login</button>
+      <button class="text-xl cursor-pointer" @click="logout()">Logout</button>
       <button class="text-xl cursor-pointer" @click="introduction()">
         Einleitung
       </button>

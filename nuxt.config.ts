@@ -6,5 +6,10 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   css: ["~/assets/css/main.css"],
   vite: { plugins: [tailwindcss()] },
-  modules: ["@nuxt/ui", "@nuxt/eslint", "@pinia/nuxt"],
+  modules: [
+    "@nuxt/ui",
+    "@nuxt/eslint",
+    "@pinia/nuxt",
+    "nuxt-auth-utils",
+  ],
 });

@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import { useRoute } from "#imports";
 
+definePageMeta({
+  middleware: ["authenticated"],
+});
+
 const route = useRoute();
 
 const structureStore = useStructureStore();

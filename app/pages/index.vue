@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import ContentPage from "~/component/content-page.vue";
+import ContentPage from "~/components/content-page.vue";
 
 const colorMode = useColorMode();
 colorMode.preference = "light";

@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import { useRoute } from "#imports";
-import ContentPage from "~/component/content-page.vue";
+import ContentPage from "~/components/content-page.vue";
+
+definePageMeta({
+  middleware: ["authenticated"],
+});
 
 const route = useRoute();
 

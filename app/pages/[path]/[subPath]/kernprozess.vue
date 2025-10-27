@@ -2,6 +2,10 @@
 import type { Kernprozess } from "~/types/kernprozess";
 import { useRoute } from "#imports";
 
+definePageMeta({
+  middleware: ["authenticated"],
+});
+
 const route = useRoute();
 
 const { data } = await useFetch<Kernprozess[]>("/api/kernprozess/all", {
