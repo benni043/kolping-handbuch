@@ -16,9 +16,11 @@ const category = ref("");
 const pathId = ref("");
 const subPathId = ref("");
 
-uiStore.triggerTopAction = (value: string) => {
-  // clearPaths();
-  // path.value = value;
+uiStore.triggerTopAction = (pathNew: string, pathIdNew: string) => {
+  clearPaths();
+
+  path.value = pathNew;
+  pathId.value = pathIdNew;
 };
 
 const { data } = await useFetch<Structure[]>(`/api/structure`, {
@@ -37,25 +39,6 @@ watch(
   () => route.params,
   () => {
     handleRouting();
-
-    // switch (route.params.path) {
-    //   case "/": {
-    //     path.value = "Startseite";
-    //     break;
-    //   }
-    //   case "/contact": {
-    //     path.value = "Kontakt";
-    //     break;
-    //   }
-    //   case "/impressum": {
-    //     path.value = "Impressum";
-    //     break;
-    //   }
-    //   case "introduction": {
-    //     path.value = "Einleitung";
-    //     break;
-    //   }
-    // }
   },
 );
 
@@ -64,10 +47,12 @@ onMounted(() => {
 });
 
 function handleRouting() {
-  clearPaths();
+  if (route.params.path || route.params.subPath || route.params.page)
+    clearPaths();
 
   if (route.params.path) {
     path.value = structureStore.getTitleById(route.params.path as string)!;
+    pathId.value = route.params.path as string;
   }
 
   if (route.params.subPath) {
@@ -75,11 +60,18 @@ function handleRouting() {
       route.params.path as string,
       route.params.subPath as string,
     )!;
+    subPathId.value = route.params.subPath as string;
   }
 
   if (route.params.page) {
     category.value = mappingLower[route.params.page as string]!;
   }
+}
+
+function clearPaths() {
+  path.value = "";
+  subPath.value = "";
+  category.value = "";
 }
 
 function post(pathNewId: string, subPathNewId: string, categoryNew: string) {
@@ -94,29 +86,24 @@ function login() {
 }
 
 function introduction() {
-  // clearPaths();
-  // path.value = "Einleitung";
+  clearPaths();
+  path.value = "Einleitung";
+  pathId.value = "introduction";
 
   navigateTo("/introduction");
 }
 
 function returnToHome() {
+  clearPaths();
   navigateTo("/");
 }
 
 function navigateOneStepBack() {
-  //hat er ned wenn die leer sind -_- :D :P ;C :O
   navigateTo(`/${pathId.value}/${subPathId.value}`);
 }
 
 function navigateTwoStepsBack() {
   navigateTo(`/${pathId.value}`);
-}
-
-function clearPaths() {
-  path.value = "";
-  subPath.value = "";
-  category.value = "";
 }
 </script>
 

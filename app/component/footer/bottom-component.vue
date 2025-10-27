@@ -2,12 +2,12 @@
 const ui = useUiStore();
 
 function contact() {
-  ui.triggerTopAction("Kontakt");
+  ui.triggerTopAction("Kontakt", "contact");
   navigateTo("/contact");
 }
 
 function impressum() {
-  ui.triggerTopAction("Impressum");
+  ui.triggerTopAction("Impressum", "impressum");
   navigateTo("/impressum");
 }
 
