@@ -46,9 +46,15 @@ onMounted(() => {
   handleRouting();
 });
 
+function getSegment(index: number) {
+  const segments = useRoute().path.split("/").filter(Boolean);
+  return segments[index];
+}
+
 function handleRouting() {
-  if (route.params.path || route.params.subPath || route.params.page)
-    clearPaths();
+  const segment2 = getSegment(2);
+
+  if (route.params.path || route.params.subPath || segment2) clearPaths();
 
   if (route.params.path) {
     path.value = structureStore.getTitleById(route.params.path as string)!;
@@ -63,8 +69,8 @@ function handleRouting() {
     subPathId.value = route.params.subPath as string;
   }
 
-  if (route.params.page) {
-    category.value = mappingLower[route.params.page as string]!;
+  if (segment2) {
+    category.value = mappingLower[segment2 as string]!;
   }
 }
 
