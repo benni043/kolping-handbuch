@@ -16,7 +16,7 @@ import { useRoute } from "#imports";
 const uiStore = useUiStore();
 const structureStore = useStructureStore();
 
-const { clear: clearSession } = useUserSession();
+const { clear: clearSession, loggedIn, user } = useUserSession();
 
 const route = useRoute();
 
@@ -155,6 +155,10 @@ function navigateOneStepBack() {
 function navigateTwoStepsBack() {
   navigateTo(`/${pathId.value}`);
 }
+
+function admin() {
+  navigateTo("/admin");
+}
 </script>
 
 <template>
@@ -167,8 +171,19 @@ function navigateTwoStepsBack() {
     />
 
     <div class="mr-5 flex gap-5">
-      <button class="text-xl cursor-pointer" @click="login()">Login</button>
-      <button class="text-xl cursor-pointer" @click="logout()">Logout</button>
+      <button
+        class="text-xl cursor-pointer"
+        @click="admin()"
+        v-if="user!.role === 'admin'"
+      >
+        admin
+      </button>
+      <button class="text-xl cursor-pointer" @click="login()" v-if="!loggedIn">
+        Login
+      </button>
+      <button class="text-xl cursor-pointer" @click="logout()" v-if="loggedIn">
+        Logout
+      </button>
       <button class="text-xl cursor-pointer" @click="introduction()">
         Einleitung
       </button>

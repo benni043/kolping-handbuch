@@ -2,6 +2,8 @@
 import { ref, watch } from "vue";
 import { marked } from "marked";
 
+const { user } = useUserSession();
+
 const note = defineModel<string>("note");
 const isEditing = ref(note.value === "");
 const render = useTemplateRef("render");
@@ -19,7 +21,7 @@ onMounted(async () => {
 
 <template>
   <div>
-    <div>
+    <div v-if="user!.role === 'admin'">
       <button
         class="absolute mr-10 right-0"
         @click.prevent="isEditing = !isEditing"
