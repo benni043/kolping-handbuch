@@ -6,9 +6,9 @@ export default defineNuxtRouteMiddleware((to) => {
     return navigateTo("/login");
   }
 
-  const allowedRoles = to.meta.allowedRoles || [];
+  const allowedRoles: string[] = to.meta.allowedRoles || [];
 
-  if (allowedRoles.length && !allowedRoles.includes(user.value.role)) {
+  if (allowedRoles.length && !allowedRoles.includes(user.value!.role)) {
     return navigateTo("/");
   }
 });

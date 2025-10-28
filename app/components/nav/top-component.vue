@@ -16,7 +16,7 @@ import { useRoute } from "#imports";
 const uiStore = useUiStore();
 const structureStore = useStructureStore();
 
-const { user, clear: clearSession } = useUserSession();
+const { clear: clearSession } = useUserSession();
 
 const route = useRoute();
 
