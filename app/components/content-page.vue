@@ -21,7 +21,7 @@ onMounted(async () => {
 
 <template>
   <div>
-    <div v-if="user!.role === 'admin'">
+    <div v-if="user && user?.role === 'admin'">
       <button
         class="absolute mr-10 right-0"
         @click.prevent="isEditing = !isEditing"

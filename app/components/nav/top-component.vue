@@ -174,7 +174,7 @@ function admin() {
       <button
         class="text-xl cursor-pointer"
         @click="admin()"
-        v-if="user!.role === 'admin'"
+        v-if="user && user?.role === 'admin'"
       >
         admin
       </button>
