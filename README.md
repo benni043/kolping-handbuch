@@ -1,3 +1,13 @@
+# KOLPING HANDBUCH
+
+## environment variables
+
+```
+NUXT_SESSION_PASSWORD=[your-super-strong-password]
+
+NUXT_POSTGRES_URL=postgres://[db_user]:[password]@localhost:5432/postgres
+```
+
 # Nuxt Minimal Starter
 
 Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
@@ -20,24 +30,6 @@ yarn install
 bun install
 ```
 
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
 ## Production
 
 Build the application for production:
@@ -55,21 +47,3 @@ yarn build
 # bun
 bun run build
 ```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
