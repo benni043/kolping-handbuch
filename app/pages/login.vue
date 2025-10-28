@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const { loggedIn, user, fetch: refreshSession } = useUserSession();
 const credentials = reactive({
-  email: "",
+  username: "",
   password: "",
 });
 async function login() {
@@ -23,7 +23,7 @@ async function login() {
 <template>
   <h1>Welcome {{ user! }}</h1>
   <form @submit.prevent="login">
-    <input v-model="credentials.email" type="text" placeholder="Email" />
+    <input v-model="credentials.username" type="text" placeholder="Username" />
     <input
       v-model="credentials.password"
       type="password"
