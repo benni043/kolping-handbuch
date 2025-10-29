@@ -14,6 +14,7 @@ import type { Structure } from "~/types/structure";
 import { useRoute } from "#imports";
 
 const uiStore = useUiStore();
+
 const structureStore = useStructureStore();
 
 const { loggedIn, user } = useUserSession();
