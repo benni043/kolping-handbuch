@@ -26,8 +26,8 @@ function scrollToTop() {
 <template>
   <div class="h-20 bg-[#F18700] mt-10 mb-10"></div>
 
-  <div class="flex justify-center items-center text-3xl text-[#F18700]">
-    <button class="cursor-pointer" @click="scrollToTop()">&#708;</button>
+  <div class="flex justify-center items-center text-6xl text-[#F18700]">
+    <button class="cursor-pointer" @click="scrollToTop()"><b>&#708;</b></button>
   </div>
 
   <div class="flex justify-between items-center ml-5">
