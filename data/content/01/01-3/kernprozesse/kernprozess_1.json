@@ -1,0 +1,86 @@
+{
+  "schrittCount": 1,
+  "vorgabenBlue": [
+    {
+      "text": "Statuten",
+      "hasLink": true,
+      "link": ""
+    },
+    {
+      "text": "AH 01 Checkliste Generalversammlung",
+      "hasLink": true,
+      "link": ""
+    },
+    {
+      "text": "Jahresthema / Arbeitsschwerpunkte",
+      "hasLink": false,
+      "link": ""
+    },
+    {
+      "text": "Berichte / Jahresabschluss",
+      "hasLink": false,
+      "link": ""
+    },
+    {
+      "text": "Personalia / Wahlen",
+      "hasLink": false,
+      "link": ""
+    },
+    {
+      "text": "Anträge",
+      "hasLink": false,
+      "link": ""
+    },
+    {
+      "text": "Ehrungen / Dank",
+      "hasLink": false,
+      "link": ""
+    },
+    {
+      "text": "AH 02 Netzmodell",
+      "hasLink": true,
+      "link": ""
+    },
+    {
+      "text": "Ah 03 Tagesordnung Generalversammlung",
+      "hasLink": true,
+      "link": ""
+    }
+  ],
+  "vorlagenBlue": [],
+  "middleHead": "Generalversammlung vorbereiten",
+  "middleList": [
+    {
+      "text": "Themen festlegen (Bezug zur Kolping-Idee!)"
+    },
+    {
+      "text": "Ziele formulieren (Bezug zur Kolping-Idee!)"
+    },
+    {
+      "text": "Verantwortung für Vorbereitungsphase verteilen"
+    },
+    {
+      "text": "Wer arbeitet Jahresthema / Arbeitsschwerpunkte / Anträge aus?"
+    },
+    {
+      "text": "Wer spricht KandidatInnen für künftige Funktionen an?"
+    },
+    {
+      "text": "Wer kümmert sich um die organisatorischen Dinge?"
+    }
+  ],
+  "aufzeichnungOrange": [
+    {
+      "text": "Themenliste",
+      "hasLink": false,
+      "link": ""
+    },
+    {
+      "text": "To-Do-Liste",
+      "hasLink": false,
+      "link": ""
+    }
+  ],
+  "verantwortlicherOrange": "Vorstand",
+  "informationOrange": ""
+}
