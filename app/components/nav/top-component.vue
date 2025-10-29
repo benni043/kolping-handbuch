@@ -16,7 +16,7 @@ import { useRoute } from "#imports";
 const uiStore = useUiStore();
 const structureStore = useStructureStore();
 
-const { clear: clearSession, loggedIn, user } = useUserSession();
+const { loggedIn, user } = useUserSession();
 
 const route = useRoute();
 
@@ -38,13 +38,7 @@ uiStore.triggerTopAction = (pathNew: string, pathIdNew: string) => {
   pathId.value = pathIdNew;
 };
 
-async function logout() {
-  await clearSession();
-
-  await login();
-}
-
-async function login() {
+async function navigateToLoginPage() {
   clearPaths();
   path.value = "Login";
   pathId.value = "login";
@@ -172,16 +166,16 @@ function admin() {
 
     <div class="mr-5 flex gap-5">
       <button
+        v-if="user && user?.role === 'admin'"
         class="text-xl cursor-pointer"
         @click="admin()"
-        v-if="user && user?.role === 'admin'"
       >
         admin
       </button>
-      <button class="text-xl cursor-pointer" @click="login()" v-if="!loggedIn">
+      <button v-if="!loggedIn" class="text-xl cursor-pointer" @click="navigateToLoginPage()">
         Login
       </button>
-      <button class="text-xl cursor-pointer" @click="logout()" v-if="loggedIn">
+      <button v-if="loggedIn" class="text-xl cursor-pointer" @click="navigateToLoginPage()">
         Logout
       </button>
       <button class="text-xl cursor-pointer" @click="introduction()">

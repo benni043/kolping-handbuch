@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { user, fetch: refreshSession } = useUserSession();
+const { user, fetch: refreshSession, clear: clearSession } = useUserSession();
 
 const credentials = reactive({
   username: "",
@@ -19,6 +19,10 @@ async function login() {
     alert("Bad credentials");
   }
 }
+
+async function logout() {
+  await clearSession();
+}
 </script>
 
 <template>
@@ -31,7 +35,7 @@ async function login() {
       Sie sind im Moment nicht eingeloggt!
     </h1>
 
-    <UCard v-if="user" class="max-w-xl mx-auto mt-10 border-none">
+    <UCard v-if="!user" class="max-w-xl mx-auto mt-10 border-none">
       <UForm class="space-y-5">
         <UCard>
           <h1 class="mb-4 text-xl">Benutzername</h1>
@@ -67,6 +71,6 @@ async function login() {
       </UForm>
     </UCard>
 
-    <button v-if="!user">Logout</button>
+    <button v-if="user" @click="logout()">Logout</button>
   </div>
 </template>
