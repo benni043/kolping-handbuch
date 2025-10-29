@@ -124,7 +124,21 @@ function clearPaths() {
 
 function post(pathNewId: string, subPathNewId: string, categoryNew: string) {
   pathId.value = pathNewId;
-  subPathId.value = subPathNewId;
+
+  if (subPathNewId === null) {
+    navigateTo(`/${pathNewId}`);
+
+    return;
+  }
+
+  if (categoryNew === null) {
+    subPathId.value = subPathNewId;
+
+    navigateTo(`/${pathNewId}/${subPathNewId}`);
+
+    return;
+  }
+
 
   navigateTo(`/${pathNewId}/${subPathNewId}/${mapping[categoryNew]}`);
 }
