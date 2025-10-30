@@ -15,12 +15,51 @@ const { data } = await useFetch<Kernprozess[]>("/api/kernprozess/all", {
     subPath: route.params.subPath,
   },
 });
+
+// pro kernprozess eigenen editing-state
+const editingStates = ref<Record<string, boolean>>({});
+
+function isEditing(key: string) {
+  return editingStates.value[key] === true;
+}
+
+function toggleEditing(key: string) {
+  editingStates.value[key] = !editingStates.value[key];
+}
+
+function send(key: string) {
+  if (
+    confirm(
+      "Sind Sie sicher, dass sie die aktuelle Datei überschreiben möchten?",
+    )
+  ) {
+    editingStates.value[key] = false;
+  }
+}
 </script>
 
 <template>
   <div>
     <div v-for="kernprozess in data!" :key="kernprozess.middleHead">
-      <div class="flex justify-center gap-10 mt-10">
+      <div class="ml-20">
+        <button
+          v-if="!isEditing(kernprozess.middleHead)"
+          class="bg-orange-400 hover:bg-orange-500 text-white px-4 py-2 rounded"
+          @click.prevent="toggleEditing(kernprozess.middleHead)"
+        >
+          BEARBEITEN
+        </button>
+
+        <button
+          v-else
+          class="bg-green-400 hover:bg-green-500 text-white px-4 py-2 rounded"
+          @click="send(kernprozess.middleHead)"
+        >
+          FERTIG
+        </button>
+      </div>
+
+      <div class="flex justify-center gap-10 mt-10 mb-10">
         <div class="w-50 xl:w-80">
           <h2 class="text-[#50A9CE] font-bold text-2xl">
             Schritt {{ kernprozess.schrittCount }}
