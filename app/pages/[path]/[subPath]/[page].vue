@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { useRoute } from "#imports";
 import ContentPage from "~/components/content-page.vue";
-import { getSegment } from "~~/shared/utils";
 
 definePageMeta({
   middleware: ["authenticated"],
@@ -19,7 +18,7 @@ const { data } = await useFetch<string>("/api/content/", {
 });
 
 async function updateNote(note: string) {
-  await $fetch("/api/save/content-page", {
+  const response = await $fetch("/api/save/content-page", {
     method: "POST",
     body: {
       paths: [getSegment(0), getSegment(1)],
@@ -27,6 +26,8 @@ async function updateNote(note: string) {
       data: note,
     },
   });
+
+  console.log(response);
 }
 </script>
 
