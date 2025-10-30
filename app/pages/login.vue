@@ -12,7 +12,6 @@ async function login() {
       method: "POST",
       body: credentials,
     });
-
     await refreshSession();
     await navigateTo("/");
   } catch {
@@ -26,51 +25,62 @@ async function logout() {
 </script>
 
 <template>
-  <div>
-    <h1 v-if="user" class="text-xl text-center">
-      Sie sind im Moment als <b>{{ user?.username }}</b> eingeloggt!
-    </h1>
+  <div class="flex justify-center mb-15">
+    <div v-if="!user" class="w-100 p-8">
+      <h1 class="text-2xl font-semibold text-center mb-10">Anmelden</h1>
 
-    <h1 v-if="!user" class="text-xl text-center">
-      Sie sind im Moment nicht eingeloggt!
-    </h1>
-
-    <UCard v-if="!user" class="max-w-xl mx-auto mt-10 border-none">
       <UForm class="space-y-5">
-        <UCard>
-          <h1 class="mb-4 text-xl">Benutzername</h1>
-
+        <div>
           <UInput
             v-model="credentials.username"
             placeholder="Benutzername"
             type="text"
-            icon="i-heroicons-document-plus"
+            size="xl"
+            class="w-full"
           />
-        </UCard>
+        </div>
 
-        <UCard>
-          <h1 class="mb-4 text-xl">Passwort</h1>
-
+        <div>
           <UInput
             v-model="credentials.password"
             placeholder="Passwort"
             type="password"
-            icon="i-heroicons-document-plus"
+            size="xl"
+            class="w-full"
           />
-        </UCard>
+        </div>
 
         <UButton
           color="primary"
+          size="xl"
           variant="solid"
           type="submit"
-          icon="i-heroicons-paper-airplane"
+          block
+          icon="i-heroicons-lock-closed"
           @click="login()"
         >
           Login
         </UButton>
       </UForm>
-    </UCard>
+    </div>
 
-    <button v-if="user" @click="logout()">Logout</button>
+    <div v-else class="w-100 p-8">
+      <h1 class="text-2xl font-semibold text-center mb-10">
+        Eingeloggt als <b>{{ user?.username }}</b>
+      </h1>
+
+      <UButton
+        color="error"
+        variant="solid"
+        size="xl"
+        icon="i-heroicons-arrow-left-on-rectangle"
+        block
+        @click="logout()"
+      >
+        Logout
+      </UButton>
+    </div>
   </div>
 </template>
+
+<style scoped></style>

@@ -140,7 +140,6 @@ function post(pathNewId: string, subPathNewId: string, categoryNew: string) {
     return;
   }
 
-
   navigateTo(`/${pathNewId}/${subPathNewId}/${mapping[categoryNew]}`);
 }
 
@@ -187,10 +186,18 @@ function admin() {
       >
         admin
       </button>
-      <button v-if="!loggedIn" class="text-xl cursor-pointer" @click="navigateToLoginPage()">
+      <button
+        v-if="!loggedIn"
+        class="text-xl cursor-pointer"
+        @click="navigateToLoginPage()"
+      >
         Login
       </button>
-      <button v-if="loggedIn" class="text-xl cursor-pointer" @click="navigateToLoginPage()">
+      <button
+        v-if="loggedIn"
+        class="text-xl cursor-pointer"
+        @click="navigateToLoginPage()"
+      >
         Logout
       </button>
       <button class="text-xl cursor-pointer" @click="introduction()">

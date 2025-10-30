@@ -19,7 +19,11 @@ let subSubTimeout: ReturnType<typeof setTimeout> | null = null;
 
 const timeout = 500;
 
-function click(pathId: string, subPathId: string | null, category: string | null) {
+function click(
+  pathId: string,
+  subPathId: string | null,
+  category: string | null,
+) {
   emit("emit-route", pathId, subPathId, category);
 
   hoveredSub.value = null;

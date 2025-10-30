@@ -2,14 +2,10 @@
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineNuxtConfig({
-  compatibilityDate: "2025-07-15",
+  compatibilityDate: "2025-10-30",
   devtools: { enabled: true },
   css: ["~/assets/css/main.css"],
   vite: { plugins: [tailwindcss()] },
-  modules: [
-    "@nuxt/ui",
-    "@nuxt/eslint",
-    "@pinia/nuxt",
-    "nuxt-auth-utils",
-  ],
+  modules: ["@nuxt/ui", "@nuxt/eslint", "@pinia/nuxt", "nuxt-auth-utils"],
+  srcDir: "app/",
 });
