@@ -1,4 +1,4 @@
-# Inhalt und Zweck2
+# Inhalt und Zweck
 
 ---
 
