@@ -1,7 +1,20 @@
+import { log } from "console";
 import { writeFile } from "fs/promises";
 import { join } from "path";
 
 export default defineEventHandler(async (event) => {
+  const { user } = await requireUserSession(event);
+
+  if (user.role! !== "admin") {
+    return sendError(
+      event,
+      createError({
+        statusCode: 403,
+        statusMessage: "Forbidden",
+      }),
+    );
+  }
+
   const body: { paths: string[]; fileName: string; data: string } =
     await readBody(event);
 
