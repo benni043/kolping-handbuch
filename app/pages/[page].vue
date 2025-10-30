@@ -7,7 +7,7 @@ colorMode.preference = "light";
 const { data } = await useFetch<string>("/api/content/startpage", {
   method: "GET",
   query: {
-    file: "contact",
+    file: getSegment(0),
   },
 });
 
@@ -33,5 +33,3 @@ async function updateNote(note: string) {
     ></content-page>
   </div>
 </template>
-
-<style scoped></style>

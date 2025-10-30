@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref, watch, onMounted } from "vue";
 import { marked } from "marked";
+import { onMounted, ref, watch } from "vue";
 
 const { user } = useUserSession();
 

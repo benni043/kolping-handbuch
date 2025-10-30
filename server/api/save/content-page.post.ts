@@ -1,4 +1,3 @@
-import { log } from "console";
 import { writeFile } from "fs/promises";
 import { join } from "path";
 
@@ -18,7 +17,9 @@ export default defineEventHandler(async (event) => {
   const body: { paths: string[]; fileName: string; data: string } =
     await readBody(event);
 
-  let path = "data/content/";
+  let path = "data/";
+
+  if (body.paths.length !== 0) path += "content/";
 
   body.paths.forEach((elem) => {
     path += elem;
@@ -39,7 +40,7 @@ export default defineEventHandler(async (event) => {
       event,
       createError({
         statusCode: 404,
-        statusMessage: "Datei existiert nicht",
+        statusMessage: `the file ${body.fileName} does not exist`,
       }),
     );
   }
