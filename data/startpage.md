@@ -1,4 +1,4 @@
-# Vorwort der Präsidentin und des Bundespräses2
+# Vorwort der Präsidentin und des Bundespräses
 
 ---
 
