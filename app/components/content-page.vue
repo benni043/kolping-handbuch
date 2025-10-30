@@ -4,8 +4,6 @@ import { marked } from "marked";
 
 const { user } = useUserSession();
 
-// const emit = defineEmits(["update"]);
-
 const emit = defineEmits<{
   (e: "update-note", note: string): void;
 }>();
@@ -16,14 +14,12 @@ const note = ref(props.note);
 const isEditing = ref(note.value === "");
 const render = useTemplateRef("render");
 
-// Watch auf Editing
 watch(isEditing, async () => {
   if (!isEditing.value && render.value) {
     render.value!.innerHTML = await marked.parse(note.value ?? "");
   }
 });
 
-// Watch auf Prop-Änderungen
 watch(
   () => props.note,
   async (newVal) => {

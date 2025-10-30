@@ -1,3 +1,7 @@
+export function getSegment(index: number) {
+  const segments = useRoute().path.split("/").filter(Boolean);
+  return segments[index];
+}
 export const categories = [
   "Inhalt und Zweck",
   "Hinführung",
@@ -33,7 +37,13 @@ export const impressumUpper = "Impressum";
 export const introductionLower = "introduction";
 export const introductionUpper = "Einleitung";
 
-export function getSegment(index: number) {
-  const segments = useRoute().path.split("/").filter(Boolean);
-  return segments[index];
-}
+export const loginLower = "login";
+export const loginUpper = "Anmelden";
+
+export const possibleFiles = [
+  ...categoriesLower,
+  contactLower,
+  impressumLower,
+  introductionLower,
+  loginLower,
+];

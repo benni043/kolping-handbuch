@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useRoute } from "#imports";
 import ContentPage from "~/components/content-page.vue";
-import { getSegment } from "~/utils/utils";
+import { getSegment } from "~~/shared/utils";
 
 definePageMeta({
   middleware: ["authenticated"],

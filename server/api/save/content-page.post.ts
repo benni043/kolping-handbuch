@@ -17,7 +17,17 @@ export default defineEventHandler(async (event) => {
 
   const filePath = join(process.cwd(), path);
 
-  await writeFile(filePath, body.data, "utf-8");
+  try {
+    await writeFile(filePath, body.data, "utf-8");
 
-  return { success: true, path: filePath };
+    return { success: true, path: filePath };
+  } catch {
+    return sendError(
+      event,
+      createError({
+        statusCode: 404,
+        statusMessage: "Datei existiert nicht",
+      }),
+    );
+  }
 });
