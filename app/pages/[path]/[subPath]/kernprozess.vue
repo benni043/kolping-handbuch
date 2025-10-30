@@ -16,7 +16,6 @@ const { data } = await useFetch<Kernprozess[]>("/api/kernprozess/all", {
   },
 });
 
-// pro kernprozess eigenen editing-state
 const editingStates = ref<Record<string, boolean>>({});
 
 function isEditing(key: string) {
