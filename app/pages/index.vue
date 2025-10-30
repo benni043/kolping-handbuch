@@ -1,21 +1,9 @@
 <script setup lang="ts">
-import ContentPage from "~/components/content-page.vue";
-
-const colorMode = useColorMode();
-colorMode.preference = "light";
-
-const { data } = await useFetch<string>("/api/content/startpage", {
-  method: "GET",
-  query: {
-    file: "startpage",
-  },
-});
+navigateTo("/startpage");
 </script>
 
 <template>
-  <div>
-    <content-page :note="data!"></content-page>
-  </div>
+  <div></div>
 </template>
 
 <style scoped></style>

@@ -4,10 +4,13 @@ import ContentPage from "~/components/content-page.vue";
 const colorMode = useColorMode();
 colorMode.preference = "light";
 
+const segment = getSegment(0);
+const current = segment === undefined ? "startpage" : segment;
+
 const { data } = await useFetch<string>("/api/content/startpage", {
   method: "GET",
   query: {
-    file: getSegment(0),
+    file: current,
   },
 });
 
@@ -16,7 +19,7 @@ async function updateNote(note: string) {
     method: "POST",
     body: {
       paths: [],
-      fileName: getSegment(0),
+      fileName: current,
       data: note,
     },
   });
