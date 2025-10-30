@@ -69,7 +69,7 @@ function leaveSubSub() {
 <template>
   <div class="z-10">
     <ul
-      class="rounded-tl-2xl rounded-bl-2xl min-w-85 bg-[#50A9CE]/[0.33] text-sm divide-y divide-gray-400"
+      class="rounded-tl-2xl rounded-bl-2xl min-w-88 bg-[#50A9CE]/[0.33] text-sm divide-y divide-gray-400"
     >
       <li
         v-for="(path, index) in data"
@@ -89,7 +89,7 @@ function leaveSubSub() {
 
         <ul
           v-if="hoveredCategory === index"
-          class="absolute ml-1 top-0 left-full min-w-85 max-w-max text-sm divide-y bg-white divide-gray-400"
+          class="absolute ml-1 top-0 left-full min-w-88 max-w-max text-sm divide-y bg-white divide-gray-400"
         >
           <li
             v-for="(subPath, subIndex) in path.children"
