@@ -4,7 +4,11 @@ import { marked } from "marked";
 
 const { user } = useUserSession();
 
-const emit = defineEmits(["update"]);
+// const emit = defineEmits(["update"]);
+
+const emit = defineEmits<{
+  (e: "update-note", note: string): void;
+}>();
 
 const props = defineProps<{ note: string }>();
 const note = ref(props.note);
@@ -40,7 +44,7 @@ function send() {
       "Sind Sie sicher, dass sie die aktuelle Datei überschreiben möchten?",
     )
   ) {
-    emit("update", note.value!);
+    emit("update-note", note.value!);
     isEditing.value = false;
   }
 }

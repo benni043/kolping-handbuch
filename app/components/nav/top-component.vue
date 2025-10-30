@@ -3,6 +3,7 @@ import NavMenu from "~/components/nav/nav-menu.vue";
 import {
   contactLower,
   contactUpper,
+  getSegment,
   impressumLower,
   impressumUpper,
   introductionLower,
@@ -65,11 +66,6 @@ watch(
 onMounted(() => {
   handleRouting();
 });
-
-function getSegment(index: number) {
-  const segments = useRoute().path.split("/").filter(Boolean);
-  return segments[index];
-}
 
 function handleRouting() {
   const segment0 = getSegment(0);

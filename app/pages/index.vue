@@ -10,15 +10,11 @@ const { data } = await useFetch<string>("/api/content/startpage", {
     file: "startpage",
   },
 });
-
-function updateNote(note: string) {
-  console.log(note);
-}
 </script>
 
 <template>
   <div>
-    <content-page :note="data!" @update="updateNote($event)"></content-page>
+    <content-page :note="data!"></content-page>
   </div>
 </template>
 

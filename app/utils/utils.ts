@@ -32,3 +32,8 @@ export const impressumUpper = "Impressum";
 
 export const introductionLower = "introduction";
 export const introductionUpper = "Einleitung";
+
+export function getSegment(index: number) {
+  const segments = useRoute().path.split("/").filter(Boolean);
+  return segments[index];
+}
