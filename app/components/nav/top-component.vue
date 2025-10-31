@@ -163,7 +163,7 @@ function navigateTwoStepsBack() {
         class="text-xl cursor-pointer"
         @click="navigateToAdmin()"
       >
-        admin
+        Admin
       </button>
       <button
         v-if="!loggedIn"
