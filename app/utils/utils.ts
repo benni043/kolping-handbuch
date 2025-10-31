@@ -40,10 +40,5 @@ export const introductionUpper = "Einleitung";
 export const loginLower = "login";
 export const loginUpper = "Anmelden";
 
-export const possibleFiles = [
-  ...categoriesLower,
-  contactLower,
-  impressumLower,
-  introductionLower,
-  loginLower,
-];
+export const adminLower = "admin";
+export const adminUpper = "Admin";

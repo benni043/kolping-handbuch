@@ -21,8 +21,8 @@ async function updateNote(note: string) {
   const response = await $fetch("/api/save/content-page", {
     method: "POST",
     body: {
-      paths: [getSegment(0), getSegment(1)],
-      fileName: getSegment(2),
+      paths: [route.params.path, route.params.subPath],
+      fileName: route.params.page,
       data: note,
     },
   });

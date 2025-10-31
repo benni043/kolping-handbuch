@@ -1,20 +1,7 @@
 <script setup lang="ts">
 import NavMenu from "~/components/nav/nav-menu.vue";
-import {
-  contactLower,
-  contactUpper,
-  getSegment,
-  impressumLower,
-  impressumUpper,
-  introductionLower,
-  introductionUpper,
-  mapping,
-  mappingLower,
-} from "~/utils/utils";
 import type { Structure } from "~/types/structure";
 import { useRoute } from "#imports";
-
-const uiStore = useUiStore();
 
 const structureStore = useStructureStore();
 
@@ -32,21 +19,6 @@ const subPathId = ref("");
 const { data } = await useFetch<Structure[]>(`/api/structure`, {
   method: "GET",
 });
-
-uiStore.triggerTopAction = (pathNew: string, pathIdNew: string) => {
-  clearPaths();
-
-  path.value = pathNew;
-  pathId.value = pathIdNew;
-};
-
-async function navigateToLoginPage() {
-  clearPaths();
-  path.value = "Login";
-  pathId.value = "login";
-
-  await navigateTo("/login");
-}
 
 watch(
   data,
@@ -66,6 +38,14 @@ watch(
 onMounted(() => {
   handleRouting();
 });
+
+async function navigateToLoginPage() {
+  clearPaths();
+  path.value = "Login";
+  pathId.value = "login";
+
+  await navigateTo("/login");
+}
 
 function handleRouting() {
   const segment0 = getSegment(0);
@@ -89,6 +69,12 @@ function handleRouting() {
       pathId.value = impressumLower;
       return;
     }
+    case loginLower: {
+      clearPaths();
+      path.value = loginUpper;
+      pathId.value = loginLower;
+      return;
+    }
   }
 
   const segment2 = getSegment(2);
@@ -105,6 +91,7 @@ function handleRouting() {
       route.params.path as string,
       route.params.subPath as string,
     )!;
+
     subPathId.value = route.params.subPath as string;
   }
 
@@ -113,13 +100,11 @@ function handleRouting() {
   }
 }
 
-function clearPaths() {
-  path.value = "";
-  subPath.value = "";
-  category.value = "";
-}
-
-function post(pathNewId: string, subPathNewId: string, categoryNew: string) {
+function navigateToCategory(
+  pathNewId: string,
+  subPathNewId: string,
+  categoryNew: string,
+) {
   pathId.value = pathNewId;
 
   if (subPathNewId === null) {
@@ -139,12 +124,18 @@ function post(pathNewId: string, subPathNewId: string, categoryNew: string) {
   navigateTo(`/${pathNewId}/${subPathNewId}/${mapping[categoryNew]}`);
 }
 
-function introduction() {
-  clearPaths();
-  path.value = introductionUpper;
-  pathId.value = introductionLower;
+function clearPaths() {
+  path.value = "";
+  subPath.value = "";
+  category.value = "";
+}
 
+function navigatoToIntroduction() {
   navigateTo("/introduction");
+}
+
+function navigateToAdmin() {
+  navigateTo("/admin");
 }
 
 function returnToHome() {
@@ -158,10 +149,6 @@ function navigateOneStepBack() {
 
 function navigateTwoStepsBack() {
   navigateTo(`/${pathId.value}`);
-}
-
-function admin() {
-  navigateTo("/admin");
 }
 </script>
 
@@ -178,7 +165,7 @@ function admin() {
       <button
         v-if="user && user?.role === 'admin'"
         class="text-xl cursor-pointer"
-        @click="admin()"
+        @click="navigateToAdmin()"
       >
         admin
       </button>
@@ -196,7 +183,7 @@ function admin() {
       >
         Logout
       </button>
-      <button class="text-xl cursor-pointer" @click="introduction()">
+      <button class="text-xl cursor-pointer" @click="navigatoToIntroduction()">
         Einleitung
       </button>
     </div>
@@ -208,7 +195,7 @@ function admin() {
       :data="structureStore.structure"
       @emit-route="
         (pathIdNew, subPathNewId, categoryNew) =>
-          post(pathIdNew, subPathNewId, categoryNew)
+          navigateToCategory(pathIdNew, subPathNewId, categoryNew)
       "
     ></nav-menu>
 

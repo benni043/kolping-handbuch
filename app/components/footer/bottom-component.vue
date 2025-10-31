@@ -1,20 +1,9 @@
 <script setup lang="ts">
-import {
-  contactUpper,
-  contactLower,
-  impressumUpper,
-  impressumLower,
-} from "~/utils/utils";
-
-const ui = useUiStore();
-
 function contact() {
-  ui.triggerTopAction(contactUpper, contactLower);
   navigateTo("/contact");
 }
 
 function impressum() {
-  ui.triggerTopAction(impressumUpper, impressumLower);
   navigateTo("/impressum");
 }
 
