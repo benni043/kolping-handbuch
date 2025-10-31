@@ -140,10 +140,14 @@ function returnToHome() {
 }
 
 function navigateOneStepBack() {
+  clearPaths();
+
   navigateTo(`/${pathId.value}/${subPathId.value}`);
 }
 
 function navigateTwoStepsBack() {
+  clearPaths();
+
   navigateTo(`/${pathId.value}`);
 }
 </script>
@@ -211,20 +215,25 @@ function navigateTwoStepsBack() {
 
   <div class="flex gap-3 ml-20 mb-10">
     <a class="cursor-pointer" @click="returnToHome()">Handbuch</a>
+
     <span v-if="path !== ''">></span>
     <a
-      v-if="path !== ''"
+      v-if="path !== '' && subPath !== ''"
       class="cursor-pointer"
       @click="navigateTwoStepsBack()"
       >{{ path }}</a
     >
+    <span v-if="path !== '' && subPath === ''">{{ path }}</span>
+
     <span v-if="subPath !== ''">></span>
     <a
-      v-if="subPath !== ''"
+      v-if="subPath !== '' && category !== ''"
       class="cursor-pointer"
       @click="navigateOneStepBack()"
       >{{ subPath }}</a
     >
+    <span v-if="subPath !== '' && category === ''">{{ subPath }}</span>
+
     <span v-if="category !== ''">></span>
     <span v-if="category !== ''">{{ category }}</span>
   </div>
