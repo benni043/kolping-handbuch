@@ -127,6 +127,8 @@ function navigatoToIntroduction() {
 }
 
 function navigateToAdmin() {
+  clearPaths();
+
   navigateTo(`/${adminLower}`);
 }
 
