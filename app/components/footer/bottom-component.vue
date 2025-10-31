@@ -1,10 +1,10 @@
 <script setup lang="ts">
 function contact() {
-  navigateTo("/contact");
+  navigateTo(`/kolping/${contactLower}`);
 }
 
 function impressum() {
-  navigateTo("/impressum");
+  navigateTo(`/kolping/${impressumLower}`);
 }
 
 function scrollToTop() {

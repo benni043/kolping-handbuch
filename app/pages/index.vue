@@ -1,5 +1,5 @@
 <script setup lang="ts">
-navigateTo("/startpage");
+navigateTo("/kolping/startpage");
 </script>
 
 <template>

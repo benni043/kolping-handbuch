@@ -1,10 +1,5 @@
 <script setup lang="ts">
-import ContentPage from "~/components/content-page.vue";
-
-const colorMode = useColorMode();
-colorMode.preference = "light";
-
-const segment = getSegment(0);
+const segment = getSegment(1);
 const current = segment === undefined ? "startpage" : segment;
 
 const { data } = await useFetch<string>("/api/content/startpage", {
@@ -29,10 +24,10 @@ async function updateNote(note: string) {
 </script>
 
 <template>
-  <div>
-    <content-page
-      :note="data!"
-      @update-note="(note) => updateNote(note)"
-    ></content-page>
-  </div>
+  <content-page
+    :note="data!"
+    @update-note="(note) => updateNote(note)"
+  ></content-page>
 </template>
+
+<style scoped></style>

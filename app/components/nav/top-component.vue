@@ -39,16 +39,8 @@ onMounted(() => {
   handleRouting();
 });
 
-async function navigateToLoginPage() {
-  clearPaths();
-  path.value = "Login";
-  pathId.value = "login";
-
-  await navigateTo("/login");
-}
-
 function handleRouting() {
-  const segment0 = getSegment(0);
+  const segment0 = getSegment(1);
 
   switch (segment0) {
     case introductionLower: {
@@ -131,11 +123,15 @@ function clearPaths() {
 }
 
 function navigatoToIntroduction() {
-  navigateTo("/introduction");
+  navigateTo(`/kolping/${introductionLower}`);
 }
 
 function navigateToAdmin() {
-  navigateTo("/admin");
+  navigateTo(`/${adminLower}`);
+}
+
+async function navigateToLoginPage() {
+  await navigateTo(`/kolping/${loginLower}`);
 }
 
 function returnToHome() {
