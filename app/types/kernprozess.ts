@@ -9,7 +9,7 @@ export interface Kernprozess {
   vorgabenBlue: TestLink[];
   vorlagenBlue: TestLink[];
   middleHead: string;
-  middleList: TestLink[];
+  middleList: { text: string }[];
   aufzeichnungOrange: TestLink[];
   verantwortlicherOrange: string;
   informationOrange: string;

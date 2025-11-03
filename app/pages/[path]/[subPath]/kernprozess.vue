@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { Kernprozess } from "~/types/kernprozess";
+import KernprozessCreator from "~/components/admin/kernprozess/kernprozess-creator.vue";
 import { useRoute } from "#imports";
 
 definePageMeta({
@@ -35,12 +36,28 @@ function send(key: string) {
     editingStates.value[key] = false;
   }
 }
+
+watch(
+  editingStates,
+  (val) => {
+    const anyEditing = Object.values(val).some((v) => v);
+    document.body.style.overflow = anyEditing ? "hidden" : "";
+  },
+  { deep: true },
+);
+
+const isAnyEditing = computed(() =>
+  Object.values(editingStates.value).some((v) => v),
+);
 </script>
 
 <template>
   <div>
     <div v-for="kernprozess in data!" :key="kernprozess.middleHead">
-      <div class="ml-20">
+      <div
+        class="ml-20"
+        :class="{ 'blur-sm pointer-events-none': isAnyEditing }"
+      >
         <button
           v-if="!isEditing(kernprozess.middleHead)"
           class="bg-orange-400 hover:bg-orange-500 text-white px-4 py-2 rounded"
@@ -58,7 +75,27 @@ function send(key: string) {
         </button>
       </div>
 
-      <div class="flex justify-center gap-10 mt-10 mb-10">
+      <div
+        v-if="isEditing(kernprozess.middleHead)"
+        class="fixed inset-0 z-50 overflow-y-auto p-6"
+      >
+        <KernprozessCreator
+          :schritt-count="kernprozess.schrittCount"
+          :vorgaben-blue="kernprozess.vorgabenBlue"
+          :vorlagen-blue="kernprozess.vorlagenBlue"
+          :middle-head="kernprozess.middleHead"
+          :middle-list="kernprozess.middleList"
+          :aufzeichnung-orange="kernprozess.aufzeichnungOrange"
+          :verantwortlicher-orange="kernprozess.verantwortlicherOrange"
+          :information-orange="kernprozess.informationOrange"
+          @cancle="toggleEditing(kernprozess.middleHead)"
+        />
+      </div>
+
+      <div
+        class="flex justify-center gap-10 mt-10 mb-10"
+        :class="{ 'blur-sm pointer-events-none': isAnyEditing }"
+      >
         <div class="w-50 xl:w-80">
           <h2 class="text-[#50A9CE] font-bold text-2xl">
             Schritt {{ kernprozess.schrittCount }}
@@ -125,10 +162,7 @@ function send(key: string) {
                 :key="elem.text"
                 class="text-white ml-3"
               >
-                <a v-if="elem.hasLink" class="cursor-pointer">{{
-                  elem.text
-                }}</a>
-                <span v-if="!elem.hasLink">{{ elem.text }}</span>
+                <span>{{ elem.text }}</span>
               </li>
             </ul>
           </div>
