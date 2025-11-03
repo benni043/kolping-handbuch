@@ -41,6 +41,7 @@ onMounted(() => {
 
 function handleRouting() {
   const segment0 = getSegment(1);
+  console.log(segment0);
 
   switch (segment0) {
     case introductionLower: {
@@ -65,6 +66,12 @@ function handleRouting() {
       clearPaths();
       path.value = loginUpper;
       pathId.value = loginLower;
+      return;
+    }
+    case startPageLower: {
+      clearPaths();
+      path.value = startPageUpper;
+      pathId.value = startPageLower;
       return;
     }
   }

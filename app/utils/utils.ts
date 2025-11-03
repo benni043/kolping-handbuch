@@ -42,3 +42,6 @@ export const loginUpper = "Anmelden";
 
 export const adminLower = "admin";
 export const adminUpper = "Admin";
+
+export const startPageLower = "startpage";
+export const startPageUpper = "";
