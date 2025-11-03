@@ -41,7 +41,6 @@ onMounted(() => {
 
 function handleRouting() {
   const segment0 = getSegment(1);
-  console.log(segment0);
 
   switch (segment0) {
     case introductionLower: {
