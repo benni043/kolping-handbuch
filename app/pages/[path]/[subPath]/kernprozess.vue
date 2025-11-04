@@ -45,19 +45,12 @@ watch(
   },
   { deep: true },
 );
-
-const isAnyEditing = computed(() =>
-  Object.values(editingStates.value).some((v) => v),
-);
 </script>
 
 <template>
   <div>
     <div v-for="kernprozess in data!" :key="kernprozess.middleHead">
-      <div
-        class="ml-20"
-        :class="{ 'blur-sm pointer-events-none': isAnyEditing }"
-      >
+      <div class="ml-20">
         <button
           v-if="!isEditing(kernprozess.middleHead)"
           class="bg-orange-400 hover:bg-orange-500 text-white px-4 py-2 rounded"
