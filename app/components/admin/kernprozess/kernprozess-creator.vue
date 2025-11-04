@@ -112,7 +112,7 @@ function clearForm() {
 
 <template>
   <UForm
-    class="bg-white grid grid-cols-[repeat(3,1fr)] grid-rows-[repeat(7,1fr)] gap-5 h-[85vh] my-[5vh] mx-5 p-5"
+    class="rounded-md bg-white grid grid-cols-[repeat(3,1fr)] grid-rows-[repeat(7,1fr)] gap-5 h-[85vh] my-[5vh] mx-5 p-5"
   >
     <UCard class="col-span-1 row-span-2">
       <h1 class="mb-4 text-xl font-semibold">Schritt</h1>
@@ -127,7 +127,7 @@ function clearForm() {
       />
     </UCard>
 
-    <UCard class="col-span-1 row-span-2 col-start-1 overflow-y-auto">
+    <UCard class="col-span-1 row-span-3 col-start-1 overflow-y-auto">
       <h1 class="mb-4 text-xl font-semibold">Vorgaben / Arbeitshilfen</h1>
 
       <div
@@ -183,7 +183,7 @@ function clearForm() {
       </UButton>
     </UCard>
 
-    <UCard class="col-span-1 row-span-3 col-start-1 overflow-y-auto">
+    <UCard class="col-span-1 row-span-2 col-start-1 overflow-y-auto">
       <h1 class="mb-4 text-xl font-semibold">Vorlagen Schlussberichte</h1>
 
       <div

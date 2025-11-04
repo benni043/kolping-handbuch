@@ -2,8 +2,10 @@
 import NavMenu from "~/components/nav/nav-menu.vue";
 import type { Structure } from "~/types/structure";
 import { useRoute } from "#imports";
+import { useBlurStore } from "~/stores/useBlur";
 
 const structureStore = useStructureStore();
+const blurStore = useBlurStore();
 
 const { loggedIn, user } = useUserSession();
 
@@ -161,89 +163,94 @@ function navigateTwoStepsBack() {
 </script>
 
 <template>
-  <div class="mt-5 ml-5 mb-10 flex justify-between">
-    <img
-      class="w-60 cursor-pointer"
-      src="/img/logo.png"
-      alt="logo"
-      @click="returnToHome()"
-    />
+  <div :class="{ 'blur-sm': blurStore.blur }">
+    <div class="mt-5 ml-5 mb-10 flex justify-between">
+      <img
+        class="w-60 cursor-pointer"
+        src="/img/logo.png"
+        alt="logo"
+        @click="returnToHome()"
+      />
 
-    <div class="mr-5 flex gap-5">
-      <button
-        v-if="user && user?.role === 'admin'"
-        class="text-xl cursor-pointer"
-        @click="navigateToAdmin()"
-      >
-        Admin
-      </button>
-      <button
-        v-if="!loggedIn"
-        class="text-xl cursor-pointer"
-        @click="navigateToLoginPage()"
-      >
-        Login
-      </button>
-      <button
-        v-if="loggedIn"
-        class="text-xl cursor-pointer"
-        @click="navigateToLoginPage()"
-      >
-        Logout
-      </button>
-      <button class="text-xl cursor-pointer" @click="navigatoToIntroduction()">
-        Einleitung
-      </button>
-    </div>
-  </div>
-
-  <div class="mb-15 flex justify-center items-start gap-1">
-    <nav-menu
-      v-if="data"
-      :data="structureStore.structure"
-      @emit-route="
-        (pathIdNew, subPathNewId, categoryNew) =>
-          navigateToCategory(pathIdNew, subPathNewId, categoryNew)
-      "
-    ></nav-menu>
-
-    <div class="relative">
-      <div class="flex flex-col absolute h-full justify-center ml-20">
-        <h1 class="text-6xl">
-          <b>Kolping</b>
-        </h1>
-        <h1 class="text-6xl"><b>Handbuch</b></h1>
+      <div class="mr-5 flex gap-5">
+        <button
+          v-if="user && user?.role === 'admin'"
+          class="text-xl cursor-pointer"
+          @click="navigateToAdmin()"
+        >
+          Admin
+        </button>
+        <button
+          v-if="!loggedIn"
+          class="text-xl cursor-pointer"
+          @click="navigateToLoginPage()"
+        >
+          Login
+        </button>
+        <button
+          v-if="loggedIn"
+          class="text-xl cursor-pointer"
+          @click="navigateToLoginPage()"
+        >
+          Logout
+        </button>
+        <button
+          class="text-xl cursor-pointer"
+          @click="navigatoToIntroduction()"
+        >
+          Einleitung
+        </button>
       </div>
-
-      <img class="h-77 w-150" src="/img/header.png" alt="header" />
     </div>
-  </div>
 
-  <div class="h-10 bg-gray-200 mb-10"></div>
+    <div class="mb-15 flex justify-center items-start gap-1">
+      <nav-menu
+        v-if="data"
+        :data="structureStore.structure"
+        @emit-route="
+          (pathIdNew, subPathNewId, categoryNew) =>
+            navigateToCategory(pathIdNew, subPathNewId, categoryNew)
+        "
+      ></nav-menu>
 
-  <div class="flex gap-3 ml-20 mb-10">
-    <a class="cursor-pointer" @click="returnToHome()">Handbuch</a>
+      <div class="relative">
+        <div class="flex flex-col absolute h-full justify-center ml-20">
+          <h1 class="text-6xl">
+            <b>Kolping</b>
+          </h1>
+          <h1 class="text-6xl"><b>Handbuch</b></h1>
+        </div>
 
-    <span v-if="path !== ''">></span>
-    <a
-      v-if="path !== '' && subPath !== ''"
-      class="cursor-pointer"
-      @click="navigateTwoStepsBack()"
-      >{{ path }}</a
-    >
-    <span v-if="path !== '' && subPath === ''">{{ path }}</span>
+        <img class="h-77 w-150" src="/img/header.png" alt="header" />
+      </div>
+    </div>
 
-    <span v-if="subPath !== ''">></span>
-    <a
-      v-if="subPath !== '' && category !== ''"
-      class="cursor-pointer"
-      @click="navigateOneStepBack()"
-      >{{ subPath }}</a
-    >
-    <span v-if="subPath !== '' && category === ''">{{ subPath }}</span>
+    <div class="h-10 bg-gray-200 mb-10"></div>
 
-    <span v-if="category !== ''">></span>
-    <span v-if="category !== ''">{{ category }}</span>
+    <div class="flex gap-3 ml-20 mb-10">
+      <a class="cursor-pointer" @click="returnToHome()">Handbuch</a>
+
+      <span v-if="path !== ''">></span>
+      <a
+        v-if="path !== '' && subPath !== ''"
+        class="cursor-pointer"
+        @click="navigateTwoStepsBack()"
+        >{{ path }}</a
+      >
+      <span v-if="path !== '' && subPath === ''">{{ path }}</span>
+
+      <span v-if="subPath !== ''">></span>
+      <a
+        v-if="subPath !== '' && category !== ''"
+        class="cursor-pointer"
+        @click="navigateOneStepBack()"
+        >{{ subPath }}</a
+      >
+      <span v-if="subPath !== '' && category === ''">{{ subPath }}</span>
+
+      <span v-if="category !== ''">></span>
+      <span v-if="category !== ''">{{ category }}</span>
+    </div>
   </div>
 </template>
 

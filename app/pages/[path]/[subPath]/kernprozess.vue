@@ -2,12 +2,14 @@
 import type { Kernprozess } from "~/types/kernprozess";
 import KernprozessCreator from "~/components/admin/kernprozess/kernprozess-creator.vue";
 import { useRoute } from "#imports";
+import { useBlurStore } from "~/stores/useBlur";
 
 definePageMeta({
   middleware: ["authenticated"],
 });
 
 const route = useRoute();
+const blurStore = useBlurStore();
 
 const { data } = await useFetch<Kernprozess[]>("/api/kernprozess/all", {
   method: "GET",
@@ -24,6 +26,7 @@ function isEditing(key: string) {
 }
 
 function toggleEditing(key: string) {
+  blurStore.blur = !blurStore.blur;
   editingStates.value[key] = !editingStates.value[key];
 }
 
@@ -50,7 +53,7 @@ watch(
 <template>
   <div>
     <div v-for="kernprozess in data!" :key="kernprozess.middleHead">
-      <div class="ml-20">
+      <div class="ml-20" :class="{ 'blur-sm': blurStore.blur }">
         <button
           v-if="!isEditing(kernprozess.middleHead)"
           class="bg-orange-400 hover:bg-orange-500 text-white px-4 py-2 rounded"
@@ -70,7 +73,7 @@ watch(
 
       <div
         v-if="isEditing(kernprozess.middleHead)"
-        class="fixed inset-0 z-50 overflow-y-auto p-6"
+        class="fixed inset-0 z-50 overflow-y-auto p-6 blur-none"
       >
         <KernprozessCreator
           :schritt-count="kernprozess.schrittCount"
@@ -87,7 +90,7 @@ watch(
 
       <div
         class="flex justify-center gap-10 mt-10 mb-10"
-        :class="{ 'blur-sm pointer-events-none': isAnyEditing }"
+        :class="{ 'blur-sm': blurStore.blur }"
       >
         <div class="w-50 xl:w-80">
           <h2 class="text-[#50A9CE] font-bold text-2xl">
