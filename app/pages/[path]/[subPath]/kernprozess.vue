@@ -32,13 +32,21 @@ function toggleEditing(key: string) {
   editingStates.value[key] = !editingStates.value[key];
 }
 
-function deleteKernprozess() {
+async function deleteKernprozess(kernprozessNumber: number) {
   if (
     confirm(
       "Sind Sie sicher, dass Sie diesen Kernprozess löschen möchten? Dieser Vorgang kann nicht Rückgängig gemacht werden!",
     )
   ) {
-    console.log("delete");
+    await $fetch("/api/save/kernprozess/", {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      body: {
+        path: getSegment(0),
+        subPath: getSegment(1),
+        kernprozessNumber: kernprozessNumber,
+      },
+    });
   }
 }
 
@@ -99,7 +107,7 @@ watch(
 
         <button
           class="bg-red-400 hover:bg-red-500 text-white px-4 py-2 rounded cursor-pointer"
-          @click.prevent="deleteKernprozess()"
+          @click.prevent="deleteKernprozess(kernprozess.schrittCount)"
         >
           X
         </button>
