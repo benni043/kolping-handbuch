@@ -221,7 +221,14 @@ function navigateTwoStepsBack() {
           <h1 class="text-6xl"><b>Handbuch</b></h1>
         </div>
 
-        <img class="h-77 w-150" src="/img/header.png" alt="header" />
+        <img
+          :style="{
+            height: `calc(var(--spacing) * ${structureStore.getOuterCount() * 11})`,
+          }"
+          class="w-150 test"
+          src="/img/header.png"
+          alt="header"
+        />
       </div>
     </div>
 

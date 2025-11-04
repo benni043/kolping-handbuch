@@ -19,5 +19,14 @@ export const useStructureStore = defineStore("structure", {
       const child = parent.children.find((c) => c.id === childId);
       return child ? child.title : null;
     },
+    getOuterCount() {
+      let count = 0;
+
+      this.structure.forEach(() => {
+        count++;
+      });
+
+      return count;
+    },
   },
 });
