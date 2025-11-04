@@ -1,17 +1,17 @@
 <script setup lang="ts">
-import { log } from "node:console";
 import { ref } from "vue";
 import type { TestLink } from "~/types/kernprozess";
 
 const props = defineProps<{
-  schrittCount: number;
-  vorgabenBlue: TestLink[];
-  vorlagenBlue: TestLink[];
-  middleHead: string;
-  middleList: { text: string }[];
-  aufzeichnungOrange: TestLink[];
-  verantwortlicherOrange: string;
-  informationOrange: string;
+  schrittCount: number | undefined;
+  vorgabenBlue: TestLink[] | undefined;
+  vorlagenBlue: TestLink[] | undefined;
+  middleHead: string | undefined;
+  middleList: { text: string }[] | undefined;
+  aufzeichnungOrange: TestLink[] | undefined;
+  verantwortlicherOrange: string | undefined;
+  informationOrange: string | undefined;
+  editing: boolean;
 }>();
 
 const emit = defineEmits(["cancle"]);
@@ -70,6 +70,22 @@ function removeAufzeichnungOrange(index: number) {
 }
 
 async function postForm() {
+  if (props.editing) {
+    if (
+      !confirm(
+        "Sind Sie sicher, dass sie diesen Kernprozess verändern möchten?",
+      )
+    )
+      return;
+  } else {
+    if (
+      !confirm(
+        "Sind Sie sicher, dass sie diesen Kernprozess erstellen möchten?",
+      )
+    )
+      return;
+  }
+
   const data = {
     schrittCount: schrittCountRef.value,
     vorgabenBlue: vorgabenBlueRef.value,
@@ -382,7 +398,8 @@ function clearForm() {
         class="cursor-pointer"
         @click="postForm"
       >
-        Ändern
+        <span v-if="props.editing">Ändern</span>
+        <span v-else>Erstellen</span>
       </UButton>
 
       <UButton

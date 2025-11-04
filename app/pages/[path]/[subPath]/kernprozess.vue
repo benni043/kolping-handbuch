@@ -32,13 +32,13 @@ function toggleEditing(key: string) {
   editingStates.value[key] = !editingStates.value[key];
 }
 
-function send(key: string) {
+function deleteKernprozess() {
   if (
     confirm(
-      "Sind Sie sicher, dass sie die aktuelle Datei überschreiben möchten?",
+      "Sind Sie sicher, dass Sie diesen Kernprozess löschen möchten? Dieser Vorgang kann nicht Rückgängig gemacht werden!",
     )
   ) {
-    toggleEditing(key);
+    console.log("delete");
   }
 }
 
@@ -54,26 +54,54 @@ watch(
 
 <template>
   <div>
+    <div
+      class="flex my-5 justify-end mr-10"
+      :class="{ 'blur-sm': blurStore.blur }"
+    >
+      <button
+        class="bg-green-400 hover:bg-green-500 text-white px-4 py-2 rounded cursor-pointer"
+        @click.prevent="toggleEditing('new')"
+      >
+        NEU
+      </button>
+    </div>
+
+    <div
+      v-if="isEditing('new')"
+      class="fixed inset-0 z-50 overflow-y-auto p-6 blur-none"
+    >
+      <KernprozessCreator
+        :schritt-count="undefined"
+        :vorgaben-blue="undefined"
+        :vorlagen-blue="undefined"
+        :middle-head="undefined"
+        :middle-list="undefined"
+        :aufzeichnung-orange="undefined"
+        :verantwortlicher-orange="undefined"
+        :information-orange="undefined"
+        :editing="false"
+        @cancle="toggleEditing('new')"
+      />
+    </div>
+
     <div v-for="kernprozess in data!" :key="kernprozess.middleHead">
       <div
         v-if="user && user.role === 'admin'"
-        class="ml-20"
+        class="ml-20 flex gap-5"
         :class="{ 'blur-sm': blurStore.blur }"
       >
         <button
-          v-if="!isEditing(kernprozess.middleHead)"
-          class="bg-orange-400 hover:bg-orange-500 text-white px-4 py-2 rounded"
+          class="bg-orange-400 hover:bg-orange-500 text-white px-4 py-2 rounded cursor-pointer"
           @click.prevent="toggleEditing(kernprozess.middleHead)"
         >
           BEARBEITEN
         </button>
 
         <button
-          v-else
-          class="bg-green-400 hover:bg-green-500 text-white px-4 py-2 rounded"
-          @click="send(kernprozess.middleHead)"
+          class="bg-red-400 hover:bg-red-500 text-white px-4 py-2 rounded cursor-pointer"
+          @click.prevent="deleteKernprozess()"
         >
-          FERTIG
+          X
         </button>
       </div>
 
@@ -90,6 +118,7 @@ watch(
           :aufzeichnung-orange="kernprozess.aufzeichnungOrange"
           :verantwortlicher-orange="kernprozess.verantwortlicherOrange"
           :information-orange="kernprozess.informationOrange"
+          :editing="true"
           @cancle="toggleEditing(kernprozess.middleHead)"
         />
       </div>
@@ -114,7 +143,7 @@ watch(
                 :key="elem.text"
                 class="marker:text-[#50A9CE]"
               >
-                <a v-if="elem.hasLink" class="cursor-pointer">{{
+                <a v-if="elem.hasLink" class="cursor-pointer hover:underline">{{
                   elem.text
                 }}</a>
                 <span v-if="!elem.hasLink">{{ elem.text }}</span>
@@ -133,7 +162,7 @@ watch(
                 :key="elem.text"
                 class="marker:text-[#50A9CE]"
               >
-                <a v-if="elem.hasLink" class="cursor-pointer">{{
+                <a v-if="elem.hasLink" class="cursor-pointer hover:underline">{{
                   elem.text
                 }}</a>
                 <span v-if="!elem.hasLink">{{ elem.text }}</span>
@@ -188,7 +217,7 @@ watch(
                 :key="elem.text"
                 class="marker:text-[#F18700]"
               >
-                <a v-if="elem.hasLink" class="cursor-pointer">{{
+                <a v-if="elem.hasLink" class="cursor-pointer hover:underline">{{
                   elem.text
                 }}</a>
                 <span v-if="!elem.hasLink">{{ elem.text }}</span>
