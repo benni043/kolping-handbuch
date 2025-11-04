@@ -8,6 +8,8 @@ definePageMeta({
   middleware: ["authenticated"],
 });
 
+const { user } = useUserSession();
+
 const route = useRoute();
 const blurStore = useBlurStore();
 
@@ -36,7 +38,7 @@ function send(key: string) {
       "Sind Sie sicher, dass sie die aktuelle Datei überschreiben möchten?",
     )
   ) {
-    editingStates.value[key] = false;
+    toggleEditing(key);
   }
 }
 
@@ -53,7 +55,11 @@ watch(
 <template>
   <div>
     <div v-for="kernprozess in data!" :key="kernprozess.middleHead">
-      <div class="ml-20" :class="{ 'blur-sm': blurStore.blur }">
+      <div
+        v-if="user && user.role === 'admin'"
+        class="ml-20"
+        :class="{ 'blur-sm': blurStore.blur }"
+      >
         <button
           v-if="!isEditing(kernprozess.middleHead)"
           class="bg-orange-400 hover:bg-orange-500 text-white px-4 py-2 rounded"
