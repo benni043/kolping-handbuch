@@ -1,0 +1,40 @@
+{
+  "schrittCount": 5,
+  "vorgabenBlue": [
+    {
+      "text": "KP 03.1 Schritt 06 bis 13 inkl. Arbeitshilfen",
+      "hasLink": true,
+      "link": ""
+    },
+    { "text": "KP 05.1 Schritt 03", "hasLink": false, "link": "" }
+  ],
+  "vorlagenBlue": [],
+  "middleHead": "Planung und Umsetzung",
+  "middleList": [
+    {
+      "text": "... der vereinbarten Projekte und Vrhaben durch die Verantwortlichen"
+    }
+  ],
+  "aufzeichnungOrange": [
+    { "text": "Dokumentensammlung", "hasLink": false, "link": "" },
+    {
+      "text": "ausgefüllter Projektplan (KP 03.1 AH 02)",
+      "hasLink": true,
+      "link": ""
+    },
+    {
+      "text": "ausgefüllter Aktionsplan (KP 03.1 AH 03)",
+      "hasLink": true,
+      "link": ""
+    },
+    {
+      "text": "ggf. Zwischenberichte (KP 05.1 AH 03)",
+      "hasLink": true,
+      "link": ""
+    },
+    { "text": "Abschlussbericht (KP 03.1 AH 06)", "hasLink": true, "link": "" }
+  ],
+  "verantwortlicherOrange": "Team-Verantwortliche",
+  "informationOrange": "Vorstand",
+  "orange": true
+}

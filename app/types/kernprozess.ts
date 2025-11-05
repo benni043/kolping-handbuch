@@ -13,4 +13,5 @@ export interface Kernprozess {
   aufzeichnungOrange: TestLink[];
   verantwortlicherOrange: string;
   informationOrange: string;
+  orange: boolean;
 }

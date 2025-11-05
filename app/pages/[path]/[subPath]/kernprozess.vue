@@ -68,7 +68,13 @@ async function send(kernprozess: Kernprozess, count: number) {
     },
   });
 
-  data.value?.push(kernprozess);
+  data.value = await $fetch<Kernprozess[]>("/api/kernprozess/all", {
+    method: "GET",
+    query: {
+      path: route.params.path,
+      subPath: route.params.subPath,
+    },
+  });
 
   toggleEditing(count);
 }
@@ -90,6 +96,7 @@ watch(
       :class="{ 'blur-sm': blurStore.blur }"
     >
       <button
+        v-if="user && user.role === 'admin'"
         class="bg-green-400 hover:bg-green-500 text-white px-4 py-2 rounded cursor-pointer"
         @click.prevent="toggleEditing(0)"
       >
@@ -157,7 +164,7 @@ watch(
       </div>
 
       <div
-        class="flex justify-center gap-10 mt-10 mb-10"
+        class="flex justify-center gap-10 mt-10 mb-20"
         :class="{ 'blur-sm': blurStore.blur }"
       >
         <div class="w-50 xl:w-80">
@@ -210,12 +217,30 @@ watch(
           </h3>
 
           <img
-            src="https://handbuch.kolping.at/tl_files/kolping_handbuch/kernprozess_header_blue.png"
+            v-if="!kernprozess.orange"
+            src="/img/kernprozess/kernprozess_header_orange.png"
+            alt="blue"
+            class="xl:w-130"
+          />
+          <img
+            v-else
+            src="/img/kernprozess/kernprozess_header_blue.png"
             alt="blue"
             class="xl:w-130"
           />
 
-          <div class="bg-[#F18700]">
+          <div
+            :class="{
+              'bg-[#F18700]': kernprozess.orange,
+            }"
+            :style="{
+              backgroundImage: !kernprozess.orange
+                ? 'url(/img/kernprozess/kernprozess_content_blue.png)'
+                : 'none',
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+            }"
+          >
             <p class="text-white font-bold ml-3 pt-3">
               TÄTIGKEIT / ENTSCHEIDUNG / PRÜFSCHRITT
             </p>
@@ -232,7 +257,14 @@ watch(
           </div>
 
           <img
-            src="https://handbuch.kolping.at/tl_files/kolping_handbuch/kernprozess_bottom_orange.png"
+            v-if="kernprozess.orange"
+            src="/img/kernprozess/kernprozess_bottom_orange.png"
+            alt="orange"
+            class="xl:w-130"
+          />
+          <img
+            v-else
+            src="/img/kernprozess/kernprozess_bottom_blue.png"
             alt="orange"
             class="xl:w-130"
           />

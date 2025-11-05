@@ -95,6 +95,7 @@ async function postForm() {
     aufzeichnungOrange: aufzeichnungOrangeRef.value,
     verantwortlicherOrange: verantwortlicherOrangeRef.value,
     informationOrange: informationOrangeRef.value,
+    orange: true,
   };
 
   emit("send", data);

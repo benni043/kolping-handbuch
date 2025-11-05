@@ -1,1 +1,23 @@
-{"schrittCount":3,"vorgabenBlue":[{"text":"","hasLink":false,"link":""}],"vorlagenBlue":[{"text":"","hasLink":false,"link":""}],"middleHead":"","middleList":[{"text":""}],"aufzeichnungOrange":[{"text":"","hasLink":false,"link":""}],"verantwortlicherOrange":"","informationOrange":""}
+{
+  "schrittCount": 3,
+  "vorgabenBlue": [
+    {
+      "text": "AH 01 \"Checkliste Generalversammlung\"",
+      "hasLink": true,
+      "link": ""
+    }
+  ],
+  "vorlagenBlue": [],
+  "middleHead": "Generalversammlung durchführen",
+  "middleList": [
+    { "text": "Verantwortliche werden entlassen" },
+    { "text": "Jahresabschluss wird angenommen" },
+    { "text": "inhaltliche Vorschläge werden beschlossen (oder nicht)" },
+    { "text": "Aufruf zu Mitarbeit in Teams" },
+    { "text": "Dank und Würdigung für geleistete Arbeit" }
+  ],
+  "aufzeichnungOrange": [{ "text": "Protokoll", "hasLink": false, "link": "" }],
+  "verantwortlicherOrange": "Vorsitzende(r)",
+  "informationOrange": "alle Mitglieder; DV, BV",
+  "orange": true
+}

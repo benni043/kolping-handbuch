@@ -1,0 +1,27 @@
+{
+  "schrittCount": 4,
+  "vorgabenBlue": [
+    { "text": "Organigram der Kolpingsfamilie", "hasLink": false, "link": "" },
+    { "text": "KP 03.1 AH 02 \"Projektplan\"", "hasLink": true, "link": "" }
+  ],
+  "vorlagenBlue": [],
+  "middleHead": "Beauftragung der Team-LeiterInnen",
+  "middleList": [
+    { "text": "LeiterInnen von Team lt. Organigramm" },
+    { "text": "Leiterinnen für einzelne Projekte lt. KP 03" },
+    { "text": "GeschäftsführerIn/hauptamtliche MitarbeiterInnen" },
+    { "text": "ggf. Bauausschuss u.a." }
+  ],
+  "aufzeichnungOrange": [
+    {
+      "text": "ausgefüllte \"Projektpläne\" (KP 03.1 AH 02);",
+      "hasLink": true,
+      "link": ""
+    },
+    { "text": "Protokolle, Memos", "hasLink": false, "link": "" },
+    { "text": "Gesprächsnotitz", "hasLink": false, "link": "" }
+  ],
+  "verantwortlicherOrange": "Vorsitzende/r oder Vorstand oder Wirtschaftsvorstand (nb.Verantwortung heißt nicht immer, es auch selbst zu tun!)",
+  "informationOrange": "",
+  "orange": true
+}
