@@ -102,7 +102,7 @@ watch(
       class="fixed inset-0 z-50 overflow-y-auto p-6 blur-none"
     >
       <KernprozessCreator
-        :schritt-count="undefined"
+        :schritt-count="data!.length + 1"
         :vorgaben-blue="undefined"
         :vorlagen-blue="undefined"
         :middle-head="undefined"

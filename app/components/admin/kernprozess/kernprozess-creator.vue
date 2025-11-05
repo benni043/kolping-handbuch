@@ -16,7 +16,7 @@ const props = defineProps<{
 
 const emit = defineEmits(["cancle", "send"]);
 
-const schrittCountRef: Ref<number> = ref(props.schrittCount || 0);
+const schrittCountRef: Ref<number> = ref(props.schrittCount || 1);
 const vorgabenBlueRef = ref<TestLink[]>(
   props.vorgabenBlue || [{ text: "", hasLink: false, link: "" }],
 );
@@ -133,6 +133,7 @@ function clearForm() {
         icon="i-heroicons-document-plus"
         size="lg"
         class="w-full"
+        min="1"
       />
     </UCard>
 
