@@ -47,6 +47,12 @@ async function deleteKernprozess(kernprozessNumber: number) {
         kernprozessNumber: kernprozessNumber,
       },
     });
+
+    if (data.value) {
+      data.value = data.value.filter(
+        (k) => k.schrittCount !== kernprozessNumber,
+      );
+    }
   }
 }
 
