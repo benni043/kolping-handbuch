@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import type { TestLink } from "~/types/kernprozess";
+import type { Kernprozess, TestLink } from "~/types/kernprozess";
 
 const props = defineProps<{
   schrittCount: number | undefined;
@@ -14,7 +14,7 @@ const props = defineProps<{
   editing: boolean;
 }>();
 
-const emit = defineEmits(["cancle"]);
+const emit = defineEmits(["cancle", "send"]);
 
 const schrittCountRef: Ref<number> = ref(props.schrittCount || 0);
 const vorgabenBlueRef = ref<TestLink[]>(
@@ -86,7 +86,7 @@ async function postForm() {
       return;
   }
 
-  const data = {
+  const data: Kernprozess = {
     schrittCount: schrittCountRef.value,
     vorgabenBlue: vorgabenBlueRef.value,
     vorlagenBlue: vorlagenBlueRef.value,
@@ -97,18 +97,7 @@ async function postForm() {
     informationOrange: informationOrangeRef.value,
   };
 
-  await $fetch("/api/save/kernprozess/", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: {
-      path: getSegment(0),
-      subPath: getSegment(1),
-      kernprozessNumber: schrittCountRef.value,
-      data: JSON.stringify(data),
-    },
-  });
-
-  emit("cancle");
+  emit("send", data);
 }
 
 function clearForm() {

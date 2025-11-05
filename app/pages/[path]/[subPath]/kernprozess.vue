@@ -21,13 +21,13 @@ const { data } = await useFetch<Kernprozess[]>("/api/kernprozess/all", {
   },
 });
 
-const editingStates = ref<Record<string, boolean>>({});
+const editingStates = ref<Record<number, boolean>>({});
 
-function isEditing(key: string) {
+function isEditing(key: number) {
   return editingStates.value[key] === true;
 }
 
-function toggleEditing(key: string) {
+function toggleEditing(key: number) {
   blurStore.blur = !blurStore.blur;
   editingStates.value[key] = !editingStates.value[key];
 }
@@ -56,6 +56,23 @@ async function deleteKernprozess(kernprozessNumber: number) {
   }
 }
 
+async function send(kernprozess: Kernprozess, count: number) {
+  await $fetch("/api/save/kernprozess/", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: {
+      path: getSegment(0),
+      subPath: getSegment(1),
+      kernprozessNumber: kernprozess.schrittCount,
+      data: JSON.stringify(kernprozess),
+    },
+  });
+
+  data.value?.push(kernprozess);
+
+  toggleEditing(count);
+}
+
 watch(
   editingStates,
   (val) => {
@@ -74,14 +91,14 @@ watch(
     >
       <button
         class="bg-green-400 hover:bg-green-500 text-white px-4 py-2 rounded cursor-pointer"
-        @click.prevent="toggleEditing('new')"
+        @click.prevent="toggleEditing(0)"
       >
         NEU
       </button>
     </div>
 
     <div
-      v-if="isEditing('new')"
+      v-if="isEditing(0)"
       class="fixed inset-0 z-50 overflow-y-auto p-6 blur-none"
     >
       <KernprozessCreator
@@ -94,7 +111,8 @@ watch(
         :verantwortlicher-orange="undefined"
         :information-orange="undefined"
         :editing="false"
-        @cancle="toggleEditing('new')"
+        @cancle="toggleEditing(0)"
+        @send="(kernprozess) => send(kernprozess, 0)"
       />
     </div>
 
@@ -106,7 +124,7 @@ watch(
       >
         <button
           class="bg-orange-400 hover:bg-orange-500 text-white px-4 py-2 rounded cursor-pointer"
-          @click.prevent="toggleEditing(kernprozess.middleHead)"
+          @click.prevent="toggleEditing(kernprozess.schrittCount)"
         >
           BEARBEITEN
         </button>
@@ -120,7 +138,7 @@ watch(
       </div>
 
       <div
-        v-if="isEditing(kernprozess.middleHead)"
+        v-if="isEditing(kernprozess.schrittCount)"
         class="fixed inset-0 z-50 overflow-y-auto p-6 blur-none"
       >
         <KernprozessCreator
@@ -133,7 +151,8 @@ watch(
           :verantwortlicher-orange="kernprozess.verantwortlicherOrange"
           :information-orange="kernprozess.informationOrange"
           :editing="true"
-          @cancle="toggleEditing(kernprozess.middleHead)"
+          @cancle="toggleEditing(kernprozess.schrittCount)"
+          @send="(kernprozess) => send(kernprozess, kernprozess.schrittCount)"
         />
       </div>
 
