@@ -229,31 +229,29 @@ watch(
             class="xl:w-130"
           />
 
-          <div
-            :class="{
-              'bg-[#F18700]': kernprozess.orange,
-            }"
-            :style="{
-              backgroundImage: !kernprozess.orange
-                ? 'url(/img/kernprozess/kernprozess_content_blue.png)'
-                : 'none',
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-            }"
-          >
-            <p class="text-white font-bold ml-3 pt-3">
-              TÄTIGKEIT / ENTSCHEIDUNG / PRÜFSCHRITT
-            </p>
+          <div :class="{ 'bg-[#F18700]': kernprozess.orange }" class="relative">
+            <img
+              v-if="!kernprozess.orange"
+              src="/img/kernprozess/kernprozess_content_blue.png"
+              alt="content-blue"
+              class="absolute inset-0 h-full w-full object-cover z-10"
+            />
 
-            <ul class="list-disc pl-6">
-              <li
-                v-for="elem in kernprozess.middleList"
-                :key="elem.text"
-                class="text-white ml-3"
-              >
-                <span>{{ elem.text }}</span>
-              </li>
-            </ul>
+            <div class="relative z-20">
+              <p class="text-white font-bold ml-3 pt-3">
+                TÄTIGKEIT / ENTSCHEIDUNG / PRÜFSCHRITT
+              </p>
+
+              <ul class="list-disc pl-6">
+                <li
+                  v-for="elem in kernprozess.middleList"
+                  :key="elem.text"
+                  class="text-white ml-3"
+                >
+                  <span>{{ elem.text }}</span>
+                </li>
+              </ul>
+            </div>
           </div>
 
           <img
