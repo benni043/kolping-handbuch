@@ -57,6 +57,7 @@ async function logout() {
           type="submit"
           block
           icon="i-heroicons-lock-closed"
+          class="cursor-pointer"
           @click="login()"
         >
           Login
@@ -74,6 +75,7 @@ async function logout() {
         variant="solid"
         size="xl"
         icon="i-heroicons-arrow-left-on-rectangle"
+        class="cursor-pointer"
         block
         @click="logout()"
       >

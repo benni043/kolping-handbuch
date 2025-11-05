@@ -51,7 +51,7 @@ function send() {
     <div v-if="user && user.role === 'admin'" class="relative">
       <button
         v-if="!isEditing"
-        class="absolute mr-10 right-0 bg-orange-400 hover:bg-orange-500 text-white px-4 py-2 rounded"
+        class="absolute mr-10 right-0 bg-orange-400 hover:bg-orange-500 text-white px-4 py-2 rounded cursor-pointer"
         @click.prevent="isEditing = true"
       >
         BEARBEITEN
@@ -59,7 +59,7 @@ function send() {
 
       <button
         v-if="isEditing"
-        class="absolute mr-10 right-0 bg-green-400 hover:bg-green-500 text-white px-4 py-2 rounded"
+        class="absolute mr-10 right-0 bg-green-400 hover:bg-green-500 text-white px-4 py-2 rounded cursor-pointer"
         @click="send()"
       >
         FERTIG

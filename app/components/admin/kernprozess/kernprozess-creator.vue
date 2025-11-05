@@ -11,6 +11,7 @@ const props = defineProps<{
   aufzeichnungOrange: TestLink[] | undefined;
   verantwortlicherOrange: string | undefined;
   informationOrange: string | undefined;
+  orange: boolean | undefined;
   editing: boolean;
 }>();
 
@@ -36,6 +37,8 @@ const verantwortlicherOrangeRef: Ref<string> = ref(
   props.verantwortlicherOrange || "",
 );
 const informationOrangeRef: Ref<string> = ref(props.informationOrange || "");
+
+const orangeRef: Ref<boolean> = ref(props.orange || false);
 
 function addVorgabeBlue() {
   vorgabenBlueRef.value.push({ text: "", hasLink: false, link: "" });
@@ -95,7 +98,7 @@ async function postForm() {
     aufzeichnungOrange: aufzeichnungOrangeRef.value,
     verantwortlicherOrange: verantwortlicherOrangeRef.value,
     informationOrange: informationOrangeRef.value,
-    orange: true,
+    orange: orangeRef.value,
   };
 
   emit("send", data);
@@ -117,6 +120,7 @@ function clearForm() {
   aufzeichnungOrangeRef.value = [];
   verantwortlicherOrangeRef.value = "";
   informationOrangeRef.value = "";
+  orangeRef.value = false;
 }
 </script>
 
@@ -263,7 +267,7 @@ function clearForm() {
     </UCard>
 
     <UCard
-      class="col-span-1 row-span-5 col-start-2 row-start-3 overflow-y-auto"
+      class="col-span-1 row-span-3 col-start-2 row-start-3 overflow-y-auto"
     >
       <h1 class="mb-4 text-xl font-semibold">Kernprozess Inhalt</h1>
       <div
@@ -295,6 +299,15 @@ function clearForm() {
       >
         Hinzufügen
       </UButton>
+    </UCard>
+
+    <UCard class="col-span-1 row-span-2">
+      <h1 class="mb-4 text-xl font-semibold">Bezug zur Kolping-Idee?</h1>
+
+      <select v-model="orangeRef" class="w-full border rounded-lg p-2">
+        <option :value="true">True</option>
+        <option :value="false">False</option>
+      </select>
     </UCard>
 
     <UCard

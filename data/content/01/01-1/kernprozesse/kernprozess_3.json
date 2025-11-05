@@ -19,5 +19,5 @@
   "aufzeichnungOrange": [{ "text": "Protokoll", "hasLink": false, "link": "" }],
   "verantwortlicherOrange": "Vorsitzende(r)",
   "informationOrange": "alle Mitglieder; DV, BV",
-  "orange": true
+  "orange": false
 }

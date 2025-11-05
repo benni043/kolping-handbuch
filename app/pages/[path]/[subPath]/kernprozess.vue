@@ -117,6 +117,7 @@ watch(
         :aufzeichnung-orange="undefined"
         :verantwortlicher-orange="undefined"
         :information-orange="undefined"
+        :orange="false"
         :editing="false"
         @cancle="toggleEditing(0)"
         @send="(kernprozess) => send(kernprozess, 0)"
@@ -157,6 +158,7 @@ watch(
           :aufzeichnung-orange="kernprozess.aufzeichnungOrange"
           :verantwortlicher-orange="kernprozess.verantwortlicherOrange"
           :information-orange="kernprozess.informationOrange"
+          :orange="kernprozess.orange"
           :editing="true"
           @cancle="toggleEditing(kernprozess.schrittCount)"
           @send="(kernprozess) => send(kernprozess, kernprozess.schrittCount)"
@@ -175,7 +177,9 @@ watch(
           <hr class="text-[#50A9CE] mb-2 mt-3 border-t-4 border-dotted" />
 
           <div>
-            <h2 class="text-[#50A9CE] font-bold">VORGABEN / ARBEITSHILFEN</h2>
+            <h2 class="text-[#50A9CE] font-bold mb-2">
+              VORGABEN / ARBEITSHILFEN
+            </h2>
 
             <ul class="list-disc pl-6">
               <li
@@ -194,7 +198,9 @@ watch(
           <br />
 
           <div v-if="kernprozess.vorlagenBlue.length >= 1">
-            <h2 class="text-[#50A9CE] font-bold">VORLAGEN SCHLUSSBERICHTE</h2>
+            <h2 class="text-[#50A9CE] font-bold mb-2">
+              VORLAGEN SCHLUSSBERICHTE
+            </h2>
 
             <ul class="list-disc pl-6">
               <li
@@ -238,7 +244,7 @@ watch(
             />
 
             <div class="relative z-20">
-              <p class="text-white font-bold ml-3 pt-3">
+              <p class="text-white font-bold ml-3 pt-3 mb-3">
                 TÄTIGKEIT / ENTSCHEIDUNG / PRÜFSCHRITT
               </p>
 
@@ -246,7 +252,7 @@ watch(
                 <li
                   v-for="elem in kernprozess.middleList"
                   :key="elem.text"
-                  class="text-white ml-3"
+                  class="text-white ml-3 mr-3"
                 >
                   <span>{{ elem.text }}</span>
                 </li>
@@ -270,7 +276,7 @@ watch(
 
         <div class="w-50 xl:w-80">
           <div>
-            <h2 class="text-[#F18700] font-bold">
+            <h2 class="text-[#F18700] font-bold mb-2">
               AUFZEICHNUNGEN / DOKUMENTATION
             </h2>
 
@@ -289,12 +295,14 @@ watch(
           </div>
 
           <div v-if="kernprozess.verantwortlicherOrange.length >= 1">
-            <h2 class="text-[#F18700] mt-3 font-bold">VERANTWORTLICHE/R</h2>
+            <h2 class="text-[#F18700] mt-3 font-bold mb-2">
+              VERANTWORTLICHE/R
+            </h2>
             <p class="pl-2">{{ kernprozess.verantwortlicherOrange }}</p>
           </div>
 
           <div v-if="kernprozess.informationOrange.length >= 1">
-            <h2 class="text-[#F18700] mt-3 font-bold">INFORMATION AN</h2>
+            <h2 class="text-[#F18700] mt-3 font-bold mb-2">INFORMATION AN</h2>
             <p class="pl-2">{{ kernprozess.informationOrange }}</p>
           </div>
 
