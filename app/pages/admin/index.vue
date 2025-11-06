@@ -3,6 +3,11 @@ import type { User } from "#auth-utils";
 import { ref, onMounted } from "vue";
 import NewUser from "~/components/admin/db/new-user.vue";
 
+definePageMeta({
+  middleware: ["authenticated"],
+  allowedRoles: "admin",
+});
+
 const blurStore = useBlurStore();
 
 const users = ref<{ statusCode: number; data: User[] }>({
