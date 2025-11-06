@@ -4,7 +4,7 @@ import { join } from "path";
 export default defineEventHandler(async (event) => {
   const { user } = await requireUserSession(event);
 
-  if (user.role !== "admin") {
+  if (user.role !== "admin" && user.role! !== "editor") {
     throw createError({ statusCode: 403, statusMessage: "Forbidden" });
   }
 

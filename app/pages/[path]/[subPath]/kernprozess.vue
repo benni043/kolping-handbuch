@@ -96,7 +96,7 @@ watch(
       :class="{ 'blur-sm': blurStore.blur }"
     >
       <button
-        v-if="user && user.role === 'admin'"
+        v-if="user && (user.role === 'admin' || user.role === 'editor')"
         class="bg-green-400 hover:bg-green-500 text-white px-4 py-2 rounded cursor-pointer"
         @click.prevent="toggleEditing(0)"
       >
@@ -126,7 +126,7 @@ watch(
 
     <div v-for="kernprozess in data!" :key="kernprozess.middleHead">
       <div
-        v-if="user && user.role === 'admin'"
+        v-if="user && (user.role === 'admin' || user.role === 'editor')"
         class="ml-20 flex gap-5"
         :class="{ 'blur-sm': blurStore.blur }"
       >

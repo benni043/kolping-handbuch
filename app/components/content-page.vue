@@ -48,7 +48,10 @@ function send() {
 
 <template>
   <div>
-    <div v-if="user && user.role === 'admin'" class="relative">
+    <div
+      v-if="user && (user.role === 'admin' || user.role === 'editor')"
+      class="relative"
+    >
       <button
         v-if="!isEditing"
         class="absolute mr-10 right-0 bg-orange-400 hover:bg-orange-500 text-white px-4 py-2 rounded cursor-pointer"
