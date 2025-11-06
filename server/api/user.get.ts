@@ -15,10 +15,7 @@ export default defineEventHandler(async (event) => {
 
   const sql = usePostgres();
 
-  const [response] =
-    await sql`SELECT id, username, role FROM users WHERE username = 'user'`;
-
-  console.log(response);
+  const response = await sql`SELECT id, username, role FROM users`;
 
   event.waitUntil(sql.end());
 
@@ -30,8 +27,6 @@ export default defineEventHandler(async (event) => {
 
   return {
     statusCode: 200,
-    body: {
-      data: response,
-    },
+    data: response,
   };
 });
