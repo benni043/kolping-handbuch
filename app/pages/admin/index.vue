@@ -18,7 +18,7 @@ const editingUser = ref<User | null>(null);
 
 const fetchUsers = async () => {
   const response = await $fetch<{ statusCode: number; data: User[] }>(
-    "/api/user",
+    "/api/admin/user",
   );
   users.value = response;
 };
@@ -32,8 +32,6 @@ function cancle() {
   editingUser.value = null;
   blurStore.blur = !blurStore.blur;
 }
-
-function change() {}
 
 onMounted(fetchUsers);
 </script>
@@ -78,6 +76,7 @@ onMounted(fetchUsers);
       <new-user
         :username="editingUser.username"
         :role="editingUser.role"
+        :id="editingUser.id"
         @cancle="cancle()"
       ></new-user>
     </div>

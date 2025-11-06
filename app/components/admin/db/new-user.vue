@@ -7,14 +7,27 @@ definePageMeta({
 const props = defineProps<{
   username: string;
   role: string;
+  id: number;
 }>();
 
-const emit = defineEmits(["cancle", "change"]);
+const emit = defineEmits(["cancle"]);
 
-const username = ref(props.username || "");
-const role = ref(props.role || "");
+const usernameRef = ref(props.username || "");
+const roleRef = ref(props.role || "");
 
-function change() {}
+async function change() {
+  await $fetch("/api/admin/user", {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: {
+      id: props.id,
+      username: usernameRef.value,
+      role: roleRef.value,
+    },
+  });
+
+  emit("cancle");
+}
 
 function cancle() {
   emit("cancle");
@@ -33,7 +46,7 @@ function cancle() {
           <h1 class="mb-4 text-xl font-semibold">Benutzername</h1>
 
           <UInput
-            v-model="username"
+            v-model="usernameRef"
             placeholder="Benutzername"
             type="text"
             size="xl"
@@ -44,7 +57,7 @@ function cancle() {
         <div>
           <h1 class="mb-4 text-xl font-semibold">Rolle</h1>
 
-          <select v-model="role" class="w-full border rounded-lg p-2">
+          <select v-model="roleRef" class="w-full border rounded-lg p-2">
             <option value="user">user</option>
             <option value="editor">editor</option>
             <option value="admin">admin</option>
