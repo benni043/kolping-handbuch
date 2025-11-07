@@ -2,6 +2,7 @@
 import type { User } from "#auth-utils";
 import { ref, onMounted } from "vue";
 import ChangeUser from "~/components/admin/db/change-user.vue";
+import NewUser from "~/components/admin/db/new-user.vue";
 
 definePageMeta({
   middleware: ["authenticated"],
@@ -13,7 +14,8 @@ const blurStore = useBlurStore();
 const users: Ref<User[]> = ref([]);
 
 const editingUser = ref<User | null>(null);
-const addUser = ref<User | null>(null);
+
+const addingUser = ref(false);
 
 async function fetchUsers() {
   const response = await $fetch<{ statusCode: number; data: User[] }>(
@@ -21,7 +23,6 @@ async function fetchUsers() {
   );
 
   users.value = response.data;
-
   users.value.sort((user, user2) => user.id - user2.id);
 }
 
@@ -30,12 +31,20 @@ const startEdit = (user: User) => {
   blurStore.blur = !blurStore.blur;
 };
 
+function toggleAdd() {
+  addingUser.value = !addingUser.value;
+  blurStore.blur = !blurStore.blur;
+}
+
 function cancle() {
   editingUser.value = null;
   blurStore.blur = !blurStore.blur;
 }
 
 async function change(id: number, username: string, role: string) {
+  if (!confirm("Sind Sie sicher, dass sie diesen Benutzer bearbeiten möchten?"))
+    return;
+
   await $fetch("/api/admin/user", {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
@@ -51,7 +60,39 @@ async function change(id: number, username: string, role: string) {
   cancle();
 }
 
-async function add() {}
+async function add(username: string, password: string, role: string) {
+  if (!confirm("Sind Sie sicher, dass sie diesen Benutzer hinzufügen möchten?"))
+    return;
+
+  await $fetch("/api/admin/user", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: {
+      username: username,
+      password: password,
+      role: role,
+    },
+  });
+
+  await fetchUsers();
+
+  toggleAdd();
+}
+
+async function deleteUser(id: number) {
+  if (!confirm("Sind Sie sicher, dass sie diesen Benutzer löschen möchten?"))
+    return;
+
+  await $fetch("/api/admin/user", {
+    method: "DELETE",
+    headers: { "Content-Type": "application/json" },
+    body: {
+      id: id,
+    },
+  });
+
+  await fetchUsers();
+}
 
 onMounted(() => {
   fetchUsers();
@@ -60,15 +101,28 @@ onMounted(() => {
 
 <template>
   <div>
-    <button
-      class="bg-green-400 hover:bg-green-500 text-white px-4 py-2 rounded cursor-pointer"
+    <div class="flex justify-end mr-10">
+      <button
+        class="bg-green-400 hover:bg-green-500 text-white px-4 py-2 rounded cursor-pointer"
+        @click="toggleAdd()"
+      >
+        Hinzufügen
+      </button>
+    </div>
+
+    <div
+      v-if="addingUser"
+      class="fixed inset-0 z-50 overflow-y-auto p-6 blur-none"
     >
-      Hinzufügen
-    </button>
+      <new-user
+        @cancle="toggleAdd()"
+        @add="(username, password, role) => add(username, password, role)"
+      ></new-user>
+    </div>
 
     <div class="p-6 ml-10">
       <table
-        class="w-300 border-collapse border border-gray-300"
+        class="w-200 border-collapse border border-gray-300"
         :class="{ 'blur-sm': blurStore.blur }"
       >
         <thead>
@@ -82,18 +136,28 @@ onMounted(() => {
         <tbody>
           <tr v-for="user in users" :key="user.id" class="hover:bg-gray-100">
             <td class="border border-gray-300 p-2 text-left">{{ user.id }}</td>
+
             <td class="border border-gray-300 p-2 text-left">
               {{ user.username }}
             </td>
+
             <td class="border border-gray-300 p-2 text-left">
               {{ user.role }}
             </td>
-            <td class="border border-gray-300 p-2 text-left">
+
+            <td class="border border-gray-300 p-2 text-left flex gap-5">
               <button
                 class="bg-blue-600 text-white px-3 py-1 rounded cursor-pointer"
                 @click="startEdit(user)"
               >
-                Edit
+                Bearbeiten
+              </button>
+
+              <button
+                class="bg-red-600 text-white px-3 py-1 rounded cursor-pointer"
+                @click="deleteUser(user.id)"
+              >
+                Löschen
               </button>
             </td>
           </tr>
