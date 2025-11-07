@@ -10,23 +10,13 @@ const props = defineProps<{
   id: number;
 }>();
 
-const emit = defineEmits(["cancle"]);
+const emit = defineEmits(["cancle", "change"]);
 
 const usernameRef = ref(props.username || "");
 const roleRef = ref(props.role || "");
 
 async function change() {
-  await $fetch("/api/admin/user", {
-    method: "PUT",
-    headers: { "Content-Type": "application/json" },
-    body: {
-      id: props.id,
-      username: usernameRef.value,
-      role: roleRef.value,
-    },
-  });
-
-  emit("cancle");
+  emit("change", props.id, usernameRef.value, roleRef.value);
 }
 
 function cancle() {

@@ -16,12 +16,12 @@ const users = ref<{ statusCode: number; data: User[] }>({
 });
 const editingUser = ref<User | null>(null);
 
-const fetchUsers = async () => {
+async function fetchUsers() {
   const response = await $fetch<{ statusCode: number; data: User[] }>(
     "/api/admin/user",
   );
   users.value = response;
-};
+}
 
 const startEdit = (user: User) => {
   editingUser.value = { ...user };
@@ -33,7 +33,25 @@ function cancle() {
   blurStore.blur = !blurStore.blur;
 }
 
-onMounted(fetchUsers);
+async function change(id: number, username: string, role: string) {
+  await $fetch("/api/admin/user", {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: {
+      id: id,
+      username: username,
+      role: role,
+    },
+  });
+
+  await fetchUsers();
+
+  cancle();
+}
+
+onMounted(() => {
+  fetchUsers();
+});
 </script>
 
 <template>
@@ -74,10 +92,11 @@ onMounted(fetchUsers);
       class="fixed inset-0 z-50 overflow-y-auto p-6 blur-none"
     >
       <new-user
+        :id="editingUser.id"
         :username="editingUser.username"
         :role="editingUser.role"
-        :id="editingUser.id"
         @cancle="cancle()"
+        @change="(id, username, role) => change(id, username, role)"
       ></new-user>
     </div>
   </div>
