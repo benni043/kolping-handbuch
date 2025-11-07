@@ -295,6 +295,7 @@ function clearForm() {
         color="neutral"
         variant="soft"
         icon="i-heroicons-plus"
+        class="cursor-pointer"
         @click="addMiddleList"
       >
         Hinzufügen

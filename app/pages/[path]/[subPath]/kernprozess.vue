@@ -13,10 +13,10 @@ const { user } = useUserSession();
 const route = useRoute();
 const blurStore = useBlurStore();
 
-const kernprozesse: Ref<Kernprozess[]> = ref([]);
+const kernprozesseRef: Ref<Kernprozess[]> = ref([]);
 
 async function fetchKernprozesse() {
-  const { data } = await useFetch<Kernprozess[]>("/api/kernprozess/all", {
+  const kernprozesse = await $fetch<Kernprozess[]>("/api/kernprozess/all", {
     method: "GET",
     query: {
       path: route.params.path,
@@ -24,8 +24,8 @@ async function fetchKernprozesse() {
     },
   });
 
-  kernprozesse.value = data.value!;
-  kernprozesse.value = kernprozesse.value.sort(
+  kernprozesseRef.value = kernprozesse;
+  kernprozesseRef.value = kernprozesse.sort(
     (k, k2) => k.schrittCount - k2.schrittCount,
   );
 }
@@ -57,7 +57,7 @@ async function deleteKernprozess(kernprozessNumber: number) {
       },
     });
 
-    kernprozesse.value = kernprozesse.value.filter(
+    kernprozesseRef.value = kernprozesseRef.value.filter(
       (k) => k.schrittCount !== kernprozessNumber,
     );
   }
@@ -114,7 +114,7 @@ onMounted(() => {
       class="fixed inset-0 z-50 overflow-y-auto p-6 blur-none"
     >
       <KernprozessCreator
-        :schritt-count="kernprozesse.length + 1"
+        :schritt-count="kernprozesseRef.length + 1"
         :vorgaben-blue="undefined"
         :vorlagen-blue="undefined"
         :middle-head="undefined"
@@ -129,7 +129,7 @@ onMounted(() => {
       />
     </div>
 
-    <div v-for="kernprozess in kernprozesse" :key="kernprozess.middleHead">
+    <div v-for="kernprozess in kernprozesseRef" :key="kernprozess.middleHead">
       <div
         v-if="user && (user.role === 'admin' || user.role === 'editor')"
         class="ml-20 flex gap-5"
