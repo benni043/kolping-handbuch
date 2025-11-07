@@ -13,13 +13,22 @@ const { user } = useUserSession();
 const route = useRoute();
 const blurStore = useBlurStore();
 
-const { data } = await useFetch<Kernprozess[]>("/api/kernprozess/all", {
-  method: "GET",
-  query: {
-    path: route.params.path,
-    subPath: route.params.subPath,
-  },
-});
+const kernprozesse: Ref<Kernprozess[]> = ref([]);
+
+async function fetchKernprozesse() {
+  const { data } = await useFetch<Kernprozess[]>("/api/kernprozess/all", {
+    method: "GET",
+    query: {
+      path: route.params.path,
+      subPath: route.params.subPath,
+    },
+  });
+
+  kernprozesse.value = data.value!;
+  kernprozesse.value = kernprozesse.value.sort(
+    (k, k2) => k.schrittCount - k2.schrittCount,
+  );
+}
 
 const editingStates = ref<Record<number, boolean>>({});
 
@@ -48,11 +57,9 @@ async function deleteKernprozess(kernprozessNumber: number) {
       },
     });
 
-    if (data.value) {
-      data.value = data.value.filter(
-        (k) => k.schrittCount !== kernprozessNumber,
-      );
-    }
+    kernprozesse.value = kernprozesse.value.filter(
+      (k) => k.schrittCount !== kernprozessNumber,
+    );
   }
 }
 
@@ -68,13 +75,7 @@ async function send(kernprozess: Kernprozess, count: number) {
     },
   });
 
-  data.value = await $fetch<Kernprozess[]>("/api/kernprozess/all", {
-    method: "GET",
-    query: {
-      path: route.params.path,
-      subPath: route.params.subPath,
-    },
-  });
+  await fetchKernprozesse();
 
   toggleEditing(count);
 }
@@ -87,6 +88,10 @@ watch(
   },
   { deep: true },
 );
+
+onMounted(() => {
+  fetchKernprozesse();
+});
 </script>
 
 <template>
@@ -109,7 +114,7 @@ watch(
       class="fixed inset-0 z-50 overflow-y-auto p-6 blur-none"
     >
       <KernprozessCreator
-        :schritt-count="data!.length + 1"
+        :schritt-count="kernprozesse.length + 1"
         :vorgaben-blue="undefined"
         :vorlagen-blue="undefined"
         :middle-head="undefined"
@@ -124,7 +129,7 @@ watch(
       />
     </div>
 
-    <div v-for="kernprozess in data!" :key="kernprozess.middleHead">
+    <div v-for="kernprozess in kernprozesse" :key="kernprozess.middleHead">
       <div
         v-if="user && (user.role === 'admin' || user.role === 'editor')"
         class="ml-20 flex gap-5"

@@ -4,15 +4,19 @@ definePageMeta({
   allowedRoles: ["admin"],
 });
 
-const emit = defineEmits(["cancle", "add"]);
+const props = defineProps<{
+  username: string;
+  role: string;
+  id: number;
+}>();
 
-const usernameRef = ref("");
-const passwordRef = ref("");
-const password2Ref = ref("");
-const roleRef = ref("");
+const emit = defineEmits(["cancle", "change"]);
 
-async function add() {
-  emit("add", usernameRef.value, passwordRef.value, roleRef.value);
+const usernameRef = ref(props.username || "");
+const roleRef = ref(props.role || "");
+
+async function change() {
+  emit("change", props.id, usernameRef.value, roleRef.value);
 }
 
 function cancle() {
@@ -41,30 +45,6 @@ function cancle() {
         </div>
 
         <div>
-          <h1 class="mb-4 text-xl font-semibold">Passwort</h1>
-
-          <UInput
-            v-model="passwordRef"
-            placeholder="Passwort"
-            type="text"
-            size="xl"
-            class="w-full"
-          />
-        </div>
-
-        <div>
-          <h1 class="mb-4 text-xl font-semibold">Passwort wiederholen</h1>
-
-          <UInput
-            v-model="password2Ref"
-            placeholder="Passwort wiederholen"
-            type="text"
-            size="xl"
-            class="w-full"
-          />
-        </div>
-
-        <div>
           <h1 class="mb-4 text-xl font-semibold">Rolle</h1>
 
           <select v-model="roleRef" class="w-full border rounded-lg p-2">
@@ -83,9 +63,9 @@ function cancle() {
             block
             icon="i-heroicons-lock-closed"
             class="cursor-pointer"
-            @click="add()"
+            @click="change()"
           >
-            Erstellen
+            Ändern
           </UButton>
 
           <UButton
