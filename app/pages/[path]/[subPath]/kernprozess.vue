@@ -314,7 +314,14 @@ onMounted(() => {
             <p class="pl-2">{{ kernprozess.informationOrange }}</p>
           </div>
 
-          <hr class="text-gray-400 mb-2 mt-3 border-t-4 border-dotted" />
+          <hr
+            v-if="
+              kernprozess.aufzeichnungOrange.length >= 1 ||
+              kernprozess.verantwortlicherOrange.length >= 1 ||
+              kernprozess.informationOrange.length >= 1
+            "
+            class="text-gray-400 mb-2 mt-3 border-t-4 border-dotted"
+          />
         </div>
       </div>
     </div>
