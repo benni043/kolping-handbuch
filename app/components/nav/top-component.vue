@@ -242,18 +242,20 @@ function navigateTwoStepsBack() {
         v-if="path !== '' && subPath !== ''"
         class="cursor-pointer"
         @click="navigateTwoStepsBack()"
-        >{{ path }}</a
+        >{{ pathId }} {{ path }}</a
       >
-      <span v-if="path !== '' && subPath === ''">{{ path }}</span>
+      <span v-if="path !== '' && subPath === ''">{{ pathId }} {{ path }}</span>
 
       <span v-if="subPath !== ''">></span>
       <a
         v-if="subPath !== '' && category !== ''"
         class="cursor-pointer"
         @click="navigateOneStepBack()"
-        >{{ subPath }}</a
+        >{{ subPathId }} {{ subPath }}</a
       >
-      <span v-if="subPath !== '' && category === ''">{{ subPath }}</span>
+      <span v-if="subPath !== '' && category === ''"
+        >{{ subPathId }} {{ subPath }}</span
+      >
 
       <span v-if="category !== ''">></span>
       <span v-if="category !== ''">{{ category }}</span>

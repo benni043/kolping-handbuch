@@ -116,5 +116,8 @@ function send() {
   hr {
     @apply my-6 border-t-4 border-dotted text-gray-400;
   }
+  a {
+    @apply underline;
+  }
 }
 </style>

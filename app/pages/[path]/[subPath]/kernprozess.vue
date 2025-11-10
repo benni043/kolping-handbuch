@@ -281,7 +281,10 @@ onMounted(() => {
 
         <div class="w-50 xl:w-80">
           <div>
-            <h2 class="text-[#F18700] font-bold mb-2">
+            <h2
+              v-if="kernprozess.aufzeichnungOrange.length >= 1"
+              class="text-[#F18700] font-bold mb-2"
+            >
               AUFZEICHNUNGEN / DOKUMENTATION
             </h2>
 
