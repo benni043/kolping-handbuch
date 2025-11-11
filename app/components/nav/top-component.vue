@@ -9,6 +9,8 @@ const blurStore = useBlurStore();
 
 const { loggedIn, user } = useUserSession();
 
+const contentPage = ref(false);
+
 const route = useRoute();
 
 const path = ref("");
@@ -98,6 +100,8 @@ function handleRouting() {
   if (segment2) {
     category.value = mappingLower[segment2 as string]!;
   }
+
+  contentPage.value = true;
 }
 
 function navigateToCategory(
@@ -242,20 +246,28 @@ function navigateTwoStepsBack() {
         v-if="path !== '' && subPath !== ''"
         class="cursor-pointer"
         @click="navigateTwoStepsBack()"
-        >{{ pathId }} {{ path }}</a
       >
-      <span v-if="path !== '' && subPath === ''">{{ pathId }} {{ path }}</span>
+        <span v-if="contentPage">{{ pathId }}&ensp;</span>
+        <span>{{ path }}</span>
+      </a>
+      <span v-if="path !== '' && subPath === ''">
+        <span v-if="contentPage">{{ pathId }}&ensp;</span>
+        <span>{{ path }}</span>
+      </span>
 
       <span v-if="subPath !== ''">></span>
       <a
         v-if="subPath !== '' && category !== ''"
         class="cursor-pointer"
         @click="navigateOneStepBack()"
-        >{{ subPathId }} {{ subPath }}</a
       >
-      <span v-if="subPath !== '' && category === ''"
-        >{{ subPathId }} {{ subPath }}</span
-      >
+        <span v-if="contentPage">{{ subPathId }}&ensp;</span>
+        <span>{{ subPath }}</span>
+      </a>
+      <span v-if="subPath !== '' && category === ''">
+        <span v-if="contentPage">{{ subPathId }}&ensp;</span>
+        <span>{{ subPath }}</span>
+      </span>
 
       <span v-if="category !== ''">></span>
       <span v-if="category !== ''">{{ category }}</span>
