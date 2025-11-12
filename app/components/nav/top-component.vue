@@ -9,7 +9,7 @@ const blurStore = useBlurStore();
 
 const { loggedIn, user } = useUserSession();
 
-const contentPage = ref(false);
+const contentPage = ref(true);
 
 const route = useRoute();
 
@@ -51,33 +51,40 @@ function handleRouting() {
       clearPaths();
       path.value = introductionUpper;
       pathId.value = introductionLower;
+      contentPage.value = false;
       return;
     }
     case contactLower: {
       clearPaths();
       path.value = contactUpper;
       pathId.value = contactLower;
+      contentPage.value = false;
       return;
     }
     case impressumLower: {
       clearPaths();
       path.value = impressumUpper;
       pathId.value = impressumLower;
+      contentPage.value = false;
       return;
     }
     case loginLower: {
       clearPaths();
       path.value = loginUpper;
       pathId.value = loginLower;
+      contentPage.value = false;
       return;
     }
     case startPageLower: {
       clearPaths();
       path.value = startPageUpper;
       pathId.value = startPageLower;
+      contentPage.value = false;
       return;
     }
   }
+
+  contentPage.value = true;
 
   const segment2 = getSegment(2);
 
@@ -100,8 +107,6 @@ function handleRouting() {
   if (segment2) {
     category.value = mappingLower[segment2 as string]!;
   }
-
-  contentPage.value = true;
 }
 
 function navigateToCategory(
