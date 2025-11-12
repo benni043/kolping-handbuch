@@ -1,1 +1,23 @@
-{"schrittCount":4,"vorgabenBlue":[],"vorlagenBlue":[],"middleHead":"Handlungsbedarf ableiten / feststellen","middleList":[{"text":"Anhand des Zwischenberichtes ist ersichtlich, ob es in einzelnen Projekten/ Bereichen Handlungsbedarf gibt"},{"text":"JA: Information an den Vorstand; dieser berät über Maßnahmen"},{"text":"NEIN: Weiter mit Schritt 05"}],"aufzeichnungOrange":[{"text":"Mündliche oder schriftliche Mitteilung","hasLink":false,"link":""}],"verantwortlicherOrange":"LeiterIn Evaluierungsteam","informationOrange":"Bei JA Vorstand Vorsitzende/r","orange":false}
+{
+  "schrittCount": 4,
+  "vorgabenBlue": [],
+  "vorlagenBlue": [],
+  "middleHead": "Handlungsbedarf ableiten / feststellen",
+  "middleList": [
+    {
+      "text": "Anhand des Zwischenberichtes ist ersichtlich, ob es in einzelnen Projekten/ Bereichen Handlungsbedarf gibt"
+    },
+    { "text": "JA: Information an den Vorstand; dieser berät über Maßnahmen" },
+    { "text": "NEIN: Weiter mit Schritt 05" }
+  ],
+  "aufzeichnungOrange": [
+    {
+      "text": "Mündliche oder schriftliche Mitteilung",
+      "hasLink": false,
+      "link": ""
+    }
+  ],
+  "verantwortlicherOrange": "LeiterIn Evaluierungsteam",
+  "informationOrange": "Bei JA Vorstand Vorsitzende/r",
+  "orange": false
+}

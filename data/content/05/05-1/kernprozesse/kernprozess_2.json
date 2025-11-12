@@ -1,1 +1,27 @@
-{"schrittCount":2,"vorgabenBlue":[{"text":"Hinweis: Die Mitglieder des Evaluierungsteams sollten nicht ident sein mit den Auftraggebern und auch nicht mit den Mitgliedern des Projektteams, das für das jeweilige Projekt, das beurteilt werden soll, verantwortlich ist.","hasLink":false,"link":""}],"vorlagenBlue":[],"middleHead":"Einsetzung eines „Evaluierungsteams“","middleList":[{"text":"Das Evaluierungsteam besteht aus dem Leiter/Leiterin und zwei bis drei weiteren Mitgliedern, denen die im Schritt 1 ausgewählten Projekte, Veranstaltungen, Aktionen oder Abläufe zur Evaluierung zugeteilt werden."}],"aufzeichnungOrange":[{"text":"Ergebnisprotokoll der Vorstandssitzung","hasLink":false,"link":""}],"verantwortlicherOrange":"Vorstand","informationOrange":"Projekt­teams, Leitung des Hauses\n","orange":false}
+{
+  "schrittCount": 2,
+  "vorgabenBlue": [
+    {
+      "text": "Hinweis: Die Mitglieder des Evaluierungsteams sollten nicht ident sein mit den Auftraggebern und auch nicht mit den Mitgliedern des Projektteams, das für das jeweilige Projekt, das beurteilt werden soll, verantwortlich ist.",
+      "hasLink": false,
+      "link": ""
+    }
+  ],
+  "vorlagenBlue": [],
+  "middleHead": "Einsetzung eines „Evaluierungsteams“",
+  "middleList": [
+    {
+      "text": "Das Evaluierungsteam besteht aus dem Leiter/Leiterin und zwei bis drei weiteren Mitgliedern, denen die im Schritt 1 ausgewählten Projekte, Veranstaltungen, Aktionen oder Abläufe zur Evaluierung zugeteilt werden."
+    }
+  ],
+  "aufzeichnungOrange": [
+    {
+      "text": "Ergebnisprotokoll der Vorstandssitzung",
+      "hasLink": false,
+      "link": ""
+    }
+  ],
+  "verantwortlicherOrange": "Vorstand",
+  "informationOrange": "Projekt­teams, Leitung des Hauses\n",
+  "orange": false
+}

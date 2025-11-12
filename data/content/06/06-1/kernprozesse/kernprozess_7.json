@@ -1,1 +1,11 @@
-{"schrittCount":7,"vorgabenBlue":[],"vorlagenBlue":[],"middleHead":"„Neu-Mitglieder werden aktiv Mitwirkende“:","middleList":[{"text":"Siehe KP 06.2, ab Schritt 03"}],"aufzeichnungOrange":[],"verantwortlicherOrange":"","informationOrange":"","orange":false}
+{
+  "schrittCount": 7,
+  "vorgabenBlue": [],
+  "vorlagenBlue": [],
+  "middleHead": "„Neu-Mitglieder werden aktiv Mitwirkende“:",
+  "middleList": [{ "text": "Siehe KP 06.2, ab Schritt 03" }],
+  "aufzeichnungOrange": [],
+  "verantwortlicherOrange": "",
+  "informationOrange": "",
+  "orange": false
+}

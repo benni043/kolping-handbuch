@@ -5,7 +5,6 @@
 Bitte nicht vergessen:
 Die wichtigsten Punkte der „To-do-Liste“ zu diesem Kernprozess:
 
-
 - Ist uns klar a) WAS wir erreichen wollen? Bis WANN? Und welche RESSOURCEN (zeitlich, finanziell …) wir haben? Wer hat einen konkreten Nutzen davon, wenn das Vorhaben gelingt?
 - Passt das angestrebte Ergebnis zur „Kolping-Idee“? Hat es einen Ankerpunkt im „Daseinszweck“ von Kolping? Gab es zu diesem Punkt ein „Austausch unter Kolping- Freunden“ (benachbarte KFs, DV, Bundesverband)?
 - Wichtig: Projekt-AuftraggeberIn und Projektverantwortliche/r sollten NICHT IDENT sein: klar unterschieden zwischen „AuftraggeberIn“ und „Umsetzungsverantwortlichen“/ProjektleiterIn! Wenn (in Ausnahmefällen!) der Vorstand oder der/die Vorsitzende selbst die Verantwortung für das Projekt trägt: Wem ist er verantwortlich? Wer kann in so einem Fall ggf. korrigierend eingreifen? (vorab festlegen: Präsidium, Generalversammlung, „Weisenrat“…)

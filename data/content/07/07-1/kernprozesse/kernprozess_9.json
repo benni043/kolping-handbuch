@@ -1,1 +1,21 @@
-{"schrittCount":9,"vorgabenBlue":[],"vorlagenBlue":[],"middleHead":"Wissensmanagement","middleList":[{"text":"Weitergabe und Archivierung des bei den Bildungsveranstaltungen und -maßnahmen gesammelten Wissens"}],"aufzeichnungOrange":[{"text":"Unterlagen-Sammlung Best Practice-Beispiele","hasLink":false,"link":""}],"verantwortlicherOrange":"LeiterIn Bildungsteam","informationOrange":"Vorstand","orange":false}
+{
+  "schrittCount": 9,
+  "vorgabenBlue": [],
+  "vorlagenBlue": [],
+  "middleHead": "Wissensmanagement",
+  "middleList": [
+    {
+      "text": "Weitergabe und Archivierung des bei den Bildungsveranstaltungen und -maßnahmen gesammelten Wissens"
+    }
+  ],
+  "aufzeichnungOrange": [
+    {
+      "text": "Unterlagen-Sammlung Best Practice-Beispiele",
+      "hasLink": false,
+      "link": ""
+    }
+  ],
+  "verantwortlicherOrange": "LeiterIn Bildungsteam",
+  "informationOrange": "Vorstand",
+  "orange": false
+}

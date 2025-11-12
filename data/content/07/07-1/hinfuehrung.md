@@ -14,7 +14,7 @@ Bei allen Maßnahmen der Weiterbildung ist nicht so sehr der Erwerb von Wissen a
 
 <br>
 
-Wissen, das die Praxis leitet, kann man sich zum einen von außen holen (Seminare, Kurse, Bücher, Fachzeitschriften, etc.); aber auch im Verein selbst ist viel Wissen gespeichert und viele Fähigkeiten vorhanden: Diesen Schatz gilt es zu heben! Am besten durch die übersichtliche Zusammenfassung dieses handlungsrelevanten Wissens in Prozessen und „Best practice“-Beispielen. Der Kolping-Entwicklungsprozess ist ein Versuch, genau dies zu leisten.  
+Wissen, das die Praxis leitet, kann man sich zum einen von außen holen (Seminare, Kurse, Bücher, Fachzeitschriften, etc.); aber auch im Verein selbst ist viel Wissen gespeichert und viele Fähigkeiten vorhanden: Diesen Schatz gilt es zu heben! Am besten durch die übersichtliche Zusammenfassung dieses handlungsrelevanten Wissens in Prozessen und „Best practice“-Beispielen. Der Kolping-Entwicklungsprozess ist ein Versuch, genau dies zu leisten.
 
 <br>
 
@@ -30,9 +30,9 @@ Wissen, das die Praxis leitet, kann man sich zum einen von außen holen (Seminar
 
 - Am Beginn jedes (Arbeits-) Jahres werden im Vorstand die Schwerpunkte der Bildungsarbeit festgelegt und wünschenswerte Weiterbildungsmaßnahmen besprochen;
 - als Nächstes wird ein Bildungsteam eingesetzt; dieses plant und entwirft:
-   - Bildungsmaßnahmen für alle Mitglieder/die gesamte Kolpingsfamilie
-   - Bildungsmaßnahmen für einzelne Gliederungen (z.B. Vereinsvorstand, Vorstand Kolpingjugend) und Gruppen (z.B. Team für die Begleitung von Ehrenamtlichen, „Eine Welt-Gruppe“, ...)
-   - Bildungsmaßnahmen für Einzelpersonen (z.B. Leiterin Kolpingjugend, einzelne ehrenamtliche HelferInnen, etc.)
+  - Bildungsmaßnahmen für alle Mitglieder/die gesamte Kolpingsfamilie
+  - Bildungsmaßnahmen für einzelne Gliederungen (z.B. Vereinsvorstand, Vorstand Kolpingjugend) und Gruppen (z.B. Team für die Begleitung von Ehrenamtlichen, „Eine Welt-Gruppe“, ...)
+  - Bildungsmaßnahmen für Einzelpersonen (z.B. Leiterin Kolpingjugend, einzelne ehrenamtliche HelferInnen, etc.)
 
 <br>
 

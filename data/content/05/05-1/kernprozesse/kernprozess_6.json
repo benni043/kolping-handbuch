@@ -1,1 +1,27 @@
-{"schrittCount":6,"vorgabenBlue":[{"text":"AH 05 „Feedback-Bogen für Mitglieder des Evaluierungsteams“","hasLink":true,"link":""}],"vorlagenBlue":[],"middleHead":"Team-interne Beurteilung der Arbeit","middleList":[{"text":"Die einzelnen Mitglieder des Evaluierungsteams geben ein Feedback über die Arbeit im Team"}],"aufzeichnungOrange":[{"text":"Ausgefüllte „Feedback- Bögen der Mitglieder d. Evaluierungsteams“ (AH 05)","hasLink":true,"link":""}],"verantwortlicherOrange":"Mitglieder des Evaluierungsteams","informationOrange":"LeiterIn des Evaluierungsteams","orange":false}
+{
+  "schrittCount": 6,
+  "vorgabenBlue": [
+    {
+      "text": "AH 05 „Feedback-Bogen für Mitglieder des Evaluierungsteams“",
+      "hasLink": true,
+      "link": ""
+    }
+  ],
+  "vorlagenBlue": [],
+  "middleHead": "Team-interne Beurteilung der Arbeit",
+  "middleList": [
+    {
+      "text": "Die einzelnen Mitglieder des Evaluierungsteams geben ein Feedback über die Arbeit im Team"
+    }
+  ],
+  "aufzeichnungOrange": [
+    {
+      "text": "Ausgefüllte „Feedback- Bögen der Mitglieder d. Evaluierungsteams“ (AH 05)",
+      "hasLink": true,
+      "link": ""
+    }
+  ],
+  "verantwortlicherOrange": "Mitglieder des Evaluierungsteams",
+  "informationOrange": "LeiterIn des Evaluierungsteams",
+  "orange": false
+}

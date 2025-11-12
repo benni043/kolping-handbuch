@@ -1,1 +1,28 @@
-{"schrittCount":10,"vorgabenBlue":[{"text":"AH 02 „Projektplan“ (ausgefüllte Vorlage)","hasLink":true,"link":""},{"text":"AH 04 „Aktionsplan“","hasLink":true,"link":""}],"vorlagenBlue":[],"middleHead":"Info an und Freigabe durch den Jugendvorstand","middleList":[{"text":"Das Projektteam präsentiert das Projekt im Jugendvorstand, dieser stimmt (ggf. nach Abänderungen) zu."}],"aufzeichnungOrange":[{"text":"Protokoll der Jugendsitzung, in der diese Entscheidung fällt","hasLink":false,"link":""}],"verantwortlicherOrange":"ProjektleiterIn bzw. Jugendvorstand","informationOrange":"","orange":false}
+{
+  "schrittCount": 10,
+  "vorgabenBlue": [
+    {
+      "text": "AH 02 „Projektplan“ (ausgefüllte Vorlage)",
+      "hasLink": true,
+      "link": ""
+    },
+    { "text": "AH 04 „Aktionsplan“", "hasLink": true, "link": "" }
+  ],
+  "vorlagenBlue": [],
+  "middleHead": "Info an und Freigabe durch den Jugendvorstand",
+  "middleList": [
+    {
+      "text": "Das Projektteam präsentiert das Projekt im Jugendvorstand, dieser stimmt (ggf. nach Abänderungen) zu."
+    }
+  ],
+  "aufzeichnungOrange": [
+    {
+      "text": "Protokoll der Jugendsitzung, in der diese Entscheidung fällt",
+      "hasLink": false,
+      "link": ""
+    }
+  ],
+  "verantwortlicherOrange": "ProjektleiterIn bzw. Jugendvorstand",
+  "informationOrange": "",
+  "orange": false
+}

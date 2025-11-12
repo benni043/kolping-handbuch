@@ -1,1 +1,17 @@
-{"schrittCount":1,"vorgabenBlue":[],"vorlagenBlue":[],"middleHead":"Ideensammlung","middleList":[{"text":"Laufende Ermittlung und Sammeln von Ideen für die Jugendarbeit, für Projekte und Jahresaktivitäten"}],"aufzeichnungOrange":[{"text":"Jahreskalender","hasLink":false,"link":""}],"verantwortlicherOrange":"Alle im Verein","informationOrange":"","orange":false}
+{
+  "schrittCount": 1,
+  "vorgabenBlue": [],
+  "vorlagenBlue": [],
+  "middleHead": "Ideensammlung",
+  "middleList": [
+    {
+      "text": "Laufende Ermittlung und Sammeln von Ideen für die Jugendarbeit, für Projekte und Jahresaktivitäten"
+    }
+  ],
+  "aufzeichnungOrange": [
+    { "text": "Jahreskalender", "hasLink": false, "link": "" }
+  ],
+  "verantwortlicherOrange": "Alle im Verein",
+  "informationOrange": "",
+  "orange": false
+}

@@ -31,7 +31,6 @@ Beim Kernprozess „Steuerung der Kolpingarbeit“ geht es also ganz simpel daru
 
 ## Worauf gilt es, das Augenmerk zu richten?
 
-
 - Jedenfalls auf die Kolpingarbeit insgesamt im Laufe eines (Arbeits-) Jahres; diesem Grundanliegen dient der Schritt 01 des vorliegenden Kernprozesses: Das, was die Kolpingsfamilie im Laufe eines Jahres anbietet, soll einer Beurteilung unterzogen werden: Spiegelt es den Existenzzweck unseres Vereins wider? Trifft es die Bedürfnisse der Zielgruppen? Gibt es im Vergleich zum jeweiligen Vorjahr einen positiven Trend bei den wichtigsten Kennzahlen?
 - auf bestimmte Bereiche unserer Arbeit (z.B. Jugendarbeit, Öffentlichkeitsarbeit); hier kann man von Jahr zu Jahr andere Schwerpunkte setzen;
 - auch bestimmte Projekte oder Veranstaltungen können und sollten von Zeit zu Zeit „evaluiert“ werden (z.B. Jubiläumsfeiern, Mitglieder-Werbe-Aktionen …)
@@ -43,13 +42,12 @@ Auch wenn es anfangs vielleicht mühsam erscheint und lieb gewordene Gewohnheite
 <br>
 
 ## Schematische Darstellung:
+
 <b>Steuerung durch Evaluierung in der Kolpingsfamilie</b>
 
 [bild]
-
 
 - Der Vorstand bzw. das Präsidium legt fest: WAS soll WANN evaluiert werden und setzt ein Evaluierungsteam ein;
 - Der Vorstand muss sich darum kümmern, dass mit den Mitgliedskarten ein Evaluierungsbogen an alle Mitglieder der Kolpingsfamilie verschickt wird und dass – rechtzeitig vor der nächsten Generalversammlung – eine Analyse der gesamten Kolpingarbeit nach einigen Kennzahlen passiert (die Auswertung der Feedbackbögen und der Kennzahlenanalyse obliegt wiederum dem Evaluierungsteam);
 - Das Evaluierungsteam evaluiert auch einzelne vom Vorstand/Präsidium festgelegte Projekte/Veranstaltungen/Aktionen/Abläufe;
 - Dazu arbeitet es mit den Projektteams zusammen, die für diese jeweiligen Projekte zuständig sind und die im Rahmen des Projektmanagements ihrerseits „drauf schauen“, dass alles wie geplant läuft.
-

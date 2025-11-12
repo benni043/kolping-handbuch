@@ -1,1 +1,22 @@
-{"schrittCount":5,"vorgabenBlue":[{"text":"AH 04 „Der Weg zur Mitgliedschaft“","hasLink":true,"link":""}],"vorlagenBlue":[],"middleHead":"Einstieg bei Kolping gestalten","middleList":[{"text":"Formales rasch abwickeln"},{"text":"Service herausstellen"},{"text":"Einladung aussprechen"},{"text":"Aufnahme-Ritual gestalten"}],"aufzeichnungOrange":[],"verantwortlicherOrange":"TeamleiterIn","informationOrange":"Vorstand","orange":false}
+{
+  "schrittCount": 5,
+  "vorgabenBlue": [
+    {
+      "text": "AH 04 „Der Weg zur Mitgliedschaft“",
+      "hasLink": true,
+      "link": ""
+    }
+  ],
+  "vorlagenBlue": [],
+  "middleHead": "Einstieg bei Kolping gestalten",
+  "middleList": [
+    { "text": "Formales rasch abwickeln" },
+    { "text": "Service herausstellen" },
+    { "text": "Einladung aussprechen" },
+    { "text": "Aufnahme-Ritual gestalten" }
+  ],
+  "aufzeichnungOrange": [],
+  "verantwortlicherOrange": "TeamleiterIn",
+  "informationOrange": "Vorstand",
+  "orange": false
+}

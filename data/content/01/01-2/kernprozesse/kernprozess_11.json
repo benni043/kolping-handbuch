@@ -1,1 +1,19 @@
-{"schrittCount":11,"vorgabenBlue":[],"vorlagenBlue":[],"middleHead":"Vorstellung d. künftigen FunktionärIn","middleList":[{"text":"Im zuständigen Team/Vorstand"},{"text":"in der Generalversammlung"}],"aufzeichnungOrange":[{"text":"Protokolle","hasLink":false,"link":""},{"text":"Teamsitzung","hasLink":false,"link":""},{"text":"Vorstandssitzung","hasLink":false,"link":""},{"text":"Generalversammlung","hasLink":false,"link":""}],"verantwortlicherOrange":"Vorsitzende(r) bzw. TeamleiterIn","informationOrange":"Gen.Vers. Info an DV und Bundessekretariat","orange":false}
+{
+  "schrittCount": 11,
+  "vorgabenBlue": [],
+  "vorlagenBlue": [],
+  "middleHead": "Vorstellung d. künftigen FunktionärIn",
+  "middleList": [
+    { "text": "Im zuständigen Team/Vorstand" },
+    { "text": "in der Generalversammlung" }
+  ],
+  "aufzeichnungOrange": [
+    { "text": "Protokolle", "hasLink": false, "link": "" },
+    { "text": "Teamsitzung", "hasLink": false, "link": "" },
+    { "text": "Vorstandssitzung", "hasLink": false, "link": "" },
+    { "text": "Generalversammlung", "hasLink": false, "link": "" }
+  ],
+  "verantwortlicherOrange": "Vorsitzende(r) bzw. TeamleiterIn",
+  "informationOrange": "Gen.Vers. Info an DV und Bundessekretariat",
+  "orange": false
+}

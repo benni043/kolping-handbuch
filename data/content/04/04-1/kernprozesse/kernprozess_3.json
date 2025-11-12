@@ -1,1 +1,18 @@
-{"schrittCount":3,"vorgabenBlue":[{"text":"AH 01 „Jahreskalender\"","hasLink":true,"link":""}],"vorlagenBlue":[],"middleHead":"Jugendarbeits-Plan erstellen","middleList":[{"text":"Angabe der Schwerpunkte für das nächste Arbeitsjahr/Quartal …"}],"aufzeichnungOrange":[{"text":"Projektübersicht u./o. ","hasLink":false,"link":""},{"text":"Jahreskalender","hasLink":true,"link":""}],"verantwortlicherOrange":"Vorstand Kolpingjugend","informationOrange":"","orange":false}
+{
+  "schrittCount": 3,
+  "vorgabenBlue": [
+    { "text": "AH 01 „Jahreskalender\"", "hasLink": true, "link": "" }
+  ],
+  "vorlagenBlue": [],
+  "middleHead": "Jugendarbeits-Plan erstellen",
+  "middleList": [
+    { "text": "Angabe der Schwerpunkte für das nächste Arbeitsjahr/Quartal …" }
+  ],
+  "aufzeichnungOrange": [
+    { "text": "Projektübersicht u./o. ", "hasLink": false, "link": "" },
+    { "text": "Jahreskalender", "hasLink": true, "link": "" }
+  ],
+  "verantwortlicherOrange": "Vorstand Kolpingjugend",
+  "informationOrange": "",
+  "orange": false
+}

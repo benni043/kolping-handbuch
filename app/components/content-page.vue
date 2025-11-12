@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { marked } from "marked";
-import { SourceTextModule } from "vm";
 import { onMounted, ref, watch } from "vue";
 
 const { user } = useUserSession();

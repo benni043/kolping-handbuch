@@ -1,1 +1,40 @@
-{"schrittCount":7,"vorgabenBlue":[{"text":"AH 02 „Projektplan“","hasLink":true,"link":""},{"text":"AH 03 „Aktionsplan“","hasLink":true,"link":""},{"text":"AH 04 „Projektkostenplan“","hasLink":true,"link":""},{"text":"„Projekthandbuch“ online","hasLink":false,"link":""}],"vorlagenBlue":[],"middleHead":"Planung der Vorgehensweise","middleList":[{"text":"um den Auftrag zu erfüllen"},{"text":"um die Ziele zu erreichen"}],"aufzeichnungOrange":[{"text":"Erstellung einer SOLL-DOKUMENTATION","hasLink":false,"link":""},{"text":"ausgefüllter „Projektplan“ (AH 02)","hasLink":true,"link":""},{"text":"ausgefüllter „Aktionsplan“ (AH 03)","hasLink":true,"link":""},{"text":"ausgefüllter „Projektkostenplan“ (AH 04)","hasLink":true,"link":""}],"verantwortlicherOrange":"LeiterIn Projektteam","informationOrange":"","orange":false}
+{
+  "schrittCount": 7,
+  "vorgabenBlue": [
+    { "text": "AH 02 „Projektplan“", "hasLink": true, "link": "" },
+    { "text": "AH 03 „Aktionsplan“", "hasLink": true, "link": "" },
+    { "text": "AH 04 „Projektkostenplan“", "hasLink": true, "link": "" },
+    { "text": "„Projekthandbuch“ online", "hasLink": false, "link": "" }
+  ],
+  "vorlagenBlue": [],
+  "middleHead": "Planung der Vorgehensweise",
+  "middleList": [
+    { "text": "um den Auftrag zu erfüllen" },
+    { "text": "um die Ziele zu erreichen" }
+  ],
+  "aufzeichnungOrange": [
+    {
+      "text": "Erstellung einer SOLL-DOKUMENTATION",
+      "hasLink": false,
+      "link": ""
+    },
+    {
+      "text": "ausgefüllter „Projektplan“ (AH 02)",
+      "hasLink": true,
+      "link": ""
+    },
+    {
+      "text": "ausgefüllter „Aktionsplan“ (AH 03)",
+      "hasLink": true,
+      "link": ""
+    },
+    {
+      "text": "ausgefüllter „Projektkostenplan“ (AH 04)",
+      "hasLink": true,
+      "link": ""
+    }
+  ],
+  "verantwortlicherOrange": "LeiterIn Projektteam",
+  "informationOrange": "",
+  "orange": false
+}

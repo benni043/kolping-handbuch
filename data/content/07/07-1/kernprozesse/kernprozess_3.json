@@ -1,1 +1,28 @@
-{"schrittCount":3,"vorgabenBlue":[{"text":"AH 02 „Bildungsplan Kolpingsfamilie“","hasLink":true,"link":""},{"text":"AH 02a „ExpertInnen-Pool“","hasLink":true,"link":""}],"vorlagenBlue":[],"middleHead":"Bildungsplan für die gesamte KF erstellen","middleList":[{"text":"In diesem Schritt werden Bildungsmaßnahmen für die Kolpingsfamilie als Ganzes bzw. für einzelne Gliederungen der Kolpingsfamilie (z.B. Kolpingjugend) geplant"}],"aufzeichnungOrange":[{"text":"Ausgefüllter „Bildungsplan Kolpingsfamilie“ (AH 02)","hasLink":true,"link":""}],"verantwortlicherOrange":"LeiterIn\nBildungsteam","informationOrange":"Bildungsverantwortliche benachbarter Kolpingsfam.\n(Kooperationen/Synergien ermitteln und nutzen!)","orange":false}
+{
+  "schrittCount": 3,
+  "vorgabenBlue": [
+    {
+      "text": "AH 02 „Bildungsplan Kolpingsfamilie“",
+      "hasLink": true,
+      "link": ""
+    },
+    { "text": "AH 02a „ExpertInnen-Pool“", "hasLink": true, "link": "" }
+  ],
+  "vorlagenBlue": [],
+  "middleHead": "Bildungsplan für die gesamte KF erstellen",
+  "middleList": [
+    {
+      "text": "In diesem Schritt werden Bildungsmaßnahmen für die Kolpingsfamilie als Ganzes bzw. für einzelne Gliederungen der Kolpingsfamilie (z.B. Kolpingjugend) geplant"
+    }
+  ],
+  "aufzeichnungOrange": [
+    {
+      "text": "Ausgefüllter „Bildungsplan Kolpingsfamilie“ (AH 02)",
+      "hasLink": true,
+      "link": ""
+    }
+  ],
+  "verantwortlicherOrange": "LeiterIn\nBildungsteam",
+  "informationOrange": "Bildungsverantwortliche benachbarter Kolpingsfam.\n(Kooperationen/Synergien ermitteln und nutzen!)",
+  "orange": false
+}

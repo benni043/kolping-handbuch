@@ -1,1 +1,27 @@
-{"schrittCount":11,"vorgabenBlue":[{"text":"AH 05 „Feedback-Bogen für das Projektteam“","hasLink":true,"link":""}],"vorlagenBlue":[],"middleHead":"Laufende Erfolgskontrolle","middleList":[{"text":"„Hinschauen“, ob alles gut läuft:"},{"text":"innerhalb des Projektteams;"},{"text":"durch den Auftraggeber."}],"aufzeichnungOrange":[{"text":"AH 05 „Feedback-Bögen für das Projektteam“ (ausgefüllt!)","hasLink":true,"link":""}],"verantwortlicherOrange":"ProjektleiterIn plus Projektteam\nAuftraggeber (z.B. Vorsitzende/r)","informationOrange":"Vorstand","orange":false}
+{
+  "schrittCount": 11,
+  "vorgabenBlue": [
+    {
+      "text": "AH 05 „Feedback-Bogen für das Projektteam“",
+      "hasLink": true,
+      "link": ""
+    }
+  ],
+  "vorlagenBlue": [],
+  "middleHead": "Laufende Erfolgskontrolle",
+  "middleList": [
+    { "text": "„Hinschauen“, ob alles gut läuft:" },
+    { "text": "innerhalb des Projektteams;" },
+    { "text": "durch den Auftraggeber." }
+  ],
+  "aufzeichnungOrange": [
+    {
+      "text": "AH 05 „Feedback-Bögen für das Projektteam“ (ausgefüllt!)",
+      "hasLink": true,
+      "link": ""
+    }
+  ],
+  "verantwortlicherOrange": "ProjektleiterIn plus Projektteam\nAuftraggeber (z.B. Vorsitzende/r)",
+  "informationOrange": "Vorstand",
+  "orange": false
+}

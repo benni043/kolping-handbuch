@@ -2,7 +2,7 @@
 
 ---
 
-Neben den „regulären“ und gewohnten Abläufen in den Kolpingsfamilien ist es förderlich für eine gute Entwicklung, immer wieder einmal etwas „Neues“ anzudenken und anzugehen; die Form dafür ist üblicherweise ein „Projekt“. Projekte wirken wir eine Frischzellenkur und steigern die Wahrnehmung von Kolping bei Mitgliedern genauso wie bei anderen Gruppen, mit denen wir in Kontakt stehen (BewohnerInnen, KlientInnen, Fördergebern, Öffentlichkeit usw.). 
+Neben den „regulären“ und gewohnten Abläufen in den Kolpingsfamilien ist es förderlich für eine gute Entwicklung, immer wieder einmal etwas „Neues“ anzudenken und anzugehen; die Form dafür ist üblicherweise ein „Projekt“. Projekte wirken wir eine Frischzellenkur und steigern die Wahrnehmung von Kolping bei Mitgliedern genauso wie bei anderen Gruppen, mit denen wir in Kontakt stehen (BewohnerInnen, KlientInnen, Fördergebern, Öffentlichkeit usw.).
 
 <br>
 
@@ -14,7 +14,7 @@ Dies gilt sowohl für kleinere Projekte im Vereinsleben als auch für große Pro
 
 <br>
 
-Dabei sind vor allem Fragen wie diese zu klären: Wer braucht uns? Wem dient das Projekt? Welchen Menschen kommt es zugute? Hat das Projekt eine soziale Ausrichtung? … und ähnliches mehr. 
+Dabei sind vor allem Fragen wie diese zu klären: Wer braucht uns? Wem dient das Projekt? Welchen Menschen kommt es zugute? Hat das Projekt eine soziale Ausrichtung? … und ähnliches mehr.
 
 <br>
 
@@ -60,7 +60,6 @@ Alle diese hier nur kurz erwähnten Punkte sind in der Matrix des Kernprozesses 
 - oder leitende hauptamtliche MitarbeiterInnen.
 
 <b>Anregungen können auch von Kolpingleuten außerhalb der eigenen Kolpingsfamilie kommen:</b>
-
 
 - etwa indem man ein Projekt, das in einer anderen Kolpingsfamilie gut funktioniert hat, für die eigene adaptiert;
 - oder indem man Anregungen von einer Bildungskonferenz oder aus Behelfen der nationalen oder internationalen Kolping-Ebene aufgreift;
@@ -108,7 +107,7 @@ Weitere gute Orientierungsmarken bieten das Kolping-Leitbild und die Bausteine �
 
 <br>
 
-Im Sinne dieser Festlegungen ist es bei jedem Projekt ratsam zu fragen, ob es einen Ankerpunkt in diesen Beschreibungen unseres „Daseinszweckes“ als Organisation hat oder nicht – das gilt für kleine, zeitlich gut überschaubare Projekte, im verstärkten Maß jedoch für Projekte, in denen die Weichen für Jahre und Jahrzehnte gestellt werden, etwa bei der inhaltlichen Neuausrichtung oder Erweiterung eines Hauses. 
+Im Sinne dieser Festlegungen ist es bei jedem Projekt ratsam zu fragen, ob es einen Ankerpunkt in diesen Beschreibungen unseres „Daseinszweckes“ als Organisation hat oder nicht – das gilt für kleine, zeitlich gut überschaubare Projekte, im verstärkten Maß jedoch für Projekte, in denen die Weichen für Jahre und Jahrzehnte gestellt werden, etwa bei der inhaltlichen Neuausrichtung oder Erweiterung eines Hauses.
 
 <br>
 
@@ -126,10 +125,9 @@ Ziel der Projektüberwachung ist es, Abweichungen von der geplanten Vorgangsweis
 
 ## 5. / 6. Projektsteuerung / führung
 
-Für den Fall, dass es Abweichungen gibt zwischen dem geplanten und dem tat- sächlichen Projektverlauf, muss der/die ProjektleiterIn steuernd eingreifen. Sie/er muss die Ursachen für die Abweichung feststellen, dazu Gespräche führen mit den involvierten Personen, die ProjektmitarbeiterInnen motivieren, aktivieren und (positiv) beeinflussen, eventuell auch Maßnahmen ergreifen, um den Zusammenhalt in der Gruppe zu stärken. Auch wenn die Umsetzung gut läuft, ist der Projektleiter gefordert, laufend die zwischenmenschlichen Beziehungen im Team zu fördern. Motivation der MitarbeiterInnen, zumal der ehrenamtlichen, gelingt meist durch Sensibilität für ihre Erwartungen und Bedürfnisse. Menschen werden sich nur dann dauerhaft und verlässlich für ein Projekt (oder auch für einen Verein wie Kolping überhaupt) einsetzen, wenn sie bei dieser Tätigkeit die zumindest zeit- und teilweise Befriedigung verschiedener Bedürfnisse erleben. 
+Für den Fall, dass es Abweichungen gibt zwischen dem geplanten und dem tat- sächlichen Projektverlauf, muss der/die ProjektleiterIn steuernd eingreifen. Sie/er muss die Ursachen für die Abweichung feststellen, dazu Gespräche führen mit den involvierten Personen, die ProjektmitarbeiterInnen motivieren, aktivieren und (positiv) beeinflussen, eventuell auch Maßnahmen ergreifen, um den Zusammenhalt in der Gruppe zu stärken. Auch wenn die Umsetzung gut läuft, ist der Projektleiter gefordert, laufend die zwischenmenschlichen Beziehungen im Team zu fördern. Motivation der MitarbeiterInnen, zumal der ehrenamtlichen, gelingt meist durch Sensibilität für ihre Erwartungen und Bedürfnisse. Menschen werden sich nur dann dauerhaft und verlässlich für ein Projekt (oder auch für einen Verein wie Kolping überhaupt) einsetzen, wenn sie bei dieser Tätigkeit die zumindest zeit- und teilweise Befriedigung verschiedener Bedürfnisse erleben.
 
 Diese Bedürfnisse hat der Psychologe A. Maslow in seiner bekannten „Bedürfnispyramide“ dargestellt. Gutes Führen bedeutet, diese Bedürfnisse im Blick zu haben und die Arbeit so zu steuern, dass die Mitarbeiter durch ihre Mitarbeit im Projekt (bzw. im Verein):
-
 
 - Sicherheit und Geborgenheit erfahren in einer Gemeinschaft Gleichgesinnter
 - Wertschätzung und Anerkennung finden für ihre Leistungen(es bringt durchaus Prestige und Achtung im Ort/in der Stadt ein, wenn man sich bei Kolping in einem tollen Projekt engagiert, und das sollen die Leute auch spüren!)

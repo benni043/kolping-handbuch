@@ -1,1 +1,28 @@
-{"schrittCount":3,"vorgabenBlue":[{"text":"Gespräche mit VorgängerIn","hasLink":false,"link":""},{"text":"evtl. im Verein vorhandene \"Funktionsmappen\"","hasLink":false,"link":""},{"text":"Kolping-Handbuch","hasLink":false,"link":""},{"text":"Fachliteratur","hasLink":false,"link":""}],"vorlagenBlue":[],"middleHead":"Wissens-Sammlung","middleList":[{"text":"sammeln und dokumentieren: was zur Erfüllung der Funktion nötig und hilfreich ist..."}],"aufzeichnungOrange":[{"text":"\"Funktionsmappe\"","hasLink":false,"link":""},{"text":"Jahresplan","hasLink":false,"link":""},{"text":"Adresslisten etc.","hasLink":false,"link":""}],"verantwortlicherOrange":"FunktionsträgerIn","informationOrange":"","orange":false}
+{
+  "schrittCount": 3,
+  "vorgabenBlue": [
+    { "text": "Gespräche mit VorgängerIn", "hasLink": false, "link": "" },
+    {
+      "text": "evtl. im Verein vorhandene \"Funktionsmappen\"",
+      "hasLink": false,
+      "link": ""
+    },
+    { "text": "Kolping-Handbuch", "hasLink": false, "link": "" },
+    { "text": "Fachliteratur", "hasLink": false, "link": "" }
+  ],
+  "vorlagenBlue": [],
+  "middleHead": "Wissens-Sammlung",
+  "middleList": [
+    {
+      "text": "sammeln und dokumentieren: was zur Erfüllung der Funktion nötig und hilfreich ist..."
+    }
+  ],
+  "aufzeichnungOrange": [
+    { "text": "\"Funktionsmappe\"", "hasLink": false, "link": "" },
+    { "text": "Jahresplan", "hasLink": false, "link": "" },
+    { "text": "Adresslisten etc.", "hasLink": false, "link": "" }
+  ],
+  "verantwortlicherOrange": "FunktionsträgerIn",
+  "informationOrange": "",
+  "orange": false
+}

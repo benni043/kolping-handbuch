@@ -16,7 +16,7 @@ Von den Ursprüngen her hat die Jugend eine zentrale Bedeutung im Kolpingverband
 
 <br>
 
-Was für Jugendarbeit allgemein gilt, gilt auch für Kolping: Jugendliche sind nicht in erster Linie „Adressaten“ eines Angebots, sondern bestimmen und gestalten aus eigener Verantwortung heraus. Jugendliche haben viele Fähigkeiten, und wenn man ihnen die Möglichkeit dazu bietet, bringen sie diese auch ein. Dies bedeutet andererseits nicht, dass man sie allein lässt. Es gibt vieles, was die Jugendlichen im Verband finden und von dem sie profitieren können: Ermutigung, Verständnis und Akzeptanz, Erfahrung, den guten Namen, die Infrastruktur, finanzielle Unterstützung, ein bewährtes WerteGeflecht, kurz: ein Sicherheitsnetz, auf das sie sich verlassen können. 
+Was für Jugendarbeit allgemein gilt, gilt auch für Kolping: Jugendliche sind nicht in erster Linie „Adressaten“ eines Angebots, sondern bestimmen und gestalten aus eigener Verantwortung heraus. Jugendliche haben viele Fähigkeiten, und wenn man ihnen die Möglichkeit dazu bietet, bringen sie diese auch ein. Dies bedeutet andererseits nicht, dass man sie allein lässt. Es gibt vieles, was die Jugendlichen im Verband finden und von dem sie profitieren können: Ermutigung, Verständnis und Akzeptanz, Erfahrung, den guten Namen, die Infrastruktur, finanzielle Unterstützung, ein bewährtes WerteGeflecht, kurz: ein Sicherheitsnetz, auf das sie sich verlassen können.
 
 <br>
 

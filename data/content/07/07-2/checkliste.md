@@ -8,11 +8,13 @@ Die wichtigsten Punkte der „To-do-Liste“ zu diesem Kernprozess:
 <br>
 
 Hilfreich für eine erfolgreiche Öffentlichkeitsarbeit ist eine gelungene interne Kommunikation/Networking innerhalb von Kolping Österreich („wissen, was läuft“):
+
 - Austausch von Informationen über die zentrale Website http://www.kolping.at („News aktuell“, „Event-Kalender“, Online-Version des Kolping-Handbuches http://handbuch.kolping.at und über die Website der Kolpingjugend http://www.kolpingjugend.at
 - Nutzung einer Mitglieder-Datenbank;
 - Nutzung von Beziehungsnetzwerken/Social-Media- Angeboten (zB Facebook-Seite der Kolpingjugend)
 
 Sinnvoll ist ein einheitlicher Auftritt im Sinne von „Kolping als Marke“:
+
 - Verwendung des Logos von Kolping Österreich
 - einheitliche Vorlagen für: Briefpapier, Mail-Signaturen, Newsletter, Förder-Anträge, Erhebungen, Auswertungen, Presseaussendungen etc.
 - diese Vorlagen sowie Bilder für die Pressearbeit werden zentral abgelegt im „Online-Handbuch“ und im Menüpunkt „Presse“ auf der Website von Kolping Österreich – bitte anklicken und verwenden!!

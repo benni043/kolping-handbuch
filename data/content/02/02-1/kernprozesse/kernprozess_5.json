@@ -1,1 +1,17 @@
-{"schrittCount":5,"vorgabenBlue":[{"text":"INFO-Materialien über Kolping (Folder, Broschüre, Film, etc.)","hasLink":false,"link":""}],"vorlagenBlue":[],"middleHead":"Kontakt zw. d. Leitung d. Hauses u. Gruppen","middleList":[{"text":"z.B. Hausversammlungen durchführen"}],"aufzeichnungOrange":[],"verantwortlicherOrange":"hauptamtliches Team\nVorstand","informationOrange":"HausbewohnerInnen","orange":false}
+{
+  "schrittCount": 5,
+  "vorgabenBlue": [
+    {
+      "text": "INFO-Materialien über Kolping (Folder, Broschüre, Film, etc.)",
+      "hasLink": false,
+      "link": ""
+    }
+  ],
+  "vorlagenBlue": [],
+  "middleHead": "Kontakt zw. d. Leitung d. Hauses u. Gruppen",
+  "middleList": [{ "text": "z.B. Hausversammlungen durchführen" }],
+  "aufzeichnungOrange": [],
+  "verantwortlicherOrange": "hauptamtliches Team\nVorstand",
+  "informationOrange": "HausbewohnerInnen",
+  "orange": false
+}

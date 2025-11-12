@@ -19,7 +19,7 @@
 
 <br>
 
-Die BewohnerInnen sind zunächst in der Rolle von KundInnen, die aber immer wieder Angebote erhalten, mitzumachen im Verein („be part of it“) und so letztlich auch mitzubestimmen, wie und nach welchen Prinzipien das Leben im Haus gestaltet wird. Im Laufe unseres Entwicklungsprozesses wurde mehrfach festgehalten, dass die gemeinsame Planung des Geschehens im Haus dort gut funktioniert, wo es um finanzielle Bereiche geht: Im Wirtschaftsvorstand ist es üblich, in regelmäßigen Abständen mit der Geschäftsleitung auf Dinge zu schauen wie: Schaffen wir es, unsere wirtschaftlichen Ziele zu erreichen? Wo stehen wir? Wie geht es weiter? Stimmt unsere Planung? Gibt es etwas Neues – müssen wir anpassen? 
+Die BewohnerInnen sind zunächst in der Rolle von KundInnen, die aber immer wieder Angebote erhalten, mitzumachen im Verein („be part of it“) und so letztlich auch mitzubestimmen, wie und nach welchen Prinzipien das Leben im Haus gestaltet wird. Im Laufe unseres Entwicklungsprozesses wurde mehrfach festgehalten, dass die gemeinsame Planung des Geschehens im Haus dort gut funktioniert, wo es um finanzielle Bereiche geht: Im Wirtschaftsvorstand ist es üblich, in regelmäßigen Abständen mit der Geschäftsleitung auf Dinge zu schauen wie: Schaffen wir es, unsere wirtschaftlichen Ziele zu erreichen? Wo stehen wir? Wie geht es weiter? Stimmt unsere Planung? Gibt es etwas Neues – müssen wir anpassen?
 
 <br>
 

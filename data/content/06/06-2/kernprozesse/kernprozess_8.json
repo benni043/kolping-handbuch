@@ -1,1 +1,43 @@
-{"schrittCount":8,"vorgabenBlue":[{"text":"KP 07.1 Weiterbildung Folder der „Freiwilligenakademie“","hasLink":false,"link":""},{"text":"Onlineberatung von Kolping Österreich","hasLink":true,"link":"www.kolping.at"}],"vorlagenBlue":[],"middleHead":"Fortbildung und Reflexion","middleList":[{"text":"Mit dem ehrenamtlichen Engagement wächst zumeist der Wunsch nach tiefer gehender Information und Weiterbildung; dem kommen wir nach durch:"},{"text":"hausinterne Weiterbildungsangebote und Veranstaltungen;"},{"text":"Angebote auf diözesaner und Bundesebene (insbes. Veranstaltungen der „Freiwilligenakademie“); "},{"text":"Für besondere Aufgaben besteht die Möglichkeit, fachliche Supervision in Anspruch zu nehmen;"},{"text":"ebenso besteht die Möglichkeit einer kostenlosen und anonymen Online­Beratung"}],"aufzeichnungOrange":[{"text":"Weiterbildungsplan","hasLink":false,"link":""},{"text":"Verzeichnis erfolgter Weiter ­ bildungsangebote","hasLink":false,"link":""}],"verantwortlicherOrange":"TeamleiterIn „Weiterbildung“","informationOrange":"Vorstand;\nGeschäftsführerIn;\nTeamleiterIn „Ehrenamt“\n","orange":false}
+{
+  "schrittCount": 8,
+  "vorgabenBlue": [
+    {
+      "text": "KP 07.1 Weiterbildung Folder der „Freiwilligenakademie“",
+      "hasLink": false,
+      "link": ""
+    },
+    {
+      "text": "Onlineberatung von Kolping Österreich",
+      "hasLink": true,
+      "link": "www.kolping.at"
+    }
+  ],
+  "vorlagenBlue": [],
+  "middleHead": "Fortbildung und Reflexion",
+  "middleList": [
+    {
+      "text": "Mit dem ehrenamtlichen Engagement wächst zumeist der Wunsch nach tiefer gehender Information und Weiterbildung; dem kommen wir nach durch:"
+    },
+    { "text": "hausinterne Weiterbildungsangebote und Veranstaltungen;" },
+    {
+      "text": "Angebote auf diözesaner und Bundesebene (insbes. Veranstaltungen der „Freiwilligenakademie“); "
+    },
+    {
+      "text": "Für besondere Aufgaben besteht die Möglichkeit, fachliche Supervision in Anspruch zu nehmen;"
+    },
+    {
+      "text": "ebenso besteht die Möglichkeit einer kostenlosen und anonymen Online­Beratung"
+    }
+  ],
+  "aufzeichnungOrange": [
+    { "text": "Weiterbildungsplan", "hasLink": false, "link": "" },
+    {
+      "text": "Verzeichnis erfolgter Weiter ­ bildungsangebote",
+      "hasLink": false,
+      "link": ""
+    }
+  ],
+  "verantwortlicherOrange": "TeamleiterIn „Weiterbildung“",
+  "informationOrange": "Vorstand;\nGeschäftsführerIn;\nTeamleiterIn „Ehrenamt“\n",
+  "orange": false
+}

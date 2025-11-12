@@ -1,1 +1,43 @@
-{"schrittCount":5,"vorgabenBlue":[{"text":"KP 03.1 AH 06 „Projekt- Abschlussbericht“","hasLink":true,"link":""},{"text":"KP 03.1 AH 05 „Feedback- Bogen für Projektteam“","hasLink":true,"link":""}],"vorlagenBlue":[],"middleHead":"Abschluss der Einzel-Projekte","middleList":[{"text":"Auswertung der Feedbackbögen"},{"text":"Zusammenfassung der ggf. erstellten Zwischenberichte"},{"text":"Auswertung der Abschlussberichte über einzelne Projekte"},{"text":"Erhebung der Zufriedenheit der Mitglieder der Projektteams"}],"aufzeichnungOrange":[{"text":"Ausgefüllte Projekt-Abschlussberichte, (KP 03.1 AH 06) Ausfüllte Feedbackbögen:","hasLink":true,"link":""},{"text":"von VeranstaltungsteilnehmerInnen (AH 04)","hasLink":true,"link":""},{"text":"von den Mitgliedern der Projektteams (KP 03.1 AH 05)","hasLink":true,"link":""}],"verantwortlicherOrange":"Mitglieder des Evaluierungsteams","informationOrange":"LeiterIn des Evaluierungsteams","orange":false}
+{
+  "schrittCount": 5,
+  "vorgabenBlue": [
+    {
+      "text": "KP 03.1 AH 06 „Projekt- Abschlussbericht“",
+      "hasLink": true,
+      "link": ""
+    },
+    {
+      "text": "KP 03.1 AH 05 „Feedback- Bogen für Projektteam“",
+      "hasLink": true,
+      "link": ""
+    }
+  ],
+  "vorlagenBlue": [],
+  "middleHead": "Abschluss der Einzel-Projekte",
+  "middleList": [
+    { "text": "Auswertung der Feedbackbögen" },
+    { "text": "Zusammenfassung der ggf. erstellten Zwischenberichte" },
+    { "text": "Auswertung der Abschlussberichte über einzelne Projekte" },
+    { "text": "Erhebung der Zufriedenheit der Mitglieder der Projektteams" }
+  ],
+  "aufzeichnungOrange": [
+    {
+      "text": "Ausgefüllte Projekt-Abschlussberichte, (KP 03.1 AH 06) Ausfüllte Feedbackbögen:",
+      "hasLink": true,
+      "link": ""
+    },
+    {
+      "text": "von VeranstaltungsteilnehmerInnen (AH 04)",
+      "hasLink": true,
+      "link": ""
+    },
+    {
+      "text": "von den Mitgliedern der Projektteams (KP 03.1 AH 05)",
+      "hasLink": true,
+      "link": ""
+    }
+  ],
+  "verantwortlicherOrange": "Mitglieder des Evaluierungsteams",
+  "informationOrange": "LeiterIn des Evaluierungsteams",
+  "orange": false
+}

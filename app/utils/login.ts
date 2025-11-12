@@ -6,7 +6,7 @@ export function validateUsername(username: string) {
 
 export function validatePassword(password: string) {
   const regex =
-    /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_\-+=\[{\]};:'",<.>/?\\|`~])[A-Za-z\d!@#$%^&*()_\-+=\[{\]};:'",<.>/?\\|`~]{8,}$/;
+    /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_\-+=[{\]};:'",<.>/?\\|`~])[A-Za-z\d!@#$%^&*()_\-+=[{\]};:'",<.>/?\\|`~]{8,}$/;
 
   if (regex.test(password)) return "";
   return "Passwort muss mind. 8 Zeichen, 1 Großbuchstaben, 1 Zahl und 1 Sonderzeichen enthalten";

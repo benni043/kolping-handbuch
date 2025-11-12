@@ -3,7 +3,7 @@
 ---
 
 Bitte nicht vergessen:
-Die wichtigsten Punkte der „To-do-Liste“ zu diesem Kernprozess: 
+Die wichtigsten Punkte der „To-do-Liste“ zu diesem Kernprozess:
 
 <br>
 

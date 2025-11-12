@@ -1,1 +1,18 @@
-{"schrittCount":2,"vorgabenBlue":[],"vorlagenBlue":[],"middleHead":"Team zur Betreuung d. Ehrenamtlichen bilden","middleList":[{"text":"Ein Teil der Mitglieder dieses Teams kommt aus dem Verein"},{"text":"Ebenso sollten der/die GeschäftsführerIn des Hauses oder ein/e für die Betreuung der Ehrenamtlichen bestimmte/r hauptamtliche/r MitarbeiterIn diesem Team angehören"}],"aufzeichnungOrange":[{"text":"Protokoll der Vorstandssitzung","hasLink":false,"link":""}],"verantwortlicherOrange":"Vorstand\nGeschäftsführerin","informationOrange":"","orange":false}
+{
+  "schrittCount": 2,
+  "vorgabenBlue": [],
+  "vorlagenBlue": [],
+  "middleHead": "Team zur Betreuung d. Ehrenamtlichen bilden",
+  "middleList": [
+    { "text": "Ein Teil der Mitglieder dieses Teams kommt aus dem Verein" },
+    {
+      "text": "Ebenso sollten der/die GeschäftsführerIn des Hauses oder ein/e für die Betreuung der Ehrenamtlichen bestimmte/r hauptamtliche/r MitarbeiterIn diesem Team angehören"
+    }
+  ],
+  "aufzeichnungOrange": [
+    { "text": "Protokoll der Vorstandssitzung", "hasLink": false, "link": "" }
+  ],
+  "verantwortlicherOrange": "Vorstand\nGeschäftsführerin",
+  "informationOrange": "",
+  "orange": false
+}

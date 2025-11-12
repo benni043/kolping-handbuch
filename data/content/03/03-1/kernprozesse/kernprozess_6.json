@@ -1,1 +1,35 @@
-{"schrittCount":6,"vorgabenBlue":[{"text":"AH 01 „Projektdefinition“ (vom Auftraggeber ausgefüllt)","hasLink":true,"link":""},{"text":"Kolping-Handbuch","hasLink":false,"link":""},{"text":"Sonstige Unterlagen von Kolpingsfamilien, DV und BV","hasLink":false,"link":""}],"vorlagenBlue":[],"middleHead":"Recherche und Vernetzung","middleList":[{"text":"Infos einholen:"},{"text":"von benachbarten Kolpingsfamilien"},{"text":"vom Diözesanverband"},{"text":"vom Bundesverband"},{"text":"Vorhandenes Knowhow nutzen!"}],"aufzeichnungOrange":[{"text":"Recherche-Ergebnisse werden in einer DOKUMENTEN-SAMMLUNG abgelegt","hasLink":false,"link":""}],"verantwortlicherOrange":"Team-verantwortliche/r\n","informationOrange":"","orange":false}
+{
+  "schrittCount": 6,
+  "vorgabenBlue": [
+    {
+      "text": "AH 01 „Projektdefinition“ (vom Auftraggeber ausgefüllt)",
+      "hasLink": true,
+      "link": ""
+    },
+    { "text": "Kolping-Handbuch", "hasLink": false, "link": "" },
+    {
+      "text": "Sonstige Unterlagen von Kolpingsfamilien, DV und BV",
+      "hasLink": false,
+      "link": ""
+    }
+  ],
+  "vorlagenBlue": [],
+  "middleHead": "Recherche und Vernetzung",
+  "middleList": [
+    { "text": "Infos einholen:" },
+    { "text": "von benachbarten Kolpingsfamilien" },
+    { "text": "vom Diözesanverband" },
+    { "text": "vom Bundesverband" },
+    { "text": "Vorhandenes Knowhow nutzen!" }
+  ],
+  "aufzeichnungOrange": [
+    {
+      "text": "Recherche-Ergebnisse werden in einer DOKUMENTEN-SAMMLUNG abgelegt",
+      "hasLink": false,
+      "link": ""
+    }
+  ],
+  "verantwortlicherOrange": "Team-verantwortliche/r\n",
+  "informationOrange": "",
+  "orange": false
+}

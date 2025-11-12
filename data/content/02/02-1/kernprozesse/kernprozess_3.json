@@ -1,1 +1,19 @@
-{"schrittCount":3,"vorgabenBlue":[{"text":"AH 01 „Begrüßungsbrief“","hasLink":true,"link":""},{"text":"AH 02 \"Hausordnung - 18\"","hasLink":true,"link":""},{"text":"AH 03 \"Hausordnung + 18\"","hasLink":true,"link":""}],"vorlagenBlue":[],"middleHead":"Vergabe laut Beschluss","middleList":[{"text":"an neue BewohnerInnen (Berücksichtigung sozial Schwacher)"},{"text":"an Gruppen des Vereins"},{"text":"u.a.m."}],"aufzeichnungOrange":[],"verantwortlicherOrange":"Team des Kolpinghauses","informationOrange":"Wirtschaftsvorstand","orange":false}
+{
+  "schrittCount": 3,
+  "vorgabenBlue": [
+    { "text": "AH 01 „Begrüßungsbrief“", "hasLink": true, "link": "" },
+    { "text": "AH 02 \"Hausordnung - 18\"", "hasLink": true, "link": "" },
+    { "text": "AH 03 \"Hausordnung + 18\"", "hasLink": true, "link": "" }
+  ],
+  "vorlagenBlue": [],
+  "middleHead": "Vergabe laut Beschluss",
+  "middleList": [
+    { "text": "an neue BewohnerInnen (Berücksichtigung sozial Schwacher)" },
+    { "text": "an Gruppen des Vereins" },
+    { "text": "u.a.m." }
+  ],
+  "aufzeichnungOrange": [],
+  "verantwortlicherOrange": "Team des Kolpinghauses",
+  "informationOrange": "Wirtschaftsvorstand",
+  "orange": false
+}

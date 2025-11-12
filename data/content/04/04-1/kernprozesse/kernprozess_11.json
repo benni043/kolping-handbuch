@@ -1,1 +1,26 @@
-{"schrittCount":11,"vorgabenBlue":[{"text":"KP 07.2 „Öffentlichkeitsarbeit“","hasLink":true,"link":""},{"text":"AH 03 „Bundesjugendförderung“","hasLink":true,"link":""}],"vorlagenBlue":[],"middleHead":"„Projektmarketing“","middleList":[{"text":"ewerbung des Projekts im Haus, in den Vereinsmedien Medienarbeit"},{"text":"Zugehen auf Jugendliche außerhalb von Verein und Haus, um sie zur Mitarbeit ermuntern"},{"text":"Bei BJF­Projekten: Verwende das Logo des BMWFJ (siehe AH 03 „Bundesjugendförderung“ )"}],"aufzeichnungOrange":[{"text":"PR-Konzept","hasLink":false,"link":""}],"verantwortlicherOrange":"ProjektleiterIn","informationOrange":"Jugendvorstand","orange":false}
+{
+  "schrittCount": 11,
+  "vorgabenBlue": [
+    { "text": "KP 07.2 „Öffentlichkeitsarbeit“", "hasLink": true, "link": "" },
+    { "text": "AH 03 „Bundesjugendförderung“", "hasLink": true, "link": "" }
+  ],
+  "vorlagenBlue": [],
+  "middleHead": "„Projektmarketing“",
+  "middleList": [
+    {
+      "text": "ewerbung des Projekts im Haus, in den Vereinsmedien Medienarbeit"
+    },
+    {
+      "text": "Zugehen auf Jugendliche außerhalb von Verein und Haus, um sie zur Mitarbeit ermuntern"
+    },
+    {
+      "text": "Bei BJF­Projekten: Verwende das Logo des BMWFJ (siehe AH 03 „Bundesjugendförderung“ )"
+    }
+  ],
+  "aufzeichnungOrange": [
+    { "text": "PR-Konzept", "hasLink": false, "link": "" }
+  ],
+  "verantwortlicherOrange": "ProjektleiterIn",
+  "informationOrange": "Jugendvorstand",
+  "orange": false
+}

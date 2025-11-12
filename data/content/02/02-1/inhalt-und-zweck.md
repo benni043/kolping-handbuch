@@ -2,7 +2,7 @@
 
 ---
 
-Kolpingsfamilien verbindet ein gemeinsames Ziel: Die Gesellschaft nach Maß gabe der Ideen Adolph Kolpings mitzugestalten. Die Kolpinghäuser sind ein Mittel, dieses Ziel zu erreichen, das traditionell in vielen Kolpingsfamilien eine große Bedeutung hat. Folglich ist es sehr wichtig, das Kolpinghaus im Sinne der Idee zu nutzen, da es sonst seinen Zweck verfehlt, selbst wenn – was auch wichtig ist – die „Zahlen stimmen“. 
+Kolpingsfamilien verbindet ein gemeinsames Ziel: Die Gesellschaft nach Maß gabe der Ideen Adolph Kolpings mitzugestalten. Die Kolpinghäuser sind ein Mittel, dieses Ziel zu erreichen, das traditionell in vielen Kolpingsfamilien eine große Bedeutung hat. Folglich ist es sehr wichtig, das Kolpinghaus im Sinne der Idee zu nutzen, da es sonst seinen Zweck verfehlt, selbst wenn – was auch wichtig ist – die „Zahlen stimmen“.
 
 <br>
 

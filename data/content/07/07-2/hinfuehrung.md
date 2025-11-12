@@ -31,10 +31,10 @@ Ausgangspunkt für die Presse- und Öffentlichkeitsarbeit der Kolpingsfamilie is
 
 <br>
 
-1) aufzulisten (in einer „Landkarte“ für die Öffentlichkeitsarbeit)
-2) zu definieren, welche dieser Ansprechpartner für die Kolpingsfamilie besonders wichtig sind („primäre Zielgruppen“)
-3) zumindest für diese wichtigsten Ansprechpartner konkrete Ziele festzulegen
-4) und dann gemäß diesen Zielen in jeweils „maßgeschneiderter“ Form auf sie zuzugehen.
+1. aufzulisten (in einer „Landkarte“ für die Öffentlichkeitsarbeit)
+2. zu definieren, welche dieser Ansprechpartner für die Kolpingsfamilie besonders wichtig sind („primäre Zielgruppen“)
+3. zumindest für diese wichtigsten Ansprechpartner konkrete Ziele festzulegen
+4. und dann gemäß diesen Zielen in jeweils „maßgeschneiderter“ Form auf sie zuzugehen.
 
 <br>
 

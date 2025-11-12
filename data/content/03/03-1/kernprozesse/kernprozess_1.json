@@ -1,1 +1,14 @@
-{"schrittCount":1,"vorgabenBlue":[],"vorlagenBlue":[],"middleHead":"Projekt tritt ins Blickfeld","middleList":[{"text":"Feststellung eines Problems oder"},{"text":"ein neues Ziel wird ins Auge gefasst"}],"aufzeichnungOrange":[],"verantwortlicherOrange":"alle Personen in der KF\noder im DV/BV","informationOrange":"","orange":false}
+{
+  "schrittCount": 1,
+  "vorgabenBlue": [],
+  "vorlagenBlue": [],
+  "middleHead": "Projekt tritt ins Blickfeld",
+  "middleList": [
+    { "text": "Feststellung eines Problems oder" },
+    { "text": "ein neues Ziel wird ins Auge gefasst" }
+  ],
+  "aufzeichnungOrange": [],
+  "verantwortlicherOrange": "alle Personen in der KF\noder im DV/BV",
+  "informationOrange": "",
+  "orange": false
+}

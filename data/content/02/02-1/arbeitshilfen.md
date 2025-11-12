@@ -29,7 +29,7 @@ diese vier Anhänge dienen als Grundlage für die Abfassung von:
 - Stellenausschreibungen für die Position der/s GeschäftsführerIn
 - eines Dienstvertrages für den/die GeschäftsführerIn
 - der Geschäftsordnung für die Geschäftsführung
-… in einer den jeweiligen Bedürfnissen der Kolpingsfamilie angepassten Form.
+  … in einer den jeweiligen Bedürfnissen der Kolpingsfamilie angepassten Form.
 
 <br>
 

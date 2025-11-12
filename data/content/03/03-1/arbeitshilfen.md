@@ -2,7 +2,6 @@
 
 ---
 
-
 - [AH 01 Muster „Projektdefinition“](https://kolping.at)
 - [Bausteine „Kolping belebt. Quellen unseres Handelns“ (Bildungskonferenz 2008 zum Thema Kolping-Idee)](https://kolping.at)
 - [AH 02 Muster „Projektplan“](https://kolping.at)

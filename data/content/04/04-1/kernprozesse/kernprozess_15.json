@@ -1,1 +1,23 @@
-{"schrittCount":15,"vorgabenBlue":[{"text":"AH 08 „Jahresabschlussbericht der Kolpingjugend“","hasLink":true,"link":""}],"vorlagenBlue":[],"middleHead":"Bewertung d. Umsetzung d. Jugendarbeitsplans","middleList":[{"text":"Bewertung aller Aktivitäten und der Projekte"}],"aufzeichnungOrange":[{"text":"AH 08 „Jahresabschlussbericht“ (ausgefüllt)","hasLink":true,"link":""}],"verantwortlicherOrange":"JugendleiterIn und Team","informationOrange":"Einspeisen in den Kolping­Wissenspool;\nSammlung von „Best Practice“-Bsp.","orange":false}
+{
+  "schrittCount": 15,
+  "vorgabenBlue": [
+    {
+      "text": "AH 08 „Jahresabschlussbericht der Kolpingjugend“",
+      "hasLink": true,
+      "link": ""
+    }
+  ],
+  "vorlagenBlue": [],
+  "middleHead": "Bewertung d. Umsetzung d. Jugendarbeitsplans",
+  "middleList": [{ "text": "Bewertung aller Aktivitäten und der Projekte" }],
+  "aufzeichnungOrange": [
+    {
+      "text": "AH 08 „Jahresabschlussbericht“ (ausgefüllt)",
+      "hasLink": true,
+      "link": ""
+    }
+  ],
+  "verantwortlicherOrange": "JugendleiterIn und Team",
+  "informationOrange": "Einspeisen in den Kolping­Wissenspool;\nSammlung von „Best Practice“-Bsp.",
+  "orange": false
+}

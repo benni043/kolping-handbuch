@@ -1,1 +1,27 @@
-{"schrittCount":8,"vorgabenBlue":[{"text":"AH 02 „Projektplan“","hasLink":true,"link":""},{"text":"AH 03 „Aktionsplan“","hasLink":true,"link":""},{"text":"AH 04 „Projektkostenplan“","hasLink":true,"link":""}],"vorlagenBlue":[],"middleHead":"Info an Auftraggeber","middleList":[{"text":"Gemeinsame Besprechung und Ergänzung/Überarbeitung von Projektplan, Aktionsplan und Projektkostenplan"}],"aufzeichnungOrange":[{"text":"AH 02 „Projektplan“","hasLink":true,"link":""},{"text":"AH 03 „Aktionsplan“","hasLink":true,"link":""},{"text":"AH 04 „Projektkostenplan“ (alle AH ausgefüllt!)","hasLink":true,"link":""}],"verantwortlicherOrange":"ProjektleiterIn plus Projektteam","informationOrange":"Auftraggeber","orange":false}
+{
+  "schrittCount": 8,
+  "vorgabenBlue": [
+    { "text": "AH 02 „Projektplan“", "hasLink": true, "link": "" },
+    { "text": "AH 03 „Aktionsplan“", "hasLink": true, "link": "" },
+    { "text": "AH 04 „Projektkostenplan“", "hasLink": true, "link": "" }
+  ],
+  "vorlagenBlue": [],
+  "middleHead": "Info an Auftraggeber",
+  "middleList": [
+    {
+      "text": "Gemeinsame Besprechung und Ergänzung/Überarbeitung von Projektplan, Aktionsplan und Projektkostenplan"
+    }
+  ],
+  "aufzeichnungOrange": [
+    { "text": "AH 02 „Projektplan“", "hasLink": true, "link": "" },
+    { "text": "AH 03 „Aktionsplan“", "hasLink": true, "link": "" },
+    {
+      "text": "AH 04 „Projektkostenplan“ (alle AH ausgefüllt!)",
+      "hasLink": true,
+      "link": ""
+    }
+  ],
+  "verantwortlicherOrange": "ProjektleiterIn plus Projektteam",
+  "informationOrange": "Auftraggeber",
+  "orange": false
+}

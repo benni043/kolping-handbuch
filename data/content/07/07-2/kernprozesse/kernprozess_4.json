@@ -1,1 +1,17 @@
-{"schrittCount":4,"vorgabenBlue":[],"vorlagenBlue":[],"middleHead":"Info und Freigabe durch den Vorstand","middleList":[{"text":"Die Vereinsverantwortlichen bestätigen oder ergänzen oder ändern die Vorschläge des ÖA-Teams"}],"aufzeichnungOrange":[{"text":"Vorstandsbeschluss","hasLink":false,"link":""}],"verantwortlicherOrange":"Vorsitzende/r","informationOrange":"Alle Mitglieder der KF\n(über Vereinszeitung, Newsletter, Website, TO-Punkt bei der GV …)\nPräsidium des DV; BV/ Bundessekretär","orange":false}
+{
+  "schrittCount": 4,
+  "vorgabenBlue": [],
+  "vorlagenBlue": [],
+  "middleHead": "Info und Freigabe durch den Vorstand",
+  "middleList": [
+    {
+      "text": "Die Vereinsverantwortlichen bestätigen oder ergänzen oder ändern die Vorschläge des ÖA-Teams"
+    }
+  ],
+  "aufzeichnungOrange": [
+    { "text": "Vorstandsbeschluss", "hasLink": false, "link": "" }
+  ],
+  "verantwortlicherOrange": "Vorsitzende/r",
+  "informationOrange": "Alle Mitglieder der KF\n(über Vereinszeitung, Newsletter, Website, TO-Punkt bei der GV …)\nPräsidium des DV; BV/ Bundessekretär",
+  "orange": false
+}

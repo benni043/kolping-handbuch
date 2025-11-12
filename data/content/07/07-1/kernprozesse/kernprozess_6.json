@@ -1,1 +1,17 @@
-{"schrittCount":6,"vorgabenBlue":[],"vorlagenBlue":[],"middleHead":"Freigabe des Entwurfs des Bildungsplans","middleList":[{"text":"Der vom Bildungsteam erarbeitete Bildungsplan und alle konkreten Weiterbildungsmaßnahmen werden vom Vereinsvorstand geprüft und freigegeben (bzw. einzelne Maßnahmen abgelehnt, in welchem Falle sie nicht stattfinden)"}],"aufzeichnungOrange":[{"text":"Protokoll der Vorstands-Sitzung","hasLink":false,"link":""}],"verantwortlicherOrange":"Vorstand\nVorsitzende/r","informationOrange":"Bildungsteam","orange":false}
+{
+  "schrittCount": 6,
+  "vorgabenBlue": [],
+  "vorlagenBlue": [],
+  "middleHead": "Freigabe des Entwurfs des Bildungsplans",
+  "middleList": [
+    {
+      "text": "Der vom Bildungsteam erarbeitete Bildungsplan und alle konkreten Weiterbildungsmaßnahmen werden vom Vereinsvorstand geprüft und freigegeben (bzw. einzelne Maßnahmen abgelehnt, in welchem Falle sie nicht stattfinden)"
+    }
+  ],
+  "aufzeichnungOrange": [
+    { "text": "Protokoll der Vorstands-Sitzung", "hasLink": false, "link": "" }
+  ],
+  "verantwortlicherOrange": "Vorstand\nVorsitzende/r",
+  "informationOrange": "Bildungsteam",
+  "orange": false
+}

@@ -1,1 +1,17 @@
-{"schrittCount":9,"vorgabenBlue":[],"vorlagenBlue":[],"middleHead":"Schwerpunktsetzung für das Folgejahr","middleList":[{"text":"Abgeleitet aus der Handlungsempfehlung des Schlussberichts werden die neuen Schwerpunkte für das Folgejahr festgelegt. Weiter zu Schritt 01"}],"aufzeichnungOrange":[{"text":"Protokoll / Ablaufplan","hasLink":false,"link":""}],"verantwortlicherOrange":"Vorstand","informationOrange":"Mitglieder; Leitende Angestellte der Einrichtung","orange":false}
+{
+  "schrittCount": 9,
+  "vorgabenBlue": [],
+  "vorlagenBlue": [],
+  "middleHead": "Schwerpunktsetzung für das Folgejahr",
+  "middleList": [
+    {
+      "text": "Abgeleitet aus der Handlungsempfehlung des Schlussberichts werden die neuen Schwerpunkte für das Folgejahr festgelegt. Weiter zu Schritt 01"
+    }
+  ],
+  "aufzeichnungOrange": [
+    { "text": "Protokoll / Ablaufplan", "hasLink": false, "link": "" }
+  ],
+  "verantwortlicherOrange": "Vorstand",
+  "informationOrange": "Mitglieder; Leitende Angestellte der Einrichtung",
+  "orange": false
+}

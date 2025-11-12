@@ -1,1 +1,15 @@
-{"schrittCount":8,"vorgabenBlue":[],"vorlagenBlue":[],"middleHead":"Bericht in der Generalversammlung","middleList":[{"text":"Nach dem Bericht wird dem Evaluierungsteam Dank ausgesprochen."}],"aufzeichnungOrange":[{"text":"Protokoll der Generalversammlung","hasLink":false,"link":""}],"verantwortlicherOrange":"Vorsitzender","informationOrange":"Generalver­sammlung","orange":false}
+{
+  "schrittCount": 8,
+  "vorgabenBlue": [],
+  "vorlagenBlue": [],
+  "middleHead": "Bericht in der Generalversammlung",
+  "middleList": [
+    { "text": "Nach dem Bericht wird dem Evaluierungsteam Dank ausgesprochen." }
+  ],
+  "aufzeichnungOrange": [
+    { "text": "Protokoll der Generalversammlung", "hasLink": false, "link": "" }
+  ],
+  "verantwortlicherOrange": "Vorsitzender",
+  "informationOrange": "Generalver­sammlung",
+  "orange": false
+}
