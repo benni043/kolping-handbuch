@@ -1,6 +1,8 @@
 <script setup lang="ts">
 const { user, fetch: refreshSession, clear: clearSession } = useUserSession();
 
+const toast = useToast();
+
 const credentials = reactive({
   username: "",
   password: "",
@@ -12,10 +14,24 @@ async function login() {
       method: "POST",
       body: credentials,
     });
+
+    toast.add({
+      title: "Anmeldung erfolgreich!",
+      description: `Willkommen ${credentials.username}!`,
+      color: "success",
+      icon: "i-heroicons-check",
+    });
+
     await refreshSession();
     await navigateTo("/");
   } catch {
-    alert("Bad credentials");
+    toast.add({
+      title: "Fehler",
+      description:
+        "Anmeldung fehlgeschlagen! Ungültige Benutzer, Passwort Kombination",
+      color: "error",
+      icon: "i-heroicons-x-mark",
+    });
   }
 }
 

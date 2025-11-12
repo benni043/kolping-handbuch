@@ -189,6 +189,7 @@ function navigateTwoStepsBack() {
         >
           Admin
         </button>
+
         <button
           v-if="!loggedIn"
           class="text-xl cursor-pointer"
@@ -203,6 +204,7 @@ function navigateTwoStepsBack() {
         >
           Logout
         </button>
+
         <button
           class="text-xl cursor-pointer"
           @click="navigatoToIntroduction()"
