@@ -1,4 +1,6 @@
 <script setup lang="ts">
+const toast = useToast();
+
 const segment = getSegment(1);
 const current = segment === undefined ? "startpage" : segment;
 
@@ -19,7 +21,21 @@ async function updateNote(note: string) {
     },
   });
 
-  console.log(response);
+  if (response.success) {
+    toast.add({
+      title: "Erfolg",
+      description: "Die Datei wurde erfolgreich geändert!",
+      color: "success",
+      icon: "i-heroicons-check",
+    });
+  } else {
+    toast.add({
+      title: "Fehler",
+      description: "Beim Ändern der Datei ist ein Fehler aufgetreten!",
+      color: "error",
+      icon: "i-heroicons-x-mark",
+    });
+  }
 }
 </script>
 

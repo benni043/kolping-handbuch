@@ -6,6 +6,8 @@ definePageMeta({
   middleware: ["authenticated"],
 });
 
+const toast = useToast();
+
 const route = useRoute();
 
 const { data } = await useFetch<string>("/api/content/", {
@@ -27,7 +29,21 @@ async function updateNote(note: string) {
     },
   });
 
-  console.log(response);
+  if (response.success) {
+    toast.add({
+      title: "Erfolg",
+      description: "Die Datei wurde erfolgreich geändert!",
+      color: "success",
+      icon: "i-heroicons-check",
+    });
+  } else {
+    toast.add({
+      title: "Fehler",
+      description: "Beim Ändern der Datei ist ein Fehler aufgetreten!",
+      color: "error",
+      icon: "i-heroicons-x-mark",
+    });
+  }
 }
 </script>
 
