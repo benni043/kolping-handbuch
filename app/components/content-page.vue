@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { marked } from "marked";
+import { SourceTextModule } from "vm";
 import { onMounted, ref, watch } from "vue";
 
 const { user } = useUserSession();
@@ -24,6 +25,7 @@ watch(
   () => props.note,
   async (newVal) => {
     note.value = newVal;
+
     if (render.value) {
       render.value.innerHTML = await marked.parse(newVal ?? "");
     }

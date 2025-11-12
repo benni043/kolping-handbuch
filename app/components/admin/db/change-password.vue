@@ -1,49 +1,40 @@
 <script setup lang="ts">
-definePageMeta({
-  middleware: ["authenticated"],
-  allowedRoles: ["admin"],
-});
+const emit = defineEmits(["cancle", "change"]);
 
-const emit = defineEmits(["cancle", "add"]);
+const props = defineProps<{
+  id: number;
+}>();
 
-const usernameRef = ref("");
-const passwordRef = ref("");
-const password2Ref = ref("");
-const roleRef = ref("user");
-
-const usernameError = ref("");
 const passwordError = ref("");
 const password2Error = ref("");
 
-watch(usernameRef, () => {
-  usernameError.value = validateUsername(usernameRef.value);
-});
-watch(passwordRef, () => {
-  passwordError.value = validatePassword(passwordRef.value);
+const password1 = ref("");
+const password2 = ref("");
+
+watch(password1, () => {
+  passwordError.value = validatePassword(password1.value);
   password2Error.value = validatePasswordMatch(
-    passwordRef.value,
-    password2Ref.value,
+    password1.value,
+    password2.value,
   );
 });
-watch(password2Ref, () => {
+watch(password2, () => {
   password2Error.value = validatePasswordMatch(
-    passwordRef.value,
-    password2Ref.value,
+    password1.value,
+    password2.value,
   );
 });
 
-async function add() {
-  usernameError.value = validateUsername(usernameRef.value);
-  passwordError.value = validatePassword(passwordRef.value);
+async function change() {
+  passwordError.value = validatePassword(password1.value);
   password2Error.value = validatePasswordMatch(
-    passwordRef.value,
-    password2Ref.value,
+    password1.value,
+    password2.value,
   );
 
-  if (usernameError.value || passwordError.value || password2Error.value)
-    return;
+  if (passwordError.value || password2Error.value) return;
 
-  emit("add", usernameRef.value, passwordRef.value, roleRef.value);
+  emit("change", props.id, password1.value);
 }
 
 function cancle() {
@@ -60,24 +51,9 @@ function cancle() {
 
       <UForm class="space-y-5">
         <div>
-          <h1 class="mb-4 text-xl font-semibold">Benutzername</h1>
-          <UInput
-            v-model="usernameRef"
-            placeholder="Benutzername"
-            type="text"
-            size="xl"
-            class="w-full"
-          />
-          <p v-if="usernameError" class="text-red-500 mt-2 font-medium">
-            {{ usernameError }}
-          </p>
-        </div>
-
-        <div>
           <h1 class="mb-4 text-xl font-semibold">Passwort</h1>
-
           <UInput
-            v-model="passwordRef"
+            v-model="password1"
             placeholder="Passwort"
             type="password"
             size="xl"
@@ -90,9 +66,8 @@ function cancle() {
 
         <div>
           <h1 class="mb-4 text-xl font-semibold">Passwort wiederholen</h1>
-
           <UInput
-            v-model="password2Ref"
+            v-model="password2"
             placeholder="Passwort wiederholen"
             type="password"
             size="xl"
@@ -101,15 +76,6 @@ function cancle() {
           <p v-if="password2Error" class="text-red-500 mt-2 font-medium">
             {{ password2Error }}
           </p>
-        </div>
-
-        <div>
-          <h1 class="mb-4 text-xl font-semibold">Rolle</h1>
-          <select v-model="roleRef" class="w-full border rounded-lg p-2">
-            <option value="user">user</option>
-            <option value="editor">editor</option>
-            <option value="admin">admin</option>
-          </select>
         </div>
 
         <div class="flex gap-5">
@@ -122,16 +88,14 @@ function cancle() {
             icon="i-heroicons-lock-closed"
             class="cursor-pointer"
             :disabled="
-              usernameError !== '' ||
               passwordError !== '' ||
               password2Error !== '' ||
-              usernameRef === '' ||
-              passwordRef === '' ||
-              password2Ref === ''
+              password1 === '' ||
+              password2 === ''
             "
-            @click.prevent="add"
+            @click="change()"
           >
-            Erstellen
+            Ändern
           </UButton>
 
           <UButton
@@ -141,7 +105,7 @@ function cancle() {
             block
             icon="i-heroicons-x-mark"
             class="cursor-pointer"
-            @click="cancle"
+            @click="cancle()"
           >
             Abbrechen
           </UButton>

@@ -2,6 +2,7 @@
 import type { User } from "#auth-utils";
 import { ref, onMounted } from "vue";
 import ChangeUser from "~/components/admin/db/change-user.vue";
+import ChangePassword from "~/components/admin/db/change-password.vue";
 import NewUser from "~/components/admin/db/new-user.vue";
 
 definePageMeta({
@@ -14,7 +15,7 @@ const blurStore = useBlurStore();
 const users: Ref<User[]> = ref([]);
 
 const editingUser = ref<User | null>(null);
-
+const passwordChangingId = ref<number | null>(null);
 const addingUser = ref(false);
 
 async function fetchUsers() {
@@ -26,10 +27,15 @@ async function fetchUsers() {
   users.value.sort((user, user2) => user.id - user2.id);
 }
 
-const startEdit = (user: User) => {
+function startEditing(user: User) {
   editingUser.value = { ...user };
   blurStore.blur = !blurStore.blur;
-};
+}
+
+function startEditingPassword(userId: number) {
+  passwordChangingId.value = userId;
+  blurStore.blur = !blurStore.blur;
+}
 
 function toggleAdd() {
   addingUser.value = !addingUser.value;
@@ -38,26 +44,8 @@ function toggleAdd() {
 
 function cancle() {
   editingUser.value = null;
+  passwordChangingId.value = null;
   blurStore.blur = !blurStore.blur;
-}
-
-async function change(id: number, username: string, role: string) {
-  if (!confirm("Sind Sie sicher, dass sie diesen Benutzer bearbeiten möchten?"))
-    return;
-
-  await $fetch("/api/admin/user", {
-    method: "PUT",
-    headers: { "Content-Type": "application/json" },
-    body: {
-      id: id,
-      username: username,
-      role: role,
-    },
-  });
-
-  await fetchUsers();
-
-  cancle();
 }
 
 async function add(username: string, password: string, role: string) {
@@ -79,6 +67,25 @@ async function add(username: string, password: string, role: string) {
   toggleAdd();
 }
 
+async function change(id: number, username: string, role: string) {
+  if (!confirm("Sind Sie sicher, dass sie diesen Benutzer bearbeiten möchten?"))
+    return;
+
+  await $fetch("/api/admin/user", {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: {
+      id: id,
+      username: username,
+      role: role,
+    },
+  });
+
+  await fetchUsers();
+
+  cancle();
+}
+
 async function deleteUser(id: number) {
   if (!confirm("Sind Sie sicher, dass sie diesen Benutzer löschen möchten?"))
     return;
@@ -92,6 +99,28 @@ async function deleteUser(id: number) {
   });
 
   await fetchUsers();
+}
+
+async function changeUserPassword(id: number, password: string) {
+  if (
+    !confirm(
+      `Sind Sie sicher, dass Sie das Passwort des Benutzers ${id} bearbeiten möchten?`,
+    )
+  )
+    return;
+
+  await $fetch("/api/admin/password", {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: {
+      id: id,
+      password: password,
+    },
+  });
+
+  await fetchUsers();
+
+  cancle();
 }
 
 onMounted(() => {
@@ -148,7 +177,7 @@ onMounted(() => {
             <td class="border border-gray-300 p-2 text-left flex gap-5">
               <button
                 class="bg-blue-600 text-white px-3 py-1 rounded cursor-pointer"
-                @click="startEdit(user)"
+                @click="startEditing(user)"
               >
                 Bearbeiten
               </button>
@@ -158,6 +187,13 @@ onMounted(() => {
                 @click="deleteUser(user.id)"
               >
                 Löschen
+              </button>
+
+              <button
+                class="bg-orange-600 text-white px-3 py-1 rounded cursor-pointer"
+                @click="startEditingPassword(user.id)"
+              >
+                Passwort ändern
               </button>
             </td>
           </tr>
@@ -175,6 +211,19 @@ onMounted(() => {
           @cancle="cancle()"
           @change="(id, username, role) => change(id, username, role)"
         ></change-user>
+      </div>
+
+      <div
+        v-if="passwordChangingId"
+        class="fixed inset-0 z-50 overflow-y-auto p-6 blur-none"
+      >
+        <change-password
+          :id="passwordChangingId"
+          @cancle="cancle()"
+          @change="
+            (id: number, password: string) => changeUserPassword(id, password)
+          "
+        ></change-password>
       </div>
     </div>
   </div>
