@@ -8,6 +8,8 @@ definePageMeta({
   middleware: ["authenticated"],
 });
 
+const toast = useToast();
+
 const { user } = useUserSession();
 
 const route = useRoute();
@@ -47,7 +49,7 @@ async function deleteKernprozess(kernprozessNumber: number) {
       "Sind Sie sicher, dass Sie diesen Kernprozess löschen möchten? Dieser Vorgang kann nicht Rückgängig gemacht werden!",
     )
   ) {
-    await $fetch("/api/save/kernprozess/", {
+    const response = await $fetch("/api/save/kernprozess/", {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
       body: {
@@ -60,11 +62,28 @@ async function deleteKernprozess(kernprozessNumber: number) {
     kernprozesseRef.value = kernprozesseRef.value.filter(
       (k) => k.schrittCount !== kernprozessNumber,
     );
+
+    if (response.success) {
+      toast.add({
+        title: "Erfolg",
+        description: `Der Kernprozess mit der Nummer ${kernprozessNumber} wurde erfolgreich gelöscht!`,
+        color: "success",
+        icon: "i-heroicons-check",
+      });
+    } else {
+      toast.add({
+        title: "Fehler",
+        description:
+          "Beim Löschen des Kernprozesses ist ein Fehler aufgetreten!",
+        color: "error",
+        icon: "i-heroicons-x-mark",
+      });
+    }
   }
 }
 
 async function send(kernprozess: Kernprozess, count: number) {
-  await $fetch("/api/save/kernprozess/", {
+  const response = await $fetch("/api/save/kernprozess/", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: {
@@ -74,6 +93,32 @@ async function send(kernprozess: Kernprozess, count: number) {
       data: JSON.stringify(kernprozess),
     },
   });
+
+  if (response.success) {
+    if (kernprozess.schrittCount > kernprozesseRef.value.length) {
+      toast.add({
+        title: "Erfolg",
+        description: `Der Kernprozess mit der Nummer ${kernprozess.schrittCount} wurde erfolgreich erstellt!`,
+        color: "success",
+        icon: "i-heroicons-check",
+      });
+    } else {
+      toast.add({
+        title: "Erfolg",
+        description: `Der Kernprozess mit der Nummer ${kernprozess.schrittCount} wurde erfolgreich geändert!`,
+        color: "success",
+        icon: "i-heroicons-check",
+      });
+    }
+  } else {
+    toast.add({
+      title: "Fehler",
+      description:
+        "Beim Erstellen des Kernprozesses ist ein Fehler aufgetreten!",
+      color: "error",
+      icon: "i-heroicons-x-mark",
+    });
+  }
 
   await fetchKernprozesse();
 
