@@ -36,15 +36,15 @@ function cancle() {
   <div class="flex justify-center items-center h-full">
     <UCard class="w-100 p-8">
       <h1 class="text-2xl font-semibold text-center mb-10">
-        Benutzer bearbeiten
+        Inhalt hinzufügen
       </h1>
 
       <UForm class="space-y-5">
         <div>
-          <h1 class="mb-4 text-xl font-semibold">Benutzername</h1>
+          <h1 class="mb-4 text-xl font-semibold">Menuname</h1>
           <UInput
             v-model="menuName"
-            placeholder="Menüpunkt"
+            placeholder="Menuname"
             type="text"
             size="xl"
             class="w-full"
@@ -55,11 +55,11 @@ function cancle() {
         </div>
 
         <div>
-          <h1 class="mb-4 text-xl font-semibold">Passwort</h1>
+          <h1 class="mb-4 text-xl font-semibold">Untermenu</h1>
 
           <UInput
             v-model="subMenuName"
-            placeholder="Untermenüpunkt"
+            placeholder="Untermenu"
             type="text"
             size="xl"
             class="w-full"
@@ -86,7 +86,7 @@ function cancle() {
             "
             @click.prevent="add"
           >
-            Erstellen
+              Hinzufügen
           </UButton>
 
           <UButton
