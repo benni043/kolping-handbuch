@@ -2,12 +2,18 @@
 import { ref } from "vue";
 import type { Structure } from "~/types/structure";
 import { categories } from "~/utils/utils";
+import Lvl1Component from "~/components/nav/lvl1-component.vue";
 
 defineProps<{
   data: Structure[];
 }>();
 
-const emit = defineEmits(["emit-route"]);
+const emit = defineEmits(["emit-route", "refetch"]);
+
+const toast = useToast();
+const blurStore = useBlurStore();
+
+const { user } = useUserSession();
 
 const hoveredCategory = ref<number | null>(null);
 const hoveredSub = ref<number | null>(null);
@@ -18,6 +24,9 @@ let subTimeout: ReturnType<typeof setTimeout> | null = null;
 let subSubTimeout: ReturnType<typeof setTimeout> | null = null;
 
 const timeout = 500;
+
+const addingLvl1 = ref(false);
+const addingLvl2 = ref(false);
 
 function click(
   pathId: string,
@@ -64,13 +73,59 @@ function leaveSubSub() {
     hoveredSubSub.value = null;
   }, timeout);
 }
+
+function addLvl1() {
+  blurStore.blur = true;
+  addingLvl1.value = true;
+}
+
+function addLvl2() {}
+
+async function addLvl1Menu(menuName: string, subMenuName: string) {
+  const response = await $fetch("/api/content", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: {
+      menuName: menuName,
+      subMenuName: subMenuName,
+    },
+  });
+
+  if (response.success) {
+    toast.add({
+      title: "Erfolg",
+      description: "Der Menupunkt wurde erfolgreich hinzugefügt!",
+      color: "success",
+      icon: "i-heroicons-check",
+    });
+  } else {
+    toast.add({
+      title: "Fehler",
+      description: "Beim Hinzufügen des Benutzers ist ein Fehler aufgetreten!",
+      color: "error",
+      icon: "i-heroicons-x-mark",
+    });
+  }
+
+  cancleAdding();
+
+  emit("refetch");
+}
+
+function cancleAdding() {
+  blurStore.blur = false;
+  addingLvl1.value = false;
+  addingLvl2.value = false;
+}
 </script>
 
 <template>
-  <div class="z-10">
+  <div class="z-10 relative">
     <ul
       class="rounded-tl-2xl rounded-bl-2xl min-w-88 bg-[#50A9CE]/[0.33] text-sm divide-y divide-gray-400"
+      :class="{ 'blur-sm': blurStore.blur }"
     >
+      <!-- normal lvl 1 -->
       <li
         v-for="(path, index) in data"
         :key="path.id"
@@ -91,6 +146,7 @@ function leaveSubSub() {
           v-if="hoveredCategory === index"
           class="absolute ml-1 top-0 left-full min-w-88 max-w-max text-sm divide-y bg-white divide-gray-400"
         >
+          <!-- normal lvl 2 -->
           <li
             v-for="(subPath, subIndex) in path.children"
             :key="subPath.id"
@@ -128,8 +184,53 @@ function leaveSubSub() {
               </li>
             </ul>
           </li>
+
+          <!-- extra lvl 2 -->
+          <li
+            v-if="user?.role === 'admin' || user?.role === 'editor'"
+            class="relative h-11 bg-[#50A9CE]/[0.33]"
+            @mouseenter="enterSub(-1)"
+            @mouseleave="leaveSub"
+            @click.stop="addLvl2()"
+          >
+            <div
+              class="h-full w-full flex items-center cursor-pointer ml-5"
+              :class="{ 'text-[#F18700]': hoveredSub === -1 }"
+            >
+              <b class="text-[#F18700]">+</b>&emsp;
+              <b>Extra Unterpunkt</b>
+            </div>
+          </li>
         </ul>
       </li>
+
+      <!-- extra lvl 1 -->
+      <li
+        v-if="user?.role === 'admin' || user?.role === 'editor'"
+        class="relative h-11"
+        @mouseenter="enterCategory(-1)"
+        @mouseleave="leaveCategory"
+        @click.stop="addLvl1()"
+      >
+        <div
+          class="h-full w-full flex items-center ml-5 cursor-pointer"
+          :class="{ 'text-[#F18700]': hoveredCategory === -1 }"
+        >
+          <b class="text-[#F18700]">+</b>&emsp;
+          <b>Extra Menüpunkt</b>
+        </div>
+      </li>
     </ul>
+
+    <div class="absolute top-0 left-50">
+      <lvl1-component
+        v-if="addingLvl1"
+        @cancle="cancleAdding()"
+        @add="
+          (menuName: string, subMenuName: string) =>
+            addLvl1Menu(menuName, subMenuName)
+        "
+      ></lvl1-component>
+    </div>
   </div>
 </template>

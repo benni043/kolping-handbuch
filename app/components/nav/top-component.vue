@@ -20,17 +20,17 @@ const category = ref("");
 const pathId = ref("");
 const subPathId = ref("");
 
-const { data } = await useFetch<Structure[]>(`/api/structure`, {
-  method: "GET",
-});
+// const { data } = await useFetch<Structure[]>(`/api/structure`, {
+//   method: "GET",
+// });
 
-watch(
-  data,
-  (newVal) => {
-    if (newVal) structureStore.setStructure(newVal);
-  },
-  { immediate: true },
-);
+// watch(
+//   data,
+//   (newVal) => {
+//     if (newVal) structureStore.setStructure(newVal);
+//   },
+//   { immediate: true },
+// );
 
 watch(
   () => route.params,
@@ -39,7 +39,16 @@ watch(
   },
 );
 
+async function fetchStructure() {
+  const structure = await $fetch<Structure[]>(`/api/structure`, {
+    method: "GET",
+  });
+
+  structureStore.setStructure(structure);
+}
+
 onMounted(() => {
+  fetchStructure();
   handleRouting();
 });
 
@@ -172,8 +181,11 @@ function navigateTwoStepsBack() {
 </script>
 
 <template>
-  <div :class="{ 'blur-sm': blurStore.blur }">
-    <div class="mt-5 ml-5 mb-10 flex justify-between">
+  <div>
+    <div
+      class="mt-5 ml-5 mb-10 flex justify-between"
+      :class="{ 'blur-sm': blurStore.blur }"
+    >
       <img
         class="w-60 cursor-pointer"
         src="/img/logo.png"
@@ -216,15 +228,15 @@ function navigateTwoStepsBack() {
 
     <div class="mb-15 flex justify-center items-start gap-1">
       <nav-menu
-        v-if="data"
         :data="structureStore.structure"
         @emit-route="
           (pathIdNew, subPathNewId, categoryNew) =>
             navigateToCategory(pathIdNew, subPathNewId, categoryNew)
         "
+        @refetch="fetchStructure()"
       ></nav-menu>
 
-      <div class="relative">
+      <div class="relative" :class="{ 'blur-sm': blurStore.blur }">
         <div class="flex flex-col absolute h-full justify-center ml-20">
           <h1 class="text-6xl">
             <b>Kolping</b>
@@ -234,7 +246,7 @@ function navigateTwoStepsBack() {
 
         <img
           :style="{
-            height: `calc(var(--spacing) * ${structureStore.getOuterCount() * 11})`,
+            height: `calc(var(--spacing) * ${(structureStore.getOuterCount() + (user?.role === 'editor' || user?.role === 'admin' ? 1 : 0)) * 11})`,
           }"
           class="w-150 test"
           src="/img/header.png"
@@ -243,9 +255,12 @@ function navigateTwoStepsBack() {
       </div>
     </div>
 
-    <div class="h-10 bg-gray-200 mb-10"></div>
+    <div
+      :class="{ 'blur-sm': blurStore.blur }"
+      class="h-10 bg-gray-200 mb-10"
+    ></div>
 
-    <div class="flex gap-3 ml-20 mb-10">
+    <div :class="{ 'blur-sm': blurStore.blur }" class="flex gap-3 ml-20 mb-10">
       <a class="cursor-pointer" @click="returnToHome()">Handbuch</a>
 
       <span v-if="path !== ''">></span>

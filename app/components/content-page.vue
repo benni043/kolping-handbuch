@@ -4,6 +4,8 @@ import { onMounted, ref, watch } from "vue";
 
 const { user } = useUserSession();
 
+const blurStore = useBlurStore();
+
 const emit = defineEmits<{
   (e: "update-note", note: string): void;
 }>();
@@ -11,7 +13,7 @@ const emit = defineEmits<{
 const props = defineProps<{ note: string }>();
 const note = ref(props.note);
 
-const isEditing = ref(note.value === "");
+const isEditing = ref(false);
 const render = useTemplateRef("render");
 
 watch(isEditing, async () => {
@@ -48,7 +50,7 @@ function send() {
 </script>
 
 <template>
-  <div>
+  <div :class="{ 'blur-sm': blurStore.blur }">
     <div
       v-if="user && (user.role === 'admin' || user.role === 'editor')"
       class="relative"
@@ -60,7 +62,6 @@ function send() {
       >
         BEARBEITEN
       </button>
-
       <button
         v-if="isEditing"
         class="absolute mr-10 right-0 bg-green-400 hover:bg-green-500 text-white px-4 py-2 rounded cursor-pointer"
