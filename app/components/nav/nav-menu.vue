@@ -3,6 +3,7 @@ import { ref } from "vue";
 import type { Structure } from "~/types/structure";
 import { categories } from "~/utils/utils";
 import Lvl1Component from "~/components/nav/lvl1-component.vue";
+import Lvl2Component from "~/components/nav/lvl2-component.vue";
 
 defineProps<{
   data: Structure[];
@@ -79,7 +80,41 @@ function addLvl1() {
   addingLvl1.value = true;
 }
 
-function addLvl2() {}
+function addLvl2() {
+  blurStore.blur = true;
+  addingLvl2.value = true;
+}
+
+async function addLvl2Menu(subMenuName: string) {
+  const response = await $fetch("/api/content/subMenu", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: {
+      menuId: "08",
+      subMenuName: subMenuName,
+    },
+  });
+
+  if (response.success) {
+    toast.add({
+      title: "Erfolg",
+      description: "Der Untermenupunkt wurde erfolgreich hinzugefügt!",
+      color: "success",
+      icon: "i-heroicons-check",
+    });
+  } else {
+    toast.add({
+      title: "Fehler",
+      description: "Beim Hinzufügen des Benutzers ist ein Fehler aufgetreten!",
+      color: "error",
+      icon: "i-heroicons-x-mark",
+    });
+  }
+
+  cancleAdding();
+
+  emit("refetch");
+}
 
 async function addLvl1Menu(menuName: string, subMenuName: string) {
   const response = await $fetch("/api/content", {
@@ -122,14 +157,21 @@ function cancleAdding() {
 <template>
   <div class="z-10 relative">
     <ul
-      class="rounded-tl-2xl rounded-bl-2xl min-w-88 bg-[#50A9CE]/[0.33] text-sm divide-y divide-gray-400"
+      class="min-w-88 text-sm divide-y divide-gray-400"
       :class="{ 'blur-sm': blurStore.blur }"
     >
       <!-- normal lvl 1 -->
       <li
         v-for="(path, index) in data"
         :key="path.id"
-        class="relative h-11"
+        class="relative h-11 bg-[#50A9CE]/[0.33]"
+        :class="{
+          'rounded-tl-2xl': index === 0,
+          'rounded-bl-2xl':
+            index === data.length - 1 &&
+            user?.role !== 'admin' &&
+            user?.role !== 'editor',
+        }"
         @mouseenter="enterCategory(index)"
         @mouseleave="leaveCategory"
         @click.stop="click(path.id, null, null)"
@@ -188,7 +230,7 @@ function cancleAdding() {
           <!-- extra lvl 2 -->
           <li
             v-if="user?.role === 'admin' || user?.role === 'editor'"
-            class="relative h-11 bg-[#50A9CE]/[0.33]"
+            class="relative h-11 bg-[#00a28c]/[0.33]"
             @mouseenter="enterSub(-1)"
             @mouseleave="leaveSub"
             @click.stop="addLvl2()"
@@ -207,7 +249,7 @@ function cancleAdding() {
       <!-- extra lvl 1 -->
       <li
         v-if="user?.role === 'admin' || user?.role === 'editor'"
-        class="relative h-11"
+        class="relative h-11 bg-[#00a28c]/[0.33] rounded-bl-2xl"
         @mouseenter="enterCategory(-1)"
         @mouseleave="leaveCategory"
         @click.stop="addLvl1()"
@@ -231,6 +273,12 @@ function cancleAdding() {
             addLvl1Menu(menuName, subMenuName)
         "
       ></lvl1-component>
+
+      <lvl2-component
+        v-if="addingLvl2"
+        @cancle="cancleAdding()"
+        @add="(subMenuName: string) => addLvl2Menu(subMenuName)"
+      ></lvl2-component>
     </div>
   </div>
 </template>

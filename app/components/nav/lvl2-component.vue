@@ -6,15 +6,8 @@ definePageMeta({
 
 const emit = defineEmits(["cancle", "add"]);
 
-const menuName = ref("");
 const subMenuName = ref("");
-
-const menuError = ref("");
 const subMenuError = ref("");
-
-watch(menuName, () => {
-  menuError.value = validateUsername(menuName.value);
-});
 
 watch(subMenuName, () => {
   subMenuError.value = validateUsername(subMenuName.value);
@@ -24,7 +17,7 @@ async function add() {
   if (!confirm("Sind Sie sicher, dass sie diesen Menupunkt hinzufügen wollen?"))
     return;
 
-  emit("add", menuName.value, subMenuName.value);
+  emit("add", subMenuName.value);
 }
 
 function cancle() {
@@ -40,20 +33,6 @@ function cancle() {
       </h1>
 
       <UForm class="space-y-5">
-        <div>
-          <h1 class="mb-4 text-xl font-semibold">Menuname</h1>
-          <UInput
-            v-model="menuName"
-            placeholder="Menuname"
-            type="text"
-            size="xl"
-            class="w-full"
-          />
-          <p v-if="menuError" class="text-red-500 mt-2 font-medium">
-            {{ menuError }}
-          </p>
-        </div>
-
         <div>
           <h1 class="mb-4 text-xl font-semibold">Untermenu</h1>
 
@@ -78,12 +57,7 @@ function cancle() {
             block
             icon="i-heroicons-lock-closed"
             class="cursor-pointer"
-            :disabled="
-              menuError !== '' ||
-              subMenuError !== '' ||
-              menuName === '' ||
-              subMenuName === ''
-            "
+            :disabled="subMenuError !== '' || subMenuName === ''"
             @click.prevent="add"
           >
             Hinzufügen
