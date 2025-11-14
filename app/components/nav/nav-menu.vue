@@ -29,6 +29,8 @@ const timeout = 500;
 const addingLvl1 = ref(false);
 const addingLvl2 = ref(false);
 
+const currentPathId = ref("");
+
 function click(
   pathId: string,
   subPathId: string | null,
@@ -80,7 +82,9 @@ function addLvl1() {
   addingLvl1.value = true;
 }
 
-function addLvl2() {
+function addLvl2(pathId: string) {
+  currentPathId.value = pathId;
+
   blurStore.blur = true;
   addingLvl2.value = true;
 }
@@ -90,7 +94,7 @@ async function addLvl2Menu(subMenuName: string) {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: {
-      menuId: "08",
+      menuId: currentPathId.value,
       subMenuName: subMenuName,
     },
   });
@@ -149,8 +153,11 @@ async function addLvl1Menu(menuName: string, subMenuName: string) {
 
 function cancleAdding() {
   blurStore.blur = false;
+
   addingLvl1.value = false;
   addingLvl2.value = false;
+
+  currentPathId.value = "";
 }
 </script>
 
@@ -233,7 +240,7 @@ function cancleAdding() {
             class="relative h-11 bg-[#00a28c]/[0.33]"
             @mouseenter="enterSub(-1)"
             @mouseleave="leaveSub"
-            @click.stop="addLvl2()"
+            @click.stop="addLvl2(path.id)"
           >
             <div
               class="h-full w-full flex items-center cursor-pointer ml-5"
