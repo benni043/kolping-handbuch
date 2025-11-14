@@ -4,7 +4,7 @@ const toast = useToast();
 const segment = getSegment(1);
 const current = segment === undefined ? "startpage" : segment;
 
-const { data } = await useFetch<string>("/api/content/startpage", {
+const { data } = await useFetch<string>("/api/content/page", {
   method: "GET",
   query: {
     file: current,

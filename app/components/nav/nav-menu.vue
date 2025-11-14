@@ -121,7 +121,7 @@ async function addLvl2Menu(subMenuName: string) {
 }
 
 async function addLvl1Menu(menuName: string, subMenuName: string) {
-  const response = await $fetch("/api/content", {
+  const response = await $fetch("/api/content/menu", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: {
