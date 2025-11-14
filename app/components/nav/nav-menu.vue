@@ -164,7 +164,7 @@ function cancleAdding() {
 <template>
   <div class="z-10 relative">
     <ul
-      class="min-w-88 text-sm divide-y divide-gray-400"
+      class="min-w-98 text-sm divide-y divide-gray-400"
       :class="{ 'blur-sm': blurStore.blur }"
     >
       <!-- normal lvl 1 -->
@@ -179,21 +179,34 @@ function cancleAdding() {
             user?.role !== 'admin' &&
             user?.role !== 'editor',
         }"
-        @mouseenter="enterCategory(index)"
-        @mouseleave="leaveCategory"
-        @click.stop="click(path.id, null, null)"
       >
         <div
-          class="h-full w-full flex items-center ml-5 cursor-pointer"
+          class="h-full w-full flex items-center cursor-pointer relative"
           :class="{ 'text-[#F18700]': hoveredCategory === index }"
         >
-          <b class="text-[#F18700]">{{ path.id }}&emsp;</b>
-          <b>{{ path.title }}</b>
+          <b class="text-[#F18700] ml-5">{{ path.id }}&emsp;</b>
+          <b
+            class="w-full mr-10"
+            @mouseenter="enterCategory(index)"
+            @mouseleave="leaveCategory"
+            @click.stop="click(path.id, null, null)"
+            >{{ path.title }}</b
+          >
+          <button
+            class="group absolute right-0 text-red-500 p-5 overflow-visible"
+          >
+            <b
+              ><span
+                class="inline-block transform transition duration-200 group-hover:scale-145"
+                >X</span
+              ></b
+            >
+          </button>
         </div>
 
         <ul
           v-if="hoveredCategory === index"
-          class="absolute ml-1 top-0 left-full min-w-88 max-w-max text-sm divide-y bg-white divide-gray-400"
+          class="absolute ml-1 top-0 left-full min-w-98 max-w-max text-sm divide-y bg-white divide-gray-400"
         >
           <!-- normal lvl 2 -->
           <li
@@ -205,11 +218,14 @@ function cancleAdding() {
             @click.stop="click(path.id, subPath.id, null)"
           >
             <div
-              class="h-full w-full flex items-center cursor-pointer ml-5"
+              class="h-full w-full flex items-center cursor-pointer relative"
               :class="{ 'text-[#F18700]': hoveredSub === subIndex }"
             >
-              <b class="text-[#F18700]">{{ subPath.id }}&emsp;</b>
+              <b class="text-[#F18700] ml-5">{{ subPath.id }}&emsp;</b>
               <b>{{ subPath.title }}</b>
+              <button class="absolute right-0 p-5 text-red-500 curosor-pointer">
+                <b>X</b>
+              </button>
             </div>
 
             <ul
