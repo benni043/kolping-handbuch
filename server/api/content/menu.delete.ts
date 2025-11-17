@@ -1,9 +1,14 @@
 import { writeFile, readFile, rm } from "fs/promises";
 import { join } from "path";
 
-function removeKey(obj: Record<string, string>, key: string) {
-  const { [key]: _, ...rest } = obj;
-  return rest;
+function removeKeysWithPrefix(obj: Record<string, string>, prefix: string) {
+  const result: Record<string, string> = {};
+  for (const key in obj) {
+    if (!key.startsWith(prefix)) {
+      result[key] = obj[key];
+    }
+  }
+  return result;
 }
 
 export default defineEventHandler(async (event) => {
@@ -25,7 +30,7 @@ export default defineEventHandler(async (event) => {
   const metadataPath = join(process.cwd(), "data/metadata/mappings.json");
   let data = JSON.parse(await readFile(metadataPath, "utf-8"));
 
-  data = removeKey(data, body.menuId);
+  data = removeKeysWithPrefix(data, body.menuId);
 
   await writeFile(metadataPath, JSON.stringify(data, null, 2), "utf-8");
 
