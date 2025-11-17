@@ -152,59 +152,62 @@ async function addLvl1Menu(menuName: string, subMenuName: string) {
 }
 
 async function deleteLvl1(id: string) {
-  console.log(id);
+  const response = await $fetch(`/api/content/menu`, {
+    method: "DELETE",
+    body: {
+      menuId: id,
+    },
+  });
 
-  // const response = await $fetch(`/api/content/menu/${id}`, {
-  //   method: "DELETE",
-  // });
+  if (response.success) {
+    toast.add({
+      title: "Erfolg",
+      description: "Der Menupunkt wurde erfolgreich gelöscht!",
+      color: "success",
+      icon: "i-heroicons-check",
+    });
+  } else {
+    toast.add({
+      title: "Fehler",
+      description: "Beim Löschen des Menupunkts ist ein Fehler aufgetreten!",
+      color: "error",
+      icon: "i-heroicons-x-mark",
+    });
+  }
 
-  // if (response.success) {
-  //   toast.add({
-  //     title: "Erfolg",
-  //     description: "Der Menupunkt wurde erfolgreich gelöscht!",
-  //     color: "success",
-  //     icon: "i-heroicons-check",
-  //   });
-  // } else {
-  //   toast.add({
-  //     title: "Fehler",
-  //     description: "Beim Löschen des Menupunkts ist ein Fehler aufgetreten!",
-  //     color: "error",
-  //     icon: "i-heroicons-x-mark",
-  //   });
-  // }
+  cancleAdding();
 
-  // cancleAdding();
-
-  // emit("refetch");
+  emit("refetch");
 }
 
 async function deleteLvl2(id: string, subId: string) {
-  console.log(id);
-  console.log(subId);
-  // const response = await $fetch(`/api/content/menu/${id}`, {
-  //   method: "DELETE",
-  // });
+  const response = await $fetch(`/api/content/subMenu`, {
+    method: "DELETE",
+    body: {
+      menuId: id,
+      subMenuId: subId,
+    },
+  });
 
-  // if (response.success) {
-  //   toast.add({
-  //     title: "Erfolg",
-  //     description: "Der Menupunkt wurde erfolgreich gelöscht!",
-  //     color: "success",
-  //     icon: "i-heroicons-check",
-  //   });
-  // } else {
-  //   toast.add({
-  //     title: "Fehler",
-  //     description: "Beim Löschen des Menupunkts ist ein Fehler aufgetreten!",
-  //     color: "error",
-  //     icon: "i-heroicons-x-mark",
-  //   });
-  // }
+  if (response.success) {
+    toast.add({
+      title: "Erfolg",
+      description: "Der Submenupunkt wurde erfolgreich gelöscht!",
+      color: "success",
+      icon: "i-heroicons-check",
+    });
+  } else {
+    toast.add({
+      title: "Fehler",
+      description: "Beim Löschen des Subenupunkts ist ein Fehler aufgetreten!",
+      color: "error",
+      icon: "i-heroicons-x-mark",
+    });
+  }
 
-  // cancleAdding();
+  cancleAdding();
 
-  // emit("refetch");
+  emit("refetch");
 }
 
 function cancleAdding() {
@@ -300,7 +303,7 @@ function cancleAdding() {
               <!-- extra lvl 2 -->
               <div
                 v-if="user?.role === 'admin' || user?.role === 'editor'"
-                class="relative h-11 bg-[#ABE0D9]"
+                class="relative h-11 bg-[#ABE0D9] min-w-88"
                 @mouseenter="enterSub(-1)"
                 @mouseleave="leaveSub"
                 @click.stop="addLvl2(path.id)"
@@ -349,7 +352,7 @@ function cancleAdding() {
         <!-- extra lvl 1 -->
         <div
           v-if="user?.role === 'admin' || user?.role === 'editor'"
-          class="relative h-11 bg-[#ABE0D9] rounded-bl-2xl"
+          class="relative h-11 bg-[#ABE0D9] rounded-bl-2xl min-w-88"
           @mouseenter="enterCategory(-1)"
           @mouseleave="leaveCategory"
           @click.stop="addLvl1()"

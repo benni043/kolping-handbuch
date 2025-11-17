@@ -10,7 +10,7 @@ export default defineEventHandler(async (event) => {
 
   const body = await readBody<{
     menuId: string;
-    subMenuName: string;
+    subMenuId: string;
   }>(event);
 
   const basePath = join(process.cwd(), `data/content/${body.menuId}`);
@@ -38,7 +38,7 @@ export default defineEventHandler(async (event) => {
   const metadataPath = join(process.cwd(), "data/metadata/mappings.json");
 
   const data = JSON.parse(await readFile(metadataPath, "utf-8"));
-  data[subMenuId] = body.subMenuName;
+  data[subMenuId] = body.subMenuId;
 
   await writeFile(metadataPath, JSON.stringify(data, null, 2), "utf-8");
 
