@@ -151,6 +151,62 @@ async function addLvl1Menu(menuName: string, subMenuName: string) {
   emit("refetch");
 }
 
+async function deleteLvl1(id: string) {
+  console.log(id);
+
+  // const response = await $fetch(`/api/content/menu/${id}`, {
+  //   method: "DELETE",
+  // });
+
+  // if (response.success) {
+  //   toast.add({
+  //     title: "Erfolg",
+  //     description: "Der Menupunkt wurde erfolgreich gelöscht!",
+  //     color: "success",
+  //     icon: "i-heroicons-check",
+  //   });
+  // } else {
+  //   toast.add({
+  //     title: "Fehler",
+  //     description: "Beim Löschen des Menupunkts ist ein Fehler aufgetreten!",
+  //     color: "error",
+  //     icon: "i-heroicons-x-mark",
+  //   });
+  // }
+
+  // cancleAdding();
+
+  // emit("refetch");
+}
+
+async function deleteLvl2(id: string, subId: string) {
+  console.log(id);
+  console.log(subId);
+  // const response = await $fetch(`/api/content/menu/${id}`, {
+  //   method: "DELETE",
+  // });
+
+  // if (response.success) {
+  //   toast.add({
+  //     title: "Erfolg",
+  //     description: "Der Menupunkt wurde erfolgreich gelöscht!",
+  //     color: "success",
+  //     icon: "i-heroicons-check",
+  //   });
+  // } else {
+  //   toast.add({
+  //     title: "Fehler",
+  //     description: "Beim Löschen des Menupunkts ist ein Fehler aufgetreten!",
+  //     color: "error",
+  //     icon: "i-heroicons-x-mark",
+  //   });
+  // }
+
+  // cancleAdding();
+
+  // emit("refetch");
+}
+
 function cancleAdding() {
   blurStore.blur = false;
 
@@ -163,110 +219,174 @@ function cancleAdding() {
 
 <template>
   <div class="z-10 relative">
-    <ul
-      class="min-w-88 text-sm divide-y divide-gray-400"
-      :class="{ 'blur-sm': blurStore.blur }"
-    >
+    <ul class="text-sm flex" :class="{ 'blur-sm': blurStore.blur }">
       <!-- normal lvl 1 -->
-      <li
-        v-for="(path, index) in data"
-        :key="path.id"
-        class="relative h-11 bg-[#50A9CE]/[0.33]"
-        :class="{
-          'rounded-tl-2xl': index === 0,
-          'rounded-bl-2xl':
-            index === data.length - 1 &&
-            user?.role !== 'admin' &&
-            user?.role !== 'editor',
-        }"
-        @mouseenter="enterCategory(index)"
-        @mouseleave="leaveCategory"
-        @click.stop="click(path.id, null, null)"
-      >
+      <li>
         <div
-          class="h-full w-full flex items-center ml-5 cursor-pointer"
-          :class="{ 'text-[#F18700]': hoveredCategory === index }"
+          v-for="(path, index) in data"
+          :key="path.id"
+          class="relative h-11 bg-[#50A9CE]/[0.33] min-w-88 border-b-1 border-b-gray-400"
+          :class="{
+            'rounded-tl-2xl': index === 0,
+            'rounded-bl-2xl':
+              index === data.length - 1 &&
+              user?.role !== 'admin' &&
+              user?.role !== 'editor',
+          }"
+          @mouseenter="enterCategory(index)"
+          @mouseleave="leaveCategory"
+          @click.stop="click(path.id, null, null)"
         >
-          <b class="text-[#F18700]">{{ path.id }}&emsp;</b>
-          <b>{{ path.title }}</b>
-        </div>
-
-        <ul
-          v-if="hoveredCategory === index"
-          class="absolute ml-1 top-0 left-full min-w-88 max-w-max text-sm divide-y bg-white divide-gray-400"
-        >
-          <!-- normal lvl 2 -->
-          <li
-            v-for="(subPath, subIndex) in path.children"
-            :key="subPath.id"
-            class="relative h-11 bg-[#50A9CE]/[0.33]"
-            @mouseenter="enterSub(subIndex)"
-            @mouseleave="leaveSub"
-            @click.stop="click(path.id, subPath.id, null)"
+          <div
+            class="h-full w-full flex items-center cursor-pointer"
+            :class="{ 'text-[#F18700]': hoveredCategory === index }"
           >
-            <div
-              class="h-full w-full flex items-center cursor-pointer ml-5"
-              :class="{ 'text-[#F18700]': hoveredSub === subIndex }"
-            >
-              <b class="text-[#F18700]">{{ subPath.id }}&emsp;</b>
-              <b>{{ subPath.title }}</b>
-            </div>
+            <b class="text-[#F18700] ml-5">{{ path.id }}&emsp;</b>
+            <b>{{ path.title }}</b>
+          </div>
 
-            <ul
-              v-if="hoveredSub === subIndex"
-              class="bg-white absolute ml-1 top-0 left-full min-w-40 max-w-max text-sm divide-y divide-gray-400"
-            >
-              <li
-                v-for="(category, subSubIndex) in categories"
-                :key="category"
-                class="relative h-11 bg-[#50A9CE]/[0.33]"
-                @mouseenter="enterSubSub(subSubIndex)"
-                @mouseleave="leaveSubSub"
-                @click.stop="click(path.id, subPath.id, category)"
+          <ul
+            v-if="hoveredCategory === index"
+            class="flex absolute ml-1 top-0 left-full max-w-max text-sm"
+            :class="{
+              'ml-14': user?.role === 'editor' || user?.role === 'admin',
+            }"
+          >
+            <li class="bg-white">
+              <!-- normal lvl 2 -->
+              <div
+                v-for="(subPath, subIndex) in path.children"
+                :key="subPath.id"
+                class="relative h-11 bg-[#50A9CE]/[0.33] border-b-1 border-b-gray-400 min-w-88"
+                @mouseenter="enterSub(subIndex)"
+                @mouseleave="leaveSub"
+                @click.stop="click(path.id, subPath.id, null)"
+              >
+                <div
+                  class="h-full w-full flex items-center cursor-pointer"
+                  :class="{ 'text-[#F18700]': hoveredSub === subIndex }"
+                >
+                  <b class="text-[#F18700] ml-5">{{ subPath.id }}&emsp;</b>
+                  <b>{{ subPath.title }}</b>
+                </div>
+
+                <ul
+                  v-if="hoveredSub === subIndex"
+                  class="bg-white absolute ml-1 top-0 left-full min-w-44 max-w-max text-sm divide-y divide-gray-400"
+                  :class="{
+                    'ml-14': user?.role === 'editor' || user?.role === 'admin',
+                  }"
+                >
+                  <li
+                    v-for="(category, subSubIndex) in categories"
+                    :key="category"
+                    class="relative h-11 bg-[#50A9CE]/[0.33]"
+                    @mouseenter="enterSubSub(subSubIndex)"
+                    @mouseleave="leaveSubSub"
+                    @click.stop="click(path.id, subPath.id, category)"
+                  >
+                    <div
+                      class="h-full w-full flex items-center cursor-pointer ml-5"
+                      :class="{
+                        'text-[#F18700]': hoveredSubSub === subSubIndex,
+                      }"
+                    >
+                      <b>{{ category }}</b>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- extra lvl 2 -->
+              <div
+                v-if="user?.role === 'admin' || user?.role === 'editor'"
+                class="relative h-11 bg-[#ABE0D9]"
+                @mouseenter="enterSub(-1)"
+                @mouseleave="leaveSub"
+                @click.stop="addLvl2(path.id)"
               >
                 <div
                   class="h-full w-full flex items-center cursor-pointer ml-5"
-                  :class="{ 'text-[#F18700]': hoveredSubSub === subSubIndex }"
+                  :class="{ 'text-[#F18700]': hoveredSub === -1 }"
                 >
-                  <b>{{ category }}</b>
+                  <b class="text-[#F18700]">+</b>&emsp;
+                  <b>Extra Unterpunkt</b>
                 </div>
-              </li>
-            </ul>
-          </li>
+              </div>
+            </li>
 
-          <!-- extra lvl 2 -->
-          <li
-            v-if="user?.role === 'admin' || user?.role === 'editor'"
-            class="relative h-11 bg-[#00a28c]/[0.33]"
-            @mouseenter="enterSub(-1)"
-            @mouseleave="leaveSub"
-            @click.stop="addLvl2(path.id)"
-          >
-            <div
-              class="h-full w-full flex items-center cursor-pointer ml-5"
-              :class="{ 'text-[#F18700]': hoveredSub === -1 }"
+            <li
+              v-if="user?.role === 'admin' || user?.role === 'editor'"
+              class=""
             >
-              <b class="text-[#F18700]">+</b>&emsp;
-              <b>Extra Unterpunkt</b>
-            </div>
-          </li>
-        </ul>
+              <div
+                v-for="subPath in path.children"
+                :key="subPath.id"
+                class="relative h-11 flex items-center justify-center bg-[#ABE0D9] ml-1 min-w-12 cursor-pointer hover:text-red-600 border-b-1 border-b-gray-400"
+                @click.stop="deleteLvl2(path.id, subPath.id)"
+              >
+                <b>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="size-6"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0"
+                    />
+                  </svg>
+                </b>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- extra lvl 1 -->
+        <div
+          v-if="user?.role === 'admin' || user?.role === 'editor'"
+          class="relative h-11 bg-[#ABE0D9] rounded-bl-2xl"
+          @mouseenter="enterCategory(-1)"
+          @mouseleave="leaveCategory"
+          @click.stop="addLvl1()"
+        >
+          <div
+            class="h-full w-full flex items-center ml-5 cursor-pointer"
+            :class="{ 'text-[#F18700]': hoveredCategory === -1 }"
+          >
+            <b class="text-[#F18700]">+</b>&emsp;
+            <b>Extra Menüpunkt</b>
+          </div>
+        </div>
       </li>
 
-      <!-- extra lvl 1 -->
-      <li
-        v-if="user?.role === 'admin' || user?.role === 'editor'"
-        class="relative h-11 bg-[#00a28c]/[0.33] rounded-bl-2xl"
-        @mouseenter="enterCategory(-1)"
-        @mouseleave="leaveCategory"
-        @click.stop="addLvl1()"
-      >
+      <li v-if="user?.role === 'admin' || user?.role === 'editor'">
         <div
-          class="h-full w-full flex items-center ml-5 cursor-pointer"
-          :class="{ 'text-[#F18700]': hoveredCategory === -1 }"
+          v-for="path in data"
+          :key="path.id"
+          class="relative h-11 flex items-center justify-center bg-[#ABE0D9] ml-1 min-w-12 cursor-pointer hover:text-red-600 border-b-1 border-b-gray-400"
+          @click.stop="deleteLvl1(path.id)"
         >
-          <b class="text-[#F18700]">+</b>&emsp;
-          <b>Extra Menüpunkt</b>
+          <b>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="size-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0"
+              />
+            </svg>
+          </b>
         </div>
       </li>
     </ul>

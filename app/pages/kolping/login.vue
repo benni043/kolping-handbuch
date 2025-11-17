@@ -35,7 +35,14 @@ async function login() {
   }
 }
 
-async function logout() {
+async function logout(username: string) {
+  toast.add({
+    title: "Abmeldung erfolgreich!",
+    description: `Aufwiedersehen ${username}!`,
+    color: "success",
+    icon: "i-heroicons-check",
+  });
+
   await clearSession();
 }
 </script>
@@ -93,7 +100,7 @@ async function logout() {
         icon="i-heroicons-arrow-left-on-rectangle"
         class="cursor-pointer"
         block
-        @click="logout()"
+        @click="logout(user?.username)"
       >
         Logout
       </UButton>
