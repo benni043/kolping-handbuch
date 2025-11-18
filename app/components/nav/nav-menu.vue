@@ -187,8 +187,8 @@ async function deleteLvl2(id: string, subId: string) {
   const response = await $fetch(`/api/content/subMenu`, {
     method: "DELETE",
     body: {
-      menuId: id,
-      subMenuId: subId,
+      menuUuid: id,
+      subMenuUuid: subId,
     },
   });
 

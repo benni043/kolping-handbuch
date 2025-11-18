@@ -1,4 +1,3 @@
-import { readFileSync } from "fs";
 import { writeFile, readFile, rm } from "fs/promises";
 import { join } from "path";
 
@@ -9,30 +8,44 @@ function removeKey(obj: Record<string, string>, key: string) {
 
 export default defineEventHandler(async (event) => {
   const { user } = await requireUserSession(event);
-
-  if (user.role !== "admin") {
-    throw createError({ statusCode: 403, statusMessage: "Forbidden" });
-  }
+  if (user.role !== "admin") throw createError({ statusCode: 403 });
 
   const body = await readBody<{
-    menuId: string;
-    subMenuId: string;
+    menuUuid: string;
+    subMenuUuid: string;
   }>(event);
+
+  const metadataPath = join(process.cwd(), "data/metadata/mappings.json");
+  const data = JSON.parse(await readFile(metadataPath, "utf-8"));
+
+  const removed = data[body.subMenuUuid];
+  if (!removed) return { success: true };
+
+  const [prefix, removedIndexStr] = removed.id.split("-");
+  const removedIndex = parseInt(removedIndexStr);
+
+  // 1️⃣ zuerst löschen
+  delete data[body.subMenuUuid];
+
+  // 2️⃣ alle sub-einträge updaten die > removedIndex
+  Object.entries(data).forEach(([uuid, item]: any) => {
+    if (!item.id.startsWith(prefix + "-")) return;
+
+    const [p, idxStr] = item.id.split("-");
+    const idx = parseInt(idxStr);
+    if (idx > removedIndex) {
+      const newId = `${prefix}-${idx - 1}`;
+      item.id = newId;
+    }
+  });
+
+  await writeFile(metadataPath, JSON.stringify(data, null, 2), "utf-8");
 
   const dirPath = join(
     process.cwd(),
-    `data/content/${body.menuId}/${body.subMenuId}`,
+    `data/content/${body.menuUuid}/${body.subMenuUuid}`,
   );
-
   await rm(dirPath, { recursive: true, force: true });
-
-  // Mapping entfernen
-  const metadataPath = join(process.cwd(), "data/metadata/mappings.json");
-  let data = JSON.parse(await readFile(metadataPath, "utf-8"));
-
-  data = removeKey(data, body.subMenuId);
-
-  await writeFile(metadataPath, JSON.stringify(data, null, 2), "utf-8");
 
   return { success: true };
 });
