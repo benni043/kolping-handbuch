@@ -1,0 +1,23 @@
+{
+  "schrittCount": 3,
+  "vorgabenBlue": [
+    {
+      "text": "AH 03 „Komm zu Kolping!“ (zur Überarbeitung und Anpassung durch jede Kolpingsfamilie)",
+      "hasLink": true,
+      "link": ""
+    }
+  ],
+  "vorlagenBlue": [],
+  "middleHead": "Nutzen von Kolping darstellen",
+  "middleList": [
+    {
+      "text": "Auflistung von „benefits“/ Vorteilen, die eine Mitgliedschaft bei Kolping dem Einzelnen bietet; örtliche Spezifika herausstellen"
+    }
+  ],
+  "aufzeichnungOrange": [
+    { "text": "Protokoll der Teamsitzung", "hasLink": false, "link": "" }
+  ],
+  "verantwortlicherOrange": "TeamleiterIn",
+  "informationOrange": "Vorstand\nalle im Verein",
+  "orange": false
+}

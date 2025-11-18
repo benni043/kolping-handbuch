@@ -1,0 +1,27 @@
+{
+  "schrittCount": 4,
+  "vorgabenBlue": [{ "text": "Statuten", "hasLink": true, "link": "" }],
+  "vorlagenBlue": [],
+  "middleHead": "Bei \"Großprojekten\"",
+  "middleList": [
+    { "text": "Befassung der Generalversammlung" },
+    {
+      "text": "Bei Fällen gem. Grundstatut § 17.8.4: Zustimmung der/des Präsidentin/en erforderlich!"
+    }
+  ],
+  "aufzeichnungOrange": [
+    {
+      "text": "Protokoll der Generalversammlung",
+      "hasLink": false,
+      "link": ""
+    },
+    {
+      "text": "Schriftliche Zustimmung der Präsidentin/ des Präsidenten von Kolping Österreich",
+      "hasLink": false,
+      "link": ""
+    }
+  ],
+  "verantwortlicherOrange": "Vorsitzende/r",
+  "informationOrange": "DV/BV\n",
+  "orange": false
+}

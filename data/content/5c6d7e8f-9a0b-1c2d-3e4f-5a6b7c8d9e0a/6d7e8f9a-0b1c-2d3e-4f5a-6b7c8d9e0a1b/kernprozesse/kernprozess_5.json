@@ -1,0 +1,43 @@
+{
+  "schrittCount": 5,
+  "vorgabenBlue": [
+    {
+      "text": "AH 02 „Übersicht Bildungsplan KF“ (ausgefüllte Vorlage)",
+      "hasLink": true,
+      "link": ""
+    },
+    {
+      "text": "AH 04 „Bildungsplan Einzelperson“ (ausgefüllte Vorlage)",
+      "hasLink": true,
+      "link": ""
+    },
+    {
+      "text": "AH 05 „Bildungsangebote Kolpingsfamilie“",
+      "hasLink": true,
+      "link": ""
+    }
+  ],
+  "vorlagenBlue": [],
+  "middleHead": "Zusammenfassung der geplanten Bildungsveranstaltungen und -maßnahmen",
+  "middleList": [
+    {
+      "text": "Die vom Bildungsteam erarbeiteten Vorschläge für Weiterbildungsmaßnahmen:"
+    },
+    { "text": "für die gesamte Kolpingsfamilie" },
+    { "text": "für einzelne Gliederungen/Gruppen" },
+    { "text": "für Einzelpersonen" },
+    {
+      "text": "werden in einer Übersicht zusammengefasst, welche die Grundlage bildet für die Entscheidung über die Freigabe im Vorstand"
+    }
+  ],
+  "aufzeichnungOrange": [
+    {
+      "text": "AH 05 „Übersicht Bildungsangebote KF“ (ausgefüllte Vorlage) Anm: Unterzeichnung erfolgt erst nach Freigabe des Bildungsplans  durch den Vorstand (Schritt 06)",
+      "hasLink": true,
+      "link": ""
+    }
+  ],
+  "verantwortlicherOrange": "LeiterIn\nBildungsteam",
+  "informationOrange": "Vorsitzende/r\nVorstand",
+  "orange": false
+}

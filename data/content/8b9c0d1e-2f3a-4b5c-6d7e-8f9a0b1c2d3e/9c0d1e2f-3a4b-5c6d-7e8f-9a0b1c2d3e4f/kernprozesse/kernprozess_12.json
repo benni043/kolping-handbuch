@@ -1,0 +1,32 @@
+{
+  "schrittCount": 12,
+  "vorgabenBlue": [
+    { "text": "AH 02 „Projektplan“", "hasLink": true, "link": "" },
+    { "text": "AH 04 „Aktionsplan“", "hasLink": true, "link": "" },
+    {
+      "text": "AH 05 „Feedback-Bogen Projektteam“",
+      "hasLink": true,
+      "link": ""
+    },
+    { "text": "AH 03 „Bundesjugendförderung“", "hasLink": true, "link": "" }
+  ],
+  "vorlagenBlue": [],
+  "middleHead": "Arbeiten am Auftrag u.laufende Erfolgskontrolle",
+  "middleList": [
+    { "text": "Läuft das Projekt gut?" },
+    { "text": "bei JA weitermachen bei NEIN zurück zu Schritt 06" },
+    {
+      "text": "bei BJF­Projekten: mitlaufende Ergebnissicherung mittels AH 03 „Bundesjugendförderung“"
+    }
+  ],
+  "aufzeichnungOrange": [
+    {
+      "text": "AH 05 \"Feedbackbogen Projektteam\" (ausgefüllt) Fotos, Feedback-Bogen, Beleg-Sammlung lt. Merkblatt",
+      "hasLink": true,
+      "link": ""
+    }
+  ],
+  "verantwortlicherOrange": "ProjektleiterIn und Team",
+  "informationOrange": "Jugendvorstand\nJugendreferentin KÖ\nSachbearbeiterin BJF im Bundesverband",
+  "orange": false
+}

@@ -1,0 +1,15 @@
+{
+  "schrittCount": 2,
+  "vorgabenBlue": [],
+  "vorlagenBlue": [],
+  "middleHead": "Team bilden",
+  "middleList": [
+    { "text": "zur Planung und Koordination aller Aktivitäten;" },
+    { "text": "zur Mitgliederwerbung;" },
+    { "text": "zur Gestaltung des Einstiegs neuer Mitglieder." }
+  ],
+  "aufzeichnungOrange": [{ "text": "Protokoll", "hasLink": false, "link": "" }],
+  "verantwortlicherOrange": "Vorstand",
+  "informationOrange": "alle im Verein",
+  "orange": false
+}

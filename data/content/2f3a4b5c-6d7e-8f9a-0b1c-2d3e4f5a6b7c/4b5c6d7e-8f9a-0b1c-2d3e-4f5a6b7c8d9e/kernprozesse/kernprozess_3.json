@@ -1,0 +1,24 @@
+{
+  "schrittCount": 3,
+  "vorgabenBlue": [
+    { "text": "AH 02 „Stellenanzeige verfassen“", "hasLink": true, "link": "" },
+    { "text": "AH 02a „Stellenanzeige“", "hasLink": false, "link": "" }
+  ],
+  "vorlagenBlue": [],
+  "middleHead": "Stellenanzeigen für Ehrenamtliche entwickeln",
+  "middleList": [
+    { "text": "analog Stellenanzeigen für hauptamtliche Positionen" },
+    { "text": "entsprechend dem Bedarf in Verein und Haus" },
+    {
+      "text": "Wichtig: „benefits“/Vorteile herausstreichen, die eine freiwillige Tätigkeit bei Kolping bietet:"
+    },
+    { "text": "dem Ehrenamtlichen selbst" },
+    { "text": "den sie durch ihr freiwilliges Engagement stiften" }
+  ],
+  "aufzeichnungOrange": [
+    { "text": "Ausformulierte Stellenanzeigen", "hasLink": false, "link": "" }
+  ],
+  "verantwortlicherOrange": "TeamleiterIn GeschäftsführerIn",
+  "informationOrange": "Vorstand;\nalle im Verein (Artikel in der Vereinszeitung, auf der Website, \nAnschlag im Kolpinghaus, Leaflet zum Verteilen mit der Mitgliedskarte …)",
+  "orange": false
+}

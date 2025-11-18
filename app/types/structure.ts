@@ -1,11 +1,12 @@
 export interface Structure {
+  uuid: string;
   id: string;
-  title: string;
+  name: string;
   children: ChildStructure[];
 }
 
 export interface ChildStructure {
+  uuid: string;
   id: string;
-  title: string;
-  kernprozessCount: number;
+  name: string;
 }

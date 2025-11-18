@@ -1,0 +1,50 @@
+{
+  "schrittCount": 4,
+  "vorgabenBlue": [
+    {
+      "text": "AH 04 „Bildungsplan / Einzelperson“",
+      "hasLink": true,
+      "link": ""
+    },
+    {
+      "text": "Ausgearbeitete bildungsthematische Jahres-Schwerpunkte der Kolpingsfamilie (vgl. Schritt 01)",
+      "hasLink": false,
+      "link": ""
+    },
+    { "text": "KP 01.3 Jahresbudget Bildung", "hasLink": false, "link": "" },
+    {
+      "text": "Übersicht und Unterlagen von Bildungsangeboten des DV, BV, IKW",
+      "hasLink": false,
+      "link": ""
+    },
+    {
+      "text": "Aktueller Jahresplan der „Freiwilligen-Akademie“ ",
+      "hasLink": true,
+      "link": "https://www.kolping.at"
+    }
+  ],
+  "vorlagenBlue": [],
+  "middleHead": "Bildungspläne für Einzelpersonen erstellen",
+  "middleList": [
+    {
+      "text": "Der Bildungsplan dient der Befähigung der FunktionärInnen zur Erfüllung ihrer Aufgaben lt. Statuten und Kolping-Leitbild;"
+    },
+    {
+      "text": "ebenso sollen die LeiterInnen einzelner Teams (z.B. für die Jugendarbeit, für Evaluierung) die nötige Qualifikation für ihre Aufgabe erhalten;"
+    },
+    {
+      "text": "des weiteren sollen ehrenamtliche HelferInnen für ihre Aufgaben die nötige Zusatz-Qualifikationen erhalten"
+    },
+    { "text": "Jahres-Schwerpunkte lt. Schritt 01 berücksichtigen!" }
+  ],
+  "aufzeichnungOrange": [
+    {
+      "text": "Ausgefüllte Bildungspläne (AH 04) (je einer pro TeilnehmerIn an einer konkreten Weiterbildungsmaßnahme) Anm: Unterzeichnung erfolgt erst nach Freigabe des Bildungsplans durch den Vorstand (Schritt 06)",
+      "hasLink": false,
+      "link": ""
+    }
+  ],
+  "verantwortlicherOrange": "LeiterIn\nBildungsteam",
+  "informationOrange": "Bildungsverantwortliche benachbarter Kolpingsfam.\n(Kooperationen/Synergien ermitteln und nutzen!)",
+  "orange": false
+}

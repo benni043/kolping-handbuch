@@ -1,0 +1,40 @@
+{
+  "schrittCount": 6,
+  "vorgabenBlue": [
+    { "text": "Leitbild", "hasLink": true, "link": "" },
+    {
+      "text": "Bausteine „Jugend bei Kolping“ Bildungskonf. 2007",
+      "hasLink": true,
+      "link": ""
+    },
+    {
+      "text": "AH 02 „Projektplan“ (ausgefüllte Vorlage)",
+      "hasLink": true,
+      "link": ""
+    },
+    { "text": "AH 03 „Bundesjugendförderung“", "hasLink": true, "link": "" }
+  ],
+  "vorlagenBlue": [],
+  "middleHead": "Klärung / Entscheidung im Vereinsvorstand",
+  "middleList": [
+    { "text": "Wie passt das angestrebte Ergebnis zur „Kolping­Idee“?" },
+    { "text": "Ist es mit den vorhandenen Ressourcen realisierbar?" },
+    {
+      "text": "Werden Mittel der Bundesjugendförderung (BJF) in Anspruch genommen? – Wenn JA: siehe AH 03 „Bundesjugendförderung“"
+    },
+    {
+      "text": "Entscheidung JA weiter zu Schritt 07; NEiN zurück zu Schritt 05 oder Projekt wird nicht durchgeführt"
+    }
+  ],
+  "aufzeichnungOrange": [
+    { "text": "Ergebnisprotokoll", "hasLink": false, "link": "" },
+    {
+      "text": "Vom Vereinsvorstand bestätigter „Projektplan“",
+      "hasLink": true,
+      "link": ""
+    }
+  ],
+  "verantwortlicherOrange": "Vereinsvorstand",
+  "informationOrange": "Jugend-Vorstand\nBei einem Projekt, das über den engeren Kreis der Kolpingsfamilie hinausgeht: kurze Info an Diözesan- und Bundesverband",
+  "orange": true
+}

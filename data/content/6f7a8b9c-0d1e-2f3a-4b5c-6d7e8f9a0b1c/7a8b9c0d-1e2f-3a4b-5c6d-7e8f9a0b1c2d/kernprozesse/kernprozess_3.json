@@ -1,0 +1,32 @@
+{
+  "schrittCount": 3,
+  "vorgabenBlue": [
+    { "text": "Leitbild", "hasLink": true, "link": "" },
+    {
+      "text": "Bausteine \"Kolping belebt, Quellen unseres Handelns\"",
+      "hasLink": true,
+      "link": ""
+    },
+    { "text": "AH 01 \"Projektdefinition\"", "hasLink": true, "link": "" }
+  ],
+  "vorlagenBlue": [],
+  "middleHead": "Wie passt das Ergebnis zur \"Kolping-Idee\"",
+  "middleList": [
+    { "text": "Fragen dazu (Bezug zur Kolping-Idee!):" },
+    { "text": "Für wen sind wir da? Wer braucht unseren Dienst?" },
+    { "text": "Soziale Verträglichkeit: Wer hat etwas davon?" },
+    {
+      "text": "Sind wir offen für andere Menschen? Sind wir offen für neue Ideen?"
+    }
+  ],
+  "aufzeichnungOrange": [
+    {
+      "text": "Festlegung des Bezugs zur Kolping-Idee in der Vorlage „Projektdefinition“ (AH 01)",
+      "hasLink": true,
+      "link": ""
+    }
+  ],
+  "verantwortlicherOrange": "Vorsitzende/r, Vorstand;\nWirtschaftsvorstand",
+  "informationOrange": "Ggf. unter Einbeziehung DV/BV",
+  "orange": true
+}

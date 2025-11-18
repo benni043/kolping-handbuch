@@ -1,0 +1,33 @@
+{
+  "schrittCount": 1,
+  "vorgabenBlue": [
+    { "text": "AH 01 „Zielgruppen“", "hasLink": true, "link": "" },
+    {
+      "text": "AH 02 „Landkarte Öffentlichkeitsarbeit“",
+      "hasLink": true,
+      "link": ""
+    }
+  ],
+  "vorlagenBlue": [],
+  "middleHead": "„Landkarte Öffentlichkeitsarbeit“ erstellen",
+  "middleList": [
+    {
+      "text": "Gemeinsam festhalten: Wen bzw. welche Gruppen wollen wir ansprechen, auf unsere Kolpingsfamilie aufmerksam machen?  Ab dem zweiten Jahr muss die Landkarte nicht mehr neu erstellt, sondern nur noch überarbeitet werden."
+    }
+  ],
+  "aufzeichnungOrange": [
+    {
+      "text": "ÖA-Landkarte der Kolpingsfamilie",
+      "hasLink": false,
+      "link": ""
+    },
+    {
+      "text": "Verantwortliche/r für die ÖA AN (ist in vielen Kolpingsfamilien festgelegt; wenn nicht: jemanden bestimmen) und sein/ihr Team",
+      "hasLink": false,
+      "link": ""
+    }
+  ],
+  "verantwortlicherOrange": "",
+  "informationOrange": "",
+  "orange": false
+}

@@ -1,0 +1,29 @@
+{
+  "schrittCount": 1,
+  "vorgabenBlue": [
+    { "text": "KP 03.1 \"Vereinsentwicklung\"", "hasLink": true, "link": "" },
+    { "text": "Leitbild", "hasLink": true, "link": "" },
+    {
+      "text": "Bausteine \"Kolping belebt, Quellen unseres Handelns\"",
+      "hasLink": true,
+      "link": ""
+    },
+    { "text": "KP 01.3 \"Budgetplanung\"", "hasLink": true, "link": "" }
+  ],
+  "vorlagenBlue": [],
+  "middleHead": "Vergabepolitik / Nutzung festlegen",
+  "middleList": [
+    {
+      "text": "Kriterium der Wirtschaftlichkeit und Kolping-Idee der Hilfe für Schwächere „unter einen Hut“ bringen (Bezug zur Kolping-Idee!)"
+    },
+    {
+      "text": "(Anm.: Hier geht es darum, im Rahmen der Grundaufgabe (z.B: Jugendwohnen) flexibel zu bleiben für konkrete „Nöte der Zeit“, etwa Anfragen von Flüchtlingsorganisationen, sozial Bedürftiger u.a.)"
+    }
+  ],
+  "aufzeichnungOrange": [
+    { "text": "Klarer Auftrag: WAS wollen wir?", "hasLink": false, "link": "" }
+  ],
+  "verantwortlicherOrange": "Präsidium od. Generalversammlung",
+  "informationOrange": "GeschäftsführerIn",
+  "orange": true
+}

@@ -1,0 +1,26 @@
+{
+  "schrittCount": 5,
+  "vorgabenBlue": [
+    {
+      "text": "AH 03 „Erstgespräch mit Ehrenamtlichen“",
+      "hasLink": true,
+      "link": ""
+    }
+  ],
+  "vorlagenBlue": [],
+  "middleHead": "Erstgespräch führen mit InteressentInnen",
+  "middleList": [
+    { "text": "Abklärung der Interessen und Fähigkeiten der KandidatInnen" },
+    { "text": "Bezug zu „offenen Positionen“ lt. Schritt 03 im Auge behalten" }
+  ],
+  "aufzeichnungOrange": [
+    {
+      "text": "Schriftliches Memo des Erstgesprächs",
+      "hasLink": false,
+      "link": ""
+    }
+  ],
+  "verantwortlicherOrange": "Vorsitzende/r und GeschäftsführerIn oder von ihm/ihr beauftragte haupt- oder ehrenamtliche MitarbeiterIn\n",
+  "informationOrange": "",
+  "orange": false
+}

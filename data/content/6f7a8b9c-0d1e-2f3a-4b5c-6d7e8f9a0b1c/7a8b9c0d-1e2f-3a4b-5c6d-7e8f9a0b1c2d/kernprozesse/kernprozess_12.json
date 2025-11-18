@@ -1,0 +1,18 @@
+{
+  "schrittCount": 12,
+  "vorgabenBlue": [],
+  "vorlagenBlue": [],
+  "middleHead": "Abschluss des Projekts",
+  "middleList": [
+    { "text": "Rückgabe der Verantwortungan den Auftraggeber" },
+    {
+      "text": "Dank und Entlastung durch den Auftraggeber (z.B. in der Generalversammlung)"
+    }
+  ],
+  "aufzeichnungOrange": [
+    { "text": "Protokoll der Vorstandssitzung", "hasLink": false, "link": "" }
+  ],
+  "verantwortlicherOrange": "Projektteam; Auftraggeber",
+  "informationOrange": "Generalversammlung",
+  "orange": false
+}

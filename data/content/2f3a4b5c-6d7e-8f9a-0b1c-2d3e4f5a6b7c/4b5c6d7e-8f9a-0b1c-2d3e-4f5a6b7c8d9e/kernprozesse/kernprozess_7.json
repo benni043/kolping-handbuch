@@ -1,0 +1,21 @@
+{
+  "schrittCount": 7,
+  "vorgabenBlue": [
+    {
+      "text": "KP 06.1 AH 06 „Handreichung für MentorInnen“",
+      "hasLink": true,
+      "link": ""
+    }
+  ],
+  "vorlagenBlue": [],
+  "middleHead": "Einführungsphase / Einbindung ins Team",
+  "middleList": [
+    {
+      "text": "MentorInnen (für Aufgaben auf der Vereinsebene) bzw. dafür befähigte MitarbeiterInnen des Kolpinghauses begleiten die Ehrenamtlichen und helfen ihnen dabei, ihre Ideen und Fähigkeiten einzubringen"
+    }
+  ],
+  "aufzeichnungOrange": [],
+  "verantwortlicherOrange": "TeamleiterIn\nGeschäftsführerIn",
+  "informationOrange": "",
+  "orange": false
+}

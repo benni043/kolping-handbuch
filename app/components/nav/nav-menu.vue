@@ -30,6 +30,7 @@ const addingLvl1 = ref(false);
 const addingLvl2 = ref(false);
 
 const currentPathId = ref("");
+const currentPathUuid = ref("");
 
 function click(
   pathId: string,
@@ -82,8 +83,9 @@ function addLvl1() {
   addingLvl1.value = true;
 }
 
-function addLvl2(pathId: string) {
+function addLvl2(pathUuid: string, pathId: string) {
   currentPathId.value = pathId;
+  currentPathUuid.value = pathUuid;
 
   blurStore.blur = true;
   addingLvl2.value = true;
@@ -94,6 +96,7 @@ async function addLvl2Menu(subMenuName: string) {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: {
+      menuUuid: currentPathUuid.value,
       menuId: currentPathId.value,
       subMenuName: subMenuName,
     },
@@ -238,14 +241,14 @@ function cancleAdding() {
           }"
           @mouseenter="enterCategory(index)"
           @mouseleave="leaveCategory"
-          @click.stop="click(path.id, null, null)"
+          @click.stop="click(path.uuid, null, null)"
         >
           <div
             class="h-full w-full flex items-center cursor-pointer"
             :class="{ 'text-[#F18700]': hoveredCategory === index }"
           >
             <b class="text-[#F18700] ml-5">{{ path.id }}&emsp;</b>
-            <b>{{ path.title }}</b>
+            <b>{{ path.name }}</b>
           </div>
 
           <ul
@@ -263,14 +266,14 @@ function cancleAdding() {
                 class="relative h-11 bg-[#50A9CE]/[0.33] border-b-1 border-b-gray-400 min-w-88"
                 @mouseenter="enterSub(subIndex)"
                 @mouseleave="leaveSub"
-                @click.stop="click(path.id, subPath.id, null)"
+                @click.stop="click(path.uuid, subPath.uuid, null)"
               >
                 <div
                   class="h-full w-full flex items-center cursor-pointer"
                   :class="{ 'text-[#F18700]': hoveredSub === subIndex }"
                 >
                   <b class="text-[#F18700] ml-5">{{ subPath.id }}&emsp;</b>
-                  <b>{{ subPath.title }}</b>
+                  <b>{{ subPath.name }}</b>
                 </div>
 
                 <ul
@@ -286,7 +289,7 @@ function cancleAdding() {
                     class="relative h-11 bg-[#50A9CE]/[0.33]"
                     @mouseenter="enterSubSub(subSubIndex)"
                     @mouseleave="leaveSubSub"
-                    @click.stop="click(path.id, subPath.id, category)"
+                    @click.stop="click(path.uuid, subPath.uuid, category)"
                   >
                     <div
                       class="h-full w-full flex items-center cursor-pointer ml-5"
@@ -306,7 +309,7 @@ function cancleAdding() {
                 class="relative h-11 bg-[#ABE0D9] min-w-88"
                 @mouseenter="enterSub(-1)"
                 @mouseleave="leaveSub"
-                @click.stop="addLvl2(path.id)"
+                @click.stop="addLvl2(path.uuid, path.id)"
               >
                 <div
                   class="h-full w-full flex items-center cursor-pointer ml-5"
@@ -326,7 +329,7 @@ function cancleAdding() {
                 v-for="subPath in path.children"
                 :key="subPath.id"
                 class="relative h-11 flex items-center justify-center bg-[#ABE0D9] ml-1 min-w-12 cursor-pointer hover:text-red-600 border-b-1 border-b-gray-400"
-                @click.stop="deleteLvl2(path.id, subPath.id)"
+                @click.stop="deleteLvl2(path.uuid, subPath.uuid)"
               >
                 <b>
                   <svg
@@ -372,7 +375,7 @@ function cancleAdding() {
           v-for="path in data"
           :key="path.id"
           class="relative h-11 flex items-center justify-center bg-[#ABE0D9] ml-1 min-w-12 cursor-pointer hover:text-red-600 border-b-1 border-b-gray-400"
-          @click.stop="deleteLvl1(path.id)"
+          @click.stop="deleteLvl1(path.uuid)"
         >
           <b>
             <svg

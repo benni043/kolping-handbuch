@@ -1,0 +1,14 @@
+{
+  "schrittCount": 4,
+  "vorgabenBlue": [],
+  "vorlagenBlue": [],
+  "middleHead": "Abgrenzung vornehmen",
+  "middleList": [
+    { "text": "Für Projekte – weiter mit Schritt 5" },
+    { "text": "wiederkehrende Aktivitäten? – weiter mit Schritt 15" }
+  ],
+  "aufzeichnungOrange": [],
+  "verantwortlicherOrange": "Vorstand Kolpingjugend",
+  "informationOrange": "",
+  "orange": false
+}

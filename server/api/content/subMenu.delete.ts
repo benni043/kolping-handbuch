@@ -1,3 +1,4 @@
+import { readFileSync } from "fs";
 import { writeFile, readFile, rm } from "fs/promises";
 import { join } from "path";
 

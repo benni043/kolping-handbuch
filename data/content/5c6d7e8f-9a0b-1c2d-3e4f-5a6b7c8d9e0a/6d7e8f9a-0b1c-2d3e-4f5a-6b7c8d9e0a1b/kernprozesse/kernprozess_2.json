@@ -1,0 +1,17 @@
+{
+  "schrittCount": 2,
+  "vorgabenBlue": [],
+  "vorlagenBlue": [],
+  "middleHead": "Einsetzen eines „Bildungsteams“",
+  "middleList": [
+    {
+      "text": "Ein Bildungsteam wird gebildet, das im Auftrag des Vorstands einen Bildungsplan für die gesamte Kolpingsfamilie sowie Bildungspläne für Einzelpersonen erstellt und sich nach Genehmigung um die Umsetzung kümmert."
+    }
+  ],
+  "aufzeichnungOrange": [
+    { "text": "Protokoll der Vorstandssitzung", "hasLink": false, "link": "" }
+  ],
+  "verantwortlicherOrange": "Vorstand",
+  "informationOrange": "",
+  "orange": false
+}

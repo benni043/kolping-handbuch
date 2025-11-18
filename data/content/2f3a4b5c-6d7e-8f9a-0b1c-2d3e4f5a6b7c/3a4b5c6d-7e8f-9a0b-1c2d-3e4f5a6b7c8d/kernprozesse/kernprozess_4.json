@@ -1,0 +1,20 @@
+{
+  "schrittCount": 4,
+  "vorgabenBlue": [],
+  "vorlagenBlue": [],
+  "middleHead": "Beauftragung",
+  "middleList": [
+    { "text": "Jedes Mitglieds" },
+    { "text": "des Vorstandes als Vertretung der Kolpingsfamilie als Ganzes" },
+    { "text": "Definition der benötigten Hilfestellungen seitens DV und BV" },
+    {
+      "text": "Motto: „aktiver als bisher“ die Vorzüge einer Mitgliedschaft bei Kolping bewerben"
+    }
+  ],
+  "aufzeichnungOrange": [
+    { "text": "Protokoll der Generalversammlung", "hasLink": false, "link": "" }
+  ],
+  "verantwortlicherOrange": "Vorsitzende(r)",
+  "informationOrange": "",
+  "orange": false
+}

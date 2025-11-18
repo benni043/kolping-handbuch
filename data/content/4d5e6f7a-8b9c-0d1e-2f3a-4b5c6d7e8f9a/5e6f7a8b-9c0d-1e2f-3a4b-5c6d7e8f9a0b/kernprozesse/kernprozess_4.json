@@ -1,0 +1,24 @@
+{
+  "schrittCount": 4,
+  "vorgabenBlue": [
+    { "text": "AH 02 \"Hausordnung - 18\"", "hasLink": true, "link": "" },
+    { "text": "AH 03 \"Hausordnung + 18\"", "hasLink": true, "link": "" }
+  ],
+  "vorlagenBlue": [],
+  "middleHead": "Konkrete Nutzung / Zimmerbezug",
+  "middleList": [
+    {
+      "text": "z.B. Anmeldung, Einverständnis-Erklärung einholen, Informationen über Kolping weitergeben, etc."
+    }
+  ],
+  "aufzeichnungOrange": [
+    {
+      "text": "ausgefüllte Anmeldung mit Einverständniserklärung",
+      "hasLink": false,
+      "link": ""
+    }
+  ],
+  "verantwortlicherOrange": "Team des Kolpinghauses",
+  "informationOrange": "Vorstand",
+  "orange": false
+}

@@ -1,0 +1,11 @@
+{
+  "schrittCount": 7,
+  "vorgabenBlue": [],
+  "vorlagenBlue": [],
+  "middleHead": "Sofortmaßnahmen setzen",
+  "middleList": [{ "text": "… bei kritischen Abweichungen" }],
+  "aufzeichnungOrange": [{ "text": "Bericht", "hasLink": false, "link": "" }],
+  "verantwortlicherOrange": "TeamleiterIn und Vorsitzende(r)",
+  "informationOrange": "",
+  "orange": false
+}
