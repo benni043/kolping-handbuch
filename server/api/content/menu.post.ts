@@ -1,5 +1,6 @@
 import { mkdir, writeFile, readdir, readFile } from "fs/promises";
 import { join } from "path";
+import { v4 as uuidv4 } from "uuid";
 
 export default defineEventHandler(async (event) => {
   const { user } = await requireUserSession(event);
@@ -21,9 +22,12 @@ export default defineEventHandler(async (event) => {
   const menuId = (folders.length + 1).toString().padStart(2, "0");
   const subMenuId = `${(folders.length + 1).toString().padStart(2, "0")}-1`;
 
+  const menuUuid = uuidv4();
+  const subMenuUuid = uuidv4();
+
   const dirPathOuter = join(
     process.cwd(),
-    `data/content/${menuId}/${subMenuId}/`,
+    `data/content/${menuUuid}/${subMenuUuid}/`,
   );
 
   const dirPath = join(dirPathOuter, "kernprozesse");
@@ -39,8 +43,14 @@ export default defineEventHandler(async (event) => {
   const metadataPath = join(process.cwd(), "data/metadata/mappings.json");
 
   const data = JSON.parse(await readFile(metadataPath, "utf-8"));
-  data[menuId] = body.menuName;
-  data[subMenuId] = body.subMenuName;
+  data[menuUuid] = {
+    id: menuId,
+    name: body.menuName,
+  };
+  data[subMenuUuid] = {
+    id: subMenuId,
+    name: body.subMenuName,
+  };
 
   await writeFile(metadataPath, JSON.stringify(data, null, 2), "utf-8");
 
