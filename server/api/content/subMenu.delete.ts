@@ -1,10 +1,6 @@
 import { writeFile, readFile, rm } from "fs/promises";
 import { join } from "path";
-
-function removeKey(obj: Record<string, string>, key: string) {
-  const { [key]: _, ...rest } = obj;
-  return rest;
-}
+import { MAPPINGS_PATH } from "~~/server/utils/types";
 
 export default defineEventHandler(async (event) => {
   const { user } = await requireUserSession(event);
@@ -15,8 +11,10 @@ export default defineEventHandler(async (event) => {
     subMenuUuid: string;
   }>(event);
 
-  const metadataPath = join(process.cwd(), "data/metadata/mappings.json");
-  const data = JSON.parse(await readFile(metadataPath, "utf-8"));
+  const metadataPath = join(process.cwd(), MAPPINGS_PATH);
+  const data: Record<string, RawEntry> = JSON.parse(
+    await readFile(metadataPath, "utf-8"),
+  );
 
   const removed = data[body.subMenuUuid];
   if (!removed) return { success: true };
@@ -24,14 +22,12 @@ export default defineEventHandler(async (event) => {
   const [prefix, removedIndexStr] = removed.id.split("-");
   const removedIndex = parseInt(removedIndexStr);
 
-  // 1️⃣ zuerst löschen
   delete data[body.subMenuUuid];
 
-  // 2️⃣ alle sub-einträge updaten die > removedIndex
-  Object.entries(data).forEach(([uuid, item]: any) => {
+  Object.entries(data).forEach(([_id, item]) => {
     if (!item.id.startsWith(prefix + "-")) return;
 
-    const [p, idxStr] = item.id.split("-");
+    const [_p, idxStr] = item.id.split("-");
     const idx = parseInt(idxStr);
     if (idx > removedIndex) {
       const newId = `${prefix}-${idx - 1}`;
