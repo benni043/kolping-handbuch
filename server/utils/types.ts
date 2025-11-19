@@ -16,6 +16,8 @@ export type RawEntry = {
   name: string;
 };
 
+export const MAPPINGS_PATH = "data/metadata/mappings.json";
+
 export type RawData = Record<string, RawEntry>;
 
 export function transformToNestedStructure(rawData: RawData): Structure[] {

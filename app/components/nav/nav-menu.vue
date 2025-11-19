@@ -154,10 +154,11 @@ async function addLvl1Menu(menuName: string, subMenuName: string) {
   emit("refetch");
 }
 
-async function deleteLvl1(id: string) {
+async function deleteLvl1(uuid: string, id: string) {
   const response = await $fetch(`/api/content/menu`, {
     method: "DELETE",
     body: {
+      menuUuid: uuid,
       menuId: id,
     },
   });
@@ -375,7 +376,7 @@ function cancleAdding() {
           v-for="path in data"
           :key="path.id"
           class="relative h-11 flex items-center justify-center bg-[#ABE0D9] ml-1 min-w-12 cursor-pointer hover:text-red-600 border-b-1 border-b-gray-400"
-          @click.stop="deleteLvl1(path.uuid)"
+          @click.stop="deleteLvl1(path.uuid, path.id)"
         >
           <b>
             <svg

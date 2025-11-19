@@ -1,14 +1,15 @@
 import { writeFile, readFile, rm } from "fs/promises";
 import { join } from "path";
+import { MAPPINGS_PATH } from "~~/server/utils/types";
 
-function removeKeysWithPrefix(obj: Record<string, string>, prefix: string) {
-  const result: Record<string, string> = {};
-  for (const key in obj) {
-    if (!key.startsWith(prefix)) {
-      result[key] = obj[key];
+function removeKeysWithPrefix(obj: Record<string, RawEntry>, prefix: string) {
+  for (const [key, entry] of Object.entries(obj)) {
+    if (entry.id.startsWith(prefix)) {
+      delete obj[key];
     }
   }
-  return result;
+
+  return obj;
 }
 
 export default defineEventHandler(async (event) => {
@@ -19,15 +20,16 @@ export default defineEventHandler(async (event) => {
   }
 
   const body = await readBody<{
+    menuUuid: string;
     menuId: string;
   }>(event);
 
-  const dirPath = join(process.cwd(), `data/content/${body.menuId}`);
+  const dirPath = join(process.cwd(), `data/content/${body.menuUuid}`);
 
   await rm(dirPath, { recursive: true, force: true });
 
-  // Mapping entfernen
-  const metadataPath = join(process.cwd(), "data/metadata/mappings.json");
+  const metadataPath = join(process.cwd(), MAPPINGS_PATH);
+
   let data = JSON.parse(await readFile(metadataPath, "utf-8"));
 
   data = removeKeysWithPrefix(data, body.menuId);
