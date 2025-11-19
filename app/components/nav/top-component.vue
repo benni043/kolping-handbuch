@@ -20,18 +20,6 @@ const category = ref("");
 const pathId = ref("");
 const subPathId = ref("");
 
-// const { data } = await useFetch<Structure[]>(`/api/structure`, {
-//   method: "GET",
-// });
-
-// watch(
-//   data,
-//   (newVal) => {
-//     if (newVal) structureStore.setStructure(newVal);
-//   },
-//   { immediate: true },
-// );
-
 watch(
   () => route.params,
   () => {
