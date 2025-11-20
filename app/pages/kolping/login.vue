@@ -75,7 +75,7 @@ async function logout(username: string) {
           >
             <template #trailing>
               <svg
-                v-if="visible"
+                v-if="!visible"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
