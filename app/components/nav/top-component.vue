@@ -40,6 +40,16 @@ onMounted(() => {
   handleRouting();
 });
 
+const isEditing = ref(true);
+
+watch(
+  isEditing,
+  () => {
+    document.body.style.overflow = isEditing.value ? "hidden" : "";
+  },
+  { deep: true },
+);
+
 function handleRouting() {
   const segment0 = getSegment(1);
 
@@ -257,11 +267,15 @@ function navigateTwoStepsBack() {
         class="cursor-pointer"
         @click="navigateTwoStepsBack()"
       >
-        <span v-if="contentPage">{{ pathId }}&ensp;</span>
+        <span v-if="contentPage"
+          >{{ structureStore.getIdByUuid(pathId) }}&ensp;</span
+        >
         <span>{{ path }}</span>
       </a>
       <span v-if="path !== '' && subPath === ''">
-        <span v-if="contentPage">{{ pathId }}&ensp;</span>
+        <span v-if="contentPage"
+          >{{ structureStore.getIdByUuid(pathId) }}&ensp;</span
+        >
         <span>{{ path }}</span>
       </span>
 
@@ -271,11 +285,15 @@ function navigateTwoStepsBack() {
         class="cursor-pointer"
         @click="navigateOneStepBack()"
       >
-        <span v-if="contentPage">{{ subPathId }}&ensp;</span>
+        <span v-if="contentPage"
+          >{{ structureStore.getChildIdByUuid(pathId, subPathId) }}&ensp;</span
+        >
         <span>{{ subPath }}</span>
       </a>
       <span v-if="subPath !== '' && category === ''">
-        <span v-if="contentPage">{{ subPathId }}&ensp;</span>
+        <span v-if="contentPage"
+          >{{ structureStore.getChildIdByUuid(pathId, subPathId) }}&ensp;</span
+        >
         <span>{{ subPath }}</span>
       </span>
 

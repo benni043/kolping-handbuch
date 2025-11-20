@@ -30,9 +30,32 @@ export default defineEventHandler(async (event) => {
 
   const metadataPath = join(process.cwd(), MAPPINGS_PATH);
 
-  let data = JSON.parse(await readFile(metadataPath, "utf-8"));
+  let data: Record<string, RawEntry> = JSON.parse(
+    await readFile(metadataPath, "utf-8"),
+  );
 
   data = removeKeysWithPrefix(data, body.menuId);
+
+  const removedIndex = parseInt(body.menuId);
+
+  Object.entries(data).forEach(([_id, item]) => {
+    if (!item.id.includes("-")) {
+      const num = parseInt(item.id);
+
+      if (num > removedIndex) {
+        const newId = `${(num - 1).toString().padStart(2, "0")}`;
+        item.id = newId;
+      }
+    } else {
+      const [p, idxStr] = item.id.split("-");
+      const num = parseInt(p);
+
+      if (num > removedIndex) {
+        const newId = `${(num - 1).toString().padStart(2, "0")}-${idxStr}`;
+        item.id = newId;
+      }
+    }
+  });
 
   await writeFile(metadataPath, JSON.stringify(data, null, 2), "utf-8");
 

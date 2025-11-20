@@ -19,8 +19,6 @@ export default defineEventHandler(async (event) => {
     `data/content/${body.path}/${body.subPath}/kernprozesse/kernprozess_${body.kernprozessNumber}.json`,
   );
 
-  console.log(filePath);
-
   await unlink(filePath);
 
   return { success: true, deleted: filePath };

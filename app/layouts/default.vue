@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import TopComponent from "~/components/nav/top-component.vue";
 import BottomComponent from "~/components/footer/bottom-component.vue";
+import { tr } from "@nuxt/ui/runtime/locale/index.js";
 
 const colorMode = useColorMode();
 colorMode.preference = "light";

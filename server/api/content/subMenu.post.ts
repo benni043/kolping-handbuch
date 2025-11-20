@@ -15,9 +15,6 @@ export default defineEventHandler(async (event) => {
     subMenuName: string;
   }>(event);
 
-  console.log(body.menuId);
-  console.log(body.subMenuName);
-
   const basePath = join(process.cwd(), `data/content/${body.menuUuid}`);
 
   const entries = await readdir(basePath, { withFileTypes: true });
