@@ -46,10 +46,14 @@ function scrollToTop() {
       </button>
     </div>
 
-    <div class="flex justify-between items-center ml-5">
-      <img src="/img/logo.png" alt="logo" class="w-60" />
+    <div class="flex justify-between items-center ml-5 flex-col lg:flex-row">
+      <img
+        src="/img/logo.png"
+        alt="logo"
+        class="w-60 mt-3 mb-3 lg:mt-0 lg:mb-0"
+      />
 
-      <div class="mr-5 flex gap-5 text-xl">
+      <div class="mr-5 flex gap-3 lg:gap-5 text-xl flex-col lg:flex-row">
         <button class="cursor-pointer" @click="contact()">Kontakt</button>
         <button class="cursor-pointer" @click="impressum()">Impressum</button>
       </div>

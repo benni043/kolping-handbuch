@@ -97,7 +97,7 @@ function send() {
       </button>
     </div>
 
-    <div class="ml-20 mr-60 lg:mr-100 xl:mr-150">
+    <div class="ml-8 mr-8 lg:ml-20 md:ml-20 md:mr-60 lg:mr-100 xl:mr-150">
       <textarea
         v-if="isEditing"
         v-model="note"

@@ -181,17 +181,24 @@ function navigateTwoStepsBack() {
 <template>
   <div>
     <div
-      class="mt-5 ml-5 mb-10 flex justify-between"
+      class="mt-5 ml-5 mb-10 flex items-center justify-between flex-col lg:flex-row"
       :class="{ 'blur-sm': blurStore.blur }"
     >
       <img
-        class="w-60 cursor-pointer"
+        class="w-60 cursor-pointer mb-5 lg:mb-0"
         src="/img/logo.png"
         alt="logo"
         @click="returnToHome()"
       />
 
-      <div class="mr-5 flex gap-5">
+      <div class="flex flex-col gap-5 lg:mr-5 lg:flex-row">
+        <button
+          class="text-xl cursor-pointer"
+          @click="navigatoToIntroduction()"
+        >
+          Einleitung
+        </button>
+
         <button
           v-if="user && user?.role === 'admin'"
           class="text-xl cursor-pointer"
@@ -214,13 +221,6 @@ function navigateTwoStepsBack() {
         >
           Logout
         </button>
-
-        <button
-          class="text-xl cursor-pointer"
-          @click="navigatoToIntroduction()"
-        >
-          Einleitung
-        </button>
       </div>
     </div>
 
@@ -234,7 +234,10 @@ function navigateTwoStepsBack() {
         @refetch="fetchStructure()"
       ></nav-menu>
 
-      <div class="relative" :class="{ 'blur-sm': blurStore.blur }">
+      <div
+        class="relative hidden lg:block"
+        :class="{ 'blur-sm': blurStore.blur }"
+      >
         <div class="flex flex-col absolute h-full justify-center ml-20">
           <h1 class="text-6xl">
             <b>Kolping</b>
@@ -246,7 +249,7 @@ function navigateTwoStepsBack() {
           :style="{
             height: `calc(var(--spacing) * ${(structureStore.getOuterCount() + (user?.role === 'editor' || user?.role === 'admin' ? 1 : 0)) * 11})`,
           }"
-          class="w-150 test"
+          class="w-150"
           src="/img/header.png"
           alt="header"
         />
@@ -258,47 +261,56 @@ function navigateTwoStepsBack() {
       class="h-10 bg-gray-200 mb-10"
     ></div>
 
-    <div :class="{ 'blur-sm': blurStore.blur }" class="flex gap-3 ml-20 mb-10">
+    <div
+      :class="{ 'blur-sm': blurStore.blur }"
+      class="flex gap-3 ml-8 md:ml-20 mb-10 flex-col lg:flex-row"
+    >
       <a class="cursor-pointer" @click="returnToHome()">Handbuch</a>
 
-      <span v-if="path !== ''">></span>
-      <a
-        v-if="path !== '' && subPath !== ''"
-        class="cursor-pointer"
-        @click="navigateTwoStepsBack()"
-      >
-        <span v-if="contentPage"
-          >{{ structureStore.getIdByUuid(pathId) }}&ensp;</span
+      <div class="flex gap-3">
+        <span v-if="path !== ''">></span>
+        <a
+          v-if="path !== '' && subPath !== ''"
+          class="cursor-pointer"
+          @click="navigateTwoStepsBack()"
         >
-        <span>{{ path }}</span>
-      </a>
-      <span v-if="path !== '' && subPath === ''">
-        <span v-if="contentPage"
-          >{{ structureStore.getIdByUuid(pathId) }}&ensp;</span
-        >
-        <span>{{ path }}</span>
-      </span>
+          <span v-if="contentPage"
+            >{{ structureStore.getIdByUuid(pathId) }}&ensp;
+          </span>
+          <span>{{ path }}</span>
+        </a>
+        <span v-if="path !== '' && subPath === ''">
+          <span v-if="contentPage"
+            >{{ structureStore.getIdByUuid(pathId) }}&ensp;
+          </span>
+          <span>{{ path }}</span>
+        </span>
+      </div>
 
-      <span v-if="subPath !== ''">></span>
-      <a
-        v-if="subPath !== '' && category !== ''"
-        class="cursor-pointer"
-        @click="navigateOneStepBack()"
-      >
-        <span v-if="contentPage"
-          >{{ structureStore.getChildIdByUuid(pathId, subPathId) }}&ensp;</span
+      <div class="flex gap-3">
+        <span v-if="subPath !== ''">></span>
+        <a
+          v-if="subPath !== '' && category !== ''"
+          class="cursor-pointer"
+          @click="navigateOneStepBack()"
         >
-        <span>{{ subPath }}</span>
-      </a>
-      <span v-if="subPath !== '' && category === ''">
-        <span v-if="contentPage"
-          >{{ structureStore.getChildIdByUuid(pathId, subPathId) }}&ensp;</span
-        >
-        <span>{{ subPath }}</span>
-      </span>
+          <span v-if="contentPage"
+            >{{ structureStore.getChildIdByUuid(pathId, subPathId) }}&ensp;
+          </span>
+          <span>{{ subPath }}</span>
+        </a>
+        <span v-if="subPath !== '' && category === ''">
+          <span v-if="contentPage"
+            >{{ structureStore.getChildIdByUuid(pathId, subPathId) }}&ensp;
+          </span>
+          <span>{{ subPath }}</span>
+        </span>
+      </div>
 
-      <span v-if="category !== ''">></span>
-      <span v-if="category !== ''">{{ category }}</span>
+      <div class="flex gap-3">
+        <span v-if="category !== ''">></span>
+        <span v-if="category !== ''">{{ category }}</span>
+      </div>
     </div>
   </div>
 </template>

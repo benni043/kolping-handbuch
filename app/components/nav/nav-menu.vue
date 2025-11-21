@@ -226,7 +226,7 @@ function cancleAdding() {
 
 <template>
   <div class="z-10 relative">
-    <ul class="text-sm flex" :class="{ 'blur-sm': blurStore.blur }">
+    <ul class="hidden lg:flex text-sm" :class="{ 'blur-sm': blurStore.blur }">
       <!-- normal lvl 1 -->
       <li>
         <div
@@ -397,6 +397,70 @@ function cancleAdding() {
         </div>
       </li>
     </ul>
+
+    <div class="lg:hidden w-full" :class="{ 'blur-sm': blurStore.blur }">
+      <details v-for="path in data" :key="path.id" class="border-b">
+        <summary
+          class="px-4 py-3 bg-[#50A9CE]/30 cursor-pointer flex justify-between items-center"
+        >
+          <span>
+            <b class="text-[#F18700]">{{ path.id }} </b>{{ path.name }}
+          </span>
+
+          <button
+            v-if="user?.role === 'admin' || user?.role === 'editor'"
+            class="px-2 py-1 bg-red-500 text-white rounded text-sm"
+            @click.stop="deleteLvl1(path.uuid, path.id)"
+          >
+            X
+          </button>
+        </summary>
+
+        <!-- LVL2 -->
+        <details
+          v-for="subPath in path.children"
+          :key="subPath.id"
+          class="ml-6 border-b"
+        >
+          <summary
+            class="px-4 py-3 bg-[#50A9CE]/20 cursor-pointer flex justify-between items-center"
+            @click.stop="click(path.uuid, subPath.uuid, null)"
+          >
+            {{ subPath.name }}
+
+            <button
+              v-if="user?.role === 'admin' || user?.role === 'editor'"
+              class="px-2 py-1 bg-red-500 text-white rounded text-sm"
+              @click.stop="deleteLvl2(path.uuid, subPath.uuid)"
+            >
+              X
+            </button>
+          </summary>
+
+          <!-- LVL3 -->
+          <div class="ml-6 bg-[#50A9CE]/10">
+            <button
+              v-for="category in categories"
+              :key="category"
+              class="block w-full text-left px-4 py-2"
+              @click.stop="click(path.uuid, subPath.uuid, category)"
+            >
+              {{ category }}
+            </button>
+          </div>
+        </details>
+        <!-- Extra Unterpunkt -->
+      </details>
+
+      <!-- Extra Menüpunkt -->
+      <button
+        v-if="user?.role === 'admin' || user?.role === 'editor'"
+        class="w-full px-4 py-3 bg-[#ABE0D9] mt-2"
+        @click.stop="addLvl1()"
+      >
+        + Extra Menüpunkt
+      </button>
+    </div>
 
     <div class="absolute top-0 left-50">
       <lvl1-component
