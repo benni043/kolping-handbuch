@@ -49,11 +49,13 @@ function enterCategory(index: number) {
   hoveredCategory.value = index;
 }
 
-function leaveCategory() {
+function leaveCategory(mobile: boolean) {
+  const to = mobile ? 0 : timeout;
+
   categoryTimeout = setTimeout(() => {
     hoveredCategory.value = null;
     hoveredSub.value = null;
-  }, timeout);
+  }, to);
 }
 
 function enterSub(subIndex: number) {
@@ -61,10 +63,12 @@ function enterSub(subIndex: number) {
   hoveredSub.value = subIndex;
 }
 
-function leaveSub() {
+function leaveSub(mobile: boolean) {
+  const to = mobile ? 0 : timeout;
+
   subTimeout = setTimeout(() => {
     hoveredSub.value = null;
-  }, timeout);
+  }, to);
 }
 
 function enterSubSub(subIndex: number) {
@@ -72,10 +76,12 @@ function enterSubSub(subIndex: number) {
   hoveredSubSub.value = subIndex;
 }
 
-function leaveSubSub() {
+function leaveSubSub(mobile: boolean) {
+  const to = mobile ? 0 : timeout;
+
   subSubTimeout = setTimeout(() => {
     hoveredSubSub.value = null;
-  }, timeout);
+  }, to);
 }
 
 function addLvl1() {
@@ -225,7 +231,7 @@ function cancleAdding() {
 </script>
 
 <template>
-  <div class="z-10 relative">
+  <div class="z-10 relative not-lg:w-full">
     <ul class="hidden lg:flex text-sm" :class="{ 'blur-sm': blurStore.blur }">
       <!-- normal lvl 1 -->
       <li>
@@ -241,7 +247,7 @@ function cancleAdding() {
               user?.role !== 'editor',
           }"
           @mouseenter="enterCategory(index)"
-          @mouseleave="leaveCategory"
+          @mouseleave="leaveCategory(false)"
           @click.stop="click(path.uuid, null, null)"
         >
           <div
@@ -266,7 +272,7 @@ function cancleAdding() {
                 :key="subPath.id"
                 class="relative h-11 bg-[#50A9CE]/[0.33] border-b-1 border-b-gray-400 min-w-88"
                 @mouseenter="enterSub(subIndex)"
-                @mouseleave="leaveSub"
+                @mouseleave="leaveSub(false)"
                 @click.stop="click(path.uuid, subPath.uuid, null)"
               >
                 <div
@@ -289,7 +295,7 @@ function cancleAdding() {
                     :key="category"
                     class="relative h-11 bg-[#50A9CE]/[0.33]"
                     @mouseenter="enterSubSub(subSubIndex)"
-                    @mouseleave="leaveSubSub"
+                    @mouseleave="leaveSubSub(false)"
                     @click.stop="click(path.uuid, subPath.uuid, category)"
                   >
                     <div
@@ -309,7 +315,7 @@ function cancleAdding() {
                 v-if="user?.role === 'admin' || user?.role === 'editor'"
                 class="relative h-11 bg-[#ABE0D9] min-w-88"
                 @mouseenter="enterSub(-1)"
-                @mouseleave="leaveSub"
+                @mouseleave="leaveSub(false)"
                 @click.stop="addLvl2(path.uuid, path.id)"
               >
                 <div
@@ -358,7 +364,7 @@ function cancleAdding() {
           v-if="user?.role === 'admin' || user?.role === 'editor'"
           class="relative h-11 bg-[#ABE0D9] rounded-bl-2xl min-w-88"
           @mouseenter="enterCategory(-1)"
-          @mouseleave="leaveCategory"
+          @mouseleave="leaveCategory(false)"
           @click.stop="addLvl1()"
         >
           <div
@@ -398,69 +404,133 @@ function cancleAdding() {
       </li>
     </ul>
 
-    <div class="lg:hidden w-full" :class="{ 'blur-sm': blurStore.blur }">
-      <details v-for="path in data" :key="path.id" class="border-b">
-        <summary
-          class="px-4 py-3 bg-[#50A9CE]/30 cursor-pointer flex justify-between items-center"
+    <ul class="lg:hidden">
+      <li v-for="(path, index) in data" :key="path.id">
+        <div
+          class="flex items-center h-11 bg-[#50A9CE]/[0.33] border-b-1 border-b-gray-400"
+          @click="
+            hoveredCategory === null
+              ? enterCategory(index)
+              : leaveCategory(true)
+          "
         >
-          <span>
-            <b class="text-[#F18700]">{{ path.id }} </b>{{ path.name }}
-          </span>
-
-          <button
-            v-if="user?.role === 'admin' || user?.role === 'editor'"
-            class="px-2 py-1 bg-red-500 text-white rounded text-sm"
-            @click.stop="deleteLvl1(path.uuid, path.id)"
+          <b class="text-[#F18700] ml-5">{{ path.id }}&emsp;</b>
+          <b
+            :class="{
+              'text-[#F18700]': hoveredCategory === index,
+            }"
+            @click.stop="click(path.uuid, null, null)"
+            >{{ path.name }}</b
           >
-            X
-          </button>
-        </summary>
-
-        <!-- LVL2 -->
-        <details
-          v-for="subPath in path.children"
-          :key="subPath.id"
-          class="ml-6 border-b"
-        >
-          <summary
-            class="px-4 py-3 bg-[#50A9CE]/20 cursor-pointer flex justify-between items-center"
-            @click.stop="click(path.uuid, subPath.uuid, null)"
-          >
-            {{ subPath.name }}
-
-            <button
-              v-if="user?.role === 'admin' || user?.role === 'editor'"
-              class="px-2 py-1 bg-red-500 text-white rounded text-sm"
-              @click.stop="deleteLvl2(path.uuid, subPath.uuid)"
+          <b class="absolute right-5">
+            <svg
+              v-if="hoveredCategory !== index"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="size-6"
             >
-              X
-            </button>
-          </summary>
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="m8.25 4.5 7.5 7.5-7.5 7.5"
+              />
+            </svg>
 
-          <!-- LVL3 -->
-          <div class="ml-6 bg-[#50A9CE]/10">
-            <button
-              v-for="category in categories"
-              :key="category"
-              class="block w-full text-left px-4 py-2"
-              @click.stop="click(path.uuid, subPath.uuid, category)"
+            <svg
+              v-else
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="size-6"
             >
-              {{ category }}
-            </button>
-          </div>
-        </details>
-        <!-- Extra Unterpunkt -->
-      </details>
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="m19.5 8.25-7.5 7.5-7.5-7.5"
+              />
+            </svg>
+          </b>
+        </div>
 
-      <!-- Extra Menüpunkt -->
-      <button
-        v-if="user?.role === 'admin' || user?.role === 'editor'"
-        class="w-full px-4 py-3 bg-[#ABE0D9] mt-2"
-        @click.stop="addLvl1()"
-      >
-        + Extra Menüpunkt
-      </button>
-    </div>
+        <ul v-if="hoveredCategory === index">
+          <li v-for="(subPath, subIndex) in path.children" :key="subPath.id">
+            <div
+              class="flex items-center h-11 bg-[#50A9CE]/[0.33] min-w-88 border-b-1 border-b-gray-400"
+              @click="hoveredSub === null ? enterSub(subIndex) : leaveSub(true)"
+            >
+              <b class="text-[#F18700] ml-10">{{ subPath.id }}&emsp;</b>
+              <b
+                :class="{
+                  'text-[#F18700]': hoveredSub === subIndex,
+                }"
+                @click.stop="click(path.uuid, subPath.uuid, null)"
+                >{{ subPath.name }}</b
+              >
+              <b class="absolute right-5">
+                <svg
+                  v-if="hoveredSub !== subIndex"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="size-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="m8.25 4.5 7.5 7.5-7.5 7.5"
+                  />
+                </svg>
+
+                <svg
+                  v-else
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="size-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="m19.5 8.25-7.5 7.5-7.5-7.5"
+                  />
+                </svg>
+              </b>
+            </div>
+
+            <ul v-if="hoveredSub === subIndex">
+              <li v-for="(category, subSubIndex) in categories" :key="category">
+                <div
+                  class="flex items-center h-11 bg-[#50A9CE]/[0.33] min-w-88 border-b-1 border-b-gray-400"
+                  @click.stop="click(path.uuid, subPath.uuid, category)"
+                >
+                  <b
+                    class="ml-15"
+                    :class="{
+                      'text-[#F18700]': hoveredSubSub === subSubIndex,
+                    }"
+                    @click="
+                      hoveredSubSub === null
+                        ? enterSubSub(subSubIndex)
+                        : leaveSubSub(true)
+                    "
+                    >{{ category }}</b
+                  >
+                </div>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
 
     <div class="absolute top-0 left-50">
       <lvl1-component
