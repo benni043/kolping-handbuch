@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import NavMenu from "~/components/nav/nav-menu.vue";
 import type { Structure } from "~/types/structure";
-import { useRoute } from "#imports";
+import { useRoute, useDevice } from "#imports";
 import { useBlurStore } from "~/stores/useBlur";
 
 const structureStore = useStructureStore();
@@ -19,6 +19,10 @@ const category = ref("");
 
 const pathId = ref("");
 const subPathId = ref("");
+
+const isActive = ref(false);
+
+const { isMobile } = useDevice();
 
 watch(
   () => route.params,
@@ -191,7 +195,7 @@ function navigateTwoStepsBack() {
         @click="returnToHome()"
       />
 
-      <div class="flex gap-5 lg:mr-5 lg:flex-row">
+      <div class="flex gap-5 mr-5 lg:flex-row">
         <button
           v-if="user && user?.role === 'admin'"
           class="text-xl cursor-pointer"
@@ -203,7 +207,7 @@ function navigateTwoStepsBack() {
             viewBox="0 0 24 24"
             stroke-width="1.5"
             stroke="currentColor"
-            class="size-6"
+            class="size-6 lg:size-8"
           >
             <path
               stroke-linecap="round"
@@ -223,7 +227,7 @@ function navigateTwoStepsBack() {
             viewBox="0 0 24 24"
             stroke-width="1.5"
             stroke="currentColor"
-            class="size-6"
+            class="size-6 lg:size-8"
           >
             <path
               stroke-linecap="round"
@@ -244,12 +248,12 @@ function navigateTwoStepsBack() {
             viewBox="0 0 24 24"
             stroke-width="1.5"
             stroke="currentColor"
-            class="size-6"
+            class="size-6 lg:size-8"
           >
             <path
               stroke-linecap="round"
               stroke-linejoin="round"
-              d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15m-3 0-3-3m0 0 3-3m-3 3H15"
+              d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15M12 9l-3 3m0 0 3 3m-3-3h12.75"
             />
           </svg>
         </button>
@@ -264,7 +268,7 @@ function navigateTwoStepsBack() {
             viewBox="0 0 24 24"
             stroke-width="1.5"
             stroke="currentColor"
-            class="size-6"
+            class="size-6 lg:size-8"
           >
             <path
               stroke-linecap="round"
@@ -274,14 +278,15 @@ function navigateTwoStepsBack() {
           </svg>
         </button>
 
-        <button>
+        <button v-if="isMobile" @click="isActive = !isActive">
           <svg
+            v-if="!isActive"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
             stroke-width="1.5"
             stroke="currentColor"
-            class="size-6"
+            class="size-6 lg:size-8"
           >
             <path
               stroke-linecap="round"
@@ -291,12 +296,13 @@ function navigateTwoStepsBack() {
           </svg>
 
           <svg
+            v-else
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
             stroke-width="1.5"
             stroke="currentColor"
-            class="size-6"
+            class="size-6 lg:size-8"
           >
             <path
               stroke-linecap="round"
@@ -308,9 +314,13 @@ function navigateTwoStepsBack() {
       </div>
     </div>
 
-    <div class="mb-5 lg:mb-10 flex justify-center items-start gap-1">
+    <div
+      class="lg:mb-10 flex justify-center items-start gap-1"
+      :class="{ 'mb-0': !isActive, 'mb-5': isActive }"
+    >
       <nav-menu
         :data="structureStore.structure"
+        :active="isActive"
         @emit-route="
           (pathIdNew, subPathNewId, categoryNew) =>
             navigateToCategory(pathIdNew, subPathNewId, categoryNew)
@@ -347,7 +357,7 @@ function navigateTwoStepsBack() {
 
     <div
       :class="{ 'blur-sm': blurStore.blur }"
-      class="flex gap-3 ml-8 md:ml-20 mb-10 flex-col lg:flex-row"
+      class="flex gap-3 ml-8 md:ml-20 flex-col lg:flex-row"
     >
       <a class="cursor-pointer" @click="returnToHome()">Handbuch</a>
 

@@ -50,7 +50,7 @@ async function logout(username: string) {
 </script>
 
 <template>
-  <div class="flex justify-center mb-15">
+  <div class="flex justify-center mb-10">
     <div v-if="!user" class="w-100 p-8">
       <h1 class="text-2xl font-semibold text-center mb-10">Anmelden</h1>
 
@@ -131,8 +131,8 @@ async function logout(username: string) {
       </UForm>
     </div>
 
-    <div v-else class="w-100 p-8">
-      <h1 class="text-2xl font-semibold text-center mb-10">
+    <div v-else class="w-100 px-10">
+      <h1 class="text-2xl font-semibold text-center my-5">
         Eingeloggt als <b>{{ user?.username }}</b>
       </h1>
 
@@ -140,7 +140,7 @@ async function logout(username: string) {
         color="error"
         variant="solid"
         size="xl"
-        icon="i-heroicons-arrow-left-on-rectangle"
+        icon="i-heroicons-arrow-left-start-on-rectangle"
         class="cursor-pointer"
         block
         @click="logout(user?.username)"

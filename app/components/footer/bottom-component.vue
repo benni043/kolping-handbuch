@@ -18,7 +18,7 @@ function scrollToTop() {
 
 <template>
   <div :class="{ 'blur-sm': blurStore.blur }">
-    <div class="h-20 bg-[#F18700] my-5 lg:my-10"></div>
+    <div class="h-15 bg-[#F18700] my-5 lg:my-10"></div>
 
     <div class="flex justify-center items-center text-6xl text-[#F18700] mb-5">
       <button class="cursor-pointer" @click="scrollToTop()">

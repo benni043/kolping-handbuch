@@ -4,9 +4,11 @@ import type { Structure } from "~/types/structure";
 import { categories } from "~/utils/utils";
 import Lvl1Component from "~/components/nav/lvl1-component.vue";
 import Lvl2Component from "~/components/nav/lvl2-component.vue";
+import { useDevice } from "#imports";
 
 defineProps<{
   data: Structure[];
+  active: boolean;
 }>();
 
 const emit = defineEmits(["emit-route", "refetch"]);
@@ -31,6 +33,8 @@ const addingLvl2 = ref(false);
 
 const currentPathId = ref("");
 const currentPathUuid = ref("");
+
+const { isMobile } = useDevice();
 
 function click(
   pathId: string,
@@ -231,7 +235,7 @@ function cancleAdding() {
 </script>
 
 <template>
-  <div class="z-10 relative not-lg:w-full">
+  <div v-if="active || !isMobile" class="z-10 relative not-lg:w-full">
     <ul class="hidden lg:flex text-sm" :class="{ 'blur-sm': blurStore.blur }">
       <!-- normal lvl 1 -->
       <li>
