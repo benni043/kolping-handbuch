@@ -18,9 +18,9 @@ function scrollToTop() {
 
 <template>
   <div :class="{ 'blur-sm': blurStore.blur }">
-    <div class="h-20 bg-[#F18700] mt-10 mb-10"></div>
+    <div class="h-20 bg-[#F18700] my-5 lg:my-10"></div>
 
-    <div class="flex justify-center items-center text-6xl text-[#F18700]">
+    <div class="flex justify-center items-center text-6xl text-[#F18700] mb-5">
       <button class="cursor-pointer" @click="scrollToTop()">
         <b
           ><svg
@@ -46,20 +46,18 @@ function scrollToTop() {
       </button>
     </div>
 
-    <div class="flex justify-between items-center ml-5 flex-col lg:flex-row">
-      <img
-        src="/img/logo.png"
-        alt="logo"
-        class="w-60 mt-3 mb-3 lg:mt-0 lg:mb-0"
-      />
+    <div
+      class="flex justify-between items-center flex-col lg:flex-row lg:justify-around"
+    >
+      <img src="/img/logo.png" alt="logo" class="w-60 mb-5 lg:mt-0 lg:mb-0" />
 
-      <div class="mr-5 flex gap-3 lg:gap-5 text-xl flex-col lg:flex-row">
+      <div class="flex gap-5 text-xl flex-col lg:flex-row">
         <button class="cursor-pointer" @click="contact()">Kontakt</button>
         <button class="cursor-pointer" @click="impressum()">Impressum</button>
       </div>
     </div>
 
-    <div class="mb-10"></div>
+    <div class="h-10"></div>
   </div>
 </template>
 

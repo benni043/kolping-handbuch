@@ -33,12 +33,21 @@ export default defineEventHandler(async (event) => {
       message: "Bad credentials - wrong user/password comibnation",
     });
 
-  await setUserSession(event, {
-    user: {
-      id: response.id,
-      username: response.username,
-      role: response.role,
+  await setUserSession(
+    event,
+    {
+      user: {
+        id: response.id,
+        username: response.username,
+        role: response.role,
+      },
     },
-  });
+    {
+      cookie: {
+        secure: import.meta.dev ? false : true,
+      },
+    },
+  );
+
   return {};
 });

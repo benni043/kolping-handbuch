@@ -181,30 +181,56 @@ function navigateTwoStepsBack() {
 <template>
   <div>
     <div
-      class="mt-5 ml-5 mb-10 flex items-center justify-between flex-col lg:flex-row"
+      class="mt-5 mb-5 lg:mb-10 ml-5 flex items-center h-full justify-between lg:flex-row"
       :class="{ 'blur-sm': blurStore.blur }"
     >
       <img
-        class="w-60 cursor-pointer mb-5 lg:mb-0"
+        class="not-lg:w-40 lg:w-60 cursor-pointer lg:mb-0"
         src="/img/logo.png"
         alt="logo"
         @click="returnToHome()"
       />
 
-      <div class="flex flex-col gap-5 lg:mr-5 lg:flex-row">
-        <button
-          class="text-xl cursor-pointer"
-          @click="navigatoToIntroduction()"
-        >
-          Einleitung
-        </button>
-
+      <div class="flex gap-5 lg:mr-5 lg:flex-row">
         <button
           v-if="user && user?.role === 'admin'"
           class="text-xl cursor-pointer"
           @click="navigateToAdmin()"
         >
-          Admin
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z"
+            />
+          </svg>
+        </button>
+
+        <button
+          class="text-xl cursor-pointer"
+          @click="navigatoToIntroduction()"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"
+            />
+          </svg>
         </button>
 
         <button
@@ -212,19 +238,77 @@ function navigateTwoStepsBack() {
           class="text-xl cursor-pointer"
           @click="navigateToLoginPage()"
         >
-          Login
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15m-3 0-3-3m0 0 3-3m-3 3H15"
+            />
+          </svg>
         </button>
         <button
           v-if="loggedIn"
           class="text-xl cursor-pointer"
           @click="navigateToLoginPage()"
         >
-          Logout
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15m-3 0-3-3m0 0 3-3m-3 3H15"
+            />
+          </svg>
+        </button>
+
+        <button>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+            />
+          </svg>
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3.75 6.75h16.5M3.75 12H12m-8.25 5.25h16.5"
+            />
+          </svg>
         </button>
       </div>
     </div>
 
-    <div class="mb-15 flex justify-center items-start gap-1">
+    <div class="mb-5 lg:mb-10 flex justify-center items-start gap-1">
       <nav-menu
         :data="structureStore.structure"
         @emit-route="
@@ -258,7 +342,7 @@ function navigateTwoStepsBack() {
 
     <div
       :class="{ 'blur-sm': blurStore.blur }"
-      class="h-10 bg-gray-200 mb-10"
+      class="h-10 bg-gray-200 mb-5 lg:mb-10"
     ></div>
 
     <div
