@@ -1,8 +1,4 @@
 <script setup lang="ts">
-import { useBlurStore } from "~/stores/useBlur";
-
-const blurStore = useBlurStore();
-
 function contact() {
   navigateTo(`/kolping/${contactLower}`);
 }
@@ -17,7 +13,7 @@ function scrollToTop() {
 </script>
 
 <template>
-  <div :class="{ 'blur-sm': blurStore.blur }">
+  <div>
     <div class="h-15 bg-[#F18700] my-5 lg:my-10"></div>
 
     <div class="flex justify-center items-center text-6xl text-[#F18700] mb-5">

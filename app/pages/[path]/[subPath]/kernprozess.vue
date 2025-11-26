@@ -2,18 +2,14 @@
 import type { Kernprozess } from "~/types/kernprozess";
 import KernprozessCreator from "~/components/admin/kernprozess/kernprozess-creator.vue";
 import { useRoute } from "#imports";
-import { useBlurStore } from "~/stores/useBlur";
 
 definePageMeta({
   middleware: ["authenticated"],
 });
 
 const toast = useToast();
-
-const { user } = useUserSession();
-
 const route = useRoute();
-const blurStore = useBlurStore();
+const { user } = useUserSession();
 
 const kernprozesseRef: Ref<Kernprozess[]> = ref([]);
 
@@ -34,12 +30,7 @@ async function fetchKernprozesse() {
 
 const editingStates = ref<Record<number, boolean>>({});
 
-function isEditing(key: number) {
-  return editingStates.value[key] === true;
-}
-
 function toggleEditing(key: number) {
-  blurStore.blur = !blurStore.blur;
   editingStates.value[key] = !editingStates.value[key];
 }
 
@@ -125,15 +116,6 @@ async function send(kernprozess: Kernprozess, count: number) {
   toggleEditing(count);
 }
 
-watch(
-  editingStates,
-  (val) => {
-    const anyEditing = Object.values(val).some((v) => v);
-    document.body.style.overflow = anyEditing ? "hidden" : "";
-  },
-  { deep: true },
-);
-
 onMounted(() => {
   fetchKernprozesse();
 });
@@ -141,10 +123,7 @@ onMounted(() => {
 
 <template>
   <div>
-    <div
-      class="flex my-5 justify-end mr-10"
-      :class="{ 'blur-sm': blurStore.blur }"
-    >
+    <div class="flex my-5 justify-end mr-10">
       <button
         v-if="user && (user.role === 'admin' || user.role === 'editor')"
         class="bg-green-400 hover:bg-green-500 text-white px-4 py-2 rounded cursor-pointer"
@@ -167,31 +146,38 @@ onMounted(() => {
       </button>
     </div>
 
-    <div
-      v-if="isEditing(0)"
-      class="fixed inset-0 z-50 overflow-y-auto p-6 blur-none"
+    <UModal
+      v-model:open="editingStates[0]"
+      fullscreen
+      title="Kernprozess hinzufügen"
+      :close="{
+        color: 'primary',
+        variant: 'outline',
+        class: 'rounded-full',
+      }"
     >
-      <KernprozessCreator
-        :schritt-count="kernprozesseRef.length + 1"
-        :vorgaben-blue="undefined"
-        :vorlagen-blue="undefined"
-        :middle-head="undefined"
-        :middle-list="undefined"
-        :aufzeichnung-orange="undefined"
-        :verantwortlicher-orange="undefined"
-        :information-orange="undefined"
-        :orange="false"
-        :editing="false"
-        @cancle="toggleEditing(0)"
-        @send="(kernprozess) => send(kernprozess, 0)"
-      />
-    </div>
+      <template #body>
+        <KernprozessCreator
+          :schritt-count="kernprozesseRef.length + 1"
+          :vorgaben-blue="undefined"
+          :vorlagen-blue="undefined"
+          :middle-head="undefined"
+          :middle-list="undefined"
+          :aufzeichnung-orange="undefined"
+          :verantwortlicher-orange="undefined"
+          :information-orange="undefined"
+          :orange="false"
+          :editing="false"
+          @cancle="toggleEditing(0)"
+          @send="(kernprozess) => send(kernprozess, 0)"
+        />
+      </template>
+    </UModal>
 
     <div v-for="kernprozess in kernprozesseRef" :key="kernprozess.middleHead">
       <div
         v-if="user && (user.role === 'admin' || user.role === 'editor')"
         class="ml-20 flex gap-5"
-        :class="{ 'blur-sm': blurStore.blur }"
       >
         <button
           class="bg-orange-400 hover:bg-orange-500 text-white px-4 py-2 rounded cursor-pointer"
@@ -234,30 +220,35 @@ onMounted(() => {
         </button>
       </div>
 
-      <div
-        v-if="isEditing(kernprozess.schrittCount)"
-        class="fixed inset-0 z-50 overflow-y-auto p-6 blur-none"
+      <UModal
+        v-model:open="editingStates[kernprozess.schrittCount]"
+        fullscreen
+        title="Kernprozess hinzufügen"
+        :close="{
+          color: 'primary',
+          variant: 'outline',
+          class: 'rounded-full',
+        }"
       >
-        <KernprozessCreator
-          :schritt-count="kernprozess.schrittCount"
-          :vorgaben-blue="kernprozess.vorgabenBlue"
-          :vorlagen-blue="kernprozess.vorlagenBlue"
-          :middle-head="kernprozess.middleHead"
-          :middle-list="kernprozess.middleList"
-          :aufzeichnung-orange="kernprozess.aufzeichnungOrange"
-          :verantwortlicher-orange="kernprozess.verantwortlicherOrange"
-          :information-orange="kernprozess.informationOrange"
-          :orange="kernprozess.orange"
-          :editing="true"
-          @cancle="toggleEditing(kernprozess.schrittCount)"
-          @send="(kernprozess) => send(kernprozess, kernprozess.schrittCount)"
-        />
-      </div>
+        <template #body>
+          <KernprozessCreator
+            :schritt-count="kernprozess.schrittCount"
+            :vorgaben-blue="kernprozess.vorgabenBlue"
+            :vorlagen-blue="kernprozess.vorlagenBlue"
+            :middle-head="kernprozess.middleHead"
+            :middle-list="kernprozess.middleList"
+            :aufzeichnung-orange="kernprozess.aufzeichnungOrange"
+            :verantwortlicher-orange="kernprozess.verantwortlicherOrange"
+            :information-orange="kernprozess.informationOrange"
+            :orange="kernprozess.orange"
+            :editing="true"
+            @cancle="toggleEditing(kernprozess.schrittCount)"
+            @send="(kernprozess) => send(kernprozess, kernprozess.schrittCount)"
+          />
+        </template>
+      </UModal>
 
-      <div
-        class="flex justify-center gap-10 mt-10 mb-20"
-        :class="{ 'blur-sm': blurStore.blur }"
-      >
+      <div class="flex justify-center gap-10 mt-10 mb-20">
         <div class="w-50 xl:w-80">
           <h2 class="text-[#50A9CE] font-bold text-2xl">
             Schritt {{ kernprozess.schrittCount }}
@@ -329,7 +320,7 @@ onMounted(() => {
               v-if="!kernprozess.orange"
               src="/img/kernprozess/kernprozess_content_blue.png"
               alt="content-blue"
-              class="absolute inset-0 h-full w-full object-cover z-10"
+              class="absolute inset-0 h-full w-full z-10"
             />
 
             <div class="relative z-20">

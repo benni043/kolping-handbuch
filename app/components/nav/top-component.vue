@@ -2,10 +2,8 @@
 import NavMenu from "~/components/nav/nav-menu.vue";
 import type { Structure } from "~/types/structure";
 import { useRoute, useDevice } from "#imports";
-import { useBlurStore } from "~/stores/useBlur";
 
 const structureStore = useStructureStore();
-const blurStore = useBlurStore();
 
 const { loggedIn, user } = useUserSession();
 
@@ -186,7 +184,6 @@ function navigateTwoStepsBack() {
   <div>
     <div
       class="mt-5 mb-5 lg:mb-10 ml-5 flex items-center h-full justify-between lg:flex-row"
-      :class="{ 'blur-sm': blurStore.blur }"
     >
       <img
         class="not-lg:w-40 lg:w-60 cursor-pointer lg:mb-0"
@@ -328,10 +325,7 @@ function navigateTwoStepsBack() {
         @refetch="fetchStructure()"
       ></nav-menu>
 
-      <div
-        class="relative hidden lg:block"
-        :class="{ 'blur-sm': blurStore.blur }"
-      >
+      <div class="relative hidden lg:block">
         <div class="flex flex-col absolute h-full justify-center ml-20">
           <h1 class="text-6xl">
             <b>Kolping</b>
@@ -350,15 +344,9 @@ function navigateTwoStepsBack() {
       </div>
     </div>
 
-    <div
-      :class="{ 'blur-sm': blurStore.blur }"
-      class="h-10 bg-gray-200 mb-5 lg:mb-10"
-    ></div>
+    <div class="h-10 bg-gray-200 mb-5 lg:mb-10"></div>
 
-    <div
-      :class="{ 'blur-sm': blurStore.blur }"
-      class="flex gap-3 ml-8 md:ml-20 flex-col lg:flex-row"
-    >
+    <div class="flex gap-3 ml-8 md:ml-20 flex-col lg:flex-row">
       <a class="cursor-pointer" @click="returnToHome()">Handbuch</a>
 
       <div class="flex gap-3">

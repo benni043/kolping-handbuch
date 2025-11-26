@@ -1,9 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import type { Structure } from "~/types/structure";
-import { categories } from "~/utils/utils";
-import Lvl1Component from "~/components/nav/lvl1-component.vue";
-import Lvl2Component from "~/components/nav/lvl2-component.vue";
+import type { Structure } from "~/utils/type/structure";
+import { categories } from "~/utils/nav-menu";
 import { useDevice } from "#imports";
 
 defineProps<{
@@ -14,7 +12,6 @@ defineProps<{
 const emit = defineEmits(["emit-route", "refetch"]);
 
 const toast = useToast();
-const blurStore = useBlurStore();
 
 const { user } = useUserSession();
 
@@ -89,7 +86,6 @@ function leaveSubSub(mobile: boolean) {
 }
 
 function addLvl1() {
-  blurStore.blur = true;
   addingLvl1.value = true;
 }
 
@@ -97,8 +93,14 @@ function addLvl2(pathUuid: string, pathId: string) {
   currentPathId.value = pathId;
   currentPathUuid.value = pathUuid;
 
-  blurStore.blur = true;
   addingLvl2.value = true;
+}
+
+function cancleAdding() {
+  addingLvl1.value = false;
+  addingLvl2.value = false;
+
+  currentPathId.value = "";
 }
 
 async function addLvl2Menu(subMenuName: string) {
@@ -223,20 +225,11 @@ async function deleteLvl2(id: string, subId: string) {
 
   emit("refetch");
 }
-
-function cancleAdding() {
-  blurStore.blur = false;
-
-  addingLvl1.value = false;
-  addingLvl2.value = false;
-
-  currentPathId.value = "";
-}
 </script>
 
 <template>
   <div v-if="active || !isMobile" class="z-10 relative not-lg:w-full">
-    <ul class="hidden lg:flex text-sm" :class="{ 'blur-sm': blurStore.blur }">
+    <ul class="hidden lg:flex text-sm">
       <!-- normal lvl 1 -->
       <li>
         <div
@@ -536,21 +529,39 @@ function cancleAdding() {
       </li>
     </ul>
 
-    <div class="absolute top-0 left-50">
-      <lvl1-component
-        v-if="addingLvl1"
-        @cancle="cancleAdding()"
-        @add="
-          (menuName: string, subMenuName: string) =>
-            addLvl1Menu(menuName, subMenuName)
-        "
-      ></lvl1-component>
+    <UModal
+      v-model:open="addingLvl1"
+      title="Inhalt hinzufügen"
+      :close="{
+        color: 'primary',
+        variant: 'outline',
+        class: 'rounded-full',
+      }"
+    >
+      <template #body>
+        <lvl1-creation-form
+          @add="
+            (menuName: string, subMenuName: string) =>
+              addLvl1Menu(menuName, subMenuName)
+          "
+        ></lvl1-creation-form>
+      </template>
+    </UModal>
 
-      <lvl2-component
-        v-if="addingLvl2"
-        @cancle="cancleAdding()"
-        @add="(subMenuName: string) => addLvl2Menu(subMenuName)"
-      ></lvl2-component>
-    </div>
+    <UModal
+      v-model:open="addingLvl2"
+      title="SubInhalt hinzufügen"
+      :close="{
+        color: 'primary',
+        variant: 'outline',
+        class: 'rounded-full',
+      }"
+    >
+      <template #body>
+        <lvl2-creation-form
+          @add="(subMenuName: string) => addLvl2Menu(subMenuName)"
+        ></lvl2-creation-form>
+      </template>
+    </UModal>
   </div>
 </template>

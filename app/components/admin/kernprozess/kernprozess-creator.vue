@@ -126,7 +126,7 @@ function clearForm() {
 
 <template>
   <UForm
-    class="rounded-md bg-white grid grid-cols-[repeat(3,1fr)] grid-rows-[repeat(7,1fr)] gap-5 h-[85vh] my-[5vh] mx-5 p-5"
+    class="rounded-md bg-white grid grid-cols-[repeat(3,1fr)] grid-rows-[repeat(7,1fr)] gap-5 h-[85vh] p-5"
   >
     <UCard class="col-span-1 row-span-2">
       <h1 class="mb-4 text-xl font-semibold">Schritt</h1>
@@ -416,17 +416,6 @@ function clearForm() {
         @click="clearForm"
       >
         Löschen
-      </UButton>
-
-      <UButton
-        color="neutral"
-        variant="solid"
-        icon="i-heroicons-x-mark"
-        size="lg"
-        class="cursor-pointer"
-        @click="$emit('cancle')"
-      >
-        Abbrechen
       </UButton>
     </div>
   </UForm>

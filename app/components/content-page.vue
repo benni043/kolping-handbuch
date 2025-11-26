@@ -4,8 +4,6 @@ import { onMounted, ref, watch } from "vue";
 
 const { user } = useUserSession();
 
-const blurStore = useBlurStore();
-
 const emit = defineEmits<{
   (e: "update-note", note: string): void;
 }>();
@@ -50,7 +48,7 @@ function send() {
 </script>
 
 <template>
-  <div :class="{ 'blur-sm': blurStore.blur }">
+  <div>
     <div
       v-if="user && (user.role === 'admin' || user.role === 'editor')"
       class="relative"

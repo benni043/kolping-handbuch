@@ -5,8 +5,6 @@ definePageMeta({
   middleware: ["authenticated"],
 });
 
-const blurStore = useBlurStore();
-
 const route = useRoute();
 
 const structureStore = useStructureStore();
@@ -17,10 +15,7 @@ function navigateToSubPath(subPath: string) {
 </script>
 
 <template>
-  <div
-    class="ml-20 mr-60 lg:mr-100 xl:mr-150"
-    :class="{ 'blur-sm': blurStore.blur }"
-  >
+  <div class="mx-8 lg:ml-20 lg:mr-60 xl:mr-100">
     <div v-for="structure in structureStore.structure" :key="structure.id">
       <div v-if="structure.uuid === route.params.path">
         <h1 class="mt-6 mb-4 text-2xl leading-tight font-bold">

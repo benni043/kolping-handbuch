@@ -12,8 +12,6 @@ definePageMeta({
 
 const toast = useToast();
 
-const blurStore = useBlurStore();
-
 const users: Ref<User[]> = ref([]);
 
 const editingUser = ref<User | null>(null);
@@ -32,25 +30,21 @@ async function fetchUsers() {
 function startEditing(user: User) {
   isEditing.value = true;
   editingUser.value = { ...user };
-  blurStore.blur = !blurStore.blur;
 }
 
 function startEditingPassword(userId: number) {
   isEditing.value = true;
   passwordChangingId.value = userId;
-  blurStore.blur = !blurStore.blur;
 }
 
 function toggleAdd() {
   isEditing.value = !isEditing.value;
   addingUser.value = !addingUser.value;
-  blurStore.blur = !blurStore.blur;
 }
 
 function cancle() {
   editingUser.value = null;
   passwordChangingId.value = null;
-  blurStore.blur = !blurStore.blur;
   isEditing.value = false;
 }
 
@@ -195,14 +189,6 @@ async function changeUserPassword(id: number, password: string) {
 
 const isEditing = ref(false);
 
-watch(
-  isEditing,
-  () => {
-    document.body.style.overflow = isEditing.value ? "hidden" : "";
-  },
-  { deep: true },
-);
-
 onMounted(() => {
   fetchUsers();
 });
@@ -230,16 +216,6 @@ onMounted(() => {
           />
         </svg>
       </button>
-    </div>
-
-    <div
-      v-if="addingUser"
-      class="fixed inset-0 z-50 overflow-y-auto p-6 blur-none"
-    >
-      <new-user
-        @cancle="toggleAdd()"
-        @add="(username, password, role) => add(username, password, role)"
-      ></new-user>
     </div>
 
     <div class="space-y-4 m-5 md:ml-20 md:mr-30 w-max">
@@ -312,38 +288,65 @@ onMounted(() => {
           </button>
         </div>
       </div>
+    </div>
 
-      <div
-        v-if="editingUser"
-        class="fixed inset-0 z-50 overflow-y-auto p-6 blur-none"
-      >
+    <UModal
+      v-model:open="addingUser!"
+      title="Benutzer hinzufügen"
+      :close="{
+        color: 'primary',
+        variant: 'outline',
+        class: 'rounded-full',
+      }"
+    >
+      <template #body>
+        <new-user
+          @cancle="toggleAdd()"
+          @add="(username, password, role) => add(username, password, role)"
+        ></new-user>
+      </template>
+    </UModal>
+
+    <UModal
+      v-model:open="editingUser!"
+      title="Benutzer bearbeiten"
+      :close="{
+        color: 'primary',
+        variant: 'outline',
+        class: 'rounded-full',
+      }"
+    >
+      <template #body>
         <change-user
-          :id="editingUser.id"
-          :username="editingUser.username"
-          :role="editingUser.role"
+          :id="editingUser!.id"
+          :username="editingUser!.username"
+          :role="editingUser!.role"
           @cancle="cancle()"
           @change="(id, username, role) => change(id, username, role)"
         ></change-user>
-      </div>
+      </template>
+    </UModal>
 
-      <div
-        v-if="passwordChangingId"
-        class="fixed inset-0 z-50 overflow-y-auto p-6 blur-none"
-      >
+    <UModal
+      v-model:open="passwordChangingId!"
+      title="Passwort ändern"
+      :close="{
+        color: 'primary',
+        variant: 'outline',
+        class: 'rounded-full',
+      }"
+    >
+      <template #body>
         <change-password
-          :id="passwordChangingId"
+          :id="passwordChangingId!"
           @cancle="cancle()"
           @change="
             (id: number, password: string) => changeUserPassword(id, password)
           "
         ></change-password>
-      </div>
-    </div>
+      </template>
+    </UModal>
   </div>
 </template>
 
-<style scoped>
-table {
-  border-collapse: collapse;
-}
-</style>
+<style scoped></style>
