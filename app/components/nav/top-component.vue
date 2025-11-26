@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import NavMenu from "~/components/nav/nav-menu.vue";
-import type { Structure } from "~/types/structure";
+import type { Structure } from "~/utils/type/structure";
 import { useRoute, useDevice } from "#imports";
 
 const structureStore = useStructureStore();
@@ -346,52 +346,56 @@ function navigateTwoStepsBack() {
 
     <div class="h-10 bg-gray-200 mb-5 lg:mb-10"></div>
 
-    <div class="flex gap-3 ml-8 md:ml-20 flex-col lg:flex-row">
-      <a class="cursor-pointer" @click="returnToHome()">Handbuch</a>
+    <div class="flex justify-center items-center lg:mb-3">
+      <div class="w-[90vw] lg:w-[60vw] flex flex-col lg:flex-row">
+        <a class="cursor-pointer flex mr-3" @click="returnToHome()">Handbuch</a>
 
-      <div class="flex gap-3">
-        <span v-if="path !== ''">></span>
-        <a
-          v-if="path !== '' && subPath !== ''"
-          class="cursor-pointer"
-          @click="navigateTwoStepsBack()"
-        >
-          <span v-if="contentPage"
-            >{{ structureStore.getIdByUuid(pathId) }}&ensp;
-          </span>
-          <span>{{ path }}</span>
-        </a>
-        <span v-if="path !== '' && subPath === ''">
-          <span v-if="contentPage"
-            >{{ structureStore.getIdByUuid(pathId) }}&ensp;
-          </span>
-          <span>{{ path }}</span>
-        </span>
-      </div>
+        <div>
+          <span v-if="path !== ''" class="mr-3">></span>
+          <a
+            v-if="path !== '' && subPath !== ''"
+            class="cursor-pointer"
+            @click="navigateTwoStepsBack()"
+          >
+            <span v-if="contentPage" class="mr-3"
+              >{{ structureStore.getIdByUuid(pathId) }}
+            </span>
+            <span class="mr-3">{{ path }}</span>
+          </a>
 
-      <div class="flex gap-3">
-        <span v-if="subPath !== ''">></span>
-        <a
-          v-if="subPath !== '' && category !== ''"
-          class="cursor-pointer"
-          @click="navigateOneStepBack()"
-        >
-          <span v-if="contentPage"
-            >{{ structureStore.getChildIdByUuid(pathId, subPathId) }}&ensp;
+          <span v-if="path !== '' && subPath === ''">
+            <span v-if="contentPage" class="mr-3"
+              >{{ structureStore.getIdByUuid(pathId) }}
+            </span>
+            <span class="mr-3">{{ path }}</span>
           </span>
-          <span>{{ subPath }}</span>
-        </a>
-        <span v-if="subPath !== '' && category === ''">
-          <span v-if="contentPage"
-            >{{ structureStore.getChildIdByUuid(pathId, subPathId) }}&ensp;
-          </span>
-          <span>{{ subPath }}</span>
-        </span>
-      </div>
+        </div>
 
-      <div class="flex gap-3">
-        <span v-if="category !== ''">></span>
-        <span v-if="category !== ''">{{ category }}</span>
+        <div>
+          <span v-if="subPath !== ''" class="mr-3">></span>
+          <a
+            v-if="subPath !== '' && category !== ''"
+            class="cursor-pointer"
+            @click="navigateOneStepBack()"
+          >
+            <span v-if="contentPage" class="mr-3"
+              >{{ structureStore.getChildIdByUuid(pathId, subPathId) }}
+            </span>
+            <span class="mr-3">{{ subPath }}</span>
+          </a>
+
+          <span v-if="subPath !== '' && category === ''">
+            <span v-if="contentPage" class="mr-3"
+              >{{ structureStore.getChildIdByUuid(pathId, subPathId) }}
+            </span>
+            <span class="mr-3">{{ subPath }}</span>
+          </span>
+        </div>
+
+        <div>
+          <span v-if="category !== ''" class="mr-3">></span>
+          <span v-if="category !== ''" class="mr-3">{{ category }}</span>
+        </div>
       </div>
     </div>
   </div>

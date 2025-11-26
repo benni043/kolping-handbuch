@@ -48,14 +48,14 @@ function send() {
 </script>
 
 <template>
-  <div>
+  <div class="flex justify-center items-center flex-col">
     <div
       v-if="user && (user.role === 'admin' || user.role === 'editor')"
-      class="relative"
+      class="w-[90vw] lg:w-[60vw] flex justify-end"
     >
       <button
         v-if="!isEditing"
-        class="absolute mr-10 right-0 bg-orange-400 hover:bg-orange-500 text-white px-4 py-2 rounded cursor-pointer"
+        class="bg-orange-400 hover:bg-orange-500 text-white px-4 py-2 rounded cursor-pointer"
         @click.prevent="isEditing = true"
       >
         <svg
@@ -73,34 +73,57 @@ function send() {
           />
         </svg>
       </button>
-      <button
-        v-if="isEditing"
-        class="absolute mr-10 right-0 bg-green-400 hover:bg-green-500 text-white px-4 py-2 rounded cursor-pointer"
-        @click="send()"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="1.5"
-          stroke="currentColor"
-          class="size-6"
+
+      <div class="flex gap-5">
+        <button
+          v-if="isEditing"
+          class="bg-green-400 hover:bg-green-500 text-white px-4 py-2 rounded cursor-pointer"
+          @click="send()"
         >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="m4.5 12.75 6 6 9-13.5"
-          />
-        </svg>
-      </button>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="m4.5 12.75 6 6 9-13.5"
+            />
+          </svg>
+        </button>
+
+        <button
+          v-if="isEditing"
+          class="bg-red-400 hover:bg-red-500 text-white px-4 py-2 rounded cursor-pointer"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 18 18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
+      </div>
     </div>
 
-    <div class="ml-8 mr-8 lg:ml-20 md:ml-20 md:mr-60 lg:mr-100 xl:mr-150">
+    <div class="w-[90vw] lg:w-[60vw]">
       <textarea
         v-if="isEditing"
         v-model="note"
         data-testid="note-input"
-        class="w-full h-[100vh] rounded border-1 pl-1"
+        class="w-full h-[100vh] rounded border-1 mt-2 pl-1"
       />
 
       <div ref="render" class="markdown test" :hidden="isEditing"></div>

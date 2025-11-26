@@ -195,8 +195,8 @@ onMounted(() => {
 </script>
 
 <template>
-  <div>
-    <div class="relative flex justify-end mr-10">
+  <div class="flex justify-center items-center flex-col">
+    <div class="relative flex justify-end w-[90vw] lg:w-[60vw]">
       <button
         class="bg-green-400 hover:bg-green-500 text-white px-4 py-2 rounded cursor-pointer"
         @click="toggleAdd()"

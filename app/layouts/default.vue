@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import TopComponent from "~/components/nav/top-component.vue";
 import BottomComponent from "~/components/footer/bottom-component.vue";
+import type { ToasterProps } from "@nuxt/ui";
 
 const colorMode = useColorMode();
 colorMode.preference = "light";
 
-const toaster = { position: "top-right" };
+const toaster: ToasterProps = { position: "top-right" };
 </script>
 
 <template>

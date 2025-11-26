@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import type { Kernprozess } from "~/types/kernprozess";
 import KernprozessCreator from "~/components/admin/kernprozess/kernprozess-creator.vue";
 import { useRoute } from "#imports";
+import type { Kernprozess } from "~/utils/type/kernprozess";
 
 definePageMeta({
   middleware: ["authenticated"],
@@ -123,27 +123,29 @@ onMounted(() => {
 
 <template>
   <div>
-    <div class="flex my-5 justify-end mr-10">
-      <button
-        v-if="user && (user.role === 'admin' || user.role === 'editor')"
-        class="bg-green-400 hover:bg-green-500 text-white px-4 py-2 rounded cursor-pointer"
-        @click.prevent="toggleEditing(0)"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="1.5"
-          stroke="currentColor"
-          class="size-6"
+    <div class="flex justify-center items-center">
+      <div class="w-[90vw] lg:w-[60vw] flex justify-end">
+        <button
+          v-if="user && (user.role === 'admin' || user.role === 'editor')"
+          class="bg-green-400 hover:bg-green-500 text-white px-4 py-2 rounded cursor-pointer"
+          @click.prevent="toggleEditing(0)"
         >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M12 4.5v15m7.5-7.5h-15"
-          />
-        </svg>
-      </button>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M12 4.5v15m7.5-7.5h-15"
+            />
+          </svg>
+        </button>
+      </div>
     </div>
 
     <UModal

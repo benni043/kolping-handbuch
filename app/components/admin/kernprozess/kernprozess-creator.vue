@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import type { Kernprozess, TestLink } from "~/types/kernprozess";
+import type { Kernprozess, TestLink } from "~/utils/type/kernprozess";
 
 const props = defineProps<{
   schrittCount: number | undefined;
