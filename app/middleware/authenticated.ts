@@ -10,7 +10,7 @@ export default defineNuxtRouteMiddleware((to) => {
       color: "error",
       icon: "i-heroicons-x-mark",
     });
-    return navigateTo(`/kolping/${loginLower}`);
+    return navigateTo(`/kolping/login`);
   }
 
   const allowedRoles: string[] = to.meta.allowedRoles || [];

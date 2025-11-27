@@ -45,7 +45,7 @@ function navigateToCategory(category: string) {
                 <ul v-for="elem in categories" :key="elem" class="pl-6">
                   <li
                     class="mb-1 cursor-pointer hover:text-[#F18700]"
-                    @click="navigateToCategory(mapping[elem]!)"
+                    @click="navigateToCategory(getRedirect(elem)!)"
                   >
                     {{ elem }}
                   </li>

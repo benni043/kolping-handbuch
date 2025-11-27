@@ -117,33 +117,33 @@ function handlePaths() {
 }
 
 function navigateToCategory(
-  pathNewId: string,
-  subPathNewId: string,
-  categoryNew: string,
+  pathId: string,
+  subPathId: string,
+  category: string,
 ) {
-  if (subPathNewId === null) {
-    navigateTo(`/${pathNewId}`);
+  if (subPathId === null) {
+    navigateTo(`/${pathId}`);
     return;
   }
 
-  if (categoryNew === null) {
-    navigateTo(`/${pathNewId}/${subPathNewId}`);
+  if (category === null) {
+    navigateTo(`/${pathId}/${subPathId}`);
     return;
   }
 
-  navigateTo(`/${pathNewId}/${subPathNewId}/${mapping[categoryNew]}`);
+  navigateTo(`/${pathId}/${subPathId}/${getRedirect(category)}`);
 }
 
 function navigatoToIntroduction() {
-  navigateTo(`/kolping/${introductionLower}`);
+  navigateTo(`/kolping/introduction`);
 }
 
 function navigateToAdmin() {
-  navigateTo(`/${adminLower}`);
+  navigateTo(`/admin`);
 }
 
 function navigateToLoginPage() {
-  navigateTo(`/kolping/${loginLower}`);
+  navigateTo(`/kolping/login`);
 }
 
 function navigateToHome() {
