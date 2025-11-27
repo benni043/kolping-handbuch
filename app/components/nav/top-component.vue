@@ -323,6 +323,7 @@ function navigateTwoStepsBack() {
             navigateToCategory(pathIdNew, subPathNewId, categoryNew)
         "
         @refetch="fetchStructure()"
+        @active="isActive = !isActive"
       ></nav-menu>
 
       <div class="relative hidden lg:block">

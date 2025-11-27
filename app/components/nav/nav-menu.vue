@@ -3,13 +3,15 @@ import { ref } from "vue";
 import type { Structure } from "~/utils/type/structure";
 import { categories } from "~/utils/nav-menu";
 import { useDevice } from "#imports";
+import Lvl1CreationForm from "~/components/nav/creation/lvl1-creation-form.vue";
+import Lvl2CreationForm from "~/components/nav/creation/lvl2-creation-form.vue";
 
 defineProps<{
   data: Structure[];
   active: boolean;
 }>();
 
-const emit = defineEmits(["emit-route", "refetch"]);
+const emit = defineEmits(["emit-route", "refetch", "active"]);
 
 const toast = useToast();
 
@@ -43,6 +45,8 @@ function click(
   hoveredSub.value = null;
   hoveredSubSub.value = null;
   hoveredCategory.value = null;
+
+  emit("active");
 }
 
 function enterCategory(index: number) {
@@ -167,6 +171,9 @@ async function addLvl1Menu(menuName: string, subMenuName: string) {
 }
 
 async function deleteLvl1(uuid: string, id: string) {
+  if (!confirm("Sind Sie sicher, dass sie diesen Menüpunkt löschen möchten?"))
+    return;
+
   const response = await $fetch(`/api/content/menu`, {
     method: "DELETE",
     body: {
@@ -197,6 +204,11 @@ async function deleteLvl1(uuid: string, id: string) {
 }
 
 async function deleteLvl2(id: string, subId: string) {
+  if (
+    !confirm("Sind Sie sicher, dass sie diesen SubMenüpunkt löschen möchten?")
+  )
+    return;
+
   const response = await $fetch(`/api/content/subMenu`, {
     method: "DELETE",
     body: {
