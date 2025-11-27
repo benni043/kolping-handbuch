@@ -36,11 +36,15 @@ onMounted(() => {
   fetchStructure();
 
   handlePaths();
+
+  console.log(pathElements.value);
 });
 
 function handlePaths() {
   const segments = useRoute().path.split("/").filter(Boolean);
   const len = segments.length;
+
+  console.log(segments);
 
   if (segments[0] === "kolping" && len === 2) {
     pathElements.value = [
