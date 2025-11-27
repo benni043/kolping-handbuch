@@ -32,8 +32,8 @@ async function fetchStructure() {
   structureStore.setStructure(structure);
 }
 
-onMounted(() => {
-  fetchStructure();
+onMounted(async () => {
+  await fetchStructure();
 
   handlePaths();
 
