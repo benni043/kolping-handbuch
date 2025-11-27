@@ -13,11 +13,21 @@ export const useStructureStore = defineStore("structure", {
       const s = this.structure.find((item) => item.uuid === uuid);
       return s ? s.id : null;
     },
+    getDisplayNameByUuid(uuid: string) {
+      const s = this.structure.find((item) => item.uuid === uuid);
+      return s ? s.name : null;
+    },
     getChildIdByUuid(parentUuid: string, childUuid: string) {
       const parent = this.structure.find((item) => item.uuid === parentUuid);
       if (!parent) return null;
       const child = parent.children.find((c) => c.uuid === childUuid);
       return child ? child.id : null;
+    },
+    getChildDisplayNameByUuid(parentUuid: string, childUuid: string) {
+      const parent = this.structure.find((item) => item.uuid === parentUuid);
+      if (!parent) return null;
+      const child = parent.children.find((c) => c.uuid === childUuid);
+      return child ? child.name : null;
     },
     getTitleById(id: string) {
       const s = this.structure.find((item) => item.uuid === id);

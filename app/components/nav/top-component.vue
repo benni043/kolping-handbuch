@@ -3,26 +3,24 @@ import NavMenu from "~/components/nav/nav-menu.vue";
 import type { Structure } from "~/utils/type/structure";
 import { useRoute, useDevice } from "#imports";
 
+type PathElement = {
+  id: string | null;
+  displayName: string;
+};
+
+const pathElements: Ref<PathElement[] | null> = ref(null);
+
 const structureStore = useStructureStore();
 const { loggedIn, user } = useUserSession();
 const { isMobile } = useDevice();
 const route = useRoute();
-
-const contentPage = ref(true);
-
-const path = ref("");
-const subPath = ref("");
-const category = ref("");
-
-const pathId = ref("");
-const subPathId = ref("");
 
 const isActive = ref(false);
 
 watch(
   () => route.params,
   () => {
-    handleRouting();
+    handlePaths();
   },
 );
 
@@ -36,82 +34,85 @@ async function fetchStructure() {
 
 onMounted(() => {
   fetchStructure();
-  handleRouting();
+
+  handlePaths();
 });
 
-const isEditing = ref(true);
+function handlePaths() {
+  const segments = useRoute().path.split("/").filter(Boolean);
+  const len = segments.length;
 
-watch(
-  isEditing,
-  () => {
-    document.body.style.overflow = isEditing.value ? "hidden" : "";
-  },
-  { deep: true },
-);
+  if (segments[0] === "kolping" && len === 2) {
+    pathElements.value = [
+      {
+        id: null,
+        displayName: getDisplayName(segments[1]!)!,
+      },
+    ];
 
-function handleRouting() {
-  const segment0 = getSegment(1);
-
-  switch (segment0) {
-    case introductionLower: {
-      clearPaths();
-      path.value = introductionUpper;
-      pathId.value = introductionLower;
-      contentPage.value = false;
-      return;
-    }
-    case contactLower: {
-      clearPaths();
-      path.value = contactUpper;
-      pathId.value = contactLower;
-      contentPage.value = false;
-      return;
-    }
-    case impressumLower: {
-      clearPaths();
-      path.value = impressumUpper;
-      pathId.value = impressumLower;
-      contentPage.value = false;
-      return;
-    }
-    case loginLower: {
-      clearPaths();
-      path.value = loginUpper;
-      pathId.value = loginLower;
-      contentPage.value = false;
-      return;
-    }
-    case startPageLower: {
-      clearPaths();
-      path.value = startPageUpper;
-      pathId.value = startPageLower;
-      contentPage.value = false;
-      return;
-    }
+    return;
   }
 
-  contentPage.value = true;
+  if (segments[0] === "admin" && len === 1) {
+    pathElements.value = [
+      {
+        id: null,
+        displayName: getDisplayName(segments[0]!)!,
+      },
+    ];
 
-  const segment2 = getSegment(2);
-
-  if (route.params.path || route.params.subPath || segment2) clearPaths();
-
-  if (route.params.path) {
-    path.value = structureStore.getTitleById(route.params.path as string)!;
-    pathId.value = route.params.path as string;
+    return;
   }
 
-  if (route.params.subPath) {
-    subPath.value = structureStore.getChildTitleById(
-      route.params.path as string,
-      route.params.subPath as string,
-    )!;
+  if (len === 1) {
+    pathElements.value = [
+      {
+        id: structureStore.getIdByUuid(segments[0]!),
+        displayName: structureStore.getDisplayNameByUuid(segments[0]!)!,
+      },
+    ];
 
-    subPathId.value = route.params.subPath as string;
+    return;
   }
 
-  if (segment2) {
-    category.value = mappingLower[segment2 as string]!;
+  if (len === 2) {
+    pathElements.value = [
+      {
+        id: structureStore.getIdByUuid(segments[0]!),
+        displayName: structureStore.getDisplayNameByUuid(segments[0]!)!,
+      },
+      {
+        id: structureStore.getChildIdByUuid(segments[0]!, segments[1]!),
+        displayName: structureStore.getChildDisplayNameByUuid(
+          segments[0]!,
+          segments[1]!,
+        )!,
+      },
+    ];
+
+    return;
+  }
+
+  if (len === 3) {
+    pathElements.value = [
+      {
+        id: structureStore.getIdByUuid(segments[0]!),
+        displayName: structureStore.getDisplayNameByUuid(segments[0]!)!,
+      },
+      {
+        id: structureStore.getChildIdByUuid(segments[0]!, segments[1]!),
+        displayName: structureStore.getChildDisplayNameByUuid(
+          segments[0]!,
+          segments[1]!,
+        )!,
+      },
+      {
+        id: null,
+        displayName: getDisplayName(segments[2]!)!,
+      },
+    ];
+
+    return;
   }
 }
 
@@ -120,29 +121,17 @@ function navigateToCategory(
   subPathNewId: string,
   categoryNew: string,
 ) {
-  pathId.value = pathNewId;
-
   if (subPathNewId === null) {
     navigateTo(`/${pathNewId}`);
-
     return;
   }
 
   if (categoryNew === null) {
-    subPathId.value = subPathNewId;
-
     navigateTo(`/${pathNewId}/${subPathNewId}`);
-
     return;
   }
 
   navigateTo(`/${pathNewId}/${subPathNewId}/${mapping[categoryNew]}`);
-}
-
-function clearPaths() {
-  path.value = "";
-  subPath.value = "";
-  category.value = "";
 }
 
 function navigatoToIntroduction() {
@@ -150,30 +139,27 @@ function navigatoToIntroduction() {
 }
 
 function navigateToAdmin() {
-  clearPaths();
-
   navigateTo(`/${adminLower}`);
 }
 
-async function navigateToLoginPage() {
-  await navigateTo(`/kolping/${loginLower}`);
+function navigateToLoginPage() {
+  navigateTo(`/kolping/${loginLower}`);
 }
 
-function returnToHome() {
-  clearPaths();
+function navigateToHome() {
   navigateTo("/");
 }
 
 function navigateOneStepBack() {
-  clearPaths();
+  const segments = useRoute().path.split("/").filter(Boolean);
 
-  navigateTo(`/${pathId.value}/${subPathId.value}`);
+  navigateTo(`/${segments[0]}/${segments[1]}`);
 }
 
 function navigateTwoStepsBack() {
-  clearPaths();
+  const segments = useRoute().path.split("/").filter(Boolean);
 
-  navigateTo(`/${pathId.value}`);
+  navigateTo(`/${segments[0]}`);
 }
 </script>
 
@@ -186,7 +172,7 @@ function navigateTwoStepsBack() {
         class="not-lg:w-40 lg:w-60 cursor-pointer lg:mb-0"
         src="/img/logo.png"
         alt="logo"
-        @click="returnToHome()"
+        @click="navigateToHome()"
       />
 
       <div class="flex gap-5 mr-5 lg:flex-row">
@@ -345,54 +331,22 @@ function navigateTwoStepsBack() {
     <div class="h-10 bg-gray-200 mb-5 lg:mb-10"></div>
 
     <div class="flex justify-center items-center lg:mb-3">
-      <div class="w-[90vw] lg:w-[60vw] flex flex-col lg:flex-row">
-        <a class="cursor-pointer flex mr-3" @click="returnToHome()">Handbuch</a>
-
-        <div>
-          <span v-if="path !== ''" class="mr-3">></span>
-          <a
-            v-if="path !== '' && subPath !== ''"
-            class="cursor-pointer"
-            @click="navigateTwoStepsBack()"
-          >
-            <span v-if="contentPage" class="mr-3"
-              >{{ structureStore.getIdByUuid(pathId) }}
-            </span>
-            <span class="mr-3">{{ path }}</span>
-          </a>
-
-          <span v-if="path !== '' && subPath === ''">
-            <span v-if="contentPage" class="mr-3"
-              >{{ structureStore.getIdByUuid(pathId) }}
-            </span>
-            <span class="mr-3">{{ path }}</span>
-          </span>
+      <div class="w-[90vw] lg:w-[60vw] flex flex-col lg:flex-row not-lg:gap-1">
+        <div class="cursor-pointer" @click="navigateToHome()">
+          Handbuch &ensp;> &ensp;
         </div>
 
-        <div>
-          <span v-if="subPath !== ''" class="mr-3">></span>
-          <a
-            v-if="subPath !== '' && category !== ''"
-            class="cursor-pointer"
-            @click="navigateOneStepBack()"
+        <div v-for="(elem, index) in pathElements" :key="elem.id!">
+          <span
+            :class="{ 'cursor-pointer': index === 0 || index === 1 }"
+            @click="
+              if (index === 0) navigateTwoStepsBack();
+              if (index === 1) navigateOneStepBack();
+            "
+            >{{ elem.id }} {{ elem.displayName }}</span
           >
-            <span v-if="contentPage" class="mr-3"
-              >{{ structureStore.getChildIdByUuid(pathId, subPathId) }}
-            </span>
-            <span class="mr-3">{{ subPath }}</span>
-          </a>
 
-          <span v-if="subPath !== '' && category === ''">
-            <span v-if="contentPage" class="mr-3"
-              >{{ structureStore.getChildIdByUuid(pathId, subPathId) }}
-            </span>
-            <span class="mr-3">{{ subPath }}</span>
-          </span>
-        </div>
-
-        <div>
-          <span v-if="category !== ''" class="mr-3">></span>
-          <span v-if="category !== ''" class="mr-3">{{ category }}</span>
+          <span v-if="index + 1 !== pathElements?.length">&ensp;> &ensp;</span>
         </div>
       </div>
     </div>
