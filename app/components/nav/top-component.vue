@@ -4,12 +4,11 @@ import type { Structure } from "~/utils/type/structure";
 import { useRoute, useDevice } from "#imports";
 
 const structureStore = useStructureStore();
-
 const { loggedIn, user } = useUserSession();
+const { isMobile } = useDevice();
+const route = useRoute();
 
 const contentPage = ref(true);
-
-const route = useRoute();
 
 const path = ref("");
 const subPath = ref("");
@@ -19,8 +18,6 @@ const pathId = ref("");
 const subPathId = ref("");
 
 const isActive = ref(false);
-
-const { isMobile } = useDevice();
 
 watch(
   () => route.params,
