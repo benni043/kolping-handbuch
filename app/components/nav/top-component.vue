@@ -2,6 +2,14 @@
 import NavMenu from "~/components/nav/nav-menu.vue";
 import type { Structure } from "~/utils/type/structure";
 import { useRoute, useDevice } from "#imports";
+import type { BreadcrumbItem } from "@nuxt/ui";
+
+const items: Ref<BreadcrumbItem[]> = ref([
+  {
+    label: "Handbuch",
+    to: "/",
+  },
+]);
 
 type PathElement = {
   id: string | null;
@@ -36,79 +44,78 @@ await fetchStructure();
 handlePaths();
 
 function handlePaths() {
+  items.value = [
+    {
+      label: "Handbuch",
+      to: "/",
+    },
+  ];
+
   const segments = useRoute().path.split("/").filter(Boolean);
   const len = segments.length;
 
   if (segments[0] === "kolping" && len === 2) {
-    pathElements.value = [
-      {
-        id: null,
-        displayName: getDisplayName(segments[1]!)!,
-      },
-    ];
+    items.value.push({
+      label: getDisplayName(segments[1]!)!,
+    });
 
     return;
   }
 
   if (segments[0] === "admin" && len === 1) {
-    pathElements.value = [
-      {
-        id: null,
-        displayName: getDisplayName(segments[0]!)!,
-      },
-    ];
+    items.value.push({
+      label: getDisplayName(segments[0]!)!,
+    });
 
     return;
   }
 
   if (len === 1) {
-    pathElements.value = [
-      {
-        id: structureStore.getIdByUuid(segments[0]!),
-        displayName: structureStore.getDisplayNameByUuid(segments[0]!)!,
-      },
-    ];
+    items.value.push({
+      label: `${structureStore.getIdByUuid(segments[0]!)!} ${structureStore.getDisplayNameByUuid(segments[0]!)!}`,
+    });
 
     return;
   }
 
   if (len === 2) {
-    pathElements.value = [
-      {
-        id: structureStore.getIdByUuid(segments[0]!),
-        displayName: structureStore.getDisplayNameByUuid(segments[0]!)!,
-      },
-      {
-        id: structureStore.getChildIdByUuid(segments[0]!, segments[1]!),
-        displayName: structureStore.getChildDisplayNameByUuid(
-          segments[0]!,
-          segments[1]!,
-        )!,
-      },
-    ];
+    items.value.push({
+      label: `${structureStore.getIdByUuid(segments[0]!)!} ${structureStore.getDisplayNameByUuid(segments[0]!)!}`,
+      to: `/${segments[0]}`,
+    });
+
+    items.value.push({
+      label: `${structureStore.getChildIdByUuid(
+        segments[0]!,
+        segments[1]!,
+      )!} ${structureStore.getChildDisplayNameByUuid(
+        segments[0]!,
+        segments[1]!,
+      )!}`,
+      to: `/${segments[0]}/${segments[1]}`,
+    });
 
     return;
   }
 
   if (len === 3) {
-    pathElements.value = [
-      {
-        id: structureStore.getIdByUuid(segments[0]!),
-        displayName: structureStore.getDisplayNameByUuid(segments[0]!)!,
-      },
-      {
-        id: structureStore.getChildIdByUuid(segments[0]!, segments[1]!),
-        displayName: structureStore.getChildDisplayNameByUuid(
-          segments[0]!,
-          segments[1]!,
-        )!,
-      },
-      {
-        id: null,
-        displayName: getDisplayName(segments[2]!)!,
-      },
-    ];
-
+    items.value.push({
+      label: `${structureStore.getIdByUuid(segments[0]!)!} ${structureStore.getDisplayNameByUuid(segments[0]!)!}`,
+      to: `/${segments[0]}`,
+    });
+    items.value.push({
+      label: `${structureStore.getChildIdByUuid(
+        segments[0]!,
+        segments[1]!,
+      )!} ${structureStore.getChildDisplayNameByUuid(
+        segments[0]!,
+        segments[1]!,
+      )!}`,
+      to: `/${segments[0]}/${segments[1]}`,
+    });
+    items.value.push({
+      label: getDisplayName(segments[2]!)!,
+    });
     return;
   }
 }
@@ -145,18 +152,6 @@ function navigateToLoginPage() {
 
 function navigateToHome() {
   navigateTo("/");
-}
-
-function navigateOneStepBack() {
-  const segments = useRoute().path.split("/").filter(Boolean);
-
-  navigateTo(`/${segments[0]}/${segments[1]}`);
-}
-
-function navigateTwoStepsBack() {
-  const segments = useRoute().path.split("/").filter(Boolean);
-
-  navigateTo(`/${segments[0]}`);
 }
 </script>
 
@@ -327,27 +322,16 @@ function navigateTwoStepsBack() {
 
     <div class="h-10 bg-gray-200 mb-5 lg:mb-10"></div>
 
-    <div class="flex justify-center items-center lg:mb-3">
-      <div class="w-[90vw] lg:w-[60vw] flex flex-col lg:flex-row not-lg:gap-1">
-        <div class="cursor-pointer" @click="navigateToHome()">
-          Handbuch &ensp;> &ensp;
-        </div>
-
-        <div v-for="(elem, index) in pathElements" :key="elem.id!">
-          <span
-            :class="{ 'cursor-pointer': index === 0 || index === 1 }"
-            @click="
-              if (index === 0) navigateTwoStepsBack();
-              if (index === 1) navigateOneStepBack();
-            "
-            >{{ elem.id }} {{ elem.displayName }}</span
-          >
-
-          <span v-if="index + 1 !== pathElements?.length">&ensp;> &ensp;</span>
-        </div>
+    <div class="flex justify-center items-center mb-3">
+      <div class="w-[90vw] lg:w-[60vw]">
+        <UBreadcrumb :items="items">
+          <template #item-label="{ item }">
+            <div class="lg:text-lg">{{ item.label }}</div>
+          </template>
+        </UBreadcrumb>
       </div>
     </div>
   </div>
 </template>
 
-<style scoped></style>
+<style></style>
