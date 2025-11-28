@@ -416,22 +416,25 @@ async function deleteLvl2(id: string, subId: string) {
     <ul class="lg:hidden">
       <li v-for="(path, index) in data" :key="path.id">
         <div
-          class="flex items-center h-11 bg-[#50A9CE]/[0.33] border-b-1 border-b-gray-400"
+          class="flex items-center h-12 bg-[#50A9CE]/[0.33] border-b-1 border-b-gray-400"
           @click="
-            hoveredCategory === null
+            hoveredCategory === null || hoveredCategory !== index
               ? enterCategory(index)
               : leaveCategory(true)
           "
         >
-          <b class="text-[#F18700] ml-5">{{ path.id }}&emsp;</b>
+          <b class="text-[#F18700] ml-3 mr-3">{{ path.id }}</b>
           <b
             :class="{
               'text-[#F18700]': hoveredCategory === index,
             }"
-            @click.stop="click(path.uuid, null, null)"
-            >{{ path.name }}</b
+            class="flex-1"
           >
-          <b class="absolute right-5">
+            <span @click.stop="click(path.uuid, null, null)">{{
+              path.name
+            }}</span>
+          </b>
+          <b class="mr-3 ml-3">
             <svg
               v-if="hoveredCategory !== index"
               xmlns="http://www.w3.org/2000/svg"
@@ -469,18 +472,25 @@ async function deleteLvl2(id: string, subId: string) {
         <ul v-if="hoveredCategory === index">
           <li v-for="(subPath, subIndex) in path.children" :key="subPath.id">
             <div
-              class="flex items-center h-11 bg-[#50A9CE]/[0.33] min-w-88 border-b-1 border-b-gray-400"
-              @click="hoveredSub === null ? enterSub(subIndex) : leaveSub(true)"
+              class="flex items-center h-12 bg-[#50A9CE]/[0.33] min-w-88 border-b-1 border-b-gray-400"
+              @click="
+                hoveredSub === null || hoveredSub !== subIndex
+                  ? enterSub(subIndex)
+                  : leaveSub(true)
+              "
             >
-              <b class="text-[#F18700] ml-10">{{ subPath.id }}&emsp;</b>
+              <b class="text-[#F18700] ml-6 mr-3">{{ subPath.id }}</b>
               <b
                 :class="{
                   'text-[#F18700]': hoveredSub === subIndex,
                 }"
-                @click.stop="click(path.uuid, subPath.uuid, null)"
-                >{{ subPath.name }}</b
+                class="flex-1"
               >
-              <b class="absolute right-5">
+                <span @click.stop="click(path.uuid, subPath.uuid, null)">{{
+                  subPath.name
+                }}</span>
+              </b>
+              <b class="mr-3 ml-3">
                 <svg
                   v-if="hoveredSub !== subIndex"
                   xmlns="http://www.w3.org/2000/svg"
@@ -518,11 +528,11 @@ async function deleteLvl2(id: string, subId: string) {
             <ul v-if="hoveredSub === subIndex">
               <li v-for="(category, subSubIndex) in categories" :key="category">
                 <div
-                  class="flex items-center h-11 bg-[#50A9CE]/[0.33] min-w-88 border-b-1 border-b-gray-400"
+                  class="flex items-center h-12 bg-[#50A9CE]/[0.33] min-w-88 border-b-1 border-b-gray-400"
                   @click.stop="click(path.uuid, subPath.uuid, category)"
                 >
                   <b
-                    class="ml-15"
+                    class="ml-9"
                     :class="{
                       'text-[#F18700]': hoveredSubSub === subSubIndex,
                     }"

@@ -6,7 +6,6 @@ definePageMeta({
 });
 
 const route = useRoute();
-
 const structureStore = useStructureStore();
 
 function navigateToSubPath(subPath: string) {

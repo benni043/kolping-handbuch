@@ -32,11 +32,8 @@ async function fetchStructure() {
   structureStore.setStructure(structure);
 }
 
-onMounted(async () => {
-  await fetchStructure();
-
-  handlePaths();
-});
+await fetchStructure();
+handlePaths();
 
 function handlePaths() {
   const segments = useRoute().path.split("/").filter(Boolean);
