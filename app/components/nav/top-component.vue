@@ -120,31 +120,38 @@ function navigateToCategory(
 ) {
   if (subPathId === null) {
     navigateTo(`/${pathId}`);
+    isActive.value = !isActive.value;
     return;
   }
 
   if (category === null) {
     navigateTo(`/${pathId}/${subPathId}`);
+    isActive.value = !isActive.value;
     return;
   }
 
   navigateTo(`/${pathId}/${subPathId}/${getRedirect(category)}`);
+  isActive.value = false;
 }
 
 function navigatoToIntroduction() {
   navigateTo(`/kolping/introduction`);
+  isActive.value = false;
 }
 
 function navigateToAdmin() {
   navigateTo(`/admin`);
+  isActive.value = false;
 }
 
 function navigateToLoginPage() {
   navigateTo(`/kolping/login`);
+  isActive.value = false;
 }
 
 function navigateToHome() {
   navigateTo("/");
+  isActive.value = false;
 }
 </script>
 
@@ -291,7 +298,7 @@ function navigateToHome() {
             navigateToCategory(pathIdNew, subPathNewId, categoryNew)
         "
         @refetch="fetchStructure()"
-        @active="isActive = !isActive"
+        @active="isActive = false"
       ></nav-menu>
 
       <div class="relative hidden lg:block">

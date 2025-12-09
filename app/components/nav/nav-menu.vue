@@ -588,7 +588,7 @@ async function deleteLvl2(id: string, subId: string) {
             </ul>
           </li>
 
-          <li>
+          <li v-if="user?.role === 'admin' || user?.role === 'editor'">
             <div
               class="flex items-center h-13 bg-[#ABE0D9] min-w-88 border-b-1 border-b-gray-400"
               @click.stop="addLvl2(path.uuid, path.id)"
@@ -602,7 +602,7 @@ async function deleteLvl2(id: string, subId: string) {
         </ul>
       </li>
 
-      <li>
+      <li v-if="user?.role === 'admin' || user?.role === 'editor'">
         <div
           class="flex items-center h-13 bg-[#ABE0D9] min-w-88 border-b-1 border-b-gray-400"
           @click.stop="addLvl1()"
