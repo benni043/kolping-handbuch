@@ -416,7 +416,7 @@ async function deleteLvl2(id: string, subId: string) {
     <ul class="lg:hidden">
       <li v-for="(path, index) in data" :key="path.id">
         <div
-          class="flex items-center h-12 bg-[#50A9CE]/[0.33] border-b-1 border-b-gray-400"
+          class="flex items-center h-13 bg-[#50A9CE]/[0.33] border-b-1 border-b-gray-400"
           @click="
             hoveredCategory === null || hoveredCategory !== index
               ? enterCategory(index)
@@ -472,7 +472,7 @@ async function deleteLvl2(id: string, subId: string) {
         <ul v-if="hoveredCategory === index">
           <li v-for="(subPath, subIndex) in path.children" :key="subPath.id">
             <div
-              class="flex items-center h-12 bg-[#50A9CE]/[0.33] min-w-88 border-b-1 border-b-gray-400"
+              class="flex items-center h-13 bg-[#50A9CE]/[0.33] min-w-88 border-b-1 border-b-gray-400"
               @click="
                 hoveredSub === null || hoveredSub !== subIndex
                   ? enterSub(subIndex)
@@ -528,7 +528,7 @@ async function deleteLvl2(id: string, subId: string) {
             <ul v-if="hoveredSub === subIndex">
               <li v-for="(category, subSubIndex) in categories" :key="category">
                 <div
-                  class="flex items-center h-12 bg-[#50A9CE]/[0.33] min-w-88 border-b-1 border-b-gray-400"
+                  class="flex items-center h-13 bg-[#50A9CE]/[0.33] min-w-88 border-b-1 border-b-gray-400"
                   @click.stop="click(path.uuid, subPath.uuid, category)"
                 >
                   <b

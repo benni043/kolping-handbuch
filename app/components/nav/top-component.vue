@@ -11,13 +11,6 @@ const items: Ref<BreadcrumbItem[]> = ref([
   },
 ]);
 
-type PathElement = {
-  id: string | null;
-  displayName: string;
-};
-
-const pathElements: Ref<PathElement[] | null> = ref(null);
-
 const structureStore = useStructureStore();
 const { loggedIn, user } = useUserSession();
 const { isMobile } = useDevice();
