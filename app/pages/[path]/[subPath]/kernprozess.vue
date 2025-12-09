@@ -300,7 +300,9 @@ onMounted(() => {
         </div>
 
         <div class="relative w-100 xl:w-130">
-          <h3 class="absolute top-2.5 left-3 text-white font-bold text-xl z-10">
+          <h3
+            class="absolute top-2.5 left-3 text-white font-bold text-md xl:text-xl z-10"
+          >
             {{ kernprozess.middleHead }}
           </h3>
 
@@ -313,7 +315,7 @@ onMounted(() => {
           <img
             v-else
             src="/img/kernprozess/kernprozess_header_blue.png"
-            alt="blue"
+            alt="orange"
             class="xl:w-130"
           />
 
