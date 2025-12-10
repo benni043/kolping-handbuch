@@ -4,7 +4,7 @@ definePageMeta({
   allowedRoles: ["admin"],
 });
 
-const emit = defineEmits(["cancle", "add"]);
+const emit = defineEmits(["add"]);
 
 const usernameRef = ref("");
 const passwordRef = ref("");
@@ -46,10 +46,6 @@ async function add() {
     return;
 
   emit("add", usernameRef.value, passwordRef.value, roleRef.value);
-}
-
-function cancle() {
-  emit("cancle");
 }
 </script>
 
@@ -150,40 +146,26 @@ function cancle() {
         </select>
       </div>
 
-      <div class="flex gap-5">
-        <UButton
-          color="primary"
-          size="xl"
-          variant="solid"
-          type="submit"
-          block
-          icon="i-heroicons-lock-closed"
-          class="cursor-pointer"
-          :disabled="
-            usernameError !== '' ||
-            passwordError !== '' ||
-            password2Error !== '' ||
-            usernameRef === '' ||
-            passwordRef === '' ||
-            password2Ref === ''
-          "
-          @click.prevent="add"
-        >
-          Erstellen
-        </UButton>
-
-        <UButton
-          color="error"
-          size="xl"
-          variant="solid"
-          block
-          icon="i-heroicons-x-mark"
-          class="cursor-pointer"
-          @click="cancle"
-        >
-          Abbrechen
-        </UButton>
-      </div>
+      <UButton
+        color="primary"
+        size="xl"
+        variant="solid"
+        type="submit"
+        block
+        icon="i-heroicons-lock-closed"
+        class="cursor-pointer"
+        :disabled="
+          usernameError !== '' ||
+          passwordError !== '' ||
+          password2Error !== '' ||
+          usernameRef === '' ||
+          passwordRef === '' ||
+          password2Ref === ''
+        "
+        @click.prevent="add"
+      >
+        Erstellen
+      </UButton>
     </UForm>
   </div>
 </template>

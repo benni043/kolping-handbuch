@@ -607,7 +607,7 @@ async function deleteLvl2(id: string, subId: string) {
           class="flex items-center h-13 bg-[#ABE0D9] min-w-88 border-b-1 border-b-gray-400"
           @click.stop="addLvl1()"
         >
-          <b class="text-[#F18700] ml-6 mr-3">+</b>
+          <b class="text-[#F18700] ml-3 mr-3">+</b>
           <b>
             <span>Extra Menüpunkt</span>
           </b>

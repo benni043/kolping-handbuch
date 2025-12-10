@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { User } from "#auth-utils";
-import { ref, onMounted } from "vue";
+import { ref } from "vue";
 import ChangeUser from "~/components/admin/db/change-user.vue";
 import ChangePassword from "~/components/admin/db/change-password.vue";
 import NewUser from "~/components/admin/db/new-user.vue";
@@ -16,7 +16,10 @@ const users: Ref<User[]> = ref([]);
 
 const editingUser = ref<User | null>(null);
 const passwordChangingId = ref<number | null>(null);
-const addingUser = ref(false);
+
+const isAddingUser = ref(false);
+const isEditingUser = ref(false);
+const isEditingPassword = ref(false);
 
 async function fetchUsers() {
   const response = await $fetch<{ statusCode: number; data: User[] }>(
@@ -27,28 +30,26 @@ async function fetchUsers() {
   users.value.sort((user, user2) => user.id - user2.id);
 }
 
-function startEditing(user: User) {
-  isEditing.value = true;
+function openEditingUserModal(user: User) {
+  isEditingUser.value = true;
   editingUser.value = { ...user };
 }
 
-function startEditingPassword(userId: number) {
-  isEditing.value = true;
+function openEditingPasswordModal(userId: number) {
+  isEditingPassword.value = true;
   passwordChangingId.value = userId;
 }
 
-function toggleAdd() {
-  isEditing.value = !isEditing.value;
-  addingUser.value = !addingUser.value;
+function openAddModal() {
+  isAddingUser.value = !isAddingUser.value;
 }
 
 function cancle() {
   editingUser.value = null;
   passwordChangingId.value = null;
-  isEditing.value = false;
 }
 
-async function add(username: string, password: string, role: string) {
+async function addUser(username: string, password: string, role: string) {
   if (!confirm("Sind Sie sicher, dass sie diesen Benutzer hinzufügen möchten?"))
     return;
 
@@ -61,6 +62,8 @@ async function add(username: string, password: string, role: string) {
       role: role,
     },
   });
+
+  isAddingUser.value = false;
 
   if (response.success) {
     toast.add({
@@ -79,11 +82,9 @@ async function add(username: string, password: string, role: string) {
   }
 
   await fetchUsers();
-
-  toggleAdd();
 }
 
-async function change(id: number, username: string, role: string) {
+async function changeUserName(id: number, username: string, role: string) {
   if (!confirm("Sind Sie sicher, dass sie diesen Benutzer bearbeiten möchten?"))
     return;
 
@@ -96,6 +97,8 @@ async function change(id: number, username: string, role: string) {
       role: role,
     },
   });
+
+  isEditingUser.value = false;
 
   if (response.success) {
     toast.add({
@@ -166,6 +169,8 @@ async function changeUserPassword(id: number, password: string) {
     },
   });
 
+  isEditingPassword.value = false;
+
   if (response.success) {
     toast.add({
       title: "Erfolg",
@@ -187,11 +192,7 @@ async function changeUserPassword(id: number, password: string) {
   cancle();
 }
 
-const isEditing = ref(false);
-
-onMounted(() => {
-  fetchUsers();
-});
+fetchUsers();
 </script>
 
 <template>
@@ -199,7 +200,7 @@ onMounted(() => {
     <div class="relative flex justify-end w-[90vw] lg:w-[60vw]">
       <button
         class="bg-green-400 hover:bg-green-500 text-white px-4 py-2 rounded cursor-pointer"
-        @click="toggleAdd()"
+        @click="openAddModal()"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -227,7 +228,7 @@ onMounted(() => {
         <div class="flex gap-3 mt-3">
           <button
             class="bg-blue-600 text-white px-3 py-1 rounded cursor-pointer flex gap-2"
-            @click="startEditing(user)"
+            @click="openEditingUserModal(user)"
           >
             Benutzer
             <svg
@@ -248,7 +249,7 @@ onMounted(() => {
 
           <button
             class="bg-orange-600 text-white px-3 py-1 rounded cursor-pointer flex gap-2"
-            @click="startEditingPassword(user.id)"
+            @click="openEditingPasswordModal(user.id)"
           >
             Passwort
             <svg
@@ -291,7 +292,7 @@ onMounted(() => {
     </div>
 
     <UModal
-      v-model:open="addingUser!"
+      v-model:open="isAddingUser!"
       title="Benutzer hinzufügen"
       :close="{
         color: 'primary',
@@ -301,14 +302,13 @@ onMounted(() => {
     >
       <template #body>
         <new-user
-          @cancle="toggleAdd()"
-          @add="(username, password, role) => add(username, password, role)"
+          @add="(username, password, role) => addUser(username, password, role)"
         ></new-user>
       </template>
     </UModal>
 
     <UModal
-      v-model:open="editingUser!"
+      v-model:open="isEditingUser"
       title="Benutzer bearbeiten"
       :close="{
         color: 'primary',
@@ -318,17 +318,19 @@ onMounted(() => {
     >
       <template #body>
         <change-user
+          v-if="editingUser"
           :id="editingUser!.id"
           :username="editingUser!.username"
           :role="editingUser!.role"
-          @cancle="cancle()"
-          @change="(id, username, role) => change(id, username, role)"
+          @change-user="
+            (id, username, role) => changeUserName(id, username, role)
+          "
         ></change-user>
       </template>
     </UModal>
 
     <UModal
-      v-model:open="passwordChangingId!"
+      v-model:open="isEditingPassword"
       title="Passwort ändern"
       :close="{
         color: 'primary',
@@ -338,9 +340,9 @@ onMounted(() => {
     >
       <template #body>
         <change-password
+          v-if="passwordChangingId"
           :id="passwordChangingId!"
-          @cancle="cancle()"
-          @change="
+          @change-password="
             (id: number, password: string) => changeUserPassword(id, password)
           "
         ></change-password>

@@ -29,57 +29,42 @@ async function add() {
 </script>
 
 <template>
-  <div class="flex justify-center items-center h-full">
-    <UForm class="space-y-5">
-      <div>
-        <h1 class="mb-4 text-xl font-semibold">Menuname</h1>
-        <UInput
-          v-model="menuName"
-          placeholder="Menuname"
-          type="text"
-          size="xl"
-          class="w-full"
-        />
-        <p v-if="menuError" class="text-red-500 mt-2 font-medium">
-          {{ menuError }}
-        </p>
+  <div>
+    <UForm class="space-y-5 flex flex-col">
+      <h1 class="mb-4 text-xl font-semibold">Menuname</h1>
+      <UInput v-model="menuName" placeholder="Menuname" type="text" size="xl" />
+      <div v-if="menuError" class="text-red-500 font-medium">
+        {{ menuError }}
       </div>
 
-      <div>
-        <h1 class="mb-4 text-xl font-semibold">Untermenu</h1>
-
-        <UInput
-          v-model="subMenuName"
-          placeholder="Untermenu"
-          type="text"
-          size="xl"
-          class="w-full"
-        />
-        <p v-if="subMenuError" class="text-red-500 mt-2 font-medium">
-          {{ subMenuError }}
-        </p>
+      <h1 class="mb-4 text-xl font-semibold">Untermenu</h1>
+      <UInput
+        v-model="subMenuName"
+        placeholder="Untermenu"
+        type="text"
+        size="xl"
+      />
+      <div v-if="subMenuError" class="text-red-500 mt-2 font-medium">
+        {{ subMenuError }}
       </div>
 
-      <div class="flex gap-5">
-        <UButton
-          color="primary"
-          size="xl"
-          variant="solid"
-          type="submit"
-          block
-          icon="i-heroicons-lock-closed"
-          class="cursor-pointer"
-          :disabled="
-            menuError !== '' ||
-            subMenuError !== '' ||
-            menuName === '' ||
-            subMenuName === ''
-          "
-          @click.prevent="add"
-        >
-          Hinzufügen
-        </UButton>
-      </div>
+      <UButton
+        color="primary"
+        size="xl"
+        variant="solid"
+        type="submit"
+        icon="i-heroicons-lock-closed"
+        class="cursor-pointer"
+        :disabled="
+          menuError !== '' ||
+          subMenuError !== '' ||
+          menuName === '' ||
+          subMenuName === ''
+        "
+        @click.prevent="add"
+      >
+        Hinzufügen
+      </UButton>
     </UForm>
   </div>
 </template>
