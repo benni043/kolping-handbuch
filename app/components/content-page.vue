@@ -45,6 +45,10 @@ function send() {
     isEditing.value = false;
   }
 }
+
+function cancle() {
+  isEditing.value = false;
+}
 </script>
 
 <template>
@@ -99,6 +103,7 @@ function send() {
         <button
           v-if="isEditing"
           class="bg-red-400 hover:bg-red-500 text-white px-4 py-2 rounded cursor-pointer"
+          @click="cancle()"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
