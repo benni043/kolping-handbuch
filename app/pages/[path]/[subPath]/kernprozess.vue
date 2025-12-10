@@ -181,7 +181,8 @@ onMounted(() => {
     <div v-for="kernprozess in kernprozesseRef" :key="kernprozess.middleHead">
       <div
         v-if="user && (user.role === 'admin' || user.role === 'editor')"
-        class="ml-20 flex gap-5"
+        class="flex gap-5"
+        :class="isMobile ? 'ml-3' : 'ml-20'"
       >
         <button
           class="bg-orange-400 hover:bg-orange-500 text-white px-4 py-2 rounded cursor-pointer"
@@ -253,10 +254,10 @@ onMounted(() => {
       </UModal>
 
       <div
-        class="flex justify-center gap-10 mt-10 mb-20 w-full"
-        :class="{ 'flex-col': isMobile, 'ml-5': isMobile, 'mr-5': isMobile }"
+        class="flex justify-center"
+        :class="isMobile ? 'flex-col mx-3 mt-5 mb-20 gap-5' : 'm-20 gap-20'"
       >
-        <div class="lg:w-50 xl:w-80">
+        <div class="flex-1">
           <h2 class="text-[#50A9CE] font-bold text-2xl">
             Schritt {{ kernprozess.schrittCount }}
           </h2>
@@ -304,7 +305,7 @@ onMounted(() => {
           </div>
         </div>
 
-        <div class="relative lg:w-100 xl:w-130">
+        <div class="relative flex-2">
           <h3
             class="absolute top-2.5 left-3 text-white font-bold text-md xl:text-xl z-10"
           >
@@ -315,13 +316,13 @@ onMounted(() => {
             v-if="!kernprozess.orange"
             src="/img/kernprozess/kernprozess_header_orange.png"
             alt="blue"
-            class="xl:w-130"
+            class="w-full"
           />
           <img
             v-else
             src="/img/kernprozess/kernprozess_header_blue.png"
             alt="orange"
-            class="xl:w-130"
+            class="w-full"
           />
 
           <div :class="{ 'bg-[#F18700]': kernprozess.orange }" class="relative">
@@ -333,7 +334,7 @@ onMounted(() => {
             />
 
             <div class="relative z-20">
-              <p class="text-white font-bold ml-3 pt-3 mb-3">
+              <p class="text-white font-bold mx-3 pt-3 mb-3">
                 TÄTIGKEIT / ENTSCHEIDUNG / PRÜFSCHRITT
               </p>
 
@@ -353,17 +354,17 @@ onMounted(() => {
             v-if="kernprozess.orange"
             src="/img/kernprozess/kernprozess_bottom_orange.png"
             alt="orange"
-            class="xl:w-130"
+            class="w-full"
           />
           <img
             v-else
             src="/img/kernprozess/kernprozess_bottom_blue.png"
             alt="orange"
-            class="xl:w-130"
+            class="w-full"
           />
         </div>
 
-        <div class="lg:w-50 xl:w-80">
+        <div class="flex-1">
           <div>
             <h2
               v-if="kernprozess.aufzeichnungOrange.length >= 1"

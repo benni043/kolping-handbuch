@@ -17,6 +17,8 @@ const props = defineProps<{
 
 const emit = defineEmits(["cancle", "send"]);
 
+const { isMobile } = useDevice();
+
 const schrittCountRef: Ref<number> = ref(props.schrittCount || 1);
 const vorgabenBlueRef = ref<TestLink[]>(
   props.vorgabenBlue || [{ text: "", hasLink: false, link: "" }],
@@ -126,9 +128,14 @@ function clearForm() {
 
 <template>
   <UForm
-    class="rounded-md bg-white grid grid-cols-[repeat(3,1fr)] grid-rows-[repeat(7,1fr)] gap-5 h-[85vh] p-5"
+    :class="[
+      'rounded-md bg-white gap-5 h-[85vh] p-5',
+      isMobile
+        ? 'flex flex-col overflow-y-auto'
+        : 'grid grid-cols-[repeat(3,1fr)] grid-rows-[repeat(7,1fr)]',
+    ]"
   >
-    <UCard class="col-span-1 row-span-2">
+    <UCard :class="isMobile ? '' : 'col-span-1 row-span-2'">
       <h1 class="mb-4 text-xl font-semibold">Schritt</h1>
 
       <UInput
