@@ -13,7 +13,7 @@
     "lint:prettier": "prettier . --check",
     "lint:typecheck": "nuxi typecheck",
     "lintfull": "bun lint && bun lint:typecheck",
-    "lintfix": "eslint . --fix && prettier --write --list-different ."
+    "lintfix": "bun eslint . --fix && bun prettier --write --list-different ."
   },
   "dependencies": {
     "@nuxt/eslint": "1.9.0",

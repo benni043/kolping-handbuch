@@ -7,6 +7,8 @@ definePageMeta({
   middleware: ["authenticated"],
 });
 
+const { isMobile } = useDevice();
+
 const toast = useToast();
 const route = useRoute();
 const { user } = useUserSession();
@@ -250,8 +252,11 @@ onMounted(() => {
         </template>
       </UModal>
 
-      <div class="flex justify-center gap-10 mt-10 mb-20">
-        <div class="w-50 xl:w-80">
+      <div
+        class="flex justify-center gap-10 mt-10 mb-20 w-full"
+        :class="{ 'flex-col': isMobile, 'ml-5': isMobile, 'mr-5': isMobile }"
+      >
+        <div class="lg:w-50 xl:w-80">
           <h2 class="text-[#50A9CE] font-bold text-2xl">
             Schritt {{ kernprozess.schrittCount }}
           </h2>
@@ -299,7 +304,7 @@ onMounted(() => {
           </div>
         </div>
 
-        <div class="relative w-100 xl:w-130">
+        <div class="relative lg:w-100 xl:w-130">
           <h3
             class="absolute top-2.5 left-3 text-white font-bold text-md xl:text-xl z-10"
           >
@@ -358,7 +363,7 @@ onMounted(() => {
           />
         </div>
 
-        <div class="w-50 xl:w-80">
+        <div class="lg:w-50 xl:w-80">
           <div>
             <h2
               v-if="kernprozess.aufzeichnungOrange.length >= 1"
