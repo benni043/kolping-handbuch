@@ -63,6 +63,14 @@ function handlePaths() {
     return;
   }
 
+  if (segments[0] === "add" && len === 1) {
+    items.value.push({
+      label: getDisplayName(segments[0]!)!,
+    });
+
+    return;
+  }
+
   if (len === 1) {
     items.value.push({
       label: `${structureStore.getIdByUuid(segments[0]!)!} ${structureStore.getDisplayNameByUuid(segments[0]!)!}`,
@@ -144,6 +152,11 @@ function navigateToAdmin() {
   isActive.value = false;
 }
 
+function navigateToAddFile() {
+  navigateTo(`/add`);
+  isActive.value = false;
+}
+
 function navigateToLoginPage() {
   navigateTo(`/kolping/login`);
   isActive.value = false;
@@ -185,6 +198,27 @@ function navigateToHome() {
               stroke-linecap="round"
               stroke-linejoin="round"
               d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z"
+            />
+          </svg>
+        </button>
+
+        <button
+          v-if="user && (user?.role === 'admin' || user?.role === 'editor')"
+          class="text-xl cursor-pointer"
+          @click="navigateToAddFile()"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-6 lg:size-8"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M12 16.5V9.75m0 0 3 3m-3-3-3 3M6.75 19.5a4.5 4.5 0 0 1-1.41-8.775 5.25 5.25 0 0 1 10.233-2.33 3 3 0 0 1 3.758 3.848A3.752 3.752 0 0 1 18 19.5H6.75Z"
             />
           </svg>
         </button>

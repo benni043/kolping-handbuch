@@ -49,6 +49,10 @@ export const navMappings: NavMapping[] = [
     redirect: "admin",
   },
   {
+    displayName: "Dateien hinzufügen",
+    redirect: "add",
+  },
+  {
     displayName: "",
     redirect: "startpage",
   },

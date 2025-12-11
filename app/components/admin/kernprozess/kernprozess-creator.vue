@@ -185,7 +185,7 @@ function clearForm() {
         <UInput
           v-if="item.hasLink"
           v-model="item.link"
-          placeholder="https://..."
+          placeholder="[path]/[subPath]/[file].[endung]"
           icon="i-heroicons-link"
           size="lg"
           class="w-full"
@@ -241,7 +241,7 @@ function clearForm() {
         <UInput
           v-if="item.hasLink"
           v-model="item.link"
-          placeholder="https://..."
+          placeholder="[path]/[subPath]/[file].[endung]"
           icon="i-heroicons-link"
           size="lg"
           class="w-full"
@@ -356,7 +356,7 @@ function clearForm() {
         <UInput
           v-if="item.hasLink"
           v-model="item.link"
-          placeholder="https://..."
+          placeholder="[path]/[subPath]/[file].[endung]"
           icon="i-heroicons-link"
           size="lg"
           class="w-full"

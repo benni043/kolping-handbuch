@@ -118,6 +118,25 @@ async function send(kernprozess: Kernprozess, count: number) {
   toggleEditing(count);
 }
 
+async function fetchData(link: string) {
+  const [path, subPath, file] = link.split("/");
+
+  const res = await fetch(
+    `/api/files?path=${path}&subPath=${subPath}&file=${file}`,
+  );
+
+  if (res.status !== 200) return;
+
+  const blob = await res.blob();
+
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = file!;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
 onMounted(() => {
   fetchKernprozesse();
 });
@@ -275,9 +294,20 @@ onMounted(() => {
                 :key="elem.text"
                 class="marker:text-[#50A9CE]"
               >
-                <a v-if="elem.hasLink" class="cursor-pointer hover:underline">{{
-                  elem.text
-                }}</a>
+                <!-- <a
+                  v-if="elem.hasLink"
+                  class="cursor-pointer hover:underline text-blue-700"
+                  download
+                  :href="elem.link"
+                  >{{ elem.text }}</a
+                > -->
+                <span
+                  v-if="elem.hasLink"
+                  class="cursor-pointer hover:underline text-blue-700"
+                  @click="fetchData(elem.link)"
+                >
+                  {{ elem.text }}
+                </span>
                 <span v-if="!elem.hasLink">{{ elem.text }}</span>
               </li>
             </ul>
@@ -296,9 +326,12 @@ onMounted(() => {
                 :key="elem.text"
                 class="marker:text-[#50A9CE]"
               >
-                <a v-if="elem.hasLink" class="cursor-pointer hover:underline">{{
-                  elem.text
-                }}</a>
+                <a
+                  v-if="elem.hasLink"
+                  class="cursor-pointer hover:underline"
+                  :href="elem.link"
+                  >{{ elem.text }}</a
+                >
                 <span v-if="!elem.hasLink">{{ elem.text }}</span>
               </li>
             </ul>
@@ -379,9 +412,12 @@ onMounted(() => {
                 :key="elem.text"
                 class="marker:text-[#F18700]"
               >
-                <a v-if="elem.hasLink" class="cursor-pointer hover:underline">{{
-                  elem.text
-                }}</a>
+                <a
+                  v-if="elem.hasLink"
+                  class="cursor-pointer hover:underline"
+                  :href="elem.link"
+                  >{{ elem.text }}</a
+                >
                 <span v-if="!elem.hasLink">{{ elem.text }}</span>
               </li>
             </ul>
