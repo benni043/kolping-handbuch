@@ -1,0 +1,43 @@
+import { join } from "path";
+import { existsSync, readFileSync } from "fs";
+
+export default defineEventHandler(async (event) => {
+  const { user } = await requireUserSession(event);
+
+  if (user.role !== "admin" && user.role !== "editor") {
+    throw createError({ statusCode: 403, statusMessage: "Forbidden" });
+  }
+
+  const query = getQuery(event);
+
+  const path = query.path as string;
+  const subPath = query.subPath as string;
+  const file = query.file as string;
+
+  if (!path || !subPath || !file)
+    return sendError(
+      event,
+      createError({
+        statusCode: 403,
+        statusMessage: "Missing required fields: path, subpath and/or page",
+      }),
+    );
+
+  const baseDir = join(process.cwd(), `data/files/${path}/${subPath}/${file}`);
+
+  if (!existsSync(baseDir))
+    return sendError(
+      event,
+      createError({
+        statusCode: 404,
+        statusMessage: "File not found",
+      }),
+    );
+
+  const pdf = readFileSync(baseDir);
+
+  setHeader(event, "Content-Type", "application/pdf");
+  setHeader(event, "Content-Disposition", `attachment; filename="${file}"`);
+
+  return pdf;
+});
