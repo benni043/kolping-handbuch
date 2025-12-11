@@ -5,11 +5,10 @@
 Diese Dokumente sollen dabei helfen, die einzelnen Schritte
 des Kernprozesses leichter zu bewältigen:
 
-- [Kolping-Statuten](https://www.kolping.at/statuten.html)
-- [Kolping-Leitbild](https://www.kolping.at/leitbild.html)
-- [Bausteine „Kolping belebt. Quellen unseres
-  Handelns“](https://www.kolping.at/hallein-2008kolping-belebt-quellen-unseres-handelns.html)
-- [AH 01 „Checkliste Generalversammlung“]()
+- Kolping-Statuten
+- Kolping-Leitbild
+- Bausteine „Kolping belebt. Quellen unseres Handelns“
+- [AH 01 „Checkliste Generalversammlung“](/api/files?path=01&subPath=arbeitshilfen&file=AH03-Generalversammlung-Tagesordnung.pdf)
 - [AH 02 „Netzmodell“]()
 - [AH 03 "Tagesordnung Generalversammlung"]()
 

@@ -294,13 +294,6 @@ onMounted(() => {
                 :key="elem.text"
                 class="marker:text-[#50A9CE]"
               >
-                <!-- <a
-                  v-if="elem.hasLink"
-                  class="cursor-pointer hover:underline text-blue-700"
-                  download
-                  :href="elem.link"
-                  >{{ elem.text }}</a
-                > -->
                 <span
                   v-if="elem.hasLink"
                   class="cursor-pointer hover:underline text-blue-700"
@@ -326,12 +319,13 @@ onMounted(() => {
                 :key="elem.text"
                 class="marker:text-[#50A9CE]"
               >
-                <a
+                <span
                   v-if="elem.hasLink"
-                  class="cursor-pointer hover:underline"
-                  :href="elem.link"
-                  >{{ elem.text }}</a
+                  class="cursor-pointer hover:underline text-blue-700"
+                  @click="fetchData(elem.link)"
                 >
+                  {{ elem.text }}
+                </span>
                 <span v-if="!elem.hasLink">{{ elem.text }}</span>
               </li>
             </ul>

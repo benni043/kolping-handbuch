@@ -18,7 +18,7 @@ export const navMappings: NavMapping[] = [
   },
   {
     displayName: "Checkliste",
-    redirect: "checklist",
+    redirect: "checkliste",
   },
   {
     displayName: "Best Practice",
