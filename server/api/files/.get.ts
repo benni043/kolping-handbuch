@@ -11,10 +11,8 @@ export default defineEventHandler(async (event) => {
   const query = getQuery(event);
 
   const path = query.path as string;
-  const subPath = query.subPath as string;
-  const file = query.file as string;
 
-  if (!path || !subPath || !file)
+  if (!path)
     return sendError(
       event,
       createError({
@@ -23,7 +21,7 @@ export default defineEventHandler(async (event) => {
       }),
     );
 
-  const baseDir = join(process.cwd(), `data/files/${path}/${subPath}/${file}`);
+  const baseDir = join(process.cwd(), `data/files/${path}`);
 
   if (!existsSync(baseDir))
     return sendError(
@@ -37,7 +35,7 @@ export default defineEventHandler(async (event) => {
   const pdf = readFileSync(baseDir);
 
   setHeader(event, "Content-Type", "application/pdf");
-  setHeader(event, "Content-Disposition", `attachment; filename="${file}"`);
+  setHeader(event, "Content-Disposition", `attachment;`);
 
   return pdf;
 });

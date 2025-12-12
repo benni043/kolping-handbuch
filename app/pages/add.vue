@@ -39,11 +39,8 @@ function open(item: Item) {
 }
 
 async function fetchData(link: string) {
-  const [_, path, subPath, file] = link.split("/");
-
-  const res = await fetch(
-    `/api/files?path=${path}&subPath=${subPath}&file=${file}`,
-  );
+  console.log(link);
+  const res = await fetch(`/api/files?path=${link}`);
 
   if (res.status !== 200) return;
 
@@ -66,17 +63,19 @@ function goUp() {
   load(parts.length ? "/" + parts.join("/") : "/");
 }
 
+function upload() {}
+
 load();
 </script>
 
 <template>
-  <div>
-    <span class="font-bold">Pfad: {{ currentPath }}</span>
+  <div class="p-4 text-sm select-none">
+    <span class="font-bold block mb-3 text-xl">Pfad: {{ currentPath }}</span>
 
-    <ul>
+    <ul class="space-y-1">
       <li
         v-if="currentPath !== '/'"
-        class="cursor-pointer hover:underline"
+        class="cursor-pointer hover:bg-gray-200 rounded px-2 py-1 transition text-xl"
         @click="goUp"
       >
         📁 ..
@@ -85,10 +84,17 @@ load();
       <li
         v-for="i in items"
         :key="i.name"
-        class="cursor-pointer hover:underline"
+        class="cursor-pointer hover:bg-gray-100 rounded px-2 py-1 transition flex items-center gap-1 text-xl"
         @click="open(i)"
       >
         {{ i.type === "dir" ? "📁" : "📄" }} {{ i.name }}
+      </li>
+
+      <li
+        class="mt-3 font-semibold text-blue-600 cursor-pointer hover:underline text-xl"
+        @click="upload"
+      >
+        <div>↑ Hochladen</div>
       </li>
     </ul>
   </div>

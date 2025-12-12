@@ -119,11 +119,8 @@ async function send(kernprozess: Kernprozess, count: number) {
 }
 
 async function fetchData(link: string) {
-  const [path, subPath, file] = link.split("/");
-
-  const res = await fetch(
-    `/api/files?path=${path}&subPath=${subPath}&file=${file}`,
-  );
+  console.log(link);
+  const res = await fetch(`/api/files?path=${link}`);
 
   if (res.status !== 200) return;
 
