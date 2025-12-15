@@ -1,5 +1,5 @@
 import { join } from "path";
-import { existsSync, readFileSync } from "fs";
+import { existsSync } from "fs";
 
 export default defineEventHandler(async (event) => {
   const { user } = await requireUserSession(event);
@@ -32,18 +32,5 @@ export default defineEventHandler(async (event) => {
       }),
     );
 
-  const pdf = readFileSync(baseDir);
-
-  const pathSplit = path.split("/");
-  const fileName = pathSplit[pathSplit.length - 1];
-
-  setHeader(event, "Content-Type", "application/pdf");
-  setHeader(event, "Content-Disposition", `attachment;`);
-  setHeader(
-    event,
-    "Content-Disposition",
-    `attachment; filename*=UTF-8''${fileName}`,
-  );
-
-  return pdf;
+  return {};
 });

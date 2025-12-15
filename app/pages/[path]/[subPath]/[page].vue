@@ -7,7 +7,6 @@ definePageMeta({
 });
 
 const toast = useToast();
-
 const route = useRoute();
 
 const { data } = await useFetch<string>("/api/content/", {
