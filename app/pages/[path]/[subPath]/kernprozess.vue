@@ -2,6 +2,7 @@
 import KernprozessCreator from "~/components/admin/kernprozess/kernprozess-creator.vue";
 import { useRoute } from "#imports";
 import type { Kernprozess } from "~/utils/type/kernprozess";
+import { fetchData } from "~/utils/file/fetch";
 
 definePageMeta({
   middleware: ["authenticated"],
@@ -118,20 +119,18 @@ async function send(kernprozess: Kernprozess, count: number) {
   toggleEditing(count);
 }
 
-async function fetchData(link: string) {
-  console.log(link);
-  const res = await fetch(`/api/files?path=${link}`);
+async function fetchFile(link: string) {
+  const res = await fetchData(link);
 
-  if (res.status !== 200) return;
-
-  const blob = await res.blob();
-
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = file!;
-  a.click();
-  URL.revokeObjectURL(url);
+  if (!res) {
+    toast.add({
+      title: "Fehler",
+      description:
+        "Beim Herunterladen des Dokuments ist ein Fehler aufgetreten! Wenden Sie sich an Ihren Administrator!",
+      color: "error",
+      icon: "i-heroicons-x-mark",
+    });
+  }
 }
 
 onMounted(() => {
@@ -294,7 +293,7 @@ onMounted(() => {
                 <span
                   v-if="elem.hasLink"
                   class="cursor-pointer hover:underline text-blue-700"
-                  @click="fetchData(elem.link)"
+                  @click="fetchFile(elem.link)"
                 >
                   {{ elem.text }}
                 </span>
@@ -319,7 +318,7 @@ onMounted(() => {
                 <span
                   v-if="elem.hasLink"
                   class="cursor-pointer hover:underline text-blue-700"
-                  @click="fetchData(elem.link)"
+                  @click="fetchFile(elem.link)"
                 >
                   {{ elem.text }}
                 </span>

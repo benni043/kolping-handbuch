@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { ref } from "vue";
+import { fetchData } from "~/utils/file/fetch";
+
+const toast = useToast();
 
 interface Item {
   name: string;
@@ -25,7 +28,7 @@ function normalize(p: string) {
   return "/" + p.split("/").filter(Boolean).join("/");
 }
 
-function open(item: Item) {
+async function open(item: Item) {
   if (item.type === "dir") {
     const next =
       currentPath.value === "/"
@@ -34,24 +37,18 @@ function open(item: Item) {
 
     load(next);
   } else {
-    fetchData(currentPath.value + "/" + item.name);
+    const res = await fetchData(currentPath.value + "/" + item.name);
+
+    if (!res) {
+      toast.add({
+        title: "Fehler",
+        description:
+          "Beim Herunterladen des Dokuments ist ein Fehler aufgetreten! Wenden Sie sich an Ihren Administrator!",
+        color: "error",
+        icon: "i-heroicons-x-mark",
+      });
+    }
   }
-}
-
-async function fetchData(link: string) {
-  console.log(link);
-  const res = await fetch(`/api/files?path=${link}`);
-
-  if (res.status !== 200) return;
-
-  const blob = await res.blob();
-
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = file!;
-  a.click();
-  URL.revokeObjectURL(url);
 }
 
 function goUp() {
