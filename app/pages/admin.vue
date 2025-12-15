@@ -53,26 +53,28 @@ async function addUser(username: string, password: string, role: string) {
   if (!confirm("Sind Sie sicher, dass sie diesen Benutzer hinzufügen möchten?"))
     return;
 
-  const response = await $fetch("/api/admin/user", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: {
-      username: username,
-      password: password,
-      role: role,
-    },
-  });
+  try {
+    await $fetch("/api/admin/user", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: {
+        username: username,
+        password: password,
+        role: role,
+      },
+    });
 
-  isAddingUser.value = false;
+    isAddingUser.value = false;
 
-  if (response.success) {
+    await fetchUsers();
+
     toast.add({
       title: "Erfolg",
       description: "Der Benutzer wurde erfolreich hinzugefügt!",
       color: "success",
       icon: "i-heroicons-check",
     });
-  } else {
+  } catch (e: any) {
     toast.add({
       title: "Fehler",
       description: "Beim Hinzufügen des Benutzers ist ein Fehler aufgetreten!",
@@ -80,34 +82,36 @@ async function addUser(username: string, password: string, role: string) {
       icon: "i-heroicons-x-mark",
     });
   }
-
-  await fetchUsers();
 }
 
 async function changeUserName(id: number, username: string, role: string) {
   if (!confirm("Sind Sie sicher, dass sie diesen Benutzer bearbeiten möchten?"))
     return;
 
-  const response = await $fetch("/api/admin/user", {
-    method: "PUT",
-    headers: { "Content-Type": "application/json" },
-    body: {
-      id: id,
-      username: username,
-      role: role,
-    },
-  });
+  try {
+    await $fetch("/api/admin/user", {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: {
+        id: id,
+        username: username,
+        role: role,
+      },
+    });
 
-  isEditingUser.value = false;
+    isEditingUser.value = false;
 
-  if (response.success) {
+    await fetchUsers();
+
+    cancle();
+
     toast.add({
       title: "Erfolg",
       description: "Der Benutzer wurde erfolgreich geändert!",
       color: "success",
       icon: "i-heroicons-check",
     });
-  } else {
+  } catch (e: any) {
     toast.add({
       title: "Fehler",
       description: "Beim Ändern des Benutzers ist ein Fehler aufgetreten!",
@@ -115,32 +119,30 @@ async function changeUserName(id: number, username: string, role: string) {
       icon: "i-heroicons-x-mark",
     });
   }
-
-  await fetchUsers();
-
-  cancle();
 }
 
 async function deleteUser(id: number) {
   if (!confirm("Sind Sie sicher, dass Sie diesen Benutzer löschen möchten?"))
     return;
 
-  const response = await $fetch("/api/admin/user", {
-    method: "DELETE",
-    headers: { "Content-Type": "application/json" },
-    body: {
-      id: id,
-    },
-  });
+  try {
+    await $fetch("/api/admin/user", {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      body: {
+        id: id,
+      },
+    });
 
-  if (response.success) {
+    await fetchUsers();
+
     toast.add({
       title: "Erfolg",
       description: "Der Benutzer wurde erfolreich gelöscht!",
       color: "success",
       icon: "i-heroicons-check",
     });
-  } else {
+  } catch (e: any) {
     toast.add({
       title: "Fehler",
       description: "Beim Löschen des Benutzers ist ein Fehler aufgetreten!",
@@ -148,8 +150,6 @@ async function deleteUser(id: number) {
       icon: "i-heroicons-x-mark",
     });
   }
-
-  await fetchUsers();
 }
 
 async function changeUserPassword(id: number, password: string) {
@@ -160,25 +160,29 @@ async function changeUserPassword(id: number, password: string) {
   )
     return;
 
-  const response = await $fetch("/api/admin/password", {
-    method: "PUT",
-    headers: { "Content-Type": "application/json" },
-    body: {
-      id: id,
-      password: password,
-    },
-  });
+  try {
+    await $fetch("/api/admin/password", {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: {
+        id: id,
+        password: password,
+      },
+    });
 
-  isEditingPassword.value = false;
+    isEditingPassword.value = false;
 
-  if (response.success) {
+    await fetchUsers();
+
+    cancle();
+
     toast.add({
       title: "Erfolg",
       description: "Das Passwort wurde erfolgreich geändert!",
       color: "success",
       icon: "i-heroicons-check",
     });
-  } else {
+  } catch (e: any) {
     toast.add({
       title: "Fehler",
       description: "Beim Ändern des Passworts ist ein Fehler aufgetreten!",
@@ -186,10 +190,6 @@ async function changeUserPassword(id: number, password: string) {
       icon: "i-heroicons-x-mark",
     });
   }
-
-  await fetchUsers();
-
-  cancle();
 }
 
 fetchUsers();

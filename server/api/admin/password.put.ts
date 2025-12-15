@@ -9,6 +9,18 @@ export default defineEventHandler(async (event) => {
     password: string;
   }>(event);
 
+  if (!body.id || !body.password)
+    throw createError({
+      statusCode: 400,
+      statusMessage: "Invalid request body",
+    });
+
+  if (!validatePassword(body.password))
+    throw createError({
+      statusCode: 400,
+      statusMessage: "password requirements ignored",
+    });
+
   const password_hash = await hashPassword(body.password);
 
   const sql = usePostgres();

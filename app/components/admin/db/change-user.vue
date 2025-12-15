@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { USERNAME_ERROR_MSG } from "~~/shared/utils/checks";
+
 definePageMeta({
   middleware: ["authenticated"],
   allowedRoles: ["admin"],
@@ -15,9 +17,23 @@ const emit = defineEmits(["changeUser"]);
 const usernameRef = ref(props.username || "");
 const roleRef = ref(props.role || "");
 
+const userError = ref("");
+
 async function change() {
+  userError.value = validateUsername(usernameRef.value)
+    ? ""
+    : USERNAME_ERROR_MSG;
+
+  if (userError.value) return;
+
   emit("changeUser", props.id, usernameRef.value, roleRef.value);
 }
+
+watch(usernameRef, () => {
+  userError.value = validateUsername(usernameRef.value)
+    ? ""
+    : USERNAME_ERROR_MSG;
+});
 </script>
 
 <template>
@@ -31,6 +47,10 @@ async function change() {
         size="xl"
         class="w-full"
       />
+
+      <p v-if="userError" class="text-red-500 font-medium">
+        {{ userError }}
+      </p>
 
       <h1 class="mb-4 text-xl font-semibold">Rolle</h1>
       <select v-model="roleRef" class="w-full border rounded-lg p-2">

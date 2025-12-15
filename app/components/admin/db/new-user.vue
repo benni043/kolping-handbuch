@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { PASSWORD_ERROR_MSG, USERNAME_ERROR_MSG } from "~~/shared/utils/checks";
+
 definePageMeta({
   middleware: ["authenticated"],
   allowedRoles: ["admin"],
@@ -18,29 +20,43 @@ const passwordError = ref("");
 const password2Error = ref("");
 
 watch(usernameRef, () => {
-  usernameError.value = validateUsername(usernameRef.value);
+  usernameError.value = validateUsername(usernameRef.value)
+    ? ""
+    : USERNAME_ERROR_MSG;
 });
 watch(passwordRef, () => {
-  passwordError.value = validatePassword(passwordRef.value);
+  passwordError.value = validatePassword(passwordRef.value)
+    ? ""
+    : PASSWORD_ERROR_MSG;
   password2Error.value = validatePasswordMatch(
     passwordRef.value,
     password2Ref.value,
-  );
+  )
+    ? ""
+    : PASSWORD_MATCH_ERROR_MSG;
 });
 watch(password2Ref, () => {
   password2Error.value = validatePasswordMatch(
     passwordRef.value,
     password2Ref.value,
-  );
+  )
+    ? ""
+    : PASSWORD_MATCH_ERROR_MSG;
 });
 
 async function add() {
-  usernameError.value = validateUsername(usernameRef.value);
-  passwordError.value = validatePassword(passwordRef.value);
+  usernameError.value = validateUsername(usernameRef.value)
+    ? ""
+    : USERNAME_ERROR_MSG;
+  passwordError.value = validatePassword(passwordRef.value)
+    ? ""
+    : PASSWORD_ERROR_MSG;
   password2Error.value = validatePasswordMatch(
     passwordRef.value,
     password2Ref.value,
-  );
+  )
+    ? ""
+    : PASSWORD_MATCH_ERROR_MSG;
 
   if (usernameError.value || passwordError.value || password2Error.value)
     return;

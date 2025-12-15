@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { PASSWORD_ERROR_MSG } from "~~/shared/utils/checks";
+
 const emit = defineEmits(["changePassword"]);
 
 const props = defineProps<{
@@ -14,25 +16,27 @@ const password2 = ref("");
 const visible = ref(false);
 
 watch(password1, () => {
-  passwordError.value = validatePassword(password1.value);
-  password2Error.value = validatePasswordMatch(
-    password1.value,
-    password2.value,
-  );
+  passwordError.value = validatePassword(password1.value)
+    ? ""
+    : PASSWORD_ERROR_MSG;
+
+  password2Error.value = validatePasswordMatch(password1.value, password2.value)
+    ? ""
+    : PASSWORD_MATCH_ERROR_MSG;
 });
 watch(password2, () => {
-  password2Error.value = validatePasswordMatch(
-    password1.value,
-    password2.value,
-  );
+  password2Error.value = validatePasswordMatch(password1.value, password2.value)
+    ? ""
+    : PASSWORD_MATCH_ERROR_MSG;
 });
 
 async function change() {
-  passwordError.value = validatePassword(password1.value);
-  password2Error.value = validatePasswordMatch(
-    password1.value,
-    password2.value,
-  );
+  passwordError.value = validatePassword(password1.value)
+    ? ""
+    : PASSWORD_ERROR_MSG;
+  password2Error.value = validatePasswordMatch(password1.value, password2.value)
+    ? ""
+    : PASSWORD_MATCH_ERROR_MSG;
 
   if (passwordError.value || password2Error.value) return;
 
