@@ -1,16 +1,3 @@
-export interface Structure {
-  uuid: string;
-  id: string;
-  name: string;
-  children: ChildStructure[];
-}
-
-export interface ChildStructure {
-  uuid: string;
-  id: string;
-  name: string;
-}
-
 export type RawEntry = {
   id: string;
   name: string;
@@ -47,22 +34,22 @@ export function transformToNestedStructure(rawData: RawData): Structure[] {
 
     const parentId = id.split("-")[0];
 
-    let parent = root.find((p) => p.id === parentId);
+    let parent: Structure = root.find((p) => p.id === parentId);
 
     if (!parent) {
       const parentEntry = byId.get(parentId);
       if (!parentEntry) {
-        console.warn(
-          `Elternknoten mit ID "${parentId}" für "${id}" nicht gefunden!`,
-        );
+        console.error(`id not found`);
         return;
       }
+
       parent = {
         uuid: parentEntry.uuid,
         id: parentEntry.id,
         name: parentEntry.name,
         children: [],
       };
+
       root.push(parent);
     }
 
@@ -70,10 +57,11 @@ export function transformToNestedStructure(rawData: RawData): Structure[] {
       uuid,
       id,
       name,
-    });
+    } as ChildStructure);
   });
 
   root.sort((a, b) => a.id.localeCompare(b.id));
+
   root.forEach((parent) => {
     parent.children.sort((a, b) => a.id.localeCompare(b.id));
   });

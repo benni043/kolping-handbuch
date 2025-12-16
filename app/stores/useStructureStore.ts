@@ -1,5 +1,4 @@
 import { defineStore } from "pinia";
-import type { Structure } from "~/utils/type/structure";
 
 export const useStructureStore = defineStore("structure", {
   state: () => ({

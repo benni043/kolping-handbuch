@@ -15,7 +15,7 @@ function removeKeysWithPrefix(obj: Record<string, RawEntry>, prefix: string) {
 export default defineEventHandler(async (event) => {
   const { user } = await requireUserSession(event);
 
-  if (user.role !== "admin")
+  if (user.role !== "admin" && user.role !== "editor")
     throw createError({ statusCode: 403, statusMessage: "Forbidden" });
 
   const body = await readBody<{

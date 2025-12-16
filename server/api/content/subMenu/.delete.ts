@@ -4,7 +4,8 @@ import { MAPPINGS_PATH } from "~~/server/utils/types";
 
 export default defineEventHandler(async (event) => {
   const { user } = await requireUserSession(event);
-  if (user.role !== "admin") throw createError({ statusCode: 403 });
+  if (user.role !== "admin" && user.role !== "editor")
+    throw createError({ statusCode: 403 });
 
   const body = await readBody<{
     menuUuid: string;

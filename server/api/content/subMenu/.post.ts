@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 export default defineEventHandler(async (event) => {
   const { user } = await requireUserSession(event);
 
-  if (user.role !== "admin")
+  if (user.role !== "admin" && user.role !== "editor")
     throw createError({ statusCode: 403, statusMessage: "Forbidden" });
 
   const body = await readBody<{

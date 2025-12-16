@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { getSegment } from "~/utils/nav/nav-menu";
+
 const toast = useToast();
 
 const segment = getSegment(1);

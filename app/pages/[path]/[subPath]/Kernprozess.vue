@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { useRoute } from "#imports";
-import type { Kernprozess } from "~/utils/type/kernprozess";
-import { fetchData } from "~/utils/file/fetch";
+import type { Kernprozess } from "~/utils/kernprozess/kernprozess";
+import { fetchData } from "~/utils/file/downloadFile";
 import CreateKernprozessForm from "~/components/content/CreateKernprozessForm.vue";
+import { getSegment } from "~/utils/nav/nav-menu";
 
 definePageMeta({
   middleware: ["authenticated"],

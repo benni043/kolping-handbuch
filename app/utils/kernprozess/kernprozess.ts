@@ -1,4 +1,4 @@
-export interface TestLink {
+export interface KernprozessElementLink {
   text: string;
   hasLink: boolean;
   link: string;
@@ -6,11 +6,11 @@ export interface TestLink {
 
 export interface Kernprozess {
   schrittCount: number;
-  vorgabenBlue: TestLink[];
-  vorlagenBlue: TestLink[];
+  vorgabenBlue: KernprozessElementLink[];
+  vorlagenBlue: KernprozessElementLink[];
   middleHead: string;
   middleList: { text: string }[];
-  aufzeichnungOrange: TestLink[];
+  aufzeichnungOrange: KernprozessElementLink[];
   verantwortlicherOrange: string;
   informationOrange: string;
   orange: boolean;

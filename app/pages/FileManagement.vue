@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { fetchData } from "~/utils/file/fetch";
+import { fetchData } from "~/utils/file/downloadFile";
 
 const toast = useToast();
 

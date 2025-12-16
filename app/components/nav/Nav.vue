@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import type { Structure } from "~/utils/type/structure";
 import { useRoute, useDevice } from "#imports";
 import type { BreadcrumbItem } from "@nuxt/ui";
+import { getDisplayName, getRedirect } from "~/utils/nav/nav-menu";
 
 const items: Ref<BreadcrumbItem[]> = ref([
   {

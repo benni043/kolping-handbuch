@@ -1,14 +1,17 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import type { Kernprozess, TestLink } from "~/utils/type/kernprozess";
+import type {
+  Kernprozess,
+  KernprozessElementLink,
+} from "~/utils/kernprozess/kernprozess";
 
 const props = defineProps<{
   schrittCount: number | undefined;
-  vorgabenBlue: TestLink[] | undefined;
-  vorlagenBlue: TestLink[] | undefined;
+  vorgabenBlue: KernprozessElementLink[] | undefined;
+  vorlagenBlue: KernprozessElementLink[] | undefined;
   middleHead: string | undefined;
   middleList: { text: string }[] | undefined;
-  aufzeichnungOrange: TestLink[] | undefined;
+  aufzeichnungOrange: KernprozessElementLink[] | undefined;
   verantwortlicherOrange: string | undefined;
   informationOrange: string | undefined;
   orange: boolean | undefined;
@@ -20,10 +23,10 @@ const emit = defineEmits(["cancle", "send"]);
 const { isMobile } = useDevice();
 
 const schrittCountRef: Ref<number> = ref(props.schrittCount || 1);
-const vorgabenBlueRef = ref<TestLink[]>(
+const vorgabenBlueRef = ref<KernprozessElementLink[]>(
   props.vorgabenBlue || [{ text: "", hasLink: false, link: "" }],
 );
-const vorlagenBlueRef = ref<TestLink[]>(
+const vorlagenBlueRef = ref<KernprozessElementLink[]>(
   props.vorlagenBlue || [{ text: "", hasLink: false, link: "" }],
 );
 
@@ -32,7 +35,7 @@ const middleListRef = ref<{ text: string }[]>(
   props.middleList || [{ text: "" }],
 );
 
-const aufzeichnungOrangeRef = ref<TestLink[]>(
+const aufzeichnungOrangeRef = ref<KernprozessElementLink[]>(
   props.aufzeichnungOrange || [{ text: "", hasLink: false, link: "" }],
 );
 const verantwortlicherOrangeRef: Ref<string> = ref(

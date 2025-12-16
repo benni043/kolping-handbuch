@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useRoute } from "#imports";
+import { categories, getRedirect } from "~/utils/nav/nav-menu";
 
 definePageMeta({
   middleware: ["authenticated"],
