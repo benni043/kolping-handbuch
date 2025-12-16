@@ -15,9 +15,8 @@ function removeKeysWithPrefix(obj: Record<string, RawEntry>, prefix: string) {
 export default defineEventHandler(async (event) => {
   const { user } = await requireUserSession(event);
 
-  if (user.role !== "admin") {
+  if (user.role !== "admin")
     throw createError({ statusCode: 403, statusMessage: "Forbidden" });
-  }
 
   const body = await readBody<{
     menuUuid: string;
@@ -58,6 +57,4 @@ export default defineEventHandler(async (event) => {
   });
 
   await writeFile(metadataPath, JSON.stringify(data, null, 2), "utf-8");
-
-  return { success: true };
 });

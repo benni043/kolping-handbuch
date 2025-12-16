@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import TopComponent from "~/components/nav/top-component.vue";
-import BottomComponent from "~/components/footer/bottom-component.vue";
 import type { ToasterProps } from "@nuxt/ui";
 
 const colorMode = useColorMode();
@@ -11,13 +9,13 @@ const toaster: ToasterProps = { position: "top-right" };
 
 <template>
   <div>
-    <top-component />
+    <Nav />
     <main id="main">
       <UApp :toaster="toaster">
         <NuxtPage />
       </UApp>
     </main>
-    <bottom-component />
+    <Footer />
   </div>
 </template>
 

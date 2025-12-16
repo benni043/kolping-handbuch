@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import type { User } from "#auth-utils";
 import { ref } from "vue";
-import ChangeUser from "~/components/admin/db/change-user.vue";
-import ChangePassword from "~/components/admin/db/change-password.vue";
-import NewUser from "~/components/admin/db/new-user.vue";
+import ChangePasswordForm from "~/components/usermanagement/ChangePasswordForm.vue";
+import ChangeUserForm from "~/components/usermanagement/ChangeUserForm.vue";
+import CreateUserForm from "~/components/usermanagement/CreateUserForm.vue";
 
 definePageMeta({
   middleware: ["authenticated"],
@@ -305,9 +305,9 @@ fetchUsers();
       }"
     >
       <template #body>
-        <new-user
+        <CreateUserForm
           @add="(username, password, role) => addUser(username, password, role)"
-        ></new-user>
+        ></CreateUserForm>
       </template>
     </UModal>
 
@@ -321,7 +321,7 @@ fetchUsers();
       }"
     >
       <template #body>
-        <change-user
+        <ChangeUserForm
           v-if="editingUser"
           :id="editingUser!.id"
           :username="editingUser!.username"
@@ -329,7 +329,7 @@ fetchUsers();
           @change-user="
             (id, username, role) => changeUserName(id, username, role)
           "
-        ></change-user>
+        ></ChangeUserForm>
       </template>
     </UModal>
 
@@ -343,13 +343,13 @@ fetchUsers();
       }"
     >
       <template #body>
-        <change-password
+        <ChangePasswordForm
           v-if="passwordChangingId"
           :id="passwordChangingId!"
           @change-password="
             (id: number, password: string) => changeUserPassword(id, password)
           "
-        ></change-password>
+        ></ChangePasswordForm>
       </template>
     </UModal>
   </div>

@@ -5,9 +5,8 @@ import { v4 as uuidv4 } from "uuid";
 export default defineEventHandler(async (event) => {
   const { user } = await requireUserSession(event);
 
-  if (user.role !== "admin") {
+  if (user.role !== "admin")
     throw createError({ statusCode: 403, statusMessage: "Forbidden" });
-  }
 
   const body = await readBody<{
     menuName: string;
@@ -53,6 +52,4 @@ export default defineEventHandler(async (event) => {
   };
 
   await writeFile(metadataPath, JSON.stringify(data, null, 2), "utf-8");
-
-  return { success: true };
 });

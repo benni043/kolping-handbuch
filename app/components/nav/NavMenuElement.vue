@@ -3,8 +3,6 @@ import { ref } from "vue";
 import type { Structure } from "~/utils/type/structure";
 import { categories } from "~/utils/nav-menu";
 import { useDevice } from "#imports";
-import Lvl1CreationForm from "~/components/nav/creation/lvl1-creation-form.vue";
-import Lvl2CreationForm from "~/components/nav/creation/lvl2-creation-form.vue";
 
 defineProps<{
   data: Structure[];
@@ -108,24 +106,28 @@ function cancleAdding() {
 }
 
 async function addLvl2Menu(subMenuName: string) {
-  const response = await $fetch("/api/content/subMenu", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: {
-      menuUuid: currentPathUuid.value,
-      menuId: currentPathId.value,
-      subMenuName: subMenuName,
-    },
-  });
+  try {
+    await $fetch("/api/content/subMenu", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: {
+        menuUuid: currentPathUuid.value,
+        menuId: currentPathId.value,
+        subMenuName: subMenuName,
+      },
+    });
 
-  if (response.success) {
+    cancleAdding();
+
+    emit("refetch");
+
     toast.add({
       title: "Erfolg",
       description: "Der Untermenupunkt wurde erfolgreich hinzugefügt!",
       color: "success",
       icon: "i-heroicons-check",
     });
-  } else {
+  } catch (e: any) {
     toast.add({
       title: "Fehler",
       description: "Beim Hinzufügen des Benutzers ist ein Fehler aufgetreten!",
@@ -133,30 +135,30 @@ async function addLvl2Menu(subMenuName: string) {
       icon: "i-heroicons-x-mark",
     });
   }
-
-  cancleAdding();
-
-  emit("refetch");
 }
 
 async function addLvl1Menu(menuName: string, subMenuName: string) {
-  const response = await $fetch("/api/content/menu", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: {
-      menuName: menuName,
-      subMenuName: subMenuName,
-    },
-  });
+  try {
+    await $fetch("/api/content/menu", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: {
+        menuName: menuName,
+        subMenuName: subMenuName,
+      },
+    });
 
-  if (response.success) {
+    cancleAdding();
+
+    emit("refetch");
+
     toast.add({
       title: "Erfolg",
       description: "Der Menupunkt wurde erfolgreich hinzugefügt!",
       color: "success",
       icon: "i-heroicons-check",
     });
-  } else {
+  } catch (e: any) {
     toast.add({
       title: "Fehler",
       description: "Beim Hinzufügen des Benutzers ist ein Fehler aufgetreten!",
@@ -164,32 +166,32 @@ async function addLvl1Menu(menuName: string, subMenuName: string) {
       icon: "i-heroicons-x-mark",
     });
   }
-
-  cancleAdding();
-
-  emit("refetch");
 }
 
 async function deleteLvl1(uuid: string, id: string) {
   if (!confirm("Sind Sie sicher, dass sie diesen Menüpunkt löschen möchten?"))
     return;
 
-  const response = await $fetch(`/api/content/menu`, {
-    method: "DELETE",
-    body: {
-      menuUuid: uuid,
-      menuId: id,
-    },
-  });
+  try {
+    await $fetch(`/api/content/menu`, {
+      method: "DELETE",
+      body: {
+        menuUuid: uuid,
+        menuId: id,
+      },
+    });
 
-  if (response.success) {
+    cancleAdding();
+
+    emit("refetch");
+
     toast.add({
       title: "Erfolg",
       description: "Der Menupunkt wurde erfolgreich gelöscht!",
       color: "success",
       icon: "i-heroicons-check",
     });
-  } else {
+  } catch (e: any) {
     toast.add({
       title: "Fehler",
       description: "Beim Löschen des Menupunkts ist ein Fehler aufgetreten!",
@@ -197,10 +199,6 @@ async function deleteLvl1(uuid: string, id: string) {
       icon: "i-heroicons-x-mark",
     });
   }
-
-  cancleAdding();
-
-  emit("refetch");
 }
 
 async function deleteLvl2(id: string, subId: string) {
@@ -209,22 +207,26 @@ async function deleteLvl2(id: string, subId: string) {
   )
     return;
 
-  const response = await $fetch(`/api/content/subMenu`, {
-    method: "DELETE",
-    body: {
-      menuUuid: id,
-      subMenuUuid: subId,
-    },
-  });
+  try {
+    await $fetch(`/api/content/subMenu`, {
+      method: "DELETE",
+      body: {
+        menuUuid: id,
+        subMenuUuid: subId,
+      },
+    });
 
-  if (response.success) {
+    cancleAdding();
+
+    emit("refetch");
+
     toast.add({
       title: "Erfolg",
       description: "Der Submenupunkt wurde erfolgreich gelöscht!",
       color: "success",
       icon: "i-heroicons-check",
     });
-  } else {
+  } catch (e: any) {
     toast.add({
       title: "Fehler",
       description: "Beim Löschen des Subenupunkts ist ein Fehler aufgetreten!",
@@ -232,10 +234,6 @@ async function deleteLvl2(id: string, subId: string) {
       icon: "i-heroicons-x-mark",
     });
   }
-
-  cancleAdding();
-
-  emit("refetch");
 }
 </script>
 
@@ -625,12 +623,12 @@ async function deleteLvl2(id: string, subId: string) {
       }"
     >
       <template #body>
-        <lvl1-creation-form
+        <NavMenuForm
           @add="
             (menuName: string, subMenuName: string) =>
               addLvl1Menu(menuName, subMenuName)
           "
-        ></lvl1-creation-form>
+        ></NavMenuForm>
       </template>
     </UModal>
 
@@ -644,9 +642,9 @@ async function deleteLvl2(id: string, subId: string) {
       }"
     >
       <template #body>
-        <lvl2-creation-form
+        <NavSubMenuForm
           @add="(subMenuName: string) => addLvl2Menu(subMenuName)"
-        ></lvl2-creation-form>
+        ></NavSubMenuForm>
       </template>
     </UModal>
   </div>

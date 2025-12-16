@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import NavMenu from "~/components/nav/nav-menu.vue";
 import type { Structure } from "~/utils/type/structure";
 import { useRoute, useDevice } from "#imports";
 import type { BreadcrumbItem } from "@nuxt/ui";
@@ -324,7 +323,7 @@ function navigateToHome() {
       class="lg:mb-10 flex justify-center items-start gap-1"
       :class="{ 'mb-0': !isActive, 'mb-5': isActive }"
     >
-      <nav-menu
+      <NavMenuElement
         :data="structureStore.structure"
         :active="isActive"
         @emit-route="
@@ -333,7 +332,7 @@ function navigateToHome() {
         "
         @refetch="fetchStructure()"
         @active="isActive = false"
-      ></nav-menu>
+      ></NavMenuElement>
 
       <div class="relative hidden lg:block">
         <div class="flex flex-col absolute h-full justify-center ml-20">

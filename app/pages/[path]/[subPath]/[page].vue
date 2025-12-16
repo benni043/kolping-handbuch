@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { useRoute } from "#imports";
-import ContentPage from "~/components/content-page.vue";
 
 definePageMeta({
   middleware: ["authenticated"],
@@ -47,10 +46,7 @@ async function updateNote(note: string) {
 </script>
 
 <template>
-  <content-page
-    :note="data!"
-    @update-note="(note) => updateNote(note)"
-  ></content-page>
+  <Content :note="data!" @update-note="(note) => updateNote(note)"></Content>
 </template>
 
 <style></style>

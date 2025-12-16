@@ -4,7 +4,7 @@ const toast = useToast();
 const segment = getSegment(1);
 const current = segment === undefined ? "startpage" : segment;
 
-const { data } = await useFetch<string>("/api/content/page", {
+const { data } = await useFetch<string>("/api/content/public", {
   method: "GET",
   query: {
     file: current,
@@ -40,10 +40,7 @@ async function updateNote(note: string) {
 </script>
 
 <template>
-  <content-page
-    :note="data!"
-    @update-note="(note) => updateNote(note)"
-  ></content-page>
+  <Content :note="data!" @update-note="(note) => updateNote(note)"></Content>
 </template>
 
 <style scoped></style>

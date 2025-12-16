@@ -10,7 +10,9 @@ const subMenuName = ref("");
 const subMenuError = ref("");
 
 watch(subMenuName, () => {
-  subMenuError.value = validateUsername(subMenuName.value);
+  subMenuError.value = validateUsername(subMenuName.value)
+    ? ""
+    : USERNAME_ERROR_MSG;
 });
 
 async function add() {

@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import KernprozessCreator from "~/components/admin/kernprozess/kernprozess-creator.vue";
 import { useRoute } from "#imports";
 import type { Kernprozess } from "~/utils/type/kernprozess";
 import { fetchData } from "~/utils/file/fetch";
+import CreateKernprozessForm from "~/components/content/CreateKernprozessForm.vue";
 
 definePageMeta({
   middleware: ["authenticated"],
@@ -176,7 +176,7 @@ onMounted(() => {
       }"
     >
       <template #body>
-        <KernprozessCreator
+        <CreateKernprozessForm
           :schritt-count="kernprozesseRef.length + 1"
           :vorgaben-blue="undefined"
           :vorlagen-blue="undefined"
@@ -251,7 +251,7 @@ onMounted(() => {
         }"
       >
         <template #body>
-          <KernprozessCreator
+          <CreateKernprozessForm
             :schritt-count="kernprozess.schrittCount"
             :vorgaben-blue="kernprozess.vorgabenBlue"
             :vorlagen-blue="kernprozess.vorlagenBlue"

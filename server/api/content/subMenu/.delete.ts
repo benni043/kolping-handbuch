@@ -20,7 +20,7 @@ export default defineEventHandler(async (event) => {
   if (!removed) return { success: true };
 
   const [prefix, removedIndexStr] = removed.id.split("-");
-  const removedIndex = parseInt(removedIndexStr);
+  const removedIndex = parseInt(removedIndexStr!);
 
   delete data[body.subMenuUuid];
 
@@ -28,7 +28,7 @@ export default defineEventHandler(async (event) => {
     if (!item.id.startsWith(prefix + "-")) return;
 
     const [_p, idxStr] = item.id.split("-");
-    const idx = parseInt(idxStr);
+    const idx = parseInt(idxStr!);
     if (idx > removedIndex) {
       const newId = `${prefix}-${idx - 1}`;
       item.id = newId;
@@ -42,6 +42,4 @@ export default defineEventHandler(async (event) => {
     `data/content/${body.menuUuid}/${body.subMenuUuid}`,
   );
   await rm(dirPath, { recursive: true, force: true });
-
-  return { success: true };
 });

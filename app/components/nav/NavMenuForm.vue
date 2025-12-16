@@ -13,11 +13,13 @@ const menuError = ref("");
 const subMenuError = ref("");
 
 watch(menuName, () => {
-  menuError.value = validateUsername(menuName.value);
+  menuError.value = validateUsername(menuName.value) ? "" : USERNAME_ERROR_MSG;
 });
 
 watch(subMenuName, () => {
-  subMenuError.value = validateUsername(subMenuName.value);
+  subMenuError.value = validateUsername(subMenuName.value)
+    ? ""
+    : USERNAME_ERROR_MSG;
 });
 
 async function add() {
