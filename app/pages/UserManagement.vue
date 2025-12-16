@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { User } from "#auth-utils";
+import type { H3Error } from "h3";
 import { ref } from "vue";
 import ChangePasswordForm from "~/components/usermanagement/ChangePasswordForm.vue";
 import ChangeUserForm from "~/components/usermanagement/ChangeUserForm.vue";
@@ -78,7 +79,7 @@ async function addUser(username: string, password: string, role: string) {
       color: "success",
       icon: "i-heroicons-check",
     });
-  } catch (e: any) {
+  } catch (e: unknown) {
     toast.add({
       title: "Fehler",
       description: "Beim Hinzufügen des Benutzers ist ein Fehler aufgetreten!",
@@ -115,7 +116,7 @@ async function changeUserName(id: number, username: string, role: string) {
       color: "success",
       icon: "i-heroicons-check",
     });
-  } catch (e: any) {
+  } catch (e: unknown) {
     toast.add({
       title: "Fehler",
       description: "Beim Ändern des Benutzers ist ein Fehler aufgetreten!",
@@ -146,7 +147,7 @@ async function deleteUser(id: number) {
       color: "success",
       icon: "i-heroicons-check",
     });
-  } catch (e: any) {
+  } catch (e: unknown) {
     toast.add({
       title: "Fehler",
       description: "Beim Löschen des Benutzers ist ein Fehler aufgetreten!",
@@ -186,7 +187,7 @@ async function changeUserPassword(id: number, password: string) {
       color: "success",
       icon: "i-heroicons-check",
     });
-  } catch (e: any) {
+  } catch (e: unknown) {
     toast.add({
       title: "Fehler",
       description: "Beim Ändern des Passworts ist ein Fehler aufgetreten!",
