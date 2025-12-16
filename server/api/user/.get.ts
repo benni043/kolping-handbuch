@@ -3,15 +3,14 @@ import { usePostgres } from "~~/server/utils/postgres";
 export default defineEventHandler(async (event) => {
   const { user } = await requireUserSession(event);
 
-  if (user.role! !== "admin") {
-    return sendError(
+  if (user.role! !== "admin")
+    sendError(
       event,
       createError({
         statusCode: 403,
         statusMessage: "Forbidden",
       }),
     );
-  }
 
   const sql = usePostgres();
 

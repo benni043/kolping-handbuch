@@ -23,7 +23,11 @@ const isEditingPassword = ref(false);
 
 async function fetchUsers() {
   const response = await $fetch<{ statusCode: number; data: User[] }>(
-    "/api/admin/user",
+    "/api/user/",
+    {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    },
   );
 
   users.value = response.data;
@@ -54,7 +58,7 @@ async function addUser(username: string, password: string, role: string) {
     return;
 
   try {
-    await $fetch("/api/admin/user", {
+    await $fetch("/api/user", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: {
@@ -89,7 +93,7 @@ async function changeUserName(id: number, username: string, role: string) {
     return;
 
   try {
-    await $fetch("/api/admin/user", {
+    await $fetch("/api/user", {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: {
@@ -126,7 +130,7 @@ async function deleteUser(id: number) {
     return;
 
   try {
-    await $fetch("/api/admin/user", {
+    await $fetch("/api/user", {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
       body: {
@@ -161,7 +165,7 @@ async function changeUserPassword(id: number, password: string) {
     return;
 
   try {
-    await $fetch("/api/admin/password", {
+    await $fetch("/api/user/password", {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: {

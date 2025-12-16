@@ -55,7 +55,7 @@ function handlePaths() {
     return;
   }
 
-  if (segments[0] === "admin" && len === 1) {
+  if (segments[0] === "usermanagement" && len === 1) {
     items.value.push({
       label: getDisplayName(segments[0]!)!,
     });
@@ -63,7 +63,7 @@ function handlePaths() {
     return;
   }
 
-  if (segments[0] === "add" && len === 1) {
+  if (segments[0] === "filemanagement" && len === 1) {
     items.value.push({
       label: getDisplayName(segments[0]!)!,
     });
@@ -148,12 +148,12 @@ function navigatoToIntroduction() {
 }
 
 function navigateToAdmin() {
-  navigateTo(`/admin`);
+  navigateTo(`/usermanagement`);
   isActive.value = false;
 }
 
 function navigateToAddFile() {
-  navigateTo(`/add`);
+  navigateTo(`/filemanagement`);
   isActive.value = false;
 }
 

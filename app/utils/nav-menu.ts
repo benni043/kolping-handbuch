@@ -45,12 +45,12 @@ export const navMappings: NavMapping[] = [
     redirect: "login",
   },
   {
-    displayName: "Admin",
-    redirect: "admin",
+    displayName: "Benutzerverwaltng",
+    redirect: "usermanagement",
   },
   {
-    displayName: "Dateien hinzufügen",
-    redirect: "add",
+    displayName: "Dateienverwaltung",
+    redirect: "filemanagement",
   },
   {
     displayName: "",
