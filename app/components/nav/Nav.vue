@@ -25,7 +25,7 @@ watch(
 );
 
 async function fetchStructure() {
-  const structure = await $fetch<Structure[]>(`/api/structure`, {
+  const structure = await $fetch<Structure[]>(`/api/content/structure`, {
     method: "GET",
   });
 

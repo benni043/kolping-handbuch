@@ -13,7 +13,7 @@ export default defineNuxtRouteMiddleware((to) => {
     return navigateTo(`/kolping/login`);
   }
 
-  const allowedRoles: string[] = to.meta.allowedRoles || [];
+  const allowedRoles = (to.meta.allowedRoles as string[]) ?? [];
 
   if (allowedRoles.length && !allowedRoles.includes(user.value!.role)) {
     return navigateTo("/kolping/startpage");

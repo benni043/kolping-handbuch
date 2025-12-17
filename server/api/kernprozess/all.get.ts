@@ -10,13 +10,10 @@ export default defineEventHandler(async (event) => {
   const subPath = query.subPath as string;
 
   if (!path || !subPath)
-    return sendError(
-      event,
-      createError({
-        statusCode: 403,
-        statusMessage: "Missing required fields: path and/or subPath",
-      }),
-    );
+    throw createError({
+      statusCode: 403,
+      statusMessage: "Missing required fields: path and/or subPath",
+    });
 
   const dirPath = join(
     process.cwd(),
@@ -24,13 +21,10 @@ export default defineEventHandler(async (event) => {
   );
 
   if (!existsSync(dirPath))
-    return sendError(
-      event,
-      createError({
-        statusCode: 404,
-        statusMessage: "Kernprozesse folder not found",
-      }),
-    );
+    throw createError({
+      statusCode: 404,
+      statusMessage: "Kernprozesse folder not found",
+    });
 
   const files = readdirSync(dirPath).filter((f) => f.endsWith(".json"));
 

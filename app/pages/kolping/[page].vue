@@ -14,23 +14,23 @@ const { data } = await useFetch<string>("/api/content/public", {
 });
 
 async function updateNote(note: string) {
-  const response = await $fetch("/api/save/content-page", {
-    method: "POST",
-    body: {
-      paths: [],
-      fileName: current,
-      data: note,
-    },
-  });
+  try {
+    await $fetch("/api/save/content-page", {
+      method: "POST",
+      body: {
+        paths: [],
+        fileName: current,
+        data: note,
+      },
+    });
 
-  if (response.success) {
     toast.add({
       title: "Erfolg",
       description: "Die Datei wurde erfolgreich geändert!",
       color: "success",
       icon: "i-heroicons-check",
     });
-  } else {
+  } catch (e: unknown) {
     toast.add({
       title: "Fehler",
       description: "Beim Ändern der Datei ist ein Fehler aufgetreten!",

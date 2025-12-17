@@ -11,14 +11,11 @@ export default defineEventHandler(async (event) => {
   const kernprozessNum = query.kernprozessNum as string;
 
   if (!path || !subPath || !kernprozessNum)
-    return sendError(
-      event,
-      createError({
-        statusCode: 403,
-        statusMessage:
-          "Missing required fields: path, subpath and/or kernprozessNum",
-      }),
-    );
+    throw createError({
+      statusCode: 403,
+      statusMessage:
+        "Missing required fields: path, subpath and/or kernprozessNum",
+    });
 
   const baseDir = join(
     process.cwd(),
@@ -26,13 +23,10 @@ export default defineEventHandler(async (event) => {
   );
 
   if (!existsSync(baseDir))
-    return sendError(
-      event,
-      createError({
-        statusCode: 404,
-        statusMessage: "File not found",
-      }),
-    );
+    throw createError({
+      statusCode: 404,
+      statusMessage: "File not found",
+    });
 
   const content = readFileSync(baseDir, "utf-8");
   return JSON.parse(content);

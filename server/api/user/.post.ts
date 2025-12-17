@@ -1,4 +1,3 @@
-import { hashPassword } from "#imports";
 import { validateRole } from "~~/shared/utils/checks";
 
 export default defineEventHandler(async (event) => {

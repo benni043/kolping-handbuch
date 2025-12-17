@@ -1,14 +1,8 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { fetchData } from "~/utils/file/downloadFile";
+import { fetchData, type Item } from "~/utils/file/file";
 
 const toast = useToast();
-
-interface Item {
-  name: string;
-  type: "dir" | "file";
-  size: number;
-}
 
 const items: Ref<Item[]> = ref([]);
 const currentPath = ref("/");
@@ -20,11 +14,12 @@ async function load(path = "/") {
     query: { path: currentPath.value },
   });
 
-  items.value = res.items;
+  items.value = res;
 }
 
 function normalize(p: string) {
   if (!p || p === "/") return "/";
+
   return "/" + p.split("/").filter(Boolean).join("/");
 }
 
@@ -39,7 +34,7 @@ async function open(item: Item) {
   } else {
     const res = await fetchData(currentPath.value + "/" + item.name);
 
-    if (!res) {
+    if (!res)
       toast.add({
         title: "Fehler",
         description:
@@ -47,7 +42,6 @@ async function open(item: Item) {
         color: "error",
         icon: "i-heroicons-x-mark",
       });
-    }
   }
 }
 

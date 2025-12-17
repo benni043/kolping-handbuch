@@ -1,6 +1,5 @@
 import { readFile } from "fs/promises";
 import { join } from "path";
-import { transformToNestedStructure } from "../utils/types";
 
 const basePath = join(process.cwd(), "data");
 

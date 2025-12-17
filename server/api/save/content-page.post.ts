@@ -4,15 +4,11 @@ import { join } from "path";
 export default defineEventHandler(async (event) => {
   const { user } = await requireUserSession(event);
 
-  if (user.role! !== "admin" && user.role! !== "editor") {
-    return sendError(
-      event,
-      createError({
-        statusCode: 403,
-        statusMessage: "Forbidden",
-      }),
-    );
-  }
+  if (user.role! !== "admin" && user.role! !== "editor")
+    throw createError({
+      statusCode: 403,
+      statusMessage: "Forbidden",
+    });
 
   const body: { paths: string[]; fileName: string; data: string } =
     await readBody(event);
@@ -33,15 +29,10 @@ export default defineEventHandler(async (event) => {
 
   try {
     await writeFile(filePath, body.data, "utf-8");
-
-    return { success: true, path: filePath };
   } catch {
-    return sendError(
-      event,
-      createError({
-        statusCode: 404,
-        statusMessage: `the file ${body.fileName} does not exist`,
-      }),
-    );
+    throw createError({
+      statusCode: 404,
+      statusMessage: `the file ${body.fileName} does not exist`,
+    });
   }
 });

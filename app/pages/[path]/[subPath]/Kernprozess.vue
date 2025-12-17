@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useRoute } from "#imports";
 import type { Kernprozess } from "~/utils/kernprozess/kernprozess";
-import { fetchData } from "~/utils/file/downloadFile";
+import { fetchData } from "~/utils/file/file";
 import CreateKernprozessForm from "~/components/content/CreateKernprozessForm.vue";
 import { getSegment } from "~/utils/nav/nav-menu";
 
@@ -18,18 +18,22 @@ const { user } = useUserSession();
 const kernprozesseRef: Ref<Kernprozess[]> = ref([]);
 
 async function fetchKernprozesse() {
-  const kernprozesse = await $fetch<Kernprozess[]>("/api/kernprozess/all", {
-    method: "GET",
-    query: {
-      path: route.params.path,
-      subPath: route.params.subPath,
-    },
-  });
+  try {
+    const kernprozesse = await $fetch<Kernprozess[]>("/api/kernprozess/all", {
+      method: "GET",
+      query: {
+        path: route.params.path,
+        subPath: route.params.subPath,
+      },
+    });
 
-  kernprozesseRef.value = kernprozesse;
-  kernprozesseRef.value = kernprozesse.sort(
-    (k, k2) => k.schrittCount - k2.schrittCount,
-  );
+    kernprozesseRef.value = kernprozesse;
+    kernprozesseRef.value = kernprozesse.sort(
+      (k, k2) => k.schrittCount - k2.schrittCount,
+    );
+  } catch (e: unknown) {
+    console.error(e);
+  }
 }
 
 const editingStates = ref<Record<number, boolean>>({});
@@ -44,28 +48,28 @@ async function deleteKernprozess(kernprozessNumber: number) {
       "Sind Sie sicher, dass Sie diesen Kernprozess löschen möchten? Dieser Vorgang kann nicht Rückgängig gemacht werden!",
     )
   ) {
-    const response = await $fetch("/api/save/kernprozess/", {
-      method: "DELETE",
-      headers: { "Content-Type": "application/json" },
-      body: {
-        path: getSegment(0),
-        subPath: getSegment(1),
-        kernprozessNumber: kernprozessNumber,
-      },
-    });
+    try {
+      await $fetch("/api/kernprozess", {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: {
+          path: getSegment(0),
+          subPath: getSegment(1),
+          kernprozessNumber: kernprozessNumber,
+        },
+      });
 
-    kernprozesseRef.value = kernprozesseRef.value.filter(
-      (k) => k.schrittCount !== kernprozessNumber,
-    );
+      kernprozesseRef.value = kernprozesseRef.value.filter(
+        (k) => k.schrittCount !== kernprozessNumber,
+      );
 
-    if (response.success) {
       toast.add({
         title: "Erfolg",
         description: `Der Kernprozess mit der Nummer ${kernprozessNumber} wurde erfolgreich gelöscht!`,
         color: "success",
         icon: "i-heroicons-check",
       });
-    } else {
+    } catch (e: unknown) {
       toast.add({
         title: "Fehler",
         description:
@@ -78,18 +82,22 @@ async function deleteKernprozess(kernprozessNumber: number) {
 }
 
 async function send(kernprozess: Kernprozess, count: number) {
-  const response = await $fetch("/api/save/kernprozess/", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: {
-      path: getSegment(0),
-      subPath: getSegment(1),
-      kernprozessNumber: kernprozess.schrittCount,
-      data: JSON.stringify(kernprozess),
-    },
-  });
+  try {
+    await $fetch("/api/kernprozess/", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: {
+        path: getSegment(0),
+        subPath: getSegment(1),
+        kernprozessNumber: kernprozess.schrittCount,
+        data: JSON.stringify(kernprozess),
+      },
+    });
 
-  if (response.success) {
+    await fetchKernprozesse();
+
+    toggleEditing(count);
+
     if (kernprozess.schrittCount > kernprozesseRef.value.length) {
       toast.add({
         title: "Erfolg",
@@ -105,7 +113,7 @@ async function send(kernprozess: Kernprozess, count: number) {
         icon: "i-heroicons-check",
       });
     }
-  } else {
+  } catch (e: unknown) {
     toast.add({
       title: "Fehler",
       description:
@@ -114,10 +122,6 @@ async function send(kernprozess: Kernprozess, count: number) {
       icon: "i-heroicons-x-mark",
     });
   }
-
-  await fetchKernprozesse();
-
-  toggleEditing(count);
 }
 
 async function fetchFile(link: string) {

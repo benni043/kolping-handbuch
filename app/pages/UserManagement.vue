@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { User } from "#auth-utils";
-import type { H3Error } from "h3";
 import { ref } from "vue";
 import ChangePasswordForm from "~/components/usermanagement/ChangePasswordForm.vue";
 import ChangeUserForm from "~/components/usermanagement/ChangeUserForm.vue";

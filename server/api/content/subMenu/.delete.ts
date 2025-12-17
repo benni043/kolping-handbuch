@@ -42,5 +42,6 @@ export default defineEventHandler(async (event) => {
     process.cwd(),
     `data/content/${body.menuUuid}/${body.subMenuUuid}`,
   );
+
   await rm(dirPath, { recursive: true, force: true });
 });

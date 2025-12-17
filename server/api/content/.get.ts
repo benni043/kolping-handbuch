@@ -11,13 +11,10 @@ export default defineEventHandler(async (event) => {
   const page = query.page as string;
 
   if (!path || !subPath || !page)
-    return sendError(
-      event,
-      createError({
-        statusCode: 403,
-        statusMessage: "Missing required fields: path, subpath and/or page",
-      }),
-    );
+    throw createError({
+      statusCode: 403,
+      statusMessage: "Missing required fields: path, subpath and/or page",
+    });
 
   const baseDir = join(
     process.cwd(),
@@ -25,13 +22,10 @@ export default defineEventHandler(async (event) => {
   );
 
   if (!existsSync(baseDir))
-    return sendError(
-      event,
-      createError({
-        statusCode: 404,
-        statusMessage: "File not found",
-      }),
-    );
+    throw createError({
+      statusCode: 404,
+      statusMessage: "File not found",
+    });
 
   return readFileSync(baseDir, "utf-8");
 });

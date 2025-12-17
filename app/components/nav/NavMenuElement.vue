@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import type { Structure } from "~/utils/nav/structure";
 import { categories } from "~/utils/nav/nav-menu";
 import { useDevice } from "#imports";
 

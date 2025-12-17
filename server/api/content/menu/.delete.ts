@@ -47,7 +47,7 @@ export default defineEventHandler(async (event) => {
       }
     } else {
       const [p, idxStr] = item.id.split("-");
-      const num = parseInt(p);
+      const num = parseInt(p!);
 
       if (num > removedIndex) {
         const newId = `${(num - 1).toString().padStart(2, "0")}-${idxStr}`;

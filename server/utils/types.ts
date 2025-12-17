@@ -34,10 +34,11 @@ export function transformToNestedStructure(rawData: RawData): Structure[] {
 
     const parentId = id.split("-")[0];
 
-    let parent: Structure = root.find((p) => p.id === parentId);
+    let parent: Structure = root.find((p) => p.id === parentId)!;
 
     if (!parent) {
-      const parentEntry = byId.get(parentId);
+      const parentEntry = byId.get(parentId!);
+
       if (!parentEntry) {
         console.error(`id not found`);
         return;

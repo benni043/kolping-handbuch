@@ -4,9 +4,8 @@ import { join } from "path";
 export default defineEventHandler(async (event) => {
   const { user } = await requireUserSession(event);
 
-  if (user.role !== "admin" && user.role! !== "editor") {
+  if (user.role !== "admin" && user.role! !== "editor")
     throw createError({ statusCode: 403, statusMessage: "Forbidden" });
-  }
 
   const body: {
     path: string;
@@ -20,6 +19,4 @@ export default defineEventHandler(async (event) => {
   );
 
   await unlink(filePath);
-
-  return { success: true, deleted: filePath };
 });
