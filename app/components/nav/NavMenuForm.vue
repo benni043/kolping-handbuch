@@ -52,6 +52,7 @@ async function add() {
 
       <UButton
         color="primary"
+        block
         size="xl"
         variant="solid"
         type="submit"
