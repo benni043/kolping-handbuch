@@ -59,7 +59,7 @@ function cancle() {
     >
       <button
         v-if="!isEditing"
-        class="bg-orange-400 hover:bg-orange-500 text-white px-4 py-2 rounded cursor-pointer"
+        class="bg-[#F18700] hover:bg-[#F87800] text-white px-4 py-2 rounded cursor-pointer"
         @click.prevent="isEditing = true"
       >
         <svg
@@ -79,9 +79,10 @@ function cancle() {
       </button>
 
       <div class="flex gap-5">
-        <button
+        <UButton
           v-if="isEditing"
-          class="bg-green-400 hover:bg-green-500 text-white px-4 py-2 rounded cursor-pointer"
+          color="success"
+          class="text-white px-4 py-2 rounded cursor-pointer"
           @click="send()"
         >
           <svg
@@ -98,11 +99,12 @@ function cancle() {
               d="m4.5 12.75 6 6 9-13.5"
             />
           </svg>
-        </button>
+        </UButton>
 
-        <button
+        <UButton
           v-if="isEditing"
-          class="bg-red-400 hover:bg-red-500 text-white px-4 py-2 rounded cursor-pointer"
+          color="error"
+          class="text-white px-4 py-2 rounded cursor-pointer"
           @click="cancle()"
         >
           <svg
@@ -119,7 +121,7 @@ function cancle() {
               d="M6 18 18 6M6 6l12 12"
             />
           </svg>
-        </button>
+        </UButton>
       </div>
     </div>
 
