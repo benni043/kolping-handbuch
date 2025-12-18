@@ -3,6 +3,11 @@ export function validateUsername(username: string) {
   return true;
 }
 
+export function validateFolder(folder: string) {
+  if (folder.length < 2) return false;
+  return true;
+}
+
 export function validatePassword(password: string) {
   const regex =
     /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_\-+=[{\]};:'",<.>/?\\|`~])[A-Za-z\d!@#$%^&*()_\-+=[{\]};:'",<.>/?\\|`~]{8,}$/;
@@ -26,5 +31,8 @@ export const PASSWORD_ERROR_MSG =
 
 export const USERNAME_ERROR_MSG =
   "Benutzername muss mindestens 4 Zeichen lang sein";
+
+export const FOLDER_ERROR_MSG =
+  "Ordnerbezeichnung muss mindestens 2 Zeichen lang sein";
 
 export const PASSWORD_MATCH_ERROR_MSG = "Passwörter stimmen nicht überein";

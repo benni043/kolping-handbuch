@@ -1,10 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
+import CreateFolderForm from "~/components/filemanagement/CreateFolderForm.vue";
 import { fetchData, type Item } from "~/utils/file/file";
-
-const emit = defineEmits<{
-  add: string;
-}>();
 
 const toast = useToast();
 
@@ -12,6 +9,8 @@ const items: Ref<Item[]> = ref([]);
 const currentPath = ref("/");
 
 const fileInput = ref<HTMLInputElement | null>(null);
+
+const createFolderModalOpen = ref(false);
 
 async function load(path = "/") {
   currentPath.value = normalize(path);
@@ -89,12 +88,16 @@ async function onFileSelected(e: Event) {
   }
 }
 
+function openCreateFolderModal() {
+  createFolderModalOpen.value = true;
+}
+
 async function createFolder(folder: string) {
   try {
     await $fetch("/api/files/folder", {
       method: "POST",
       body: {
-        path: path,
+        path: currentPath.value,
         folder: folder,
       },
     });
@@ -190,7 +193,7 @@ load();
 
       <li
         class="mt-3 font-semibold text-blue-600 cursor-pointer hover:underline text-xl"
-        @click="createFolder()"
+        @click="openCreateFolderModal()"
       >
         <div class="flex gap-2">
           <svg
@@ -211,6 +214,22 @@ load();
           Ordner erstellen
         </div>
       </li>
+
+      <UModal
+        v-model:open="createFolderModalOpen!"
+        title="Ordner hinzufügen"
+        :close="{
+          color: 'primary',
+          variant: 'outline',
+          class: 'rounded-full',
+        }"
+      >
+        <template #body>
+          <CreateFolderForm
+            @add="(folder: string) => createFolder(folder)"
+          ></CreateFolderForm>
+        </template>
+      </UModal>
 
       <li
         class="mt-3 font-semibold text-blue-600 cursor-pointer hover:underline text-xl"

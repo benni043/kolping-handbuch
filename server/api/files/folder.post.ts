@@ -1,5 +1,6 @@
 import { join, normalize } from "path";
 import { mkdir } from "fs/promises";
+import { validateFolder } from "~~/shared/utils/checks";
 
 export default defineEventHandler(async (event) => {
   const { user } = await requireUserSession(event);
@@ -12,6 +13,9 @@ export default defineEventHandler(async (event) => {
   }>(event);
 
   if (!body.folder)
+    throw createError({ statusCode: 400, statusMessage: "Invalid upload" });
+
+  if (!validateFolder(body.folder))
     throw createError({ statusCode: 400, statusMessage: "Invalid upload" });
 
   const basePath = join(process.cwd(), "data/files");

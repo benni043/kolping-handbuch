@@ -1,9 +1,13 @@
 <script setup lang="ts">
+import { FOLDER_ERROR_MSG, validateFolder } from "~~/shared/utils/checks";
+
 const folder = ref("");
 const folderError = ref("");
 
+const emit = defineEmits(["add"]);
+
 watch(folder, () => {
-  folderError.value = validateUsername(folder.value) ? "" : USERNAME_ERROR_MSG;
+  folderError.value = validateFolder(folder.value) ? "" : FOLDER_ERROR_MSG;
 });
 
 async function add() {
