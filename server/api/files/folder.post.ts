@@ -9,6 +9,7 @@ export default defineEventHandler(async (event) => {
     throw createError({ statusCode: 403, statusMessage: "Forbidden" });
 
   const body = await readBody<{
+    path: string;
     folder: string;
   }>(event);
 
@@ -19,7 +20,7 @@ export default defineEventHandler(async (event) => {
     throw createError({ statusCode: 400, statusMessage: "Invalid upload" });
 
   const basePath = join(process.cwd(), "data/files");
-  const targetPath = join(basePath, normalize(body.folder));
+  const targetPath = join(basePath, body.path, normalize(body.folder));
 
   await mkdir(targetPath, { recursive: true });
 });
