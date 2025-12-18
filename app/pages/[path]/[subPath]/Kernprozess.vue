@@ -146,7 +146,7 @@ onMounted(() => {
 <template>
   <div>
     <div class="flex justify-center items-center">
-      <div class="w-[90vw] lg:w-[60vw] flex justify-end">
+      <div class="w-full flex justify-end mr-5">
         <UButton
           v-if="user && (user.role === 'admin' || user.role === 'editor')"
           color="success"
@@ -203,7 +203,7 @@ onMounted(() => {
       <div
         v-if="user && (user.role === 'admin' || user.role === 'editor')"
         class="flex gap-5"
-        :class="isMobile ? 'ml-3' : 'ml-20'"
+        :class="isMobile ? 'ml-5' : 'ml-20'"
       >
         <button
           class="bg-[#F18700] hover:bg-[#F87800] text-white px-4 py-2 rounded cursor-pointer"
@@ -277,7 +277,7 @@ onMounted(() => {
 
       <div
         class="flex justify-center"
-        :class="isMobile ? 'flex-col mx-3 mt-5 mb-20 gap-5' : 'm-20 gap-20'"
+        :class="isMobile ? 'flex-col mx-5 mt-5 mb-20 gap-5' : 'm-20 gap-20'"
       >
         <div class="flex-1">
           <h2 class="text-[#50A9CE] font-bold text-2xl">
