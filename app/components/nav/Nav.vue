@@ -170,16 +170,16 @@ function navigateToHome() {
 <template>
   <div>
     <div
-      class="mt-5 mb-5 lg:mb-10 flex items-center justify-center w-full h-full lg:flex-row"
+      class="flex items-center justify-between lg:mx-5 mt-5 mb-5 lg:mb-7 mx-3"
     >
-      <div class="flex gap-5 lg:flex-row">
-        <img
-          class="not-lg:w-40 lg:w-60 cursor-pointer lg:mb-0"
-          src="/img/logo.png"
-          alt="logo"
-          @click="navigateToHome()"
-        />
+      <img
+        class="not-lg:w-40 lg:w-60 cursor-pointer lg:mb-0"
+        src="/img/logo.png"
+        alt="logo"
+        @click="navigateToHome()"
+      />
 
+      <div class="flex lg:gap-5 gap-3">
         <button
           v-if="user && user?.role === 'admin'"
           class="text-xl cursor-pointer"
