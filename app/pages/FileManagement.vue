@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import CreateFolderForm from "~/components/filemanagement/CreateFolderForm.vue";
+import RenameFolderForm from "~/components/filemanagement/RenameFolderForm.vue";
 import { fetchData, type Item } from "~/utils/file/file";
 
 const toast = useToast();
@@ -11,6 +12,9 @@ const currentPath = ref("/");
 const fileInput = ref<HTMLInputElement | null>(null);
 
 const createFolderModalOpen = ref(false);
+const renameFolderModalOpen = ref(false);
+
+const currentFolderName = ref("");
 
 async function load(path = "/") {
   currentPath.value = normalize(path);
@@ -141,20 +145,21 @@ async function deleteFolder(item: string) {
   }
 }
 
-async function changeFolder(item: string) {
-  if (!confirm("Sind Sie sicher, dass sie diesen Ordner umbenennen möchten?"))
-    return;
+function openRenameFolderModal(item: string) {
+  renameFolderModalOpen.value = true;
+  currentFolderName.value = item;
+}
 
+async function changeFolder(newName: string) {
   try {
-    // await $fetch("/api/files", {
-    //   method: "DELETE",
-    //   body: {
-    //     path: currentPath.value,
-    //     item: item,
-    //   },
-    // });
-
-    console.log(item);
+    await $fetch("/api/files", {
+      method: "PUT",
+      body: {
+        path: currentPath.value,
+        newName: newName,
+        oldName: currentFolderName.value,
+      },
+    });
 
     load(currentPath.value);
   } catch (e: unknown) {
@@ -166,6 +171,8 @@ async function changeFolder(item: string) {
       icon: "i-heroicons-x-mark",
     });
   }
+
+  renameFolderModalOpen.value = false;
 }
 
 onMounted(() => {
@@ -262,7 +269,10 @@ onMounted(() => {
           </svg>
         </button>
 
-        <button class="hover:text-yellow-500" @click="changeFolder(i.name)">
+        <button
+          class="hover:text-yellow-500"
+          @click="openRenameFolderModal(i.name)"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -279,6 +289,22 @@ onMounted(() => {
           </svg>
         </button>
       </li>
+
+      <UModal
+        v-model:open="renameFolderModalOpen!"
+        title="Ordner umbennenen"
+        :close="{
+          color: 'primary',
+          variant: 'outline',
+          class: 'rounded-full',
+        }"
+      >
+        <template #body>
+          <RenameFolderForm
+            @rename="(folder: string) => changeFolder(folder)"
+          ></RenameFolderForm>
+        </template>
+      </UModal>
 
       <br />
 
