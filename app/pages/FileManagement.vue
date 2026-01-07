@@ -99,9 +99,6 @@ function openCreateFolderModal() {
 }
 
 async function createFolder(folder: string) {
-  if (!confirm("Sind Sie sicher, dass sie diesen Ordner erstellen möchten?"))
-    return;
-
   try {
     await $fetch("/api/files/folder", {
       method: "POST",
