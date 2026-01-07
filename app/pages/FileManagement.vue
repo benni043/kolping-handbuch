@@ -176,13 +176,21 @@ async function changeFolder(newName: string) {
 
     load(currentPath.value);
   } catch (e: unknown) {
-    toast.add({
-      title: "Fehler",
-      description:
-        "Beim Löschen des Ordners/Datei ist ein Fehler aufgetreten! Wenden Sie sich an Ihren Administrator!",
-      color: "error",
-      icon: "i-heroicons-x-mark",
-    });
+    if (e.statusCode === 409)
+      toast.add({
+        title: "Warnung",
+        description: "Es existiert bereits ein Order/Datei mit diesem Namen",
+        color: "warning",
+        icon: "i-heroicons-x-mark",
+      });
+    else
+      toast.add({
+        title: "Fehler",
+        description:
+          "Beim Löschen des Ordners/Datei ist ein Fehler aufgetreten! Wenden Sie sich an Ihren Administrator!",
+        color: "error",
+        icon: "i-heroicons-x-mark",
+      });
   }
 
   renameFolderModalOpen.value = false;
