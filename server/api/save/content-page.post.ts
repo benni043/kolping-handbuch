@@ -14,7 +14,7 @@ export default defineEventHandler(async (event) => {
   const body: { paths: string[]; fileName: string; data: string } =
     await readBody(event);
 
-  let path = "data/";
+  let path = "";
 
   if (body.paths.length !== 0) path += "content/";
 
@@ -27,6 +27,8 @@ export default defineEventHandler(async (event) => {
   path += ".md";
 
   const filePath = safeJoin(PUBLIC_ROOT, path);
+
+  console.log(filePath);
 
   try {
     await writeFile(filePath, body.data, "utf-8");
