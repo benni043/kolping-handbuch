@@ -1,6 +1,7 @@
 import { mkdir, writeFile, readdir, readFile } from "fs/promises";
 import { join } from "path";
 import { v4 as uuidv4 } from "uuid";
+import { CONTENT_ROOT, safeJoin } from "~~/server/utils/traversal";
 
 export default defineEventHandler(async (event) => {
   const { user } = await requireUserSession(event);
@@ -24,10 +25,7 @@ export default defineEventHandler(async (event) => {
   const menuUuid = uuidv4();
   const subMenuUuid = uuidv4();
 
-  const dirPathOuter = join(
-    process.cwd(),
-    `data/content/${menuUuid}/${subMenuUuid}/`,
-  );
+  const dirPathOuter = safeJoin(CONTENT_ROOT, `${menuUuid}/${subMenuUuid}`);
 
   const dirPath = join(dirPathOuter, "kernprozesse");
 

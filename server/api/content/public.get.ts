@@ -1,5 +1,5 @@
-import { join } from "path";
 import { existsSync, readFileSync } from "fs";
+import { PUBLIC_ROOT, safeJoin } from "~~/server/utils/traversal";
 
 export default defineEventHandler(async (event) => {
   const query = getQuery(event);
@@ -12,7 +12,7 @@ export default defineEventHandler(async (event) => {
       statusMessage: "Missing required field: file",
     });
 
-  const baseDir = join(process.cwd(), `data/${file}.md`);
+  const baseDir = safeJoin(PUBLIC_ROOT, `${file}.md`);
 
   if (!existsSync(baseDir))
     throw createError({

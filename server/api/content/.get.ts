@@ -1,5 +1,5 @@
-import { join } from "path";
 import { existsSync, readFileSync } from "fs";
+import { CONTENT_ROOT, safeJoin } from "~~/server/utils/traversal";
 
 export default defineEventHandler(async (event) => {
   await requireUserSession(event);
@@ -16,10 +16,7 @@ export default defineEventHandler(async (event) => {
       statusMessage: "Missing required fields: path, subpath and/or page",
     });
 
-  const baseDir = join(
-    process.cwd(),
-    `data/content/${path}/${subPath}/${page}.md`,
-  );
+  const baseDir = safeJoin(CONTENT_ROOT, `${path}/${subPath}/${page}.md`);
 
   if (!existsSync(baseDir))
     throw createError({

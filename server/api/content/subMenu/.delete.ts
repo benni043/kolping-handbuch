@@ -1,5 +1,6 @@
 import { writeFile, readFile, rm } from "fs/promises";
 import { join } from "path";
+import { CONTENT_ROOT, safeJoin } from "~~/server/utils/traversal";
 import { MAPPINGS_PATH } from "~~/server/utils/types";
 
 export default defineEventHandler(async (event) => {
@@ -38,9 +39,9 @@ export default defineEventHandler(async (event) => {
 
   await writeFile(metadataPath, JSON.stringify(data, null, 2), "utf-8");
 
-  const dirPath = join(
-    process.cwd(),
-    `data/content/${body.menuUuid}/${body.subMenuUuid}`,
+  const dirPath = safeJoin(
+    CONTENT_ROOT,
+    `${body.menuUuid}/${body.subMenuUuid}`,
   );
 
   await rm(dirPath, { recursive: true, force: true });

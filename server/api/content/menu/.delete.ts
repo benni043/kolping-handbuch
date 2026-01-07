@@ -1,5 +1,6 @@
 import { writeFile, readFile, rm } from "fs/promises";
 import { join } from "path";
+import { CONTENT_ROOT, safeJoin } from "~~/server/utils/traversal";
 import { MAPPINGS_PATH } from "~~/server/utils/types";
 
 function removeKeysWithPrefix(obj: Record<string, RawEntry>, prefix: string) {
@@ -23,7 +24,7 @@ export default defineEventHandler(async (event) => {
     menuId: string;
   }>(event);
 
-  const dirPath = join(process.cwd(), `data/content/${body.menuUuid}`);
+  const dirPath = safeJoin(CONTENT_ROOT, body.menuUuid);
 
   await rm(dirPath, { recursive: true, force: true });
 
