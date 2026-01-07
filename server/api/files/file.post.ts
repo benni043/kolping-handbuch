@@ -1,5 +1,5 @@
-import { join, normalize } from "path";
 import { writeFile } from "fs/promises";
+import { FILE_ROOT, safeJoin } from "~~/server/utils/traversal";
 
 export default defineEventHandler(async (event) => {
   const { user } = await requireUserSession(event);
@@ -16,15 +16,10 @@ export default defineEventHandler(async (event) => {
   if (!file || !file.data || !pathPart?.data)
     throw createError({ statusCode: 400, statusMessage: "Invalid upload" });
 
-  const relPath = normalize(pathPart.data.toString()).replace(
-    /^(\.\.(\/|\\|$))+/,
-    "",
-  );
+  const relPath = pathPart.data.toString();
 
-  const basePath = join(process.cwd(), "data/files/");
-
-  const targetDir = join(basePath, relPath);
-  const targetFile = join(targetDir, file.filename!);
+  const targetDir = safeJoin(FILE_ROOT, relPath);
+  const targetFile = safeJoin(targetDir, file.filename!);
 
   await writeFile(targetFile, file.data);
 });

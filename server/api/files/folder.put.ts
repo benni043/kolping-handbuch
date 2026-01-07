@@ -1,5 +1,5 @@
 import { rename, stat } from "fs/promises";
-import { join } from "path";
+import { FILE_ROOT, safeJoin } from "~~/server/utils/traversal";
 
 export default defineEventHandler(async (event) => {
   const { user } = await requireUserSession(event);
@@ -16,9 +16,8 @@ export default defineEventHandler(async (event) => {
   if (!body.path || !body.oldName || !body.newName)
     throw createError({ statusCode: 400, statusMessage: "Invalid request" });
 
-  const base = join(process.cwd(), "data/files");
-  const oldPath = join(base, body.path, body.oldName);
-  const newPath = join(base, body.path, body.newName);
+  const oldPath = safeJoin(FILE_ROOT, `${body.path}/${body.oldName}`);
+  const newPath = safeJoin(FILE_ROOT, `${body.path}/${body.newName}`);
 
   try {
     await stat(newPath);

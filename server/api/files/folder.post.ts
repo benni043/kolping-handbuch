@@ -1,6 +1,6 @@
-import { join, normalize } from "path";
 import { mkdir } from "fs/promises";
 import { validateFolder } from "~~/shared/utils/checks";
+import { FILE_ROOT, safeJoin } from "~~/server/utils/traversal";
 
 export default defineEventHandler(async (event) => {
   const { user } = await requireUserSession(event);
@@ -19,8 +19,7 @@ export default defineEventHandler(async (event) => {
   if (!validateFolder(body.folder))
     throw createError({ statusCode: 400, statusMessage: "Invalid upload" });
 
-  const basePath = join(process.cwd(), "data/files");
-  const targetPath = join(basePath, body.path, normalize(body.folder));
+  const targetPath = safeJoin(FILE_ROOT, `${body.path}/${body.folder}`);
 
   await mkdir(targetPath, { recursive: true });
 });

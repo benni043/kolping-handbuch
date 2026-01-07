@@ -1,5 +1,5 @@
-import { join } from "path";
 import { readdir, stat } from "fs/promises";
+import { FILE_ROOT, safeJoin } from "~~/server/utils/traversal";
 
 export default defineEventHandler(async (event) => {
   const { user } = await requireUserSession(event);
@@ -9,20 +9,13 @@ export default defineEventHandler(async (event) => {
   const query = getQuery(event);
   const relativePath = (query.path || "/").toString();
 
-  if (relativePath.includes(".."))
-    throw createError({ statusCode: 400, statusMessage: "Invalid path" });
-
-  const basePath = join(process.cwd(), "data/files");
-  const targetPath = join(basePath, relativePath);
-
-  if (!targetPath.startsWith(basePath))
-    throw createError({ statusCode: 400, statusMessage: "Invalid path" });
+  const targetPath = safeJoin(FILE_ROOT, relativePath);
 
   const entries = await readdir(targetPath, { withFileTypes: true });
 
   const items = await Promise.all(
     entries.map(async (e) => {
-      const full = join(targetPath, e.name);
+      const full = safeJoin(targetPath, e.name);
       const s = await stat(full);
 
       return {

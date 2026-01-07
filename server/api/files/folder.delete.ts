@@ -1,5 +1,5 @@
 import { unlink, rm, stat } from "fs/promises";
-import { join } from "path";
+import { FILE_ROOT, safeJoin } from "~~/server/utils/traversal";
 
 export default defineEventHandler(async (event) => {
   const { user } = await requireUserSession(event);
@@ -15,7 +15,7 @@ export default defineEventHandler(async (event) => {
   if (!body.path)
     throw createError({ statusCode: 400, statusMessage: "Invalid request" });
 
-  const filePath = join(process.cwd(), `data/files/${body.path}/${body.item}`);
+  const filePath = safeJoin(FILE_ROOT, `${body.path}/${body.item}`);
 
   const s = await stat(filePath);
 
