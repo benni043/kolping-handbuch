@@ -1,13 +1,17 @@
+import { join } from "path";
 import { readdir, stat } from "fs/promises";
 import { FILE_ROOT, safeJoin } from "~~/server/utils/traversal";
 
 export default defineEventHandler(async (event) => {
   const { user } = await requireUserSession(event);
-  if (!["admin", "editor"].includes(user.role))
-    throw createError({ statusCode: 403 });
+
+  if (user.role !== "admin" && user.role !== "editor")
+    throw createError({ statusCode: 403, statusMessage: "Forbidden" });
 
   const query = getQuery(event);
-  const relativePath = (query.path || "/").toString();
+  const relativePath = (query.path || "").toString();
+
+  console.log(relativePath);
 
   const targetPath = safeJoin(FILE_ROOT, relativePath);
 
@@ -15,7 +19,7 @@ export default defineEventHandler(async (event) => {
 
   const items = await Promise.all(
     entries.map(async (e) => {
-      const full = safeJoin(targetPath, e.name);
+      const full = join(targetPath, e.name);
       const s = await stat(full);
 
       return {

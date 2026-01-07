@@ -7,7 +7,7 @@ import { fetchData, type Item } from "~/utils/file/file";
 const toast = useToast();
 
 const items: Ref<Item[]> = ref([]);
-const currentPath = ref("/");
+const currentPath = ref("");
 
 const fileInput = ref<HTMLInputElement | null>(null);
 
@@ -18,8 +18,8 @@ const currentFolderName = ref("");
 
 const isFolder = ref(false);
 
-async function load(path = "/") {
-  currentPath.value = normalize(path);
+async function load(path = "") {
+  currentPath.value = path;
 
   const res = await $fetch<Item[]>("/api/files/structure", {
     query: { path: currentPath.value },
@@ -28,17 +28,11 @@ async function load(path = "/") {
   items.value = res;
 }
 
-function normalize(p: string) {
-  if (!p || p === "/") return "/";
-
-  return "/" + p.split("/").filter(Boolean).join("/");
-}
-
 async function open(item: Item) {
   if (item.type === "dir") {
     const next =
-      currentPath.value === "/"
-        ? `/${item.name}`
+      currentPath.value === ""
+        ? item.name
         : `${currentPath.value}/${item.name}`;
 
     load(next);
@@ -57,12 +51,13 @@ async function open(item: Item) {
 }
 
 function goUp() {
-  if (currentPath.value === "/") return;
+  if (currentPath.value === "") return;
 
   const parts = currentPath.value.split("/").filter(Boolean);
+
   parts.pop();
 
-  load(parts.length ? "/" + parts.join("/") : "/");
+  load(parts.join("/"));
 }
 
 function upload() {

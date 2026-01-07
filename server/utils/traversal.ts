@@ -7,7 +7,11 @@ export const PUBLIC_ROOT = resolve(process.cwd(), "data");
 export function safeJoin(root: string, unsafePath: string) {
   const targetPath = resolve(root, unsafePath);
 
-  if (!targetPath.startsWith(root + "/")) {
+  console.log(root);
+  console.log(unsafePath);
+  console.log(targetPath);
+
+  if (!targetPath.startsWith(root + "/") && targetPath !== root) {
     throw createError({
       statusCode: 400,
       statusMessage: "Invalid path",
