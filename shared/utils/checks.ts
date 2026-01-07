@@ -27,12 +27,15 @@ export function validatePasswordMatch(password1: string, password2: string) {
 }
 
 export const PASSWORD_ERROR_MSG =
-  "Passwort muss mind. 8 Zeichen, 1 Großbuchstaben, 1 Zahl und 1 Sonderzeichen enthalten";
+  "Das Passwort muss mind. 8 Zeichen, 1 Großbuchstaben, 1 Zahl und 1 Sonderzeichen enthalten";
 
 export const USERNAME_ERROR_MSG =
-  "Benutzername muss mindestens 4 Zeichen lang sein";
+  "Der Benutzername muss mindestens 4 Zeichen lang sein";
 
 export const FOLDER_ERROR_MSG =
-  "Ordnerbezeichnung muss mindestens 2 Zeichen lang sein";
+  "Der Ordnername muss mindestens 2 Zeichen lang sein";
+
+export const FILE_ERROR_MSG =
+  "Der Dateiname muss mindestens 2 Zeichen lang sein";
 
 export const PASSWORD_MATCH_ERROR_MSG = "Passwörter stimmen nicht überein";

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import CreateFolderForm from "~/components/filemanagement/CreateFolderForm.vue";
-import RenameFolderForm from "~/components/filemanagement/RenameFolderForm.vue";
+import RenameForm from "~/components/filemanagement/RenameForm.vue";
 import { fetchData, type Item } from "~/utils/file/file";
 
 const toast = useToast();
@@ -15,6 +15,8 @@ const createFolderModalOpen = ref(false);
 const renameFolderModalOpen = ref(false);
 
 const currentFolderName = ref("");
+
+const isFolder = ref(false);
 
 async function load(path = "/") {
   currentPath.value = normalize(path);
@@ -76,7 +78,7 @@ async function onFileSelected(e: Event) {
   fd.append("path", currentPath.value);
 
   try {
-    await $fetch("/api/files", {
+    await $fetch("/api/files/file", {
       method: "POST",
       body: fd,
     });
@@ -97,6 +99,9 @@ function openCreateFolderModal() {
 }
 
 async function createFolder(folder: string) {
+  if (!confirm("Sind Sie sicher, dass sie diesen Ordner erstellen möchten?"))
+    return;
+
   try {
     await $fetch("/api/files/folder", {
       method: "POST",
@@ -120,12 +125,17 @@ async function createFolder(folder: string) {
   createFolderModalOpen.value = false;
 }
 
-async function deleteFolder(item: string) {
-  if (!confirm("Sind Sie sicher, dass sie diesen Ordner löschen möchten?"))
-    return;
+async function deleteFolder(item: string, type: "dir" | "file") {
+  const folderMsg = "Sind Sie sicher, dass sie diesen Ordner löschen möchten?";
+  const fileMsg = "Sind Sie sicher, dass sie diese Datei löschen möchten?";
+
+  if (type === "dir") isFolder.value = true;
+  else isFolder.value = false;
+
+  if (!confirm(isFolder.value ? folderMsg : fileMsg)) return;
 
   try {
-    await $fetch("/api/files", {
+    await $fetch("/api/files/folder", {
       method: "DELETE",
       body: {
         path: currentPath.value,
@@ -138,21 +148,24 @@ async function deleteFolder(item: string) {
     toast.add({
       title: "Fehler",
       description:
-        "Beim Löschen des Ordners ist ein Fehler aufgetreten! Wenden Sie sich an Ihren Administrator!",
+        "Beim Löschen des Ordners/Datei ist ein Fehler aufgetreten! Wenden Sie sich an Ihren Administrator!",
       color: "error",
       icon: "i-heroicons-x-mark",
     });
   }
 }
 
-function openRenameFolderModal(item: string) {
+function openRenameFolderModal(item: string, type: "dir" | "file") {
   renameFolderModalOpen.value = true;
   currentFolderName.value = item;
+
+  if (type === "dir") isFolder.value = true;
+  else isFolder.value = false;
 }
 
 async function changeFolder(newName: string) {
   try {
-    await $fetch("/api/files", {
+    await $fetch("/api/files/folder", {
       method: "PUT",
       body: {
         path: currentPath.value,
@@ -166,7 +179,7 @@ async function changeFolder(newName: string) {
     toast.add({
       title: "Fehler",
       description:
-        "Beim Löschen des Ordners ist ein Fehler aufgetreten! Wenden Sie sich an Ihren Administrator!",
+        "Beim Löschen des Ordners/Datei ist ein Fehler aufgetreten! Wenden Sie sich an Ihren Administrator!",
       color: "error",
       icon: "i-heroicons-x-mark",
     });
@@ -252,7 +265,10 @@ onMounted(() => {
           </div>
         </div>
 
-        <button class="hover:text-red-500" @click="deleteFolder(i.name)">
+        <button
+          class="hover:text-red-500"
+          @click="deleteFolder(i.name, i.type)"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -271,7 +287,7 @@ onMounted(() => {
 
         <button
           class="hover:text-yellow-500"
-          @click="openRenameFolderModal(i.name)"
+          @click="openRenameFolderModal(i.name, i.type)"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -292,7 +308,7 @@ onMounted(() => {
 
       <UModal
         v-model:open="renameFolderModalOpen!"
-        title="Ordner umbennenen"
+        :title="isFolder ? 'Ordner umbennenen' : 'Datei umbennenen'"
         :close="{
           color: 'primary',
           variant: 'outline',
@@ -300,9 +316,10 @@ onMounted(() => {
         }"
       >
         <template #body>
-          <RenameFolderForm
+          <RenameForm
+            :is-folder="isFolder"
             @rename="(folder: string) => changeFolder(folder)"
-          ></RenameFolderForm>
+          ></RenameForm>
         </template>
       </UModal>
 
