@@ -1,5 +1,6 @@
 import { writeFile } from "fs/promises";
 import { join } from "path";
+import { PUBLIC_ROOT, safeJoin } from "~~/server/utils/traversal";
 
 export default defineEventHandler(async (event) => {
   const { user } = await requireUserSession(event);
@@ -25,7 +26,7 @@ export default defineEventHandler(async (event) => {
   path += body.fileName;
   path += ".md";
 
-  const filePath = join(process.cwd(), path);
+  const filePath = safeJoin(PUBLIC_ROOT, path);
 
   try {
     await writeFile(filePath, body.data, "utf-8");
