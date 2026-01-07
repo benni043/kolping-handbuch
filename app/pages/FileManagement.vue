@@ -318,6 +318,7 @@ onMounted(() => {
         <template #body>
           <RenameForm
             :is-folder="isFolder"
+            :old-name="currentFolderName"
             @rename="(folder: string) => changeFolder(folder)"
           ></RenameForm>
         </template>

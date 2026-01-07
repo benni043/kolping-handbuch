@@ -5,14 +5,15 @@ import {
   validateFolder,
 } from "~~/shared/utils/checks";
 
-const folder = ref("");
-const folderError = ref("");
-
 const emit = defineEmits(["rename"]);
 
 const props = defineProps<{
   isFolder: boolean;
+  oldName: string;
 }>();
+
+const folder = ref(props.oldName);
+const folderError = ref("");
 
 watch(folder, () => {
   folderError.value = validateFolder(folder.value)
