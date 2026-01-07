@@ -1,5 +1,5 @@
 import { writeFile } from "fs/promises";
-import { join } from "path";
+import { CONTENT_ROOT, safeJoin } from "~~/server/utils/traversal";
 
 export default defineEventHandler(async (event) => {
   const { user } = await requireUserSession(event);
@@ -15,9 +15,9 @@ export default defineEventHandler(async (event) => {
     data: string;
   }>(event);
 
-  const filePath = join(
-    process.cwd(),
-    `data/content/${body.path}/${body.subPath}/kernprozesse/kernprozess_${body.kernprozessNumber}.json`,
+  const filePath = safeJoin(
+    CONTENT_ROOT,
+    `${body.path}/${body.subPath}/kernprozesse/kernprozess_${body.kernprozessNumber}.json`,
   );
 
   await writeFile(filePath, body.data, "utf-8");
