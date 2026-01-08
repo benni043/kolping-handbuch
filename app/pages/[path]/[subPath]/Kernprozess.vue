@@ -98,20 +98,20 @@ async function send(kernprozess: Kernprozess, count: number) {
 
     toggleEditing(count);
 
-    if (kernprozess.schrittCount > kernprozesseRef.value.length) {
+    // if (kernprozess.schrittCount > kernprozesseRef.value.length) {
       toast.add({
         title: "Erfolg",
         description: `Der Kernprozess mit der Nummer ${kernprozess.schrittCount} wurde erfolgreich erstellt!`,
         color: "success",
         icon: "i-heroicons-check",
       });
-    } else {
-      toast.add({
-        title: "Erfolg",
-        description: `Der Kernprozess mit der Nummer ${kernprozess.schrittCount} wurde erfolgreich geändert!`,
-        color: "success",
-        icon: "i-heroicons-check",
-      });
+    // } else {
+      // toast.add({
+        // title: "Erfolg",
+        // description: `Der Kernprozess mit der Nummer ${kernprozess.schrittCount} wurde erfolgreich geändert!`,
+        // color: "success",
+        // icon: "i-heroicons-check",
+      // });
     }
   } catch (e: unknown) {
     toast.add({

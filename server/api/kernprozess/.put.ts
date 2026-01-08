@@ -23,14 +23,12 @@ export default defineEventHandler(async (event) => {
   try {
     await stat(filePath);
 
+    await writeFile(filePath, body.data, "utf-8");
+    return { success: true, path: filePath };
+  } catch (err: any) {
     throw createError({
       statusCode: 409,
       statusMessage: `kernprozess with number ${body.kernprozessNumber} already exists`,
     });
-  } catch (err: any) {
-    if (err.code !== "ENOENT") throw err;
   }
-
-  await writeFile(filePath, body.data, "utf-8");
-  return { success: true, path: filePath };
 });
