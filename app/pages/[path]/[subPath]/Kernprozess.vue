@@ -3,6 +3,7 @@ import { useRoute } from "#imports";
 import type { Kernprozess } from "~/utils/kernprozess/kernprozess";
 import { fetchData } from "~/utils/file/file";
 import CreateKernprozessForm from "~/components/content/CreateKernprozessForm.vue";
+import ChangeKernprozessForm from "~/components/content/ChangeKernprozessForm.vue";
 import { getSegment } from "~/utils/nav/nav-menu";
 
 definePageMeta({
@@ -96,28 +97,65 @@ async function send(kernprozess: Kernprozess, count: number) {
 
     await fetchKernprozesse();
 
-    toggleEditing(count);
-
-    // if (kernprozess.schrittCount > kernprozesseRef.value.length) {
-      toast.add({
-        title: "Erfolg",
-        description: `Der Kernprozess mit der Nummer ${kernprozess.schrittCount} wurde erfolgreich erstellt!`,
-        color: "success",
-        icon: "i-heroicons-check",
-      });
-    // } else {
-      // toast.add({
-        // title: "Erfolg",
-        // description: `Der Kernprozess mit der Nummer ${kernprozess.schrittCount} wurde erfolgreich geändert!`,
-        // color: "success",
-        // icon: "i-heroicons-check",
-      // });
-    }
+    toast.add({
+      title: "Erfolg",
+      description: `Der Kernprozess mit der Nummer ${kernprozess.schrittCount} wurde erfolgreich erstellt!`,
+      color: "success",
+      icon: "i-heroicons-check",
+    });
   } catch (e: unknown) {
+    if (e.statusCode === 409) {
+      toast.add({
+        title: "Warnung",
+        description: "Ein Kernprozess mit dieser Nummer existiert bereits!",
+        color: "warning",
+        icon: "i-heroicons-x-mark",
+      });
+
+      toggleEditing(count);
+
+      return;
+    }
+
     toast.add({
       title: "Fehler",
       description:
         "Beim Erstellen des Kernprozesses ist ein Fehler aufgetreten!",
+      color: "error",
+      icon: "i-heroicons-x-mark",
+    });
+  }
+
+  toggleEditing(count);
+}
+
+async function change(kernprozess: Kernprozess, count: number) {
+  try {
+    await $fetch("/api/kernprozess/", {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: {
+        path: getSegment(0),
+        subPath: getSegment(1),
+        kernprozessNumber: kernprozess.schrittCount,
+        data: JSON.stringify(kernprozess),
+      },
+    });
+
+    await fetchKernprozesse();
+
+    toggleEditing(count);
+
+    toast.add({
+      title: "Erfolg",
+      description: `Der Kernprozess mit der Nummer ${kernprozess.schrittCount} wurde erfolgreich geändert!`,
+      color: "success",
+      icon: "i-heroicons-check",
+    });
+  } catch (e: unknown) {
+    toast.add({
+      title: "Fehler",
+      description: "Beim Ändern des Kernprozesses ist ein Fehler aufgetreten!",
       color: "error",
       icon: "i-heroicons-x-mark",
     });
@@ -173,7 +211,6 @@ onMounted(() => {
 
     <UModal
       v-model:open="editingStates[0]"
-      fullscreen
       title="Kernprozess hinzufügen"
       :close="{
         color: 'primary',
@@ -249,8 +286,7 @@ onMounted(() => {
 
       <UModal
         v-model:open="editingStates[kernprozess.schrittCount]"
-        fullscreen
-        title="Kernprozess hinzufügen"
+        title="Kernprozess bearbeiten"
         :close="{
           color: 'primary',
           variant: 'outline',
@@ -258,7 +294,7 @@ onMounted(() => {
         }"
       >
         <template #body>
-          <CreateKernprozessForm
+          <ChangeKernprozessForm
             :schritt-count="kernprozess.schrittCount"
             :vorgaben-blue="kernprozess.vorgabenBlue"
             :vorlagen-blue="kernprozess.vorlagenBlue"
@@ -270,7 +306,9 @@ onMounted(() => {
             :orange="kernprozess.orange"
             :editing="true"
             @cancle="toggleEditing(kernprozess.schrittCount)"
-            @send="(kernprozess) => send(kernprozess, kernprozess.schrittCount)"
+            @send="
+              (kernprozess) => change(kernprozess, kernprozess.schrittCount)
+            "
           />
         </template>
       </UModal>

@@ -56,7 +56,7 @@ async function add() {
         size="xl"
         variant="solid"
         type="submit"
-        icon="i-heroicons-lock-closed"
+        icon="i-heroicons-check"
         class="cursor-pointer"
         :disabled="
           menuError !== '' ||

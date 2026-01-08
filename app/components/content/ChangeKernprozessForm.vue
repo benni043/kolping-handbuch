@@ -20,9 +20,25 @@ const props = defineProps<{
 
 const emit = defineEmits(["cancle", "send"]);
 
-const { isMobile } = useDevice();
+const schrittCountRef = ref(props.schrittCount || 1);
+const vorgabenBlueRef = ref<KernprozessElementLink[]>(
+  props.vorgabenBlue || [{ text: "", hasLink: false, link: "" }],
+);
+const vorlagenBlueRef = ref<KernprozessElementLink[]>(
+  props.vorlagenBlue || [{ text: "", hasLink: false, link: "" }],
+);
+const middleHeadRef = ref(props.middleHead || "");
+const middleListRef = ref<{ text: string }[]>(
+  props.middleList || [{ text: "" }],
+);
+const aufzeichnungOrangeRef = ref<KernprozessElementLink[]>(
+  props.aufzeichnungOrange || [{ text: "", hasLink: false, link: "" }],
+);
+const verantwortlicherOrangeRef = ref(props.verantwortlicherOrange || "");
+const informationOrangeRef = ref(props.informationOrange || "");
+const orangeRef = ref(props.orange || false);
 
-const STEPS = 9;
+const STEPS = 8;
 const currentStep = ref(0);
 
 function nextStep() {
@@ -35,77 +51,36 @@ function prevStep() {
   else currentStep.value = STEPS - 1;
 }
 
-const schrittCountRef: Ref<number> = ref(props.schrittCount || 1);
-const vorgabenBlueRef = ref<KernprozessElementLink[]>(
-  props.vorgabenBlue || [{ text: "", hasLink: false, link: "" }],
-);
-const vorlagenBlueRef = ref<KernprozessElementLink[]>(
-  props.vorlagenBlue || [{ text: "", hasLink: false, link: "" }],
-);
-
-const middleHeadRef: Ref<string> = ref(props.middleHead || "");
-const middleListRef = ref<{ text: string }[]>(
-  props.middleList || [{ text: "" }],
-);
-
-const aufzeichnungOrangeRef = ref<KernprozessElementLink[]>(
-  props.aufzeichnungOrange || [{ text: "", hasLink: false, link: "" }],
-);
-const verantwortlicherOrangeRef: Ref<string> = ref(
-  props.verantwortlicherOrange || "",
-);
-const informationOrangeRef: Ref<string> = ref(props.informationOrange || "");
-
-const orangeRef: Ref<boolean> = ref(props.orange || false);
-
 function addVorgabeBlue() {
   vorgabenBlueRef.value.push({ text: "", hasLink: false, link: "" });
 }
-
-function removeVorgabeBlue(index: number) {
-  vorgabenBlueRef.value.splice(index, 1);
+function removeVorgabeBlue(i: number) {
+  vorgabenBlueRef.value.splice(i, 1);
 }
-
 function addVorlagenBlue() {
   vorlagenBlueRef.value.push({ text: "", hasLink: false, link: "" });
 }
-
-function removeVorlagenBlue(index: number) {
-  vorlagenBlueRef.value.splice(index, 1);
+function removeVorlagenBlue(i: number) {
+  vorlagenBlueRef.value.splice(i, 1);
 }
-
 function addMiddleList() {
   middleListRef.value.push({ text: "" });
 }
-
-function removeMiddleList(index: number) {
-  middleListRef.value.splice(index, 1);
+function removeMiddleList(i: number) {
+  middleListRef.value.splice(i, 1);
 }
-
 function addAufzeichnungOrange() {
   aufzeichnungOrangeRef.value.push({ text: "", hasLink: false, link: "" });
 }
-
-function removeAufzeichnungOrange(index: number) {
-  aufzeichnungOrangeRef.value.splice(index, 1);
+function removeAufzeichnungOrange(i: number) {
+  aufzeichnungOrangeRef.value.splice(i, 1);
 }
 
 async function postForm() {
-  if (props.editing) {
-    if (
-      !confirm(
-        "Sind Sie sicher, dass sie diesen Kernprozess verändern möchten?",
-      )
-    )
-      return;
-  } else {
-    if (
-      !confirm(
-        "Sind Sie sicher, dass sie diesen Kernprozess erstellen möchten?",
-      )
-    )
-      return;
-  }
+  if (
+    !confirm(props.editing ? "Kernprozess ändern?" : "Kernprozess erstellen?")
+  )
+    return;
 
   const data: Kernprozess = {
     schrittCount: schrittCountRef.value,
@@ -123,14 +98,8 @@ async function postForm() {
 }
 
 function clearForm() {
-  if (
-    !confirm(
-      "Sind Sie sicher, dass Sie alle Eigenschaften dieses Kernprozesses löschen wollen?",
-    )
-  )
-    return;
+  if (!confirm("Alle Eigenschaften löschen?")) return;
 
-  schrittCountRef.value = 0;
   vorgabenBlueRef.value = [];
   vorlagenBlueRef.value = [];
   middleHeadRef.value = "";
@@ -151,20 +120,6 @@ function clearForm() {
 
       <div class="flex-1 h-full overflow-y-auto p-4">
         <UCard v-if="currentStep === 0">
-          <h1 class="mb-4 text-xl font-semibold">Schritt</h1>
-
-          <UInput
-            v-model="schrittCountRef"
-            placeholder="Schritt"
-            type="number"
-            icon="i-heroicons-document-plus"
-            size="lg"
-            class="w-full"
-            min="1"
-          />
-        </UCard>
-
-        <UCard v-if="currentStep === 1">
           <h1 class="mb-4 text-xl font-semibold">Vorgaben / Arbeitshilfen</h1>
           <div
             v-for="(item, index) in vorgabenBlueRef"
@@ -214,7 +169,7 @@ function clearForm() {
           >
         </UCard>
 
-        <UCard v-if="currentStep === 2">
+        <UCard v-if="currentStep === 1">
           <h1 class="mb-4 text-xl font-semibold">Vorlagen Schlussberichte</h1>
           <div
             v-for="(item, index) in vorlagenBlueRef"
@@ -261,7 +216,7 @@ function clearForm() {
           >
         </UCard>
 
-        <UCard v-if="currentStep === 3">
+        <UCard v-if="currentStep === 2">
           <h1 class="mb-4 text-xl font-semibold">Überschrift Kernprozess</h1>
           <UInput
             v-model="middleHeadRef"
@@ -272,7 +227,7 @@ function clearForm() {
           />
         </UCard>
 
-        <UCard v-if="currentStep === 4">
+        <UCard v-if="currentStep === 3">
           <h1 class="mb-4 text-xl font-semibold">Kernprozess Inhalt</h1>
           <div
             v-for="(item, index) in middleListRef"
@@ -303,7 +258,7 @@ function clearForm() {
           >
         </UCard>
 
-        <UCard v-if="currentStep === 5">
+        <UCard v-if="currentStep === 4">
           <h1 class="mb-4 text-xl font-semibold">Bezug zur Kolping-Idee?</h1>
           <select v-model="orangeRef" class="w-full border rounded-lg p-2">
             <option :value="true">Ja</option>
@@ -311,7 +266,7 @@ function clearForm() {
           </select>
         </UCard>
 
-        <UCard v-if="currentStep === 6">
+        <UCard v-if="currentStep === 5">
           <h1 class="mb-4 text-xl font-semibold">
             Aufzeichnungen / Dokumentation
           </h1>
@@ -360,7 +315,7 @@ function clearForm() {
           >
         </UCard>
 
-        <UCard v-if="currentStep === 7">
+        <UCard v-if="currentStep === 6">
           <h1 class="mb-4 text-xl font-semibold">Verantwortliche/r</h1>
           <UTextarea
             v-model="verantwortlicherOrangeRef"
@@ -370,7 +325,7 @@ function clearForm() {
           />
         </UCard>
 
-        <UCard v-if="currentStep === 8">
+        <UCard v-if="currentStep === 7">
           <h1 class="mb-4 text-xl font-semibold">Information an</h1>
           <UTextarea
             v-model="informationOrangeRef"
@@ -407,5 +362,4 @@ function clearForm() {
   </div>
 </template>
 
-<style scoped></style>
 <style scoped></style>

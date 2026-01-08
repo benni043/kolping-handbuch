@@ -40,7 +40,7 @@ async function add() {
         variant="solid"
         type="submit"
         block
-        icon="i-heroicons-lock-closed"
+        icon="i-heroicons-check"
         class="cursor-pointer"
         :disabled="folderError !== '' || folder === ''"
         @click.prevent="add"
