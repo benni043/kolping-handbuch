@@ -7,10 +7,6 @@ export const PUBLIC_ROOT = resolve(process.cwd(), "data");
 export function safeJoin(root: string, unsafePath: string) {
   const targetPath = resolve(root, unsafePath);
 
-  console.log(root);
-  console.log(unsafePath);
-  console.log(targetPath);
-
   if (!targetPath.startsWith(root + "/") && targetPath !== root) {
     throw createError({
       statusCode: 400,

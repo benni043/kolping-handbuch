@@ -28,8 +28,6 @@ export default defineEventHandler(async (event) => {
 
   const filePath = safeJoin(PUBLIC_ROOT, path);
 
-  console.log(filePath);
-
   try {
     await writeFile(filePath, body.data, "utf-8");
   } catch {

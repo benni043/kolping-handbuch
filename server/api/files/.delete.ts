@@ -9,13 +9,12 @@ export default defineEventHandler(async (event) => {
 
   const body = await readBody<{
     path: string;
-    item: string;
   }>(event);
 
   if (!body.path)
     throw createError({ statusCode: 400, statusMessage: "Invalid request" });
 
-  const filePath = safeJoin(FILE_ROOT, `${body.path}/${body.item}`);
+  const filePath = safeJoin(FILE_ROOT, `${body.path}`);
 
   const s = await stat(filePath);
 

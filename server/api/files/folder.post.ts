@@ -19,7 +19,10 @@ export default defineEventHandler(async (event) => {
   if (!validateFolder(body.folder))
     throw createError({ statusCode: 400, statusMessage: "Invalid upload" });
 
-  const targetPath = safeJoin(FILE_ROOT, `${body.path}/${body.folder}`);
+  let targetPath = "";
+
+  if (body.path === "") targetPath = safeJoin(FILE_ROOT, `${body.folder}`);
+  else targetPath = safeJoin(FILE_ROOT, `${body.path}/${body.folder}`);
 
   await mkdir(targetPath, { recursive: true });
 });

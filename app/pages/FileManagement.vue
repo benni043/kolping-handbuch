@@ -127,11 +127,13 @@ async function deleteFolder(item: string, type: "dir" | "file") {
   if (!confirm(isFolder.value ? folderMsg : fileMsg)) return;
 
   try {
-    await $fetch("/api/files/folder", {
+    const path =
+      currentPath.value === "" ? item : `${currentPath.value}/${item}`;
+
+    await $fetch("/api/files", {
       method: "DELETE",
       body: {
-        path: currentPath.value,
-        item: item,
+        path: path,
       },
     });
 
@@ -157,7 +159,7 @@ function openRenameFolderModal(item: string, type: "dir" | "file") {
 
 async function changeFolder(newName: string) {
   try {
-    await $fetch("/api/files/folder", {
+    await $fetch("/api/files", {
       method: "PUT",
       body: {
         path: currentPath.value,
@@ -246,7 +248,8 @@ onMounted(() => {
             </svg>
             {{ i.name }}
           </div>
-          <div v-else>
+
+          <div v-else class="flex gap-2 items-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"

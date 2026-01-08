@@ -9,15 +9,29 @@ export default defineEventHandler(async (event) => {
 
   const body = await readBody<{
     path: string;
-    oldName: string;
     newName: string;
+    oldName: string;
   }>(event);
 
-  if (!body.path || !body.oldName || !body.newName)
+  if (!body.oldName || !body.newName)
     throw createError({ statusCode: 400, statusMessage: "Invalid request" });
 
-  const oldPath = safeJoin(FILE_ROOT, `${body.path}/${body.oldName}`);
-  const newPath = safeJoin(FILE_ROOT, `${body.path}/${body.newName}`);
+  if (!validateFolder(body.newName))
+    throw createError({
+      statusCode: 400,
+      statusMessage: "Invalid folder name",
+    });
+
+  let oldPath = "";
+  let newPath = "";
+
+  if (body.path === "") {
+    oldPath = safeJoin(FILE_ROOT, `${body.oldName}`);
+    newPath = safeJoin(FILE_ROOT, `${body.newName}`);
+  } else {
+    oldPath = safeJoin(FILE_ROOT, `${body.path}/${body.oldName}`);
+    newPath = safeJoin(FILE_ROOT, `${body.path}/${body.newName}`);
+  }
 
   try {
     await stat(newPath);
