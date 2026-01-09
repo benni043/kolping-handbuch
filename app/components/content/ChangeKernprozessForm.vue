@@ -113,14 +113,16 @@ function clearForm() {
 
 <template>
   <div class="relative h-[80vh] max-w-xl mx-auto flex flex-col overflow-hidden">
-    <div class="flex flex-1 min-h-0 items-center">
+    <div class="flex flex-1 min-h-0">
       <div>
         <UButton icon="i-heroicons-chevron-left" @click="prevStep" />
       </div>
 
-      <div class="flex-1 h-full overflow-y-auto p-4">
-        <UCard v-if="currentStep === 0">
-          <h1 class="mb-4 text-xl font-semibold">Vorgaben / Arbeitshilfen</h1>
+      <div class="flex-1 h-full overflow-y-auto">
+        <div v-if="currentStep === 0">
+          <h1 class="mb-8 text-xl font-semibold text-center">
+            Vorgaben / Arbeitshilfen
+          </h1>
           <div
             v-for="(item, index) in vorgabenBlueRef"
             :key="index"
@@ -167,10 +169,12 @@ function clearForm() {
             @click="addVorgabeBlue"
             >Hinzufügen</UButton
           >
-        </UCard>
+        </div>
 
-        <UCard v-if="currentStep === 1">
-          <h1 class="mb-4 text-xl font-semibold">Vorlagen Schlussberichte</h1>
+        <div v-if="currentStep === 1">
+          <h1 class="mb-8 text-xl font-semibold text-center">
+            Vorlagen Schlussberichte
+          </h1>
           <div
             v-for="(item, index) in vorlagenBlueRef"
             :key="index"
@@ -214,10 +218,12 @@ function clearForm() {
             @click="addVorlagenBlue"
             >Hinzufügen</UButton
           >
-        </UCard>
+        </div>
 
-        <UCard v-if="currentStep === 2">
-          <h1 class="mb-4 text-xl font-semibold">Überschrift Kernprozess</h1>
+        <div v-if="currentStep === 2">
+          <h1 class="mb-8 text-xl font-semibold text-center">
+            Überschrift Kernprozess
+          </h1>
           <UInput
             v-model="middleHeadRef"
             placeholder="Überschrift Kernprozess"
@@ -225,10 +231,12 @@ function clearForm() {
             size="lg"
             class="w-full"
           />
-        </UCard>
+        </div>
 
-        <UCard v-if="currentStep === 3">
-          <h1 class="mb-4 text-xl font-semibold">Kernprozess Inhalt</h1>
+        <div v-if="currentStep === 3">
+          <h1 class="mb-8 text-xl font-semibold text-center">
+            Kernprozess Inhalt
+          </h1>
           <div
             v-for="(item, index) in middleListRef"
             :key="index"
@@ -256,18 +264,20 @@ function clearForm() {
             @click="addMiddleList"
             >Hinzufügen</UButton
           >
-        </UCard>
+        </div>
 
-        <UCard v-if="currentStep === 4">
-          <h1 class="mb-4 text-xl font-semibold">Bezug zur Kolping-Idee?</h1>
+        <div v-if="currentStep === 4">
+          <h1 class="mb-8 text-xl font-semibold text-center">
+            Bezug zur Kolping-Idee?
+          </h1>
           <select v-model="orangeRef" class="w-full border rounded-lg p-2">
             <option :value="true">Ja</option>
             <option :value="false">Nein</option>
           </select>
-        </UCard>
+        </div>
 
-        <UCard v-if="currentStep === 5">
-          <h1 class="mb-4 text-xl font-semibold">
+        <div v-if="currentStep === 5">
+          <h1 class="mb-8 text-xl font-semibold text-center">
             Aufzeichnungen / Dokumentation
           </h1>
           <div
@@ -313,27 +323,29 @@ function clearForm() {
             @click="addAufzeichnungOrange"
             >Hinzufügen</UButton
           >
-        </UCard>
+        </div>
 
-        <UCard v-if="currentStep === 6">
-          <h1 class="mb-4 text-xl font-semibold">Verantwortliche/r</h1>
+        <div v-if="currentStep === 6">
+          <h1 class="mb-8 text-xl font-semibold text-center">
+            Verantwortliche/r
+          </h1>
           <UTextarea
             v-model="verantwortlicherOrangeRef"
             placeholder="Verantwortliche/r"
             autoresize
             class="w-full"
           />
-        </UCard>
+        </div>
 
-        <UCard v-if="currentStep === 7">
-          <h1 class="mb-4 text-xl font-semibold">Information an</h1>
+        <div v-if="currentStep === 7">
+          <h1 class="mb-8 text-xl font-semibold text-center">Information an</h1>
           <UTextarea
             v-model="informationOrangeRef"
             placeholder="Information an"
             autoresize
             class="w-full"
           />
-        </UCard>
+        </div>
       </div>
 
       <div>
