@@ -228,7 +228,7 @@ onMounted(() => {
       <li
         v-for="i in items"
         :key="i.name"
-        class="hover:bg-gray-100 rounded px-2 py-1 transition flex items-center gap-3 text-xl"
+        class="hover:bg-gray-100 rounded py-1 transition flex items-center gap-3 text-xl"
       >
         <div class="cursor-pointer" @click="open(i)">
           <div v-if="i.type === 'dir'" class="flex gap-2 items-center">
