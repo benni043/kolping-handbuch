@@ -20,18 +20,27 @@ const { user } = useUserSession();
 
 const kernprozesseRef: Ref<Kernprozess[]> = ref([]);
 
-const editingStates = ref<Record<number, boolean>>({});
-
-function toggleEditing(key: number) {
-  editingStates.value[key] = !editingStates.value[key];
-}
-
 type ModalType = "create" | "edit" | "changeNumber" | null;
 
 const modalState = ref<{
   type: ModalType;
   step?: number;
 }>({ type: null });
+
+const activeKernprozess = computed(() =>
+  modalState.value.step
+    ? kernprozesseRef.value.find(
+        (k) => k.schrittCount === modalState.value.step,
+      )
+    : null,
+);
+
+const modalOpen = computed({
+  get: () => modalState.value.type !== null,
+  set: (val: boolean) => {
+    if (!val) closeModal();
+  },
+});
 
 function openCreate() {
   modalState.value = { type: "create" };
@@ -68,7 +77,7 @@ async function fetchKernprozesse() {
   }
 }
 
-async function send(kernprozess: Kernprozess, count: number) {
+async function send(kernprozess: Kernprozess) {
   try {
     await $fetch("/api/kernprozess/", {
       method: "POST",
@@ -89,6 +98,8 @@ async function send(kernprozess: Kernprozess, count: number) {
       color: "success",
       icon: "i-heroicons-check",
     });
+
+    closeModal();
   } catch (e: unknown) {
     if (e.statusCode === 409) {
       toast.add({
@@ -97,8 +108,6 @@ async function send(kernprozess: Kernprozess, count: number) {
         color: "warning",
         icon: "i-heroicons-x-mark",
       });
-
-      toggleEditing(count);
 
       return;
     }
@@ -111,11 +120,9 @@ async function send(kernprozess: Kernprozess, count: number) {
       icon: "i-heroicons-x-mark",
     });
   }
-
-  toggleEditing(count);
 }
 
-async function change(kernprozess: Kernprozess, count: number) {
+async function change(kernprozess: Kernprozess) {
   try {
     await $fetch("/api/kernprozess/", {
       method: "PUT",
@@ -130,14 +137,14 @@ async function change(kernprozess: Kernprozess, count: number) {
 
     await fetchKernprozesse();
 
-    toggleEditing(count);
-
     toast.add({
       title: "Erfolg",
       description: `Der Kernprozess mit der Nummer ${kernprozess.schrittCount} wurde erfolgreich geändert!`,
       color: "success",
       icon: "i-heroicons-check",
     });
+
+    closeModal();
   } catch (e: unknown) {
     toast.add({
       title: "Fehler",
@@ -150,6 +157,8 @@ async function change(kernprozess: Kernprozess, count: number) {
 
 async function changeNumber(kernprozess: Kernprozess) {
   console.log(kernprozess);
+
+  closeModal();
 }
 
 async function deleteKernprozess(kernprozessNumber: number) {
@@ -216,7 +225,7 @@ fetchKernprozesse();
           v-if="user && (user.role === 'admin' || user.role === 'editor')"
           color="success"
           class="text-white px-4 py-2 rounded cursor-pointer"
-          @click.prevent="toggleEditing(0)"
+          @click="openCreate()"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -237,8 +246,7 @@ fetchKernprozesse();
     </div>
 
     <UModal
-      v-model:open="editingStates[0]"
-      title="Kernprozess hinzufügen"
+      v-model:open="modalOpen"
       :close="{
         color: 'primary',
         variant: 'outline',
@@ -247,6 +255,7 @@ fetchKernprozesse();
     >
       <template #body>
         <CreateKernprozessForm
+          v-if="modalState.type === 'create'"
           :schritt-count="kernprozesseRef.length + 1"
           :vorgaben-blue="undefined"
           :vorlagen-blue="undefined"
@@ -257,25 +266,31 @@ fetchKernprozesse();
           :information-orange="undefined"
           :orange="false"
           :editing="false"
-          @cancle="toggleEditing(0)"
-          @send="(kernprozess) => send(kernprozess, 0)"
+          @send="send"
+          @cancle="closeModal"
         />
-      </template>
-    </UModal>
 
-    <UModal
-      v-model:open="editingStates[0]"
-      title="Kernprozessnummer verändern"
-      :close="{
-        color: 'primary',
-        variant: 'outline',
-        class: 'rounded-full',
-      }"
-    >
-      <template #body>
+        <ChangeKernprozessForm
+          v-if="modalState.type === 'edit' && activeKernprozess"
+          :schritt-count="activeKernprozess.schrittCount"
+          :vorgaben-blue="activeKernprozess.vorgabenBlue"
+          :vorlagen-blue="activeKernprozess.vorlagenBlue"
+          :middle-head="activeKernprozess.middleHead"
+          :middle-list="activeKernprozess.middleList"
+          :aufzeichnung-orange="activeKernprozess.aufzeichnungOrange"
+          :verantwortlicher-orange="activeKernprozess.verantwortlicherOrange"
+          :information-orange="activeKernprozess.informationOrange"
+          :orange="activeKernprozess.orange"
+          :editing="true"
+          @send="change"
+          @cancle="closeModal"
+        />
+
         <ChangeKernprozessNumberForm
-          :schritt-count="kernprozesseRef.length + 1"
-          @send="(kernprozess) => changeNumber(kernprozess)"
+          v-if="modalState.type === 'changeNumber' && activeKernprozess"
+          :schritt-count="activeKernprozess.schrittCount"
+          @send="changeNumber"
+          @cancle="closeModal"
         />
       </template>
     </UModal>
@@ -288,7 +303,7 @@ fetchKernprozesse();
       >
         <button
           class="bg-[#F18700] hover:bg-[#F87800] text-white px-4 py-2 rounded cursor-pointer"
-          @click.prevent="toggleEditing(kernprozess.schrittCount)"
+          @click="openEdit(kernprozess.schrittCount)"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -308,7 +323,7 @@ fetchKernprozesse();
 
         <button
           class="bg-[#F18700] hover:bg-[#F87800] text-white px-4 py-2 rounded cursor-pointer"
-          @click.prevent="toggleEditing(kernprozess.schrittCount)"
+          @click="openChangeNumber(kernprozess.schrittCount)"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -347,35 +362,6 @@ fetchKernprozesse();
           </svg>
         </UButton>
       </div>
-
-      <UModal
-        v-model:open="editingStates[kernprozess.schrittCount]"
-        title="Kernprozess bearbeiten"
-        :close="{
-          color: 'primary',
-          variant: 'outline',
-          class: 'rounded-full',
-        }"
-      >
-        <template #body>
-          <ChangeKernprozessForm
-            :schritt-count="kernprozess.schrittCount"
-            :vorgaben-blue="kernprozess.vorgabenBlue"
-            :vorlagen-blue="kernprozess.vorlagenBlue"
-            :middle-head="kernprozess.middleHead"
-            :middle-list="kernprozess.middleList"
-            :aufzeichnung-orange="kernprozess.aufzeichnungOrange"
-            :verantwortlicher-orange="kernprozess.verantwortlicherOrange"
-            :information-orange="kernprozess.informationOrange"
-            :orange="kernprozess.orange"
-            :editing="true"
-            @cancle="toggleEditing(kernprozess.schrittCount)"
-            @send="
-              (kernprozess) => change(kernprozess, kernprozess.schrittCount)
-            "
-          />
-        </template>
-      </UModal>
 
       <div
         class="flex justify-center"
