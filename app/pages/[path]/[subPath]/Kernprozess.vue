@@ -4,6 +4,7 @@ import type { Kernprozess } from "~/utils/kernprozess/kernprozess";
 import { fetchData } from "~/utils/file/file";
 import CreateKernprozessForm from "~/components/content/CreateKernprozessForm.vue";
 import ChangeKernprozessForm from "~/components/content/ChangeKernprozessForm.vue";
+import ChangeKernprozessNumberForm from "~/components/content/ChangeKernprozessNumberForm.vue";
 import { getSegment } from "~/utils/nav/nav-menu";
 
 definePageMeta({
@@ -14,9 +15,39 @@ const { isMobile } = useDevice();
 
 const toast = useToast();
 const route = useRoute();
+
 const { user } = useUserSession();
 
 const kernprozesseRef: Ref<Kernprozess[]> = ref([]);
+
+const editingStates = ref<Record<number, boolean>>({});
+
+function toggleEditing(key: number) {
+  editingStates.value[key] = !editingStates.value[key];
+}
+
+type ModalType = "create" | "edit" | "changeNumber" | null;
+
+const modalState = ref<{
+  type: ModalType;
+  step?: number;
+}>({ type: null });
+
+function openCreate() {
+  modalState.value = { type: "create" };
+}
+
+function openEdit(step: number) {
+  modalState.value = { type: "edit", step };
+}
+
+function openChangeNumber(step: number) {
+  modalState.value = { type: "changeNumber", step };
+}
+
+function closeModal() {
+  modalState.value = { type: null };
+}
 
 async function fetchKernprozesse() {
   try {
@@ -34,51 +65,6 @@ async function fetchKernprozesse() {
     );
   } catch (e: unknown) {
     console.error(e);
-  }
-}
-
-const editingStates = ref<Record<number, boolean>>({});
-
-function toggleEditing(key: number) {
-  editingStates.value[key] = !editingStates.value[key];
-}
-
-async function deleteKernprozess(kernprozessNumber: number) {
-  if (
-    confirm(
-      "Sind Sie sicher, dass Sie diesen Kernprozess löschen möchten? Dieser Vorgang kann nicht Rückgängig gemacht werden!",
-    )
-  ) {
-    try {
-      await $fetch("/api/kernprozess", {
-        method: "DELETE",
-        headers: { "Content-Type": "application/json" },
-        body: {
-          path: getSegment(0),
-          subPath: getSegment(1),
-          kernprozessNumber: kernprozessNumber,
-        },
-      });
-
-      kernprozesseRef.value = kernprozesseRef.value.filter(
-        (k) => k.schrittCount !== kernprozessNumber,
-      );
-
-      toast.add({
-        title: "Erfolg",
-        description: `Der Kernprozess mit der Nummer ${kernprozessNumber} wurde erfolgreich gelöscht!`,
-        color: "success",
-        icon: "i-heroicons-check",
-      });
-    } catch (e: unknown) {
-      toast.add({
-        title: "Fehler",
-        description:
-          "Beim Löschen des Kernprozesses ist ein Fehler aufgetreten!",
-        color: "error",
-        icon: "i-heroicons-x-mark",
-      });
-    }
   }
 }
 
@@ -162,6 +148,49 @@ async function change(kernprozess: Kernprozess, count: number) {
   }
 }
 
+async function changeNumber(kernprozess: Kernprozess) {
+  console.log(kernprozess);
+}
+
+async function deleteKernprozess(kernprozessNumber: number) {
+  if (
+    confirm(
+      "Sind Sie sicher, dass Sie diesen Kernprozess löschen möchten? Dieser Vorgang kann nicht Rückgängig gemacht werden!",
+    )
+  ) {
+    try {
+      await $fetch("/api/kernprozess", {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: {
+          path: getSegment(0),
+          subPath: getSegment(1),
+          kernprozessNumber: kernprozessNumber,
+        },
+      });
+
+      kernprozesseRef.value = kernprozesseRef.value.filter(
+        (k) => k.schrittCount !== kernprozessNumber,
+      );
+
+      toast.add({
+        title: "Erfolg",
+        description: `Der Kernprozess mit der Nummer ${kernprozessNumber} wurde erfolgreich gelöscht!`,
+        color: "success",
+        icon: "i-heroicons-check",
+      });
+    } catch (e: unknown) {
+      toast.add({
+        title: "Fehler",
+        description:
+          "Beim Löschen des Kernprozesses ist ein Fehler aufgetreten!",
+        color: "error",
+        icon: "i-heroicons-x-mark",
+      });
+    }
+  }
+}
+
 async function fetchFile(link: string) {
   const res = await fetchData(link);
 
@@ -176,9 +205,7 @@ async function fetchFile(link: string) {
   }
 }
 
-onMounted(() => {
-  fetchKernprozesse();
-});
+fetchKernprozesse();
 </script>
 
 <template>
@@ -236,6 +263,23 @@ onMounted(() => {
       </template>
     </UModal>
 
+    <UModal
+      v-model:open="editingStates[0]"
+      title="Kernprozessnummer verändern"
+      :close="{
+        color: 'primary',
+        variant: 'outline',
+        class: 'rounded-full',
+      }"
+    >
+      <template #body>
+        <ChangeKernprozessNumberForm
+          :schritt-count="kernprozesseRef.length + 1"
+          @send="(kernprozess) => changeNumber(kernprozess)"
+        />
+      </template>
+    </UModal>
+
     <div v-for="kernprozess in kernprozesseRef" :key="kernprozess.middleHead">
       <div
         v-if="user && (user.role === 'admin' || user.role === 'editor')"
@@ -258,6 +302,26 @@ onMounted(() => {
               stroke-linecap="round"
               stroke-linejoin="round"
               d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10"
+            />
+          </svg>
+        </button>
+
+        <button
+          class="bg-[#F18700] hover:bg-[#F87800] text-white px-4 py-2 rounded cursor-pointer"
+          @click.prevent="toggleEditing(kernprozess.schrittCount)"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5"
             />
           </svg>
         </button>
