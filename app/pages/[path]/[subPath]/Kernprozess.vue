@@ -517,9 +517,11 @@ fetchKernprozesse();
             />
 
             <div class="relative z-20">
-              <p class="text-white font-bold mx-3 pt-3 mb-3">
+              <p class="text-white font-bold mx-3 pt-3">
                 TÄTIGKEIT / ENTSCHEIDUNG / PRÜFSCHRITT
               </p>
+
+              <br />
 
               <ul class="list-disc pl-6">
                 <li
