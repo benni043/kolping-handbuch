@@ -202,7 +202,7 @@ onMounted(() => {
     <ul class="space-y-1">
       <li
         v-if="currentPath !== ''"
-        class="cursor-pointer hover:bg-gray-200 rounded px-2 py-1 transition text-xl"
+        class="cursor-pointer hover:bg-gray-200 rounded py-1 transition text-xl"
         @click="goUp"
       >
         <div class="flex gap-2">
