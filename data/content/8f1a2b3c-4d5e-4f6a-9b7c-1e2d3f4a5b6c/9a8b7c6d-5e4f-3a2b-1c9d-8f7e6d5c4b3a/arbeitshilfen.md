@@ -9,7 +9,7 @@ des Kernprozesses leichter zu bewältigen:
 - Kolping-Leitbild
 - Bausteine „Kolping belebt. Quellen unseres Handelns“
 - [AH 01 „Checkliste Generalversammlung“](/api/files?path=01/01-1/arbeitshilfen/AH01-Checkliste-Generalversammlung.pdf)
-- [AH 02 „Netzmodell“]()
+- [AH 02 „Netzmodell“](/api/files?path=01/01-1/arbeitshilfen/AH02-Netzmodell.pdf)
 - [AH 03 "Tagesordnung Generalversammlung"]()
 
 <br>

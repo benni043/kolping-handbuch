@@ -488,7 +488,7 @@ fetchKernprozesse();
           </div>
         </div>
 
-        <div class="relative flex-2">
+        <div class="relative flex-2 max-w-[600px] w-full mx-auto">
           <h3
             class="absolute top-2.5 left-3 text-white font-bold text-md xl:text-xl z-10"
           >
