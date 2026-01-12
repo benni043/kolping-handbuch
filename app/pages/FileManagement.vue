@@ -37,7 +37,11 @@ async function open(item: Item) {
 
     load(next);
   } else {
-    const res = await fetchData(currentPath.value + "/" + item.name);
+    const res = await fetchData(
+      currentPath.value === ""
+        ? item.name
+        : currentPath.value + "/" + item.name,
+    );
 
     if (!res)
       toast.add({
