@@ -110,6 +110,15 @@ async function send(kernprozess: Kernprozess) {
       });
 
       return;
+    } else if (e.statusCode === 406) {
+      toast.add({
+        title: "Warnung",
+        description: "Die Kernprozessnummer MUSS eine Zahl sein!",
+        color: "warning",
+        icon: "i-heroicons-x-mark",
+      });
+
+      return;
     }
 
     toast.add({
@@ -155,8 +164,61 @@ async function change(kernprozess: Kernprozess) {
   }
 }
 
-async function changeNumber(kernprozess: Kernprozess) {
-  console.log(kernprozess);
+async function changeNumber(
+  kernprozessNumberOld: number,
+  kernprozessNumberNew: number,
+) {
+  try {
+    await $fetch("/api/kernprozess/rename", {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: {
+        path: getSegment(0),
+        subPath: getSegment(1),
+        kernprozessNumberOld: kernprozessNumberOld,
+        kernprozessNumberNew: kernprozessNumberNew,
+      },
+    });
+
+    await fetchKernprozesse();
+
+    toast.add({
+      title: "Erfolg",
+      description: `Der Kernprozess mit der Nummer: ${kernprozessNumberOld} hat nun die Nummer: ${kernprozessNumberNew}!`,
+      color: "success",
+      icon: "i-heroicons-check",
+    });
+
+    closeModal();
+  } catch (e: unknown) {
+    if (e.statusCode === 409) {
+      toast.add({
+        title: "Warnung",
+        description: "Ein Kernprozess mit dieser Nummer existiert bereits!",
+        color: "warning",
+        icon: "i-heroicons-x-mark",
+      });
+
+      return;
+    } else if (e.statusCode === 406) {
+      toast.add({
+        title: "Warnung",
+        description: "Die Kernprozessnummer MUSS eine Zahl sein!",
+        color: "warning",
+        icon: "i-heroicons-x-mark",
+      });
+
+      return;
+    }
+
+    toast.add({
+      title: "Fehler",
+      description:
+        "Beim Ändern der Kernprozessnummer ist ein Fehler aufgetreten!",
+      color: "error",
+      icon: "i-heroicons-x-mark",
+    });
+  }
 
   closeModal();
 }
@@ -289,7 +351,10 @@ fetchKernprozesse();
         <ChangeKernprozessNumberForm
           v-if="modalState.type === 'changeNumber' && activeKernprozess"
           :schritt-count="activeKernprozess.schrittCount"
-          @send="changeNumber"
+          @send="
+            (newNumber: number) =>
+              changeNumber(activeKernprozess?.schrittCount!, newNumber)
+          "
           @cancle="closeModal"
         />
       </template>

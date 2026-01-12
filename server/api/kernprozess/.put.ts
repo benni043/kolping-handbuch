@@ -4,9 +4,8 @@ import { CONTENT_ROOT, safeJoin } from "~~/server/utils/traversal";
 export default defineEventHandler(async (event) => {
   const { user } = await requireUserSession(event);
 
-  if (user.role !== "admin" && user.role! !== "editor") {
+  if (user.role !== "admin" && user.role !== "editor")
     throw createError({ statusCode: 403, statusMessage: "Forbidden" });
-  }
 
   const body = await readBody<{
     path: string;
@@ -14,6 +13,12 @@ export default defineEventHandler(async (event) => {
     kernprozessNumber: number;
     data: string;
   }>(event);
+
+  if (!Number.isFinite(body.kernprozessNumber))
+    throw createError({
+      statusCode: 406,
+      statusMessage: `expected number but got ${body.kernprozessNumber}`,
+    });
 
   const filePath = safeJoin(
     CONTENT_ROOT,

@@ -28,11 +28,7 @@ async function postForm() {
   )
     return;
 
-  const data = {
-    schrittCount: schrittCountRef.value,
-  };
-
-  emit("send", data);
+  emit("send", schrittCountRef.value);
 }
 </script>
 
