@@ -13,7 +13,7 @@ services:
   nuxt:
     build: .
     ports:
-      - "3000:3011"
+      - "3011:3000"
     depends_on:
       - postgres
     volumes:
