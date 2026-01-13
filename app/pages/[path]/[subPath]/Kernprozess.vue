@@ -309,6 +309,13 @@ fetchKernprozesse();
 
     <UModal
       v-model:open="modalOpen"
+      :title="
+        modalState.type === 'create'
+          ? 'Kernprozess erstellen'
+          : modalState.type === 'edit'
+            ? 'Kernprozess bearbeiten'
+            : 'Kernprozess verschieben'
+      "
       :close="{
         color: 'primary',
         variant: 'outline',

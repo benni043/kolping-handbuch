@@ -20,8 +20,6 @@ const props = defineProps<{
 
 const emit = defineEmits(["cancle", "send"]);
 
-const { isMobile } = useDevice();
-
 const STEPS = 9;
 const currentStep = ref(0);
 
@@ -146,7 +144,11 @@ function clearForm() {
   <div class="relative h-[80vh] max-w-xl mx-auto flex flex-col overflow-hidden">
     <div class="flex flex-1 min-h-0">
       <div>
-        <UButton icon="i-heroicons-chevron-left" @click="prevStep" />
+        <UButton
+          icon="i-heroicons-chevron-left"
+          class="cursor-pointer"
+          @click="prevStep"
+        />
       </div>
 
       <div class="flex-1 h-full overflow-y-auto px-3">
@@ -186,6 +188,7 @@ function clearForm() {
                 variant="soft"
                 icon="i-heroicons-trash"
                 size="lg"
+                class="cursor-pointer"
                 @click="removeVorgabeBlue(index)"
               />
             </div>
@@ -211,6 +214,7 @@ function clearForm() {
             color="neutral"
             variant="soft"
             icon="i-heroicons-plus"
+            class="cursor-pointer"
             @click="addVorgabeBlue"
             >Hinzufügen</UButton
           >
@@ -238,6 +242,7 @@ function clearForm() {
                 variant="soft"
                 icon="i-heroicons-trash"
                 size="lg"
+                class="cursor-pointer"
                 @click="removeVorlagenBlue(index)"
               />
             </div>
@@ -260,6 +265,7 @@ function clearForm() {
             color="neutral"
             variant="soft"
             icon="i-heroicons-plus"
+            class="cursor-pointer"
             @click="addVorlagenBlue"
             >Hinzufügen</UButton
           >
@@ -299,6 +305,7 @@ function clearForm() {
               variant="soft"
               icon="i-heroicons-trash"
               size="lg"
+              class="cursor-pointer"
               @click="removeMiddleList(index)"
             />
           </div>
@@ -306,6 +313,7 @@ function clearForm() {
             color="neutral"
             variant="soft"
             icon="i-heroicons-plus"
+            class="cursor-pointer"
             @click="addMiddleList"
             >Hinzufügen</UButton
           >
@@ -343,6 +351,7 @@ function clearForm() {
                 variant="soft"
                 icon="i-heroicons-trash"
                 size="lg"
+                class="cursor-pointer"
                 @click="removeAufzeichnungOrange(index)"
               />
             </div>
@@ -365,6 +374,7 @@ function clearForm() {
             color="neutral"
             variant="soft"
             icon="i-heroicons-plus"
+            class="cursor-pointer"
             @click="addAufzeichnungOrange"
             >Hinzufügen</UButton
           >
@@ -394,7 +404,11 @@ function clearForm() {
       </div>
 
       <div>
-        <UButton icon="i-heroicons-chevron-right" @click="nextStep" />
+        <UButton
+          icon="i-heroicons-chevron-right"
+          class="cursor-pointer"
+          @click="nextStep"
+        />
       </div>
     </div>
 
@@ -403,6 +417,7 @@ function clearForm() {
         color="error"
         variant="solid"
         icon="i-heroicons-trash"
+        class="cursor-pointer"
         @click="clearForm"
       >
         Löschen
@@ -411,6 +426,7 @@ function clearForm() {
         color="primary"
         variant="solid"
         icon="i-heroicons-check"
+        class="cursor-pointer"
         @click="postForm"
       >
         {{ props.editing ? "Ändern" : "Senden" }}
