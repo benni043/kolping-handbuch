@@ -2,13 +2,13 @@ services:
   postgres:
     image: postgres:14-alpine
     ports:
-      - "5432:5432"
+      - "3012:5432"
     volumes:
-      - postgres-data:/var/lib/postgresql/data
+      - ./postgres-data:/var/lib/postgresql/data
     environment:
       POSTGRES_PASSWORD: postgres
       POSTGRES_USER: postgres
-      POSTGRES_DB: kolping-db
+      POSTGRES_DB: postgres
 
   nuxt:
     build: .
@@ -17,10 +17,7 @@ services:
     depends_on:
       - postgres
     volumes:
-      - ./kolping-handbuch-data:/data
+      - ./data:/app/data
     environment:
       NUXT_SESSION_PASSWORD: osuadh89453!jhsdf43598??dsf987435879dshufdhhjbdf?sdfbhj
-      NUXT_POSTGRES_URL: postgres://postgres:postgres@postgres:5432/kolping-db
-
-volumes:
-  postgres-data:
+      NUXT_POSTGRES_URL: postgres://postgres:postgres@postgres:3012/postgres
