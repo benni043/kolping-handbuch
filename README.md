@@ -3,9 +3,11 @@
 ## environment variables
 
 ```
-NUXT_SESSION_PASSWORD=[your-super-strong-password]
-
-NUXT_POSTGRES_URL=postgres://[db_user]:[password]@localhost:5432/postgres
+POSTGRES_PASSWORD=[password]
+POSTGRES_USER=[user]
+POSTGRES_DB=[db]
+NUXT_SESSION_PASSWORD=[password]
+NUXT_POSTGRES_URL=postgres://[db_user]:[password]@[localhost/postgres]:5432/postgres
 ```
 
 ```

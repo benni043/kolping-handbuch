@@ -1,4 +1,5 @@
 import { defineStore } from "pinia";
+import { compareIds } from "~/utils/nav/nav-menu";
 
 export const useStructureStore = defineStore("structure", {
   state: () => ({
@@ -6,7 +7,12 @@ export const useStructureStore = defineStore("structure", {
   }),
   actions: {
     setStructure(data: Structure[]) {
-      this.structure = data;
+      this.structure = data
+        .sort((a, b) => compareIds(a.id, b.id))
+        .map((struct) => ({
+          ...struct,
+          children: struct.children.sort((a, b) => compareIds(a.id, b.id)),
+        }));
     },
     getIdByUuid(uuid: string) {
       const s = this.structure.find((item) => item.uuid === uuid);

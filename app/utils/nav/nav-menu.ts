@@ -79,3 +79,17 @@ export function getDisplayName(redirect: string): string | undefined {
 export function getRedirect(displayName: string): string | undefined {
   return navMappings.find((m) => m.displayName === displayName)?.redirect;
 }
+
+export function compareIds(a: string, b: string): number {
+  const aParts = a.split("-").map(Number);
+  const bParts = b.split("-").map(Number);
+
+  const len = Math.max(aParts.length, bParts.length);
+
+  for (let i = 0; i < len; i++) {
+    const diff = (aParts[i] ?? 0) - (bParts[i] ?? 0);
+    if (diff !== 0) return diff;
+  }
+
+  return 0;
+}
