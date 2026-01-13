@@ -10,7 +10,7 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_DB: postgres
 
-  nuxt:
+  handbuch:
     build: .
     ports:
       - "3011:3000"
