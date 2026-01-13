@@ -20,4 +20,4 @@ services:
       - ./data:/app/data
     environment:
       NUXT_SESSION_PASSWORD: osuadh89453!jhsdf43598??dsf987435879dshufdhhjbdf?sdfbhj
-      NUXT_POSTGRES_URL: postgres://postgres:postgres@postgres:3012/postgres
+      NUXT_POSTGRES_URL: postgres://postgres:postgres@postgres:5432/postgres
