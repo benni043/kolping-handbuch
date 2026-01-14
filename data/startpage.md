@@ -22,3 +22,16 @@ diesem Buch wenden wir uns dem „Wie“ zu: „wie“ wir arbeiten, um das Vere
 Kolpings heute zu verwirklichen. Weil unsere Vereinswirklichkeit auf diese Weise sehr authentisch dargestellt werden
 konnte, hat das Buch die Chance, den neu Ankommenden und Interessierten bei Kolping eine wirkliche Hilfe für die
 konkrete Arbeit zu geben.
+
+<div style="display: flex; justify-content: space-around; margin-top: 2rem;">
+  <img
+    src="/img/unterschrift/unterschrift_praesidentin.JPG"
+    alt="Unterschrift Präsidentin"
+    style="max-height: 120px;"
+  />
+  <img
+    src="/img/unterschrift/unterschrift_bundespraeses.JPG"
+    alt="Unterschrift Bundespräses"
+    style="max-height: 120px;"
+  />
+</div>

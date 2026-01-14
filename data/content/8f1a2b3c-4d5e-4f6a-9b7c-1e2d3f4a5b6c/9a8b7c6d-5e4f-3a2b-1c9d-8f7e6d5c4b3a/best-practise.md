@@ -2,4 +2,5 @@
 
 ---
 
-![under-contruction.jpg](../../../../public/img/under-contruction.jpg)
+![Under construction](/img/under-contruction.jpg)
+
