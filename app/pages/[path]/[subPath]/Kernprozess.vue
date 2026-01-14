@@ -282,7 +282,7 @@ fetchKernprozesse();
 <template>
   <div>
     <div class="flex justify-center items-center">
-      <div class="w-full flex justify-end mr-5">
+      <div class="w-full flex justify-end" :class="isMobile ? 'mr-5' : 'mr-20'">
         <UButton
           v-if="user && (user.role === 'admin' || user.role === 'editor')"
           color="success"

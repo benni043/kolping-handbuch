@@ -42,6 +42,7 @@ async function postForm() {
         color="primary"
         variant="solid"
         icon="i-heroicons-check"
+        class="cursor-pointer"
         @click="postForm"
       >
         Ändern
