@@ -11,7 +11,7 @@ export default defineEventHandler(async (event) => {
 
   if (!path || !subPath)
     throw createError({
-      statusCode: 403,
+      statusCode: 400,
       statusMessage: "Missing required fields: path and/or subPath",
     });
 

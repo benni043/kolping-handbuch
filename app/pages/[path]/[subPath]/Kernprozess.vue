@@ -6,6 +6,7 @@ import CreateKernprozessForm from "~/components/content/CreateKernprozessForm.vu
 import ChangeKernprozessForm from "~/components/content/ChangeKernprozessForm.vue";
 import ChangeKernprozessNumberForm from "~/components/content/ChangeKernprozessNumberForm.vue";
 import { getSegment } from "~/utils/nav/nav-menu";
+import type { NuxtError } from "#app";
 
 definePageMeta({
   middleware: ["authenticated"],
@@ -100,8 +101,10 @@ async function send(kernprozess: Kernprozess) {
     });
 
     closeModal();
-  } catch (e: unknown) {
-    if (e.statusCode === 409) {
+  } catch (err) {
+    const error = err as NuxtError;
+
+    if (error.statusCode === 409) {
       toast.add({
         title: "Warnung",
         description: "Ein Kernprozess mit dieser Nummer existiert bereits!",
@@ -110,7 +113,7 @@ async function send(kernprozess: Kernprozess) {
       });
 
       return;
-    } else if (e.statusCode === 406) {
+    } else if (error.statusCode === 406) {
       toast.add({
         title: "Warnung",
         description: "Die Kernprozessnummer MUSS eine Zahl sein!",
@@ -154,7 +157,28 @@ async function change(kernprozess: Kernprozess) {
     });
 
     closeModal();
-  } catch (e: unknown) {
+  } catch (err) {
+    const error = err as NuxtError;
+
+    if (error.statusCode === 409) {
+      toast.add({
+        title: "Warnung",
+        description: "Ein Kernprozess mit dieser Nummer existiert bereits!",
+        color: "warning",
+        icon: "i-heroicons-x-mark",
+      });
+
+      return;
+    } else if (error.statusCode === 406) {
+      toast.add({
+        title: "Warnung",
+        description: "Die Kernprozessnummer MUSS eine Zahl sein!",
+        color: "warning",
+        icon: "i-heroicons-x-mark",
+      });
+
+      return;
+    }
     toast.add({
       title: "Fehler",
       description: "Beim Ändern des Kernprozesses ist ein Fehler aufgetreten!",
@@ -190,8 +214,10 @@ async function changeNumber(
     });
 
     closeModal();
-  } catch (e: unknown) {
-    if (e.statusCode === 409) {
+  } catch (err) {
+    const error = err as NuxtError;
+
+    if (error.statusCode === 409) {
       toast.add({
         title: "Warnung",
         description: "Ein Kernprozess mit dieser Nummer existiert bereits!",
@@ -200,7 +226,7 @@ async function changeNumber(
       });
 
       return;
-    } else if (e.statusCode === 406) {
+    } else if (error.statusCode === 406) {
       toast.add({
         title: "Warnung",
         description: "Die Kernprozessnummer MUSS eine Zahl sein!",
@@ -250,7 +276,20 @@ async function deleteKernprozess(kernprozessNumber: number) {
         color: "success",
         icon: "i-heroicons-check",
       });
-    } catch (e: unknown) {
+    } catch (err) {
+      const error = err as NuxtError;
+
+      if (error.statusCode === 409) {
+        toast.add({
+          title: "Fehler",
+          description: "Es existiert kein Kernprozess mit dieser Nummer!",
+          color: "error",
+          icon: "i-heroicons-x-mark",
+        });
+
+        return;
+      }
+
       toast.add({
         title: "Fehler",
         description:

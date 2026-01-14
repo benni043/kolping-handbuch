@@ -1,4 +1,4 @@
-import { unlink } from "fs/promises";
+import { stat, unlink } from "fs/promises";
 import { CONTENT_ROOT, safeJoin } from "~~/server/utils/traversal";
 
 export default defineEventHandler(async (event) => {
@@ -18,5 +18,15 @@ export default defineEventHandler(async (event) => {
     `${body.path}/${body.subPath}/kernprozesse/kernprozess_${body.kernprozessNumber}.json`,
   );
 
-  await unlink(filePath);
+  try {
+    await stat(filePath);
+
+    await unlink(filePath);
+    return { success: true, path: filePath };
+  } catch (err: any) {
+    throw createError({
+      statusCode: 409,
+      statusMessage: `kernprozess with number ${body.kernprozessNumber} does not exist.`,
+    });
+  }
 });
