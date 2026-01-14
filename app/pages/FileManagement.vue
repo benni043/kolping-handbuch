@@ -235,14 +235,17 @@ onMounted(() => {
         class="hover:bg-gray-100 rounded py-1 transition flex items-center gap-3 text-xl"
       >
         <div class="cursor-pointer" @click="open(i)">
-          <div v-if="i.type === 'dir'" class="flex gap-2 items-center">
+          <div
+            v-if="i.type === 'dir'"
+            class="flex gap-2 items-start min-w-0 [overflow-wrap:anywhere]"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
               stroke-width="1.5"
               stroke="currentColor"
-              class="size-6"
+              class="size-6 shrink-0"
             >
               <path
                 stroke-linecap="round"
@@ -253,14 +256,17 @@ onMounted(() => {
             {{ i.name }}
           </div>
 
-          <div v-else class="flex gap-2 items-center">
+          <div
+            v-else
+            class="flex gap-2 items-start min-w-0 [overflow-wrap:anywhere]"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
               stroke-width="1.5"
               stroke="currentColor"
-              class="size-6"
+              class="size-6 shrink-0"
             >
               <path
                 stroke-linecap="round"
