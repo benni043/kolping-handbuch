@@ -10,6 +10,18 @@ export default defineEventHandler(async (event) => {
     role: string;
   }>(event);
 
+  if (!validateUsername(body.username))
+    throw createError({
+      statusCode: 400,
+      statusMessage: "username requirements ignored",
+    });
+
+  if (!validateRole(body.role))
+    throw createError({
+      statusCode: 400,
+      statusMessage: "role requirements ignored",
+    });
+
   const sql = usePostgres();
 
   await sql`UPDATE users SET username = ${body.username}, role = ${body.role} WHERE id = ${body.id}`;

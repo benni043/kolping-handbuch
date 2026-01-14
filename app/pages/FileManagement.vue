@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import type { NuxtError } from "#app";
 import { ref } from "vue";
 import CreateFolderForm from "~/components/filemanagement/CreateFolderForm.vue";
 import RenameForm from "~/components/filemanagement/RenameForm.vue";
@@ -21,11 +22,15 @@ const isFolder = ref(false);
 async function load(path = "") {
   currentPath.value = path;
 
-  const res = await $fetch<Item[]>("/api/files/structure", {
-    query: { path: currentPath.value },
-  });
+  try {
+    const res = await $fetch<Item[]>("/api/files/structure", {
+      query: { path: currentPath.value },
+    });
 
-  items.value = res;
+    items.value = res;
+  } catch {
+    console.error("unauthorized");
+  }
 }
 
 async function open(item: Item) {
@@ -108,21 +113,31 @@ async function createFolder(folder: string) {
     });
 
     load(currentPath.value);
-  } catch (e: unknown) {
-    toast.add({
-      title: "Fehler",
-      description:
-        "Beim Erstellen des Ordners ist ein Fehler aufgetreten! Wenden Sie sich an Ihren Administrator!",
-      color: "error",
-      icon: "i-heroicons-x-mark",
-    });
+  } catch (err) {
+    const error = err as NuxtError;
+
+    if (error.statusCode === 409)
+      toast.add({
+        title: "Warnung",
+        description: "Es existiert bereits ein Order/Datei mit diesem Namen",
+        color: "warning",
+        icon: "i-heroicons-x-mark",
+      });
+    else
+      toast.add({
+        title: "Fehler",
+        description:
+          "Beim Erstellen des Ordners ist ein Fehler aufgetreten! Wenden Sie sich an Ihren Administrator!",
+        color: "error",
+        icon: "i-heroicons-x-mark",
+      });
   }
 
   createFolderModalOpen.value = false;
 }
 
 async function deleteFolder(item: string, type: "dir" | "file") {
-  const folderMsg = "Sind Sie sicher, dass sie diesen Ordner löschen möchten?";
+  const folderMsg = "Sind Sie sicher, dass sie dieseen Ordner löschen möchten?";
   const fileMsg = "Sind Sie sicher, dass sie diese Datei löschen möchten?";
 
   if (type === "dir") isFolder.value = true;
@@ -142,7 +157,7 @@ async function deleteFolder(item: string, type: "dir" | "file") {
     });
 
     load(currentPath.value);
-  } catch (e: unknown) {
+  } catch {
     toast.add({
       title: "Fehler",
       description:
@@ -173,8 +188,10 @@ async function changeFolder(newName: string) {
     });
 
     load(currentPath.value);
-  } catch (e: unknown) {
-    if (e.statusCode === 409)
+  } catch (err) {
+    const error = err as NuxtError;
+
+    if (error.statusCode === 409)
       toast.add({
         title: "Warnung",
         description: "Es existiert bereits ein Order/Datei mit diesem Namen",

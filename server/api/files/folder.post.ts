@@ -1,4 +1,4 @@
-import { mkdir } from "fs/promises";
+import { mkdir, stat } from "fs/promises";
 import { validateFolder } from "~~/shared/utils/checks";
 import { FILE_ROOT, safeJoin } from "~~/server/utils/traversal";
 
@@ -13,16 +13,24 @@ export default defineEventHandler(async (event) => {
     folder: string;
   }>(event);
 
-  if (!body.folder)
-    throw createError({ statusCode: 400, statusMessage: "Invalid upload" });
-
-  if (!validateFolder(body.folder))
+  if (!body.folder || !validateFolder(body.folder))
     throw createError({ statusCode: 400, statusMessage: "Invalid upload" });
 
   let targetPath = "";
 
   if (body.path === "") targetPath = safeJoin(FILE_ROOT, `${body.folder}`);
   else targetPath = safeJoin(FILE_ROOT, `${body.path}/${body.folder}`);
+
+  try {
+    await stat(targetPath);
+
+    throw createError({
+      statusCode: 409,
+      statusMessage: "File already exists",
+    });
+  } catch (err: any) {
+    if (err.code !== "ENOENT") throw err;
+  }
 
   await mkdir(targetPath, { recursive: true });
 });

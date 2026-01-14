@@ -22,16 +22,26 @@ const isEditingUser = ref(false);
 const isEditingPassword = ref(false);
 
 async function fetchUsers() {
-  const response = await $fetch<{ statusCode: number; data: User[] }>(
-    "/api/user/",
-    {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-    },
-  );
+  try {
+    const response = await $fetch<{ statusCode: number; data: User[] }>(
+      "/api/user/",
+      {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+      },
+    );
 
-  users.value = response.data;
-  users.value.sort((user, user2) => user.id - user2.id);
+    users.value = response.data;
+    users.value.sort((user, user2) => user.id - user2.id);
+  } catch {
+    toast.add({
+      title: "Fehler",
+      description:
+        "Es ist ein unerwarteter Fehler aufgetreten, wenden Sie sich an Ihren Administrator!",
+      color: "error",
+      icon: "i-heroicons-x-mark",
+    });
+  }
 }
 
 function openEditingUserModal(user: User) {
@@ -78,7 +88,7 @@ async function addUser(username: string, password: string, role: string) {
       color: "success",
       icon: "i-heroicons-check",
     });
-  } catch (e: unknown) {
+  } catch {
     toast.add({
       title: "Fehler",
       description: "Beim Hinzufügen des Benutzers ist ein Fehler aufgetreten!",
@@ -115,7 +125,7 @@ async function changeUserName(id: number, username: string, role: string) {
       color: "success",
       icon: "i-heroicons-check",
     });
-  } catch (e: unknown) {
+  } catch {
     toast.add({
       title: "Fehler",
       description: "Beim Ändern des Benutzers ist ein Fehler aufgetreten!",

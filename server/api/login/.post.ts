@@ -1,21 +1,15 @@
-import { z } from "zod";
 import { usePostgres } from "~~/server/utils/postgres";
 
-const bodySchema = z.object({
-  username: z.string(),
-  password: z.string(),
-});
-
 export default defineEventHandler(async (event) => {
-  const { username, password } = await readValidatedBody(
-    event,
-    bodySchema.parse,
-  );
+  const body = await readBody<{
+    username: string;
+    password: string;
+  }>(event);
 
   const sql = usePostgres();
 
   const [response] =
-    await sql`SELECT * FROM users WHERE username = ${username}`;
+    await sql`SELECT * FROM users WHERE username = ${body.username}`;
 
   event.waitUntil(sql.end());
 
@@ -25,7 +19,7 @@ export default defineEventHandler(async (event) => {
       message: "Bad credentials - user does not exist",
     });
 
-  const ok = await verifyPassword(response.password_hash, password);
+  const ok = await verifyPassword(response.password_hash, body.password);
 
   if (!ok)
     throw createError({
