@@ -15,11 +15,7 @@ export default defineEventHandler(async (event) => {
   if (!path)
     throw createError({ statusCode: 400, statusMessage: "Missing path" });
 
-  console.log(path);
-
   const filePath = safeJoin(FILE_ROOT, path);
-
-  console.log(filePath);
 
   if (!existsSync(filePath))
     throw createError({ statusCode: 404, statusMessage: "File not found" });

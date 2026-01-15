@@ -202,7 +202,7 @@ function clearForm() {
             <UInput
               v-if="item.hasLink"
               v-model="item.link"
-              placeholder="[path]/[subPath]/[file].[endung]"
+              placeholder="[path]/[subPath]/{kernprozesse/arbeitshilfen}/[file].[endung]"
               icon="i-heroicons-link"
               size="lg"
               class="w-full"
@@ -254,7 +254,7 @@ function clearForm() {
             <UInput
               v-if="item.hasLink"
               v-model="item.link"
-              placeholder="[path]/[subPath]/[file].[endung]"
+              placeholder="[path]/[subPath]/{kernprozesse/arbeitshilfen}/[file].[endung]"
               icon="i-heroicons-link"
               size="lg"
               class="w-full"
@@ -363,7 +363,7 @@ function clearForm() {
             <UInput
               v-if="item.hasLink"
               v-model="item.link"
-              placeholder="[path]/[subPath]/[file].[endung]"
+              placeholder="[path]/[subPath]/{kernprozesse/arbeitshilfen}/[file].[endung]"
               icon="i-heroicons-link"
               size="lg"
               class="w-full"

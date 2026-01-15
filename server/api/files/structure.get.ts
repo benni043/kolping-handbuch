@@ -11,8 +11,6 @@ export default defineEventHandler(async (event) => {
   const query = getQuery(event);
   const relativePath = (query.path || "").toString();
 
-  console.log(relativePath);
-
   const targetPath = safeJoin(FILE_ROOT, relativePath);
 
   const entries = await readdir(targetPath, { withFileTypes: true });
