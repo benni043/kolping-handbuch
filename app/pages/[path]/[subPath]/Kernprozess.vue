@@ -315,7 +315,9 @@ async function fetchFile(link: string) {
   }
 }
 
-fetchKernprozesse();
+onMounted(() => {
+  fetchKernprozesse();
+});
 </script>
 
 <template>
@@ -610,12 +612,13 @@ fetchKernprozesse();
                 :key="elem.text"
                 class="marker:text-[#F18700]"
               >
-                <a
+                <span
                   v-if="elem.hasLink"
-                  class="cursor-pointer hover:underline"
-                  :href="elem.link"
-                  >{{ elem.text }}</a
+                  class="cursor-pointer hover:underline text-blue-700"
+                  @click="fetchFile(elem.link)"
                 >
+                  {{ elem.text }}
+                </span>
                 <span v-if="!elem.hasLink">{{ elem.text }}</span>
               </li>
             </ul>
