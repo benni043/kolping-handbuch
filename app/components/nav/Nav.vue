@@ -12,7 +12,10 @@ const items: Ref<BreadcrumbItem[]> = ref([
 
 const structureStore = useStructureStore();
 const { loggedIn, user } = useUserSession();
-const { isMobile } = useDevice();
+
+const { isMobile, isTablet } = useDevice();
+const isSmallDevice = isMobile || isTablet;
+
 const route = useRoute();
 
 const isActive = ref(false);
@@ -283,7 +286,7 @@ function navigateToHome() {
           </svg>
         </button>
 
-        <button v-if="isMobile" @click="isActive = !isActive">
+        <button v-if="isSmallDevice" @click="isActive = !isActive">
           <svg
             v-if="!isActive"
             xmlns="http://www.w3.org/2000/svg"
@@ -320,8 +323,12 @@ function navigateToHome() {
     </div>
 
     <div
-      class="lg:mb-10 flex justify-center items-start gap-1"
-      :class="{ 'mb-0': !isActive, 'mb-5': isActive }"
+      class="flex justify-center items-start gap-1"
+      :class="{
+        'mb-0': !isActive && isSmallDevice,
+        'mb-5': isActive && isSmallDevice,
+        'mb-10': !isSmallDevice,
+      }"
     >
       <NavMenuElement
         :data="structureStore.structure"
@@ -334,7 +341,10 @@ function navigateToHome() {
         @active="isActive = false"
       ></NavMenuElement>
 
-      <div class="relative hidden lg:block">
+      <div
+        v-if="(isActive && !isMobile) || !isSmallDevice"
+        class="relative block"
+      >
         <div class="flex flex-col absolute h-full justify-center ml-20">
           <h1 class="text-6xl">
             <b>Kolping</b>

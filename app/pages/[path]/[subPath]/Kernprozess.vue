@@ -12,7 +12,9 @@ definePageMeta({
   middleware: ["authenticated"],
 });
 
-const { isMobile } = useDevice();
+const { isMobile, isTablet } = useDevice();
+
+const isSmallDevice = isMobile || isTablet;
 
 const toast = useToast();
 const route = useRoute();
@@ -323,7 +325,10 @@ onMounted(() => {
 <template>
   <div>
     <div class="flex justify-center items-center">
-      <div class="w-full flex justify-end" :class="isMobile ? 'mr-5' : 'mr-20'">
+      <div
+        class="w-full flex justify-end"
+        :class="isSmallDevice ? 'mr-5' : 'mr-20'"
+      >
         <UButton
           v-if="user && (user.role === 'admin' || user.role === 'editor')"
           color="success"
@@ -412,7 +417,7 @@ onMounted(() => {
       <div
         v-if="user && (user.role === 'admin' || user.role === 'editor')"
         class="flex gap-5"
-        :class="isMobile ? 'ml-5' : 'ml-20'"
+        :class="isSmallDevice ? 'ml-5' : 'ml-20'"
       >
         <button
           class="bg-[#F18700] hover:bg-[#F87800] text-white px-4 py-2 rounded cursor-pointer"
