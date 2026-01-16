@@ -26,7 +26,7 @@ export default defineEventHandler(async (event) => {
 
     throw createError({
       statusCode: 409,
-      statusMessage: "File already exists",
+      statusMessage: "folder already exists",
     });
   } catch (err: any) {
     if (err.code !== "ENOENT") throw err;

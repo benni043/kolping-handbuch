@@ -88,7 +88,20 @@ async function onFileSelected(e: Event) {
     });
 
     load(currentPath.value);
-  } catch {
+  } catch (err) {
+    const error = err as NuxtError;
+
+    if (error.statusCode === 409) {
+      toast.add({
+        title: "Warnung",
+        description: "Es existiert bereits ein Datei mit diesem Namen",
+        color: "warning",
+        icon: "i-heroicons-x-mark",
+      });
+
+      return;
+    }
+
     toast.add({
       title: "Fehler",
       description: "Upload fehlgeschlagen",
@@ -119,7 +132,7 @@ async function createFolder(folder: string) {
     if (error.statusCode === 409)
       toast.add({
         title: "Warnung",
-        description: "Es existiert bereits ein Order/Datei mit diesem Namen",
+        description: "Es existiert bereits ein Order mit diesem Namen",
         color: "warning",
         icon: "i-heroicons-x-mark",
       });

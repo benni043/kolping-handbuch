@@ -1,4 +1,5 @@
-import { writeFile } from "fs/promises";
+import { log } from "console";
+import { stat, writeFile } from "fs/promises";
 import { FILE_ROOT, safeJoin } from "~~/server/utils/traversal";
 
 export default defineEventHandler(async (event) => {
@@ -20,6 +21,17 @@ export default defineEventHandler(async (event) => {
 
   const targetDir = safeJoin(FILE_ROOT, relPath);
   const targetFile = safeJoin(targetDir, file.filename!);
+
+  try {
+    await stat(targetFile);
+
+    throw createError({
+      statusCode: 409,
+      statusMessage: "File already exists",
+    });
+  } catch (err: any) {
+    if (err.code !== "ENOENT") throw err;
+  }
 
   await writeFile(targetFile, file.data);
 });
