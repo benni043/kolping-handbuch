@@ -24,7 +24,9 @@ export default defineEventHandler(async (event) => {
       statusMessage: "password requirements ignored",
     });
 
-  if (!validateUsername(body.username))
+  const username = body.username.toLowerCase();
+
+  if (!validateUsername(username))
     throw createError({
       statusCode: 400,
       statusMessage: "username requirements ignored",
@@ -40,7 +42,7 @@ export default defineEventHandler(async (event) => {
 
   const sql = usePostgres();
 
-  await sql`INSERT INTO users (username, password_hash, role) VALUES (${body.username}, ${hashedPassword}, ${body.role})`;
+  await sql`INSERT INTO users (username, password_hash, role) VALUES (${username}, ${hashedPassword}, ${body.role})`;
 
   event.waitUntil(sql.end());
 });

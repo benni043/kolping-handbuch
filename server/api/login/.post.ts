@@ -9,7 +9,7 @@ export default defineEventHandler(async (event) => {
   const sql = usePostgres();
 
   const [response] =
-    await sql`SELECT * FROM users WHERE username = ${body.username}`;
+    await sql`SELECT * FROM users WHERE username = ${body.username.toLowerCase()}`;
 
   event.waitUntil(sql.end());
 

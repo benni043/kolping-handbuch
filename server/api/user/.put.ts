@@ -10,7 +10,9 @@ export default defineEventHandler(async (event) => {
     role: string;
   }>(event);
 
-  if (!validateUsername(body.username))
+  const username = body.username.toLowerCase();
+
+  if (!validateUsername(username))
     throw createError({
       statusCode: 400,
       statusMessage: "username requirements ignored",
@@ -24,7 +26,7 @@ export default defineEventHandler(async (event) => {
 
   const sql = usePostgres();
 
-  await sql`UPDATE users SET username = ${body.username}, role = ${body.role} WHERE id = ${body.id}`;
+  await sql`UPDATE users SET username = ${username}, role = ${body.role} WHERE id = ${body.id}`;
 
   event.waitUntil(sql.end());
 });
