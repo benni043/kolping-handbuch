@@ -214,10 +214,11 @@ function clearForm() {
             color="neutral"
             variant="soft"
             icon="i-heroicons-plus"
-            class="cursor-pointer"
+            class="cursor-pointer mb-5"
             @click="addVorgabeBlue"
-            >Hinzufügen</UButton
           >
+            Hinzufügen
+          </UButton>
         </div>
 
         <div v-if="currentStep === 2">
@@ -265,10 +266,11 @@ function clearForm() {
             color="neutral"
             variant="soft"
             icon="i-heroicons-plus"
-            class="cursor-pointer"
+            class="cursor-pointer mb-5"
             @click="addVorlagenBlue"
-            >Hinzufügen</UButton
           >
+            Hinzufügen
+          </UButton>
         </div>
 
         <div v-if="currentStep === 3">
@@ -313,10 +315,11 @@ function clearForm() {
             color="neutral"
             variant="soft"
             icon="i-heroicons-plus"
-            class="cursor-pointer"
+            class="cursor-pointer mb-5"
             @click="addMiddleList"
-            >Hinzufügen</UButton
           >
+            Hinzufügen
+          </UButton>
         </div>
 
         <div v-if="currentStep === 5">
@@ -374,10 +377,11 @@ function clearForm() {
             color="neutral"
             variant="soft"
             icon="i-heroicons-plus"
-            class="cursor-pointer"
+            class="cursor-pointer mb-5"
             @click="addAufzeichnungOrange"
-            >Hinzufügen</UButton
           >
+            Hinzufügen
+          </UButton>
         </div>
 
         <div v-if="currentStep === 7">

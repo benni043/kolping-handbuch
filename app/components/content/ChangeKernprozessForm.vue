@@ -112,7 +112,7 @@ function clearForm() {
 </script>
 
 <template>
-  <div class="relative h-[80vh] max-w-xl mx-auto flex flex-col overflow-hidden">
+  <div class="relative h-[75vh] max-w-xl mx-auto flex flex-col overflow-hidden">
     <div class="flex flex-1 min-h-0">
       <div>
         <UButton
@@ -122,11 +122,12 @@ function clearForm() {
         />
       </div>
 
-      <div class="flex-1 h-full overflow-y-auto">
+      <div class="flex-1 h-full overflow-y-auto mx-2">
         <div v-if="currentStep === 0">
           <h1 class="mb-8 text-xl font-semibold text-center">
             Vorgaben / Arbeitshilfen
           </h1>
+
           <div
             v-for="(item, index) in vorgabenBlueRef"
             :key="index"
@@ -171,10 +172,11 @@ function clearForm() {
             color="neutral"
             variant="soft"
             icon="i-heroicons-plus"
-            class="cursor-pointer"
+            class="cursor-pointer mb-5"
             @click="addVorgabeBlue"
-            >Hinzufügen</UButton
           >
+            Hinzufügen
+          </UButton>
         </div>
 
         <div v-if="currentStep === 1">
@@ -222,10 +224,11 @@ function clearForm() {
             color="neutral"
             variant="soft"
             icon="i-heroicons-plus"
-            class="cursor-pointer"
+            class="cursor-pointer mb-5"
             @click="addVorlagenBlue"
-            >Hinzufügen</UButton
           >
+            Hinzufügen
+          </UButton>
         </div>
 
         <div v-if="currentStep === 2">
@@ -270,10 +273,11 @@ function clearForm() {
             color="neutral"
             variant="soft"
             icon="i-heroicons-plus"
-            class="cursor-pointer"
+            class="cursor-pointer mb-5"
             @click="addMiddleList"
-            >Hinzufügen</UButton
           >
+            Hinzufügen
+          </UButton>
         </div>
 
         <div v-if="currentStep === 4">
@@ -327,20 +331,23 @@ function clearForm() {
             />
             <hr class="mt-5 mb-10" />
           </div>
+
           <UButton
             color="neutral"
             variant="soft"
             icon="i-heroicons-plus"
-            class="cursor-pointer"
+            class="cursor-pointer mb-5"
             @click="addAufzeichnungOrange"
-            >Hinzufügen</UButton
           >
+            Hinzufügen
+          </UButton>
         </div>
 
         <div v-if="currentStep === 6">
           <h1 class="mb-8 text-xl font-semibold text-center">
             Verantwortliche/r
           </h1>
+
           <UTextarea
             v-model="verantwortlicherOrangeRef"
             placeholder="Verantwortliche/r"
@@ -351,6 +358,7 @@ function clearForm() {
 
         <div v-if="currentStep === 7">
           <h1 class="mb-8 text-xl font-semibold text-center">Information an</h1>
+
           <UTextarea
             v-model="informationOrangeRef"
             placeholder="Information an"
@@ -379,6 +387,7 @@ function clearForm() {
       >
         Löschen
       </UButton>
+
       <UButton
         color="primary"
         variant="solid"
