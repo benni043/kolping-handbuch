@@ -195,7 +195,7 @@ function navigateToHome() {
               viewBox="0 0 24 24"
               stroke-width="1.5"
               stroke="currentColor"
-              class="size-6 lg:size-8"
+              :class="{ 'size-8': width >= 450, 'size-6': width <= 450 }"
             >
               <path
                 stroke-linecap="round"
@@ -216,7 +216,7 @@ function navigateToHome() {
               viewBox="0 0 24 24"
               stroke-width="1.5"
               stroke="currentColor"
-              class="size-6 lg:size-8"
+              :class="{ 'size-8': width >= 450, 'size-6': width <= 450 }"
             >
               <path
                 stroke-linecap="round"
@@ -236,7 +236,7 @@ function navigateToHome() {
               viewBox="0 0 24 24"
               stroke-width="1.5"
               stroke="currentColor"
-              class="size-6 lg:size-8"
+              :class="{ 'size-8': width >= 450, 'size-6': width <= 450 }"
             >
               <path
                 stroke-linecap="round"
@@ -257,7 +257,7 @@ function navigateToHome() {
               viewBox="0 0 24 24"
               stroke-width="1.5"
               stroke="currentColor"
-              class="size-6 lg:size-8"
+              :class="{ 'size-8': width >= 450, 'size-6': width <= 450 }"
             >
               <path
                 stroke-linecap="round"
@@ -277,7 +277,7 @@ function navigateToHome() {
               viewBox="0 0 24 24"
               stroke-width="1.5"
               stroke="currentColor"
-              class="size-6 lg:size-8"
+              :class="{ 'size-8': width >= 450, 'size-6': width <= 450 }"
             >
               <path
                 stroke-linecap="round"
@@ -295,7 +295,7 @@ function navigateToHome() {
               viewBox="0 0 24 24"
               stroke-width="1.5"
               stroke="currentColor"
-              class="size-6 lg:size-8"
+              :class="{ 'size-8': width >= 450, 'size-6': width <= 450 }"
             >
               <path
                 stroke-linecap="round"
@@ -311,7 +311,7 @@ function navigateToHome() {
               viewBox="0 0 24 24"
               stroke-width="1.5"
               stroke="currentColor"
-              class="size-6 lg:size-8"
+              :class="{ 'size-8': width >= 450, 'size-6': width <= 450 }"
             >
               <path
                 stroke-linecap="round"
@@ -370,7 +370,9 @@ function navigateToHome() {
         <div class="w-[90vw] lg:w-[60vw]">
           <UBreadcrumb :items="items">
             <template #item-label="{ item }">
-              <div class="lg:text-lg">{{ item.label }}</div>
+              <div :class="{ 'text-lg': width >= 450 }">
+                {{ item.label }}
+              </div>
             </template>
           </UBreadcrumb>
         </div>
