@@ -49,7 +49,7 @@ export const navMappings: NavMapping[] = [
     redirect: "usermanagement",
   },
   {
-    displayName: "Dateienverwaltung",
+    displayName: "Dateiverwaltung",
     redirect: "filemanagement",
   },
   {

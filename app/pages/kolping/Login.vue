@@ -119,7 +119,7 @@ async function logout(username: string) {
         <UButton
           color="primary"
           size="xl"
-          variant="solid"
+          variant="outline"
           type="submit"
           block
           icon="i-heroicons-lock-closed"
@@ -138,7 +138,7 @@ async function logout(username: string) {
 
       <UButton
         color="error"
-        variant="solid"
+        variant="outline"
         size="xl"
         icon="i-heroicons-arrow-left-start-on-rectangle"
         class="cursor-pointer"
