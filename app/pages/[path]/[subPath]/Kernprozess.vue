@@ -497,7 +497,7 @@ onMounted(() => {
             flex: width <= 1024,
           }"
         >
-          <div>
+          <div class="w-full max-w-[600px]">
             <h2 class="text-[#50A9CE] font-bold text-2xl">
               Schritt {{ kernprozess.schrittCount }}
             </h2>
@@ -528,7 +528,7 @@ onMounted(() => {
             </div>
 
             <div v-if="kernprozess.vorlagenBlue.length >= 1">
-              <h2 class="text-[#50A9CE] font-bold mb-2">
+              <h2 class="text-[#50A9CE] font-bold my-2">
                 VORLAGEN SCHLUSSBERICHTE
               </h2>
 
@@ -620,7 +620,7 @@ onMounted(() => {
             flex: width <= 1024,
           }"
         >
-          <div>
+          <div class="w-full max-w-[600px]">
             <div>
               <h2
                 v-if="kernprozess.aufzeichnungOrange.length >= 1"
