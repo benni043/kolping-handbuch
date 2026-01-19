@@ -125,6 +125,7 @@ async function addLvl2Menu(subMenuName: string) {
       description: "Der Untermenupunkt wurde erfolgreich hinzugefügt!",
       color: "success",
       icon: "i-heroicons-check",
+      duration: 1500,
     });
   } catch (e: unknown) {
     toast.add({
@@ -132,6 +133,7 @@ async function addLvl2Menu(subMenuName: string) {
       description: "Beim Hinzufügen des Benutzers ist ein Fehler aufgetreten!",
       color: "error",
       icon: "i-heroicons-x-mark",
+      duration: 1500,
     });
   }
 }
@@ -156,6 +158,7 @@ async function addLvl1Menu(menuName: string, subMenuName: string) {
       description: "Der Menupunkt wurde erfolgreich hinzugefügt!",
       color: "success",
       icon: "i-heroicons-check",
+      duration: 1500,
     });
   } catch (e: unknown) {
     toast.add({
@@ -163,6 +166,7 @@ async function addLvl1Menu(menuName: string, subMenuName: string) {
       description: "Beim Hinzufügen des Benutzers ist ein Fehler aufgetreten!",
       color: "error",
       icon: "i-heroicons-x-mark",
+      duration: 1500,
     });
   }
 }
@@ -189,6 +193,7 @@ async function deleteLvl1(uuid: string, id: string) {
       description: "Der Menupunkt wurde erfolgreich gelöscht!",
       color: "success",
       icon: "i-heroicons-check",
+      duration: 1500,
     });
   } catch (e: unknown) {
     toast.add({
@@ -196,6 +201,7 @@ async function deleteLvl1(uuid: string, id: string) {
       description: "Beim Löschen des Menupunkts ist ein Fehler aufgetreten!",
       color: "error",
       icon: "i-heroicons-x-mark",
+      duration: 1500,
     });
   }
 }
@@ -224,6 +230,7 @@ async function deleteLvl2(id: string, subId: string) {
       description: "Der Submenupunkt wurde erfolgreich gelöscht!",
       color: "success",
       icon: "i-heroicons-check",
+      duration: 1500,
     });
   } catch (e: unknown) {
     toast.add({
@@ -231,6 +238,7 @@ async function deleteLvl2(id: string, subId: string) {
       description: "Beim Löschen des Subenupunkts ist ein Fehler aufgetreten!",
       color: "error",
       icon: "i-heroicons-x-mark",
+      duration: 1500,
     });
   }
 }

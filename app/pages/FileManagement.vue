@@ -55,6 +55,7 @@ async function open(item: Item) {
           "Beim Herunterladen des Dokuments ist ein Fehler aufgetreten! Wenden Sie sich an Ihren Administrator!",
         color: "error",
         icon: "i-heroicons-x-mark",
+        duration: 1500,
       });
   }
 }
@@ -97,6 +98,7 @@ async function onFileSelected(e: Event) {
         description: "Es existiert bereits ein Datei mit diesem Namen",
         color: "warning",
         icon: "i-heroicons-x-mark",
+        duration: 1500,
       });
 
       return;
@@ -107,6 +109,7 @@ async function onFileSelected(e: Event) {
       description: "Upload fehlgeschlagen",
       color: "error",
       icon: "i-heroicons-x-mark",
+      duration: 1500,
     });
   }
 }
@@ -135,6 +138,7 @@ async function createFolder(folder: string) {
         description: "Es existiert bereits ein Order mit diesem Namen",
         color: "warning",
         icon: "i-heroicons-x-mark",
+        duration: 1500,
       });
     else
       toast.add({
@@ -143,6 +147,7 @@ async function createFolder(folder: string) {
           "Beim Erstellen des Ordners ist ein Fehler aufgetreten! Wenden Sie sich an Ihren Administrator!",
         color: "error",
         icon: "i-heroicons-x-mark",
+        duration: 1500,
       });
   }
 
@@ -177,6 +182,7 @@ async function deleteFolder(item: string, type: "dir" | "file") {
         "Beim Löschen des Ordners/Datei ist ein Fehler aufgetreten! Wenden Sie sich an Ihren Administrator!",
       color: "error",
       icon: "i-heroicons-x-mark",
+      duration: 1500,
     });
   }
 }
@@ -210,6 +216,7 @@ async function changeFolder(newName: string) {
         description: "Es existiert bereits ein Order/Datei mit diesem Namen",
         color: "warning",
         icon: "i-heroicons-x-mark",
+        duration: 1500,
       });
     else
       toast.add({
@@ -218,6 +225,7 @@ async function changeFolder(newName: string) {
           "Beim Löschen des Ordners/Datei ist ein Fehler aufgetreten! Wenden Sie sich an Ihren Administrator!",
         color: "error",
         icon: "i-heroicons-x-mark",
+        duration: 1500,
       });
   }
 
