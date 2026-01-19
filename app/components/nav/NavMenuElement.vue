@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { categories } from "~/utils/nav/nav-menu";
-import { useDevice } from "#imports";
+import { useWindowSize } from "@vueuse/core";
 
 defineProps<{
   data: Structure[];
@@ -30,8 +30,7 @@ const addingLvl2 = ref(false);
 const currentPathId = ref("");
 const currentPathUuid = ref("");
 
-const { isMobile, isTablet } = useDevice();
-const isSmallDevice = isMobile || isTablet;
+const { width } = useWindowSize();
 
 function click(
   pathId: string,
@@ -238,8 +237,11 @@ async function deleteLvl2(id: string, subId: string) {
 </script>
 
 <template>
-  <div v-if="active || !isSmallDevice" class="z-10 relative not-lg:w-full">
-    <ul class="text-sm" :class="{ hidden: isMobile, flex: !isMobile }">
+  <div v-if="active || !(width <= 1024)" class="z-10 relative not-lg:w-full">
+    <ul
+      class="text-sm"
+      :class="{ hidden: width <= 1024, flex: !(width <= 1024) }"
+    >
       <!-- normal lvl 1 -->
       <li>
         <div
@@ -411,7 +413,7 @@ async function deleteLvl2(id: string, subId: string) {
       </li>
     </ul>
 
-    <ul :class="{ hidden: !isMobile }">
+    <ul :class="{ hidden: !(width <= 1024) }">
       <li v-for="(path, index) in data" :key="path.id">
         <div
           class="flex items-center h-13 bg-[#50A9CE]/[0.33] border-b-1 border-b-gray-400"

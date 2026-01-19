@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { useRoute, useDevice } from "#imports";
+import { useRoute } from "#imports";
 import type { BreadcrumbItem } from "@nuxt/ui";
 import { getDisplayName, getRedirect } from "~/utils/nav/nav-menu";
+import { useWindowSize, useMounted } from "@vueuse/core";
 
 const items: Ref<BreadcrumbItem[]> = ref([
   {
@@ -13,12 +14,13 @@ const items: Ref<BreadcrumbItem[]> = ref([
 const structureStore = useStructureStore();
 const { loggedIn, user } = useUserSession();
 
-const { isMobile, isTablet } = useDevice();
-const isSmallDevice = isMobile || isTablet;
+const { width } = useWindowSize();
 
 const route = useRoute();
 
 const isActive = ref(false);
+
+const isMounted = useMounted();
 
 watch(
   () => route.params,
@@ -286,7 +288,7 @@ function navigateToHome() {
           </svg>
         </button>
 
-        <button v-if="isSmallDevice" @click="isActive = !isActive">
+        <button v-if="width <= 1024" @click="isActive = !isActive">
           <svg
             v-if="!isActive"
             xmlns="http://www.w3.org/2000/svg"
@@ -325,9 +327,9 @@ function navigateToHome() {
     <div
       class="flex justify-center items-start gap-1"
       :class="{
-        'mb-0': !isActive && isSmallDevice,
-        'mb-5': isActive && isSmallDevice,
-        'mb-10': !isSmallDevice,
+        'mb-0': isMounted && !isActive && width <= 1024,
+        'mb-5': isMounted && isActive && width <= 1024,
+        'mb-10': !isMounted || width > 1024,
       }"
     >
       <NavMenuElement
@@ -342,7 +344,7 @@ function navigateToHome() {
       ></NavMenuElement>
 
       <div
-        v-if="(isActive && !isMobile) || !isSmallDevice"
+        v-if="(isActive && !(width <= 1024)) || !(width <= 1024)"
         class="relative block"
       >
         <div class="flex flex-col absolute h-full justify-center ml-20">
@@ -365,7 +367,7 @@ function navigateToHome() {
 
     <div class="h-10 bg-gray-200 mb-5 lg:mb-10"></div>
 
-    <div class="flex justify-center items-center mb-3">
+    <div class="flex justify-center items-center mb-5">
       <div class="w-[90vw] lg:w-[60vw]">
         <UBreadcrumb :items="items">
           <template #item-label="{ item }">

@@ -7,14 +7,13 @@ import ChangeKernprozessForm from "~/components/content/ChangeKernprozessForm.vu
 import ChangeKernprozessNumberForm from "~/components/content/ChangeKernprozessNumberForm.vue";
 import { getSegment } from "~/utils/nav/nav-menu";
 import type { NuxtError } from "#app";
+import { useWindowSize } from "@vueuse/core";
 
 definePageMeta({
   middleware: ["authenticated"],
 });
 
-const { isMobile, isTablet } = useDevice();
-
-const isSmallDevice = isMobile || isTablet;
+const { width } = useWindowSize();
 
 const toast = useToast();
 const route = useRoute();
@@ -325,16 +324,15 @@ onMounted(() => {
 <template>
   <div>
     <div class="flex justify-center items-center">
-      <div
-        class="w-full flex justify-end"
-        :class="isSmallDevice ? 'mr-5' : 'mr-20'"
-      >
+      <div class="w-full flex justify-center mb-5">
         <UButton
           v-if="user && (user.role === 'admin' || user.role === 'editor')"
-          color="success"
-          class="text-white px-4 py-2 rounded cursor-pointer"
+          color="neutral"
+          variant="outline"
+          class="px-4 py-2 rounded cursor-pointer"
           @click="openCreate()"
         >
+          Hinzufügen
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -417,10 +415,12 @@ onMounted(() => {
       <div
         v-if="user && (user.role === 'admin' || user.role === 'editor')"
         class="flex gap-5"
-        :class="isSmallDevice ? 'ml-5' : 'ml-20'"
+        :class="width <= 1024 ? 'ml-5' : 'ml-20'"
       >
-        <button
-          class="bg-[#F18700] hover:bg-[#F87800] text-white px-4 py-2 rounded cursor-pointer"
+        <UButton
+          color="neutral"
+          variant="outline"
+          class="px-4 py-2 rounded cursor-pointer"
           @click="openEdit(kernprozess.schrittCount)"
         >
           <svg
@@ -437,10 +437,12 @@ onMounted(() => {
               d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10"
             />
           </svg>
-        </button>
+        </UButton>
 
-        <button
-          class="bg-[#F18700] hover:bg-[#F87800] text-white px-4 py-2 rounded cursor-pointer"
+        <UButton
+          color="neutral"
+          variant="outline"
+          class="px-4 py-2 rounded cursor-pointer"
           @click="openChangeNumber(kernprozess.schrittCount)"
         >
           <svg
@@ -457,11 +459,12 @@ onMounted(() => {
               d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5"
             />
           </svg>
-        </button>
+        </UButton>
 
         <UButton
           color="error"
-          class="text-white px-4 py-2 rounded cursor-pointer"
+          variant="outline"
+          class="px-4 py-2 rounded cursor-pointer"
           @click.prevent="deleteKernprozess(kernprozess.schrittCount)"
         >
           <svg
@@ -483,61 +486,69 @@ onMounted(() => {
 
       <div
         class="flex justify-center"
-        :class="isMobile ? 'flex-col mx-5 mt-5 mb-20 gap-5' : 'm-20 gap-20'"
+        :class="
+          width <= 1024 ? 'flex-col mx-5 mt-5 mb-20 gap-5' : 'm-20 gap-20'
+        "
       >
-        <div class="flex-1">
-          <h2 class="text-[#50A9CE] font-bold text-2xl">
-            Schritt {{ kernprozess.schrittCount }}
-          </h2>
-
-          <hr class="text-[#50A9CE] mb-2 mt-3 border-t-4 border-dotted" />
-
+        <div
+          class="flex-1"
+          :class="{
+            'justify-center': width <= 1024,
+            flex: width <= 1024,
+          }"
+        >
           <div>
-            <h2 class="text-[#50A9CE] font-bold mb-2">
-              VORGABEN / ARBEITSHILFEN
+            <h2 class="text-[#50A9CE] font-bold text-2xl">
+              Schritt {{ kernprozess.schrittCount }}
             </h2>
 
-            <ul class="list-disc pl-6">
-              <li
-                v-for="elem in kernprozess.vorgabenBlue"
-                :key="elem.text"
-                class="marker:text-[#50A9CE]"
-              >
-                <span
-                  v-if="elem.hasLink"
-                  class="cursor-pointer hover:underline text-blue-700"
-                  @click="fetchFile(elem.link)"
+            <hr class="text-[#50A9CE] mb-2 mt-3 border-t-4 border-dotted" />
+
+            <div>
+              <h2 class="text-[#50A9CE] font-bold mb-2">
+                VORGABEN / ARBEITSHILFEN
+              </h2>
+
+              <ul class="list-disc pl-6">
+                <li
+                  v-for="elem in kernprozess.vorgabenBlue"
+                  :key="elem.text"
+                  class="marker:text-[#50A9CE]"
                 >
-                  {{ elem.text }}
-                </span>
-                <span v-if="!elem.hasLink">{{ elem.text }}</span>
-              </li>
-            </ul>
-          </div>
+                  <span
+                    v-if="elem.hasLink"
+                    class="cursor-pointer hover:underline text-[#50A9CE]"
+                    @click="fetchFile(elem.link)"
+                  >
+                    {{ elem.text }}
+                  </span>
+                  <span v-if="!elem.hasLink">{{ elem.text }}</span>
+                </li>
+              </ul>
+            </div>
 
-          <br />
+            <div v-if="kernprozess.vorlagenBlue.length >= 1">
+              <h2 class="text-[#50A9CE] font-bold mb-2">
+                VORLAGEN SCHLUSSBERICHTE
+              </h2>
 
-          <div v-if="kernprozess.vorlagenBlue.length >= 1">
-            <h2 class="text-[#50A9CE] font-bold mb-2">
-              VORLAGEN SCHLUSSBERICHTE
-            </h2>
-
-            <ul class="list-disc pl-6">
-              <li
-                v-for="elem in kernprozess.vorlagenBlue"
-                :key="elem.text"
-                class="marker:text-[#50A9CE]"
-              >
-                <span
-                  v-if="elem.hasLink"
-                  class="cursor-pointer hover:underline text-blue-700"
-                  @click="fetchFile(elem.link)"
+              <ul class="list-disc pl-6">
+                <li
+                  v-for="elem in kernprozess.vorlagenBlue"
+                  :key="elem.text"
+                  class="marker:text-[#50A9CE]"
                 >
-                  {{ elem.text }}
-                </span>
-                <span v-if="!elem.hasLink">{{ elem.text }}</span>
-              </li>
-            </ul>
+                  <span
+                    v-if="elem.hasLink"
+                    class="cursor-pointer hover:underline text-[#50A9CE]"
+                    @click="fetchFile(elem.link)"
+                  >
+                    {{ elem.text }}
+                  </span>
+                  <span v-if="!elem.hasLink">{{ elem.text }}</span>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
 
@@ -602,53 +613,61 @@ onMounted(() => {
           />
         </div>
 
-        <div class="flex-1">
+        <div
+          class="flex-1"
+          :class="{
+            'justify-center': width <= 1024,
+            flex: width <= 1024,
+          }"
+        >
           <div>
-            <h2
-              v-if="kernprozess.aufzeichnungOrange.length >= 1"
-              class="text-[#F18700] font-bold mb-2"
-            >
-              AUFZEICHNUNGEN / DOKUMENTATION
-            </h2>
-
-            <ul class="list-disc pl-6">
-              <li
-                v-for="elem in kernprozess.aufzeichnungOrange"
-                :key="elem.text"
-                class="marker:text-[#F18700]"
+            <div>
+              <h2
+                v-if="kernprozess.aufzeichnungOrange.length >= 1"
+                class="text-[#F18700] font-bold mb-2"
               >
-                <span
-                  v-if="elem.hasLink"
-                  class="cursor-pointer hover:underline text-blue-700"
-                  @click="fetchFile(elem.link)"
+                AUFZEICHNUNGEN / DOKUMENTATION
+              </h2>
+
+              <ul class="list-disc pl-6">
+                <li
+                  v-for="elem in kernprozess.aufzeichnungOrange"
+                  :key="elem.text"
+                  class="marker:text-[#F18700]"
                 >
-                  {{ elem.text }}
-                </span>
-                <span v-if="!elem.hasLink">{{ elem.text }}</span>
-              </li>
-            </ul>
-          </div>
+                  <span
+                    v-if="elem.hasLink"
+                    class="cursor-pointer hover:underline text-[#50A9CE]"
+                    @click="fetchFile(elem.link)"
+                  >
+                    {{ elem.text }}
+                  </span>
+                  <span v-if="!elem.hasLink">{{ elem.text }}</span>
+                </li>
+              </ul>
+            </div>
 
-          <div v-if="kernprozess.verantwortlicherOrange.length >= 1">
-            <h2 class="text-[#F18700] mt-3 font-bold mb-2">
-              VERANTWORTLICHE/R
-            </h2>
-            <p class="pl-2">{{ kernprozess.verantwortlicherOrange }}</p>
-          </div>
+            <div v-if="kernprozess.verantwortlicherOrange.length >= 1">
+              <h2 class="text-[#F18700] mt-3 font-bold mb-2">
+                VERANTWORTLICHE/R
+              </h2>
+              <p class="pl-2">{{ kernprozess.verantwortlicherOrange }}</p>
+            </div>
 
-          <div v-if="kernprozess.informationOrange.length >= 1">
-            <h2 class="text-[#F18700] mt-3 font-bold mb-2">INFORMATION AN</h2>
-            <p class="pl-2">{{ kernprozess.informationOrange }}</p>
-          </div>
+            <div v-if="kernprozess.informationOrange.length >= 1">
+              <h2 class="text-[#F18700] mt-3 font-bold mb-2">INFORMATION AN</h2>
+              <p class="pl-2">{{ kernprozess.informationOrange }}</p>
+            </div>
 
-          <hr
-            v-if="
-              kernprozess.aufzeichnungOrange.length >= 1 ||
-              kernprozess.verantwortlicherOrange.length >= 1 ||
-              kernprozess.informationOrange.length >= 1
-            "
-            class="text-gray-400 mb-2 mt-3 border-t-4 border-dotted"
-          />
+            <hr
+              v-if="
+                kernprozess.aufzeichnungOrange.length >= 1 ||
+                kernprozess.verantwortlicherOrange.length >= 1 ||
+                kernprozess.informationOrange.length >= 1
+              "
+              class="text-gray-400 mb-2 mt-3 border-t-4 border-dotted"
+            />
+          </div>
         </div>
       </div>
     </div>
