@@ -31,7 +31,7 @@ function navigateToSubPath(subPath: string) {
           >
             <li>
               <h2
-                class="mt-6 mb-3 text-xl leading-snug font-semibold hover:underline cursor-pointer"
+                class="mt-6 mb-3 text-xl leading-snug font-semibold text-[#50A9CE] hover:underline cursor-pointer"
                 @click="navigateToSubPath(structureChild.uuid)"
               >
                 {{ structureChild.id }} {{ structureChild.name }}

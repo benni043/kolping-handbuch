@@ -35,7 +35,7 @@ function navigateToCategory(category: string) {
           >
             <li>
               <h2
-                class="mt-6 mb-3 text-xl leading-snug font-semibold hover:underline cursor-pointer"
+                class="mt-6 mb-3 text-xl leading-snug font-semibold text-[#50A9CE] hover:underline cursor-pointer"
                 @click="navigateToSubPath(structureChild.uuid)"
               >
                 {{ structureChild.id }} {{ structureChild.name }}
@@ -44,7 +44,7 @@ function navigateToCategory(category: string) {
               <div v-if="structureChild.uuid === route.params.subPath">
                 <ul v-for="elem in categories" :key="elem" class="pl-6">
                   <li
-                    class="mb-1 cursor-pointer hover:text-[#F18700]"
+                    class="mb-1 cursor-pointer text-[#50A9CE] hover:underline"
                     @click="navigateToCategory(getRedirect(elem)!)"
                   >
                     {{ elem }}
