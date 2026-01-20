@@ -42,9 +42,7 @@ function scrollToTop() {
       </button>
     </div>
 
-    <div
-      class="flex justify-between items-center flex-col lg:flex-row lg:justify-around"
-    >
+    <div class="flex justify-between items-center flex-col lg:flex-row">
       <img src="/img/logo.png" alt="logo" class="w-60 mb-5 lg:mt-0 lg:mb-0" />
 
       <div class="flex gap-5 text-xl flex-col lg:flex-row">

@@ -245,8 +245,8 @@ fetchUsers();
       </UButton>
     </div>
 
-    <div class="space-y-4 m-5 md:ml-20 md:mr-30 w-max">
-      <div v-for="user in users" :key="user.id" class="border-b-1 p-4">
+    <div class="w-[90vw] lg:w-[60vw]">
+      <div v-for="user in users" :key="user.id" class="w-fit">
         <div class="text-lg font-bold">{{ user.username }}</div>
         <div class="text-lg">ID: {{ user.id }}</div>
         <div class="text-lg">Rolle: {{ user.role }}</div>
@@ -320,6 +320,8 @@ fetchUsers();
             </svg>
           </UButton>
         </div>
+
+        <hr class="my-5" />
       </div>
     </div>
 

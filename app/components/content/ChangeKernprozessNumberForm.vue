@@ -20,10 +20,12 @@ async function postForm() {
 </script>
 
 <template>
-  <div class="relative h-[80vh] max-w-xl mx-auto flex flex-col overflow-hidden">
+  <div class="relative max-w-xl mx-auto flex flex-col overflow-hidden">
     <div class="flex flex-1 min-h-0">
       <div class="flex-1 h-full overflow-y-auto px-3">
-        <h1 class="mb-8 text-xl font-semibold text-center">Schritt</h1>
+        <h1 class="mb-8 text-xl font-semibold text-center">
+          Aktuelle Nummer: {{ schrittCount }}
+        </h1>
 
         <UInput
           v-model="schrittCountRef"
@@ -37,7 +39,7 @@ async function postForm() {
       </div>
     </div>
 
-    <div class="flex justify-around p-4 border-t">
+    <div class="flex justify-around p-4">
       <UButton
         color="primary"
         variant="solid"

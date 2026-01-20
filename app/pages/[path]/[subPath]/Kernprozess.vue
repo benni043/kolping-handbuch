@@ -394,7 +394,6 @@ onMounted(() => {
           :verantwortlicher-orange="undefined"
           :information-orange="undefined"
           :orange="false"
-          :editing="false"
           @send="send"
           @cancle="closeModal"
         />
@@ -410,7 +409,6 @@ onMounted(() => {
           :verantwortlicher-orange="activeKernprozess.verantwortlicherOrange"
           :information-orange="activeKernprozess.informationOrange"
           :orange="activeKernprozess.orange"
-          :editing="true"
           @send="change"
           @cancle="closeModal"
         />

@@ -238,8 +238,8 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="p-4 text-sm select-none">
-    <div class="flex flex-col mb-5 gap-5">
+  <div class="flex justify-center items-center flex-col">
+    <div class="w-[90vw] lg:w-[60vw] flex flex-col mb-5 gap-5">
       <UButton
         color="neutral"
         variant="outline"
@@ -289,9 +289,11 @@ onMounted(() => {
       </UButton>
     </div>
 
-    <span class="font-bold block mb-3 text-xl">Pfad: {{ currentPath }}</span>
+    <span class="w-[90vw] lg:w-[60vw] font-bold block mb-3 text-xl"
+      >Pfad: {{ currentPath }}</span
+    >
 
-    <ul class="space-y-1">
+    <ul class="w-[90vw] lg:w-[60vw] space-y-1">
       <li
         v-if="currentPath !== ''"
         class="cursor-pointer hover:bg-gray-200 rounded py-1 transition text-xl"
@@ -455,4 +457,8 @@ onMounted(() => {
       </template>
     </UModal>
   </div>
+
+  <!-- <div class="w-[90vw] flex justify-center flex-col p-4 text-sm select-none">
+
+  </div> -->
 </template>

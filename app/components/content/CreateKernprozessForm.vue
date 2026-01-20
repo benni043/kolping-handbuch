@@ -15,7 +15,6 @@ const props = defineProps<{
   verantwortlicherOrange: string | undefined;
   informationOrange: string | undefined;
   orange: boolean | undefined;
-  editing: boolean;
 }>();
 
 const placeholderLink =
@@ -495,7 +494,7 @@ function clearForm() {
       </div>
     </div>
 
-    <div class="flex justify-around p-4 border-t">
+    <div class="flex justify-around p-4 border-t border-t-gray-300">
       <UButton
         color="error"
         variant="solid"
@@ -513,7 +512,7 @@ function clearForm() {
         class="cursor-pointer"
         @click="postForm"
       >
-        {{ props.editing ? "Ändern" : "Senden" }}
+        Erstellen
       </UButton>
     </div>
   </div>
