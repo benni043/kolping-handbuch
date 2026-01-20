@@ -340,7 +340,7 @@ onMounted(() => {
 <template>
   <div>
     <div class="flex justify-center items-center">
-      <div class="w-full flex justify-center mb-5">
+      <div class="flex mb-5 w-[90vw] lg:w-[60vw]">
         <UButton
           v-if="user && (user.role === 'admin' || user.role === 'editor')"
           color="neutral"
@@ -425,11 +425,14 @@ onMounted(() => {
       </template>
     </UModal>
 
-    <div v-for="kernprozess in kernprozesseRef" :key="kernprozess.middleHead">
+    <div
+      v-for="kernprozess in kernprozesseRef"
+      :key="kernprozess.middleHead"
+      class="flex justify-center items-center flex-col"
+    >
       <div
         v-if="user && (user.role === 'admin' || user.role === 'editor')"
-        class="flex gap-5"
-        :class="width <= 1024 ? 'ml-5' : 'ml-20'"
+        class="flex gap-5 w-[90vw] lg:w-[60vw]"
       >
         <UButton
           color="neutral"
@@ -501,7 +504,9 @@ onMounted(() => {
       <div
         class="flex justify-center"
         :class="
-          width <= 1024 ? 'flex-col mx-5 mt-5 mb-20 gap-5' : 'm-20 gap-20'
+          width <= 1024
+            ? 'flex-col mx-5 mt-5 mb-20 gap-5'
+            : 'mx-20 mb-20 mt-10 gap-20'
         "
       >
         <div

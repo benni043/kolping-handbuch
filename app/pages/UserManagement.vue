@@ -220,11 +220,11 @@ fetchUsers();
 
 <template>
   <div class="flex justify-center items-center flex-col">
-    <div class="relative flex justify-center w-[90vw] lg:w-[60vw]">
+    <div class="relative flex w-[90vw] lg:w-[60vw]">
       <UButton
         color="neutral"
         variant="outline"
-        class="px-4 py-2 rounded cursor-pointer"
+        class="px-4 py-2 mb-5 rounded cursor-pointer"
         @click="openAddModal()"
       >
         Hinzufügen
