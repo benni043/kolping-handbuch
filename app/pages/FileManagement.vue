@@ -89,6 +89,14 @@ async function onFileSelected(e: Event) {
     });
 
     load(currentPath.value);
+
+    toast.add({
+      title: "Erfolg",
+      description: `Die Datei wurde erfolgreich hochgeladen.`,
+      color: "success",
+      icon: "i-heroicons-check",
+      duration: DURATION,
+    });
   } catch (err) {
     const error = err as NuxtError;
 
@@ -129,6 +137,14 @@ async function createFolder(folder: string) {
     });
 
     load(currentPath.value);
+
+    toast.add({
+      title: "Erfolg",
+      description: `Der Ordner wurde erfolgreich erstellt.`,
+      color: "success",
+      icon: "i-heroicons-check",
+      duration: DURATION,
+    });
   } catch (err) {
     const error = err as NuxtError;
 
@@ -175,6 +191,14 @@ async function deleteFolder(item: string, type: "dir" | "file") {
     });
 
     load(currentPath.value);
+
+    toast.add({
+      title: "Erfolg",
+      description: `Der Ordner/die Datei wurde erfolgreich gelöscht.`,
+      color: "success",
+      icon: "i-heroicons-check",
+      duration: DURATION,
+    });
   } catch {
     toast.add({
       title: "Fehler",
@@ -207,6 +231,14 @@ async function changeFolder(newName: string) {
     });
 
     load(currentPath.value);
+
+    toast.add({
+      title: "Erfolg",
+      description: `Der Ordner/die Datei wurde erfolgreich umbenannt.`,
+      color: "success",
+      icon: "i-heroicons-check",
+      duration: DURATION,
+    });
   } catch (err) {
     const error = err as NuxtError;
 
