@@ -29,7 +29,7 @@ async function updateNote(note: string) {
       description: "Die Datei wurde erfolgreich geändert!",
       color: "success",
       icon: "i-heroicons-check",
-      duration: 1500,
+      duration: DURATION,
     });
   } catch (e: unknown) {
     toast.add({
@@ -37,7 +37,7 @@ async function updateNote(note: string) {
       description: "Beim Ändern der Datei ist ein Fehler aufgetreten!",
       color: "error",
       icon: "i-heroicons-x-mark",
-      duration: 1500,
+      duration: DURATION,
     });
   }
 }

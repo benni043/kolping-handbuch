@@ -22,7 +22,7 @@ async function login() {
       description: `Willkommen ${credentials.username}!`,
       color: "success",
       icon: "i-heroicons-check",
-      duration: 1500,
+      duration: DURATION,
     });
 
     await refreshSession();
@@ -34,7 +34,7 @@ async function login() {
         "Anmeldung fehlgeschlagen! Ungültige Benutzer, Passwort Kombination",
       color: "error",
       icon: "i-heroicons-x-mark",
-      duration: 1500,
+      duration: DURATION,
     });
   }
 }
@@ -45,7 +45,7 @@ async function logout(username: string) {
     description: `Aufwiedersehen ${username}!`,
     color: "success",
     icon: "i-heroicons-check",
-    duration: 1500,
+    duration: DURATION,
   });
 
   await clearSession();

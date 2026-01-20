@@ -99,7 +99,7 @@ async function send(kernprozess: Kernprozess) {
       description: `Der Kernprozess mit der Nummer ${kernprozess.schrittCount} wurde erfolgreich erstellt!`,
       color: "success",
       icon: "i-heroicons-check",
-      duration: 1500,
+      duration: DURATION,
     });
 
     closeModal();
@@ -112,7 +112,7 @@ async function send(kernprozess: Kernprozess) {
         description: "Ein Kernprozess mit dieser Nummer existiert bereits!",
         color: "warning",
         icon: "i-heroicons-x-mark",
-        duration: 1500,
+        duration: DURATION,
       });
 
       return;
@@ -122,7 +122,7 @@ async function send(kernprozess: Kernprozess) {
         description: "Die Kernprozessnummer MUSS eine Zahl sein!",
         color: "warning",
         icon: "i-heroicons-x-mark",
-        duration: 1500,
+        duration: DURATION,
       });
 
       return;
@@ -134,7 +134,7 @@ async function send(kernprozess: Kernprozess) {
         "Beim Erstellen des Kernprozesses ist ein Fehler aufgetreten!",
       color: "error",
       icon: "i-heroicons-x-mark",
-      duration: 1500,
+      duration: DURATION,
     });
   }
 }
@@ -159,7 +159,7 @@ async function change(kernprozess: Kernprozess) {
       description: `Der Kernprozess mit der Nummer ${kernprozess.schrittCount} wurde erfolgreich geändert!`,
       color: "success",
       icon: "i-heroicons-check",
-      duration: 1500,
+      duration: DURATION,
     });
 
     closeModal();
@@ -172,7 +172,7 @@ async function change(kernprozess: Kernprozess) {
         description: "Ein Kernprozess mit dieser Nummer existiert bereits!",
         color: "warning",
         icon: "i-heroicons-x-mark",
-        duration: 1500,
+        duration: DURATION,
       });
 
       return;
@@ -182,7 +182,7 @@ async function change(kernprozess: Kernprozess) {
         description: "Die Kernprozessnummer MUSS eine Zahl sein!",
         color: "warning",
         icon: "i-heroicons-x-mark",
-        duration: 1500,
+        duration: DURATION,
       });
 
       return;
@@ -192,7 +192,7 @@ async function change(kernprozess: Kernprozess) {
       description: "Beim Ändern des Kernprozesses ist ein Fehler aufgetreten!",
       color: "error",
       icon: "i-heroicons-x-mark",
-      duration: 1500,
+      duration: DURATION,
     });
   }
 }
@@ -220,7 +220,7 @@ async function changeNumber(
       description: `Der Kernprozess mit der Nummer: ${kernprozessNumberOld} hat nun die Nummer: ${kernprozessNumberNew}!`,
       color: "success",
       icon: "i-heroicons-check",
-      duration: 1500,
+      duration: DURATION,
     });
 
     closeModal();
@@ -233,7 +233,7 @@ async function changeNumber(
         description: "Ein Kernprozess mit dieser Nummer existiert bereits!",
         color: "warning",
         icon: "i-heroicons-x-mark",
-        duration: 1500,
+        duration: DURATION,
       });
 
       return;
@@ -243,7 +243,7 @@ async function changeNumber(
         description: "Die Kernprozessnummer MUSS eine Zahl sein!",
         color: "warning",
         icon: "i-heroicons-x-mark",
-        duration: 1500,
+        duration: DURATION,
       });
 
       return;
@@ -255,7 +255,7 @@ async function changeNumber(
         "Beim Ändern der Kernprozessnummer ist ein Fehler aufgetreten!",
       color: "error",
       icon: "i-heroicons-x-mark",
-      duration: 1500,
+      duration: DURATION,
     });
   }
 

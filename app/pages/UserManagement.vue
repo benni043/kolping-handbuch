@@ -40,7 +40,7 @@ async function fetchUsers() {
         "Es ist ein unerwarteter Fehler aufgetreten, wenden Sie sich an Ihren Administrator!",
       color: "error",
       icon: "i-heroicons-x-mark",
-      duration: 1500,
+      duration: DURATION,
     });
   }
 }
@@ -88,7 +88,7 @@ async function addUser(username: string, password: string, role: string) {
       description: "Der Benutzer wurde erfolreich hinzugefügt!",
       color: "success",
       icon: "i-heroicons-check",
-      duration: 1500,
+      duration: DURATION,
     });
   } catch {
     toast.add({
@@ -96,7 +96,7 @@ async function addUser(username: string, password: string, role: string) {
       description: "Beim Hinzufügen des Benutzers ist ein Fehler aufgetreten!",
       color: "error",
       icon: "i-heroicons-x-mark",
-      duration: 1500,
+      duration: DURATION,
     });
   }
 }
@@ -127,7 +127,7 @@ async function changeUserName(id: number, username: string, role: string) {
       description: "Der Benutzer wurde erfolgreich geändert!",
       color: "success",
       icon: "i-heroicons-check",
-      duration: 1500,
+      duration: DURATION,
     });
   } catch {
     toast.add({
@@ -135,7 +135,7 @@ async function changeUserName(id: number, username: string, role: string) {
       description: "Beim Ändern des Benutzers ist ein Fehler aufgetreten!",
       color: "error",
       icon: "i-heroicons-x-mark",
-      duration: 1500,
+      duration: DURATION,
     });
   }
 }
@@ -160,7 +160,7 @@ async function deleteUser(id: number) {
       description: "Der Benutzer wurde erfolreich gelöscht!",
       color: "success",
       icon: "i-heroicons-check",
-      duration: 1500,
+      duration: DURATION,
     });
   } catch (e: unknown) {
     toast.add({
@@ -168,7 +168,7 @@ async function deleteUser(id: number) {
       description: "Beim Löschen des Benutzers ist ein Fehler aufgetreten!",
       color: "error",
       icon: "i-heroicons-x-mark",
-      duration: 1500,
+      duration: DURATION,
     });
   }
 }
@@ -202,7 +202,7 @@ async function changeUserPassword(id: number, password: string) {
       description: "Das Passwort wurde erfolgreich geändert!",
       color: "success",
       icon: "i-heroicons-check",
-      duration: 1500,
+      duration: DURATION,
     });
   } catch (e: unknown) {
     toast.add({
@@ -210,7 +210,7 @@ async function changeUserPassword(id: number, password: string) {
       description: "Beim Ändern des Passworts ist ein Fehler aufgetreten!",
       color: "error",
       icon: "i-heroicons-x-mark",
-      duration: 1500,
+      duration: DURATION,
     });
   }
 }
