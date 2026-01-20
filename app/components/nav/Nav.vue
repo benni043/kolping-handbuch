@@ -173,11 +173,9 @@ function navigateToHome() {
 <template>
   <ClientOnly>
     <div>
-      <div
-        class="flex items-center justify-between lg:mx-5 mt-5 mb-5 lg:mb-7 mx-3"
-      >
+      <div class="flex items-center justify-between lg:m-5 m-3">
         <img
-          class="not-lg:w-40 lg:w-60 cursor-pointer lg:mb-0"
+          class="not-lg:w-40 lg:w-60 cursor-pointer"
           src="/img/logo.png"
           alt="logo"
           @click="navigateToHome()"
