@@ -233,14 +233,15 @@ async function changeFolder(newName: string) {
 }
 
 async function copyPath(path: string) {
-  console.log(currentPath.value + "/" + path);
-
   try {
-    await navigator.clipboard.writeText(currentPath.value + "/" + path);
+    const copy =
+      currentPath.value === "" ? path : currentPath.value + "/" + path;
+
+    await navigator.clipboard.writeText(copy);
 
     toast.add({
       title: "Erfolg",
-      description: `'${currentPath.value + "/" + path}' wurde erfolgreich in die Zwischenablage kopiert!`,
+      description: `'${copy}' wurde erfolgreich in die Zwischenablage kopiert!`,
       color: "success",
       icon: "i-heroicons-check",
       duration: DURATION,
