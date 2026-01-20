@@ -2,6 +2,7 @@ export interface KernprozessElementLink {
   text: string;
   hasLink: boolean;
   link: string;
+  redirect: boolean;
 }
 
 export interface Kernprozess {

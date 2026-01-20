@@ -1,18 +1,1 @@
-{
-  "schrittCount": 2,
-  "vorgabenBlue": [
-    { "text": "KP 01.3 „Wirtschaften im Verein“", "hasLink": true, "link": "" }
-  ],
-  "vorlagenBlue": [],
-  "middleHead": "Ergänzungen zum Budget",
-  "middleList": [
-    { "text": "Budget wird diskutiert und angepasst;" },
-    { "text": "erforderliche Mittel werden beschafft" }
-  ],
-  "aufzeichnungOrange": [
-    { "text": "Budget-Voranschlag (KP 01.3)", "hasLink": false, "link": "" }
-  ],
-  "verantwortlicherOrange": "Vorsitzende/r, Vorsitzende/r des Wirtschaftsvorstands\nin Zusammenarbeit mit der Geschäftsführung",
-  "informationOrange": "",
-  "orange": false
-}
+{"schrittCount":2,"vorgabenBlue":[{"text":"KP 01.3 „Wirtschaften im Verein“","hasLink":true,"link":"/8f1a2b3c-4d5e-4f6a-9b7c-1e2d3f4a5b6c/3c4d5e6f-7a8b-9c0d-1e2f-3a4b5c6d7e8f/arbeitshilfen","redirect":true}],"vorlagenBlue":[],"middleHead":"Ergänzungen zum Budget","middleList":[{"text":"Budget wird diskutiert und angepasst;"},{"text":"erforderliche Mittel werden beschafft"}],"aufzeichnungOrange":[{"text":"Budget-Voranschlag (KP 01.3)","hasLink":false,"link":""}],"verantwortlicherOrange":"Vorsitzende/r, Vorsitzende/r des Wirtschaftsvorstands\nin Zusammenarbeit mit der Geschäftsführung","informationOrange":"","orange":false}

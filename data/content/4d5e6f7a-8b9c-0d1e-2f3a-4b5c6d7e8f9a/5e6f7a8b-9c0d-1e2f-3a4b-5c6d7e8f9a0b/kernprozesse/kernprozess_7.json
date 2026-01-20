@@ -1,13 +1,1 @@
-{
-  "schrittCount": 7,
-  "vorgabenBlue": [
-    { "text": "KP 07.2 „Öffentlichkeitsarbeit“", "hasLink": true, "link": "" }
-  ],
-  "vorlagenBlue": [],
-  "middleHead": "Bewerbung von Vereinsangeboten",
-  "middleList": [{ "text": "Lt. Kernprozess 07.2 „Öffentlichkeitsarbeit“" }],
-  "aufzeichnungOrange": [{ "text": "Protokoll", "hasLink": false, "link": "" }],
-  "verantwortlicherOrange": "Vorstand oder LeiterIn Team ÖA",
-  "informationOrange": "alle im Verein und im Haus",
-  "orange": false
-}
+{"schrittCount":7,"vorgabenBlue":[{"text":"KP 07.2 „Öffentlichkeitsarbeit“","hasLink":true,"link":"/5c6d7e8f-9a0b-1c2d-3e4f-5a6b7c8d9e0a/7e8f9a0b-1c2d-3e4f-5a6b-7c8d9e0a1b2c","redirect":true}],"vorlagenBlue":[],"middleHead":"Bewerbung von Vereinsangeboten","middleList":[{"text":"Lt. Kernprozess 07.2 „Öffentlichkeitsarbeit“"}],"aufzeichnungOrange":[{"text":"Protokoll","hasLink":false,"link":""}],"verantwortlicherOrange":"Vorstand oder LeiterIn Team ÖA","informationOrange":"alle im Verein und im Haus","orange":false}

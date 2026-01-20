@@ -18,21 +18,31 @@ const props = defineProps<{
   editing: boolean;
 }>();
 
+const placeholderLink =
+  "[path]/[subPath]/{kernprozesse/arbeitshilfen}/[file].[endung]";
+const placeholderRedirect = "/[uuid]/{uuid}/{file.md}";
+
 const emit = defineEmits(["cancle", "send"]);
 
 const schrittCountRef = ref(props.schrittCount || 1);
 const vorgabenBlueRef = ref<KernprozessElementLink[]>(
-  props.vorgabenBlue || [{ text: "", hasLink: false, link: "" }],
+  props.vorgabenBlue || [
+    { text: "", hasLink: false, link: "", redirect: false },
+  ],
 );
 const vorlagenBlueRef = ref<KernprozessElementLink[]>(
-  props.vorlagenBlue || [{ text: "", hasLink: false, link: "" }],
+  props.vorlagenBlue || [
+    { text: "", hasLink: false, link: "", redirect: false },
+  ],
 );
 const middleHeadRef = ref(props.middleHead || "");
 const middleListRef = ref<{ text: string }[]>(
   props.middleList || [{ text: "" }],
 );
 const aufzeichnungOrangeRef = ref<KernprozessElementLink[]>(
-  props.aufzeichnungOrange || [{ text: "", hasLink: false, link: "" }],
+  props.aufzeichnungOrange || [
+    { text: "", hasLink: false, link: "", redirect: false },
+  ],
 );
 const verantwortlicherOrangeRef = ref(props.verantwortlicherOrange || "");
 const informationOrangeRef = ref(props.informationOrange || "");
@@ -52,13 +62,23 @@ function prevStep() {
 }
 
 function addVorgabeBlue() {
-  vorgabenBlueRef.value.push({ text: "", hasLink: false, link: "" });
+  vorgabenBlueRef.value.push({
+    text: "",
+    hasLink: false,
+    link: "",
+    redirect: false,
+  });
 }
 function removeVorgabeBlue(i: number) {
   vorgabenBlueRef.value.splice(i, 1);
 }
 function addVorlagenBlue() {
-  vorlagenBlueRef.value.push({ text: "", hasLink: false, link: "" });
+  vorlagenBlueRef.value.push({
+    text: "",
+    hasLink: false,
+    link: "",
+    redirect: false,
+  });
 }
 function removeVorlagenBlue(i: number) {
   vorlagenBlueRef.value.splice(i, 1);
@@ -70,7 +90,12 @@ function removeMiddleList(i: number) {
   middleListRef.value.splice(i, 1);
 }
 function addAufzeichnungOrange() {
-  aufzeichnungOrangeRef.value.push({ text: "", hasLink: false, link: "" });
+  aufzeichnungOrangeRef.value.push({
+    text: "",
+    hasLink: false,
+    link: "",
+    redirect: false,
+  });
 }
 function removeAufzeichnungOrange(i: number) {
   aufzeichnungOrangeRef.value.splice(i, 1);
@@ -155,12 +180,26 @@ function clearForm() {
               v-model="item.hasLink"
               label="Als Link hinzufügen"
               class="my-3 ml-1"
+              @update:model-value="
+                (val) => {
+                  if (!val) item.redirect = false;
+                }
+              "
+            />
+
+            <UCheckbox
+              v-model="item.redirect"
+              :disabled="!item.hasLink"
+              label="Als Weiterleitung hinzufügen"
+              class="my-3 ml-1"
             />
 
             <UInput
               v-if="item.hasLink"
               v-model="item.link"
-              placeholder="[path]/[subPath]/{kernprozesse/arbeitshilfen}/[file].[endung]"
+              :placeholder="
+                item.redirect ? placeholderRedirect : placeholderLink
+              "
               icon="i-heroicons-link"
               size="lg"
               class="w-full"
@@ -209,11 +248,25 @@ function clearForm() {
               v-model="item.hasLink"
               label="Als Link hinzufügen"
               class="my-3 ml-1"
+              @update:model-value="
+                (val) => {
+                  if (!val) item.redirect = false;
+                }
+              "
+            />
+
+            <UCheckbox
+              v-model="item.redirect"
+              :disabled="!item.hasLink"
+              label="Als Weiterleitung hinzufügen"
+              class="my-3 ml-1"
             />
             <UInput
               v-if="item.hasLink"
               v-model="item.link"
-              placeholder="[path]/[subPath]/{kernprozesse/arbeitshilfen}/[file].[endung]"
+              :placeholder="
+                item.redirect ? placeholderRedirect : placeholderLink
+              "
               icon="i-heroicons-link"
               size="lg"
               class="w-full"
@@ -319,12 +372,26 @@ function clearForm() {
             <UCheckbox
               v-model="item.hasLink"
               label="Als Link hinzufügen"
-              class="my-5"
+              class="my-3 ml-1"
+              @update:model-value="
+                (val) => {
+                  if (!val) item.redirect = false;
+                }
+              "
+            />
+
+            <UCheckbox
+              v-model="item.redirect"
+              :disabled="!item.hasLink"
+              label="Als Weiterleitung hinzufügen"
+              class="my-3 ml-1"
             />
             <UInput
               v-if="item.hasLink"
               v-model="item.link"
-              placeholder="[path]/[subPath]/{kernprozesse/arbeitshilfen}/[file].[endung]"
+              :placeholder="
+                item.redirect ? placeholderRedirect : placeholderLink
+              "
               icon="i-heroicons-link"
               size="lg"
               class="w-full"

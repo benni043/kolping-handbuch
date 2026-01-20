@@ -328,6 +328,10 @@ async function fetchFile(link: string) {
   }
 }
 
+function redirect(link: string) {
+  navigateTo(link);
+}
+
 onMounted(() => {
   fetchKernprozesse();
 });
@@ -530,7 +534,9 @@ onMounted(() => {
                   <span
                     v-if="elem.hasLink"
                     class="cursor-pointer hover:underline text-[#50A9CE]"
-                    @click="fetchFile(elem.link)"
+                    @click="
+                      elem.redirect ? redirect(elem.link) : fetchFile(elem.link)
+                    "
                   >
                     {{ elem.text }}
                   </span>
@@ -553,7 +559,9 @@ onMounted(() => {
                   <span
                     v-if="elem.hasLink"
                     class="cursor-pointer hover:underline text-[#50A9CE]"
-                    @click="fetchFile(elem.link)"
+                    @click="
+                      elem.redirect ? redirect(elem.link) : fetchFile(elem.link)
+                    "
                   >
                     {{ elem.text }}
                   </span>
@@ -650,7 +658,9 @@ onMounted(() => {
                   <span
                     v-if="elem.hasLink"
                     class="cursor-pointer hover:underline text-[#50A9CE]"
-                    @click="fetchFile(elem.link)"
+                    @click="
+                      elem.redirect ? redirect(elem.link) : fetchFile(elem.link)
+                    "
                   >
                     {{ elem.text }}
                   </span>

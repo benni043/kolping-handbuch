@@ -9,6 +9,7 @@ export default defineNuxtRouteMiddleware((to) => {
       description: "Sie müssen angemeldet sein, um diesen Inhalt zu sehen!",
       color: "error",
       icon: "i-heroicons-x-mark",
+      duration: 1500,
     });
     return navigateTo(`/kolping/login`);
   }
