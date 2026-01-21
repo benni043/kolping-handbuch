@@ -578,7 +578,7 @@ onMounted(() => {
 
         <div class="relative flex-2 mx-auto">
           <h3
-            class="absolute top-2.5 left-3 text-white font-bold text-md xl:text-xl z-10"
+            class="absolute h-fit left-3 text-white font-bold text-md xl:text-xl z-10"
           >
             {{ kernprozess.middleHead }}
           </h3>
@@ -587,7 +587,7 @@ onMounted(() => {
             v-if="!kernprozess.orange"
             src="/img/kernprozess/kernprozess_header_orange.png"
             alt="blue"
-            class="w-full"
+            class="w-full h-full"
           />
           <img
             v-else
