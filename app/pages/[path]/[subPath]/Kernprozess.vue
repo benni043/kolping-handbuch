@@ -503,11 +503,12 @@ onMounted(() => {
 
       <div
         class="flex justify-center"
-        :class="
-          width <= MOBILE_WIDTH
-            ? 'flex-col mx-5 mt-5 mb-20 gap-5'
-            : 'mx-20 mb-20 mt-10 gap-20'
-        "
+        :class="{
+          'flex-col mx-5 mt-5 mb-20 gap-5': width <= MOBILE_WIDTH,
+          'mx-20 mb-20 mt-10 gap-20': width >= MOBILE_WIDTH,
+          'w-[80vw]': width >= 1400 && width <= 1600,
+          'w-[60vw]': width >= 1600,
+        }"
       >
         <div
           class="flex-1"
@@ -516,7 +517,7 @@ onMounted(() => {
             flex: width <= MOBILE_WIDTH,
           }"
         >
-          <div class="w-full max-w-[600px]">
+          <div :class="{ 'w-full': width <= MOBILE_WIDTH }">
             <h2 class="text-[#50A9CE] font-bold text-2xl">
               Schritt {{ kernprozess.schrittCount }}
             </h2>
@@ -575,7 +576,7 @@ onMounted(() => {
           </div>
         </div>
 
-        <div class="relative flex-2 max-w-[600px] w-full mx-auto">
+        <div class="relative flex-2 mx-auto">
           <h3
             class="absolute top-2.5 left-3 text-white font-bold text-md xl:text-xl z-10"
           >
@@ -643,7 +644,7 @@ onMounted(() => {
             flex: width <= MOBILE_WIDTH,
           }"
         >
-          <div class="w-full max-w-[600px]">
+          <div :class="{ 'w-full': width <= MOBILE_WIDTH }">
             <div>
               <h2
                 v-if="kernprozess.aufzeichnungOrange.length >= 1"
