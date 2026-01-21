@@ -1,1 +1,47 @@
-{"schrittCount":1,"vorgabenBlue":[{"text":"KP 03.1 \"Vereinsentwicklung\"","hasLink":true,"link":"/6f7a8b9c-0d1e-2f3a-4b5c-6d7e8f9a0b1c/7a8b9c0d-1e2f-3a4b-5c6d-7e8f9a0b1c2d/arbeitshilfen","redirect":true},{"text":"Leitbild","hasLink":false,"link":""},{"text":"Bausteine \"Kolping belebt, Quellen unseres Handelns\"","hasLink":false,"link":""},{"text":"KP 01.3 \"Budgetplanung\"","hasLink":true,"link":"/8f1a2b3c-4d5e-4f6a-9b7c-1e2d3f4a5b6c/3c4d5e6f-7a8b-9c0d-1e2f-3a4b5c6d7e8f/arbeitshilfen","redirect":true}],"vorlagenBlue":[],"middleHead":"Vergabepolitik / Nutzung festlegen","middleList":[{"text":"Kriterium der Wirtschaftlichkeit und Kolping-Idee der Hilfe für Schwächere „unter einen Hut“ bringen (Bezug zur Kolping-Idee!)"},{"text":"(Anm.: Hier geht es darum, im Rahmen der Grundaufgabe (z.B: Jugendwohnen) flexibel zu bleiben für konkrete „Nöte der Zeit“, etwa Anfragen von Flüchtlingsorganisationen, sozial Bedürftiger u.a.)"}],"aufzeichnungOrange":[{"text":"Klarer Auftrag: WAS wollen wir?","hasLink":false,"link":""}],"verantwortlicherOrange":"Präsidium od. Generalversammlung","informationOrange":"GeschäftsführerIn","orange":true}
+{
+  "schrittCount": 1,
+  "vorgabenBlue": [
+    {
+      "text": "KP 03.1 \"Vereinsentwicklung\"",
+      "hasLink": true,
+      "link": "/6f7a8b9c-0d1e-2f3a-4b5c-6d7e8f9a0b1c/7a8b9c0d-1e2f-3a4b-5c6d-7e8f9a0b1c2d/arbeitshilfen",
+      "redirect": true
+    },
+    {
+      "text": "Leitbild",
+      "hasLink": false,
+      "link": ""
+    },
+    {
+      "text": "Bausteine \"Kolping belebt, Quellen unseres Handelns\"",
+      "hasLink": false,
+      "link": ""
+    },
+    {
+      "text": "KP 01.3 \"Budgetplanung\"",
+      "hasLink": true,
+      "link": "/8f1a2b3c-4d5e-4f6a-9b7c-1e2d3f4a5b6c/3c4d5e6f-7a8b-9c0d-1e2f-3a4b5c6d7e8f/arbeitshilfen",
+      "redirect": true
+    }
+  ],
+  "vorlagenBlue": [],
+  "middleHead": "Vergabepolitik / Nutzung festlegen",
+  "middleList": [
+    {
+      "text": "Kriterium der Wirtschaftlichkeit und Kolping-Idee der Hilfe für Schwächere „unter einen Hut“ bringen (Bezug zur Kolping-Idee!)"
+    },
+    {
+      "text": "(Anm.: Hier geht es darum, im Rahmen der Grundaufgabe (z.B: Jugendwohnen) flexibel zu bleiben für konkrete „Nöte der Zeit“, etwa Anfragen von Flüchtlingsorganisationen, sozial Bedürftiger u.a.)"
+    }
+  ],
+  "aufzeichnungOrange": [
+    {
+      "text": "Klarer Auftrag: WAS wollen wir?",
+      "hasLink": false,
+      "link": ""
+    }
+  ],
+  "verantwortlicherOrange": "Präsidium od. Generalversammlung",
+  "informationOrange": "GeschäftsführerIn",
+  "orange": true
+}
