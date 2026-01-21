@@ -174,19 +174,13 @@ async function addLvl1Menu(menuName: string, subMenuName: string) {
 }
 
 const currentName = ref("");
-const currentId = ref("");
-const currentSubId = ref("");
+const currentUUID = ref("");
 
-function openRenameForm(id: Structure, subId: ChildStructure | null) {
+function openRenameForm(uuid: string, name: string) {
   renameFormOpen.value = true;
 
-  if (subId === null) currentName.value = id.name;
-  else {
-    currentName.value = subId!.name;
-    currentSubId.value = subId!.uuid;
-  }
-
-  currentId.value = id.uuid;
+  currentUUID.value = uuid;
+  currentName.value = name;
 }
 
 async function deleteLvl1(uuid: string, id: string) {
@@ -262,13 +256,38 @@ async function deleteLvl2(id: string, subId: string) {
 }
 
 async function rename(newName: string) {
-  console.log(newName);
+  try {
+    await $fetch(`/api/content`, {
+      method: "PUT",
+      body: {
+        uuid: currentUUID.value,
+        name: newName,
+      },
+    });
+
+    emit("refetch");
+
+    toast.add({
+      title: "Erfolg",
+      description: "Der Menupunkt wurde erfolgreich umbenannt!",
+      color: "success",
+      icon: "i-heroicons-check",
+      duration: DURATION,
+    });
+  } catch (e: unknown) {
+    toast.add({
+      title: "Fehler",
+      description: "Beim Umbennenen des Menupunkts ist ein Fehler aufgetreten!",
+      color: "error",
+      icon: "i-heroicons-x-mark",
+      duration: DURATION,
+    });
+  }
 
   renameFormOpen.value = false;
 
   currentName.value = "";
-  currentSubId.value = "";
-  currentId.value = "";
+  currentUUID.value = "";
 }
 </script>
 
@@ -386,7 +405,7 @@ async function rename(newName: string) {
                   v-for="subPath in path.children"
                   :key="subPath.id"
                   class="relative h-11 flex items-center justify-center bg-[#ABE0D9] ml-1 min-w-12 hover:text-[#F18700] cursor-pointer border-b-1 border-b-gray-400"
-                  @click.stop="openRenameForm(path, subPath)"
+                  @click.stop="openRenameForm(subPath.uuid, subPath.name)"
                 >
                   <b>
                     <svg
@@ -460,7 +479,7 @@ async function rename(newName: string) {
             v-for="path in data"
             :key="path.id"
             class="relative h-11 flex items-center justify-center bg-[#ABE0D9] ml-1 min-w-12 cursor-pointer hover:text-[#F18700] border-b-1 border-b-gray-400"
-            @click.stop="openRenameForm(path, null)"
+            @click.stop="openRenameForm(path.uuid, path.name)"
           >
             <b>
               <svg
@@ -534,7 +553,7 @@ async function rename(newName: string) {
           <b
             v-if="user?.role === 'admin' || user?.role === 'editor'"
             class="mr-3 ml-3"
-            @click.stop="openRenameForm(path, null)"
+            @click.stop="openRenameForm(path.uuid, path.name)"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -632,7 +651,7 @@ async function rename(newName: string) {
               <b
                 v-if="user?.role === 'admin' || user?.role === 'editor'"
                 class="mr-3 ml-3"
-                @click.stop="openRenameForm(path, subPath)"
+                @click.stop="openRenameForm(subPath.uuid, subPath.name)"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
