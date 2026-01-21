@@ -587,7 +587,7 @@ onMounted(() => {
             v-if="!kernprozess.orange"
             src="/img/kernprozess/kernprozess_header_orange.png"
             alt="blue"
-            class="w-full h-full"
+            class="w-full"
           />
           <img
             v-else
