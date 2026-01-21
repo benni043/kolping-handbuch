@@ -25,23 +25,35 @@ const emit = defineEmits(["cancle", "send"]);
 
 const schrittCountRef = ref(props.schrittCount || 1);
 const vorgabenBlueRef = ref<KernprozessElementLink[]>(
-  props.vorgabenBlue || [
-    { text: "", hasLink: false, link: "", redirect: false },
-  ],
+  structuredClone(
+    toRaw(
+      props.vorgabenBlue || [
+        { text: "", hasLink: false, link: "", redirect: false },
+      ],
+    ),
+  ),
 );
 const vorlagenBlueRef = ref<KernprozessElementLink[]>(
-  props.vorlagenBlue || [
-    { text: "", hasLink: false, link: "", redirect: false },
-  ],
+  structuredClone(
+    toRaw(
+      props.vorlagenBlue || [
+        { text: "", hasLink: false, link: "", redirect: false },
+      ],
+    ),
+  ),
 );
 const middleHeadRef = ref(props.middleHead || "");
 const middleListRef = ref<{ text: string }[]>(
-  props.middleList || [{ text: "" }],
+  structuredClone(toRaw(props.middleList || [{ text: "" }])),
 );
 const aufzeichnungOrangeRef = ref<KernprozessElementLink[]>(
-  props.aufzeichnungOrange || [
-    { text: "", hasLink: false, link: "", redirect: false },
-  ],
+  structuredClone(
+    toRaw(
+      props.aufzeichnungOrange || [
+        { text: "", hasLink: false, link: "", redirect: false },
+      ],
+    ),
+  ),
 );
 const verantwortlicherOrangeRef = ref(props.verantwortlicherOrange || "");
 const informationOrangeRef = ref(props.informationOrange || "");
