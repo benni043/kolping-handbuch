@@ -23,7 +23,7 @@ const placeholderRedirect = "/[uuid]/{uuid}/{file.md}";
 
 const emit = defineEmits(["cancle", "send"]);
 
-const STEPS = 9;
+const STEPS = 6;
 const currentStep = ref(0);
 
 function nextStep() {
@@ -113,21 +113,10 @@ function removeAufzeichnungOrange(index: number) {
 }
 
 async function postForm() {
-  if (props.editing) {
-    if (
-      !confirm(
-        "Sind Sie sicher, dass sie diesen Kernprozess verändern möchten?",
-      )
-    )
-      return;
-  } else {
-    if (
-      !confirm(
-        "Sind Sie sicher, dass sie diesen Kernprozess erstellen möchten?",
-      )
-    )
-      return;
-  }
+  if (
+    !confirm("Sind Sie sicher, dass sie diesen Kernprozess erstellen möchten?")
+  )
+    return;
 
   const data: Kernprozess = {
     schrittCount: schrittCountRef.value,
@@ -188,6 +177,27 @@ function clearForm() {
             class="w-full"
             min="1"
           />
+
+          <h1 class="my-8 text-xl font-semibold text-center">
+            Überschrift Kernprozess
+          </h1>
+
+          <UInput
+            v-model="middleHeadRef"
+            placeholder="Überschrift Kernprozess"
+            icon="i-heroicons-document-text"
+            size="lg"
+            class="w-full"
+          />
+
+          <h1 class="my-8 text-xl font-semibold text-center">
+            Bezug zur Kolping-Idee?
+          </h1>
+
+          <select v-model="orangeRef" class="w-full border rounded-lg p-2">
+            <option :value="true">Ja</option>
+            <option :value="false">Nein</option>
+          </select>
         </div>
 
         <div v-if="currentStep === 1">
@@ -330,20 +340,6 @@ function clearForm() {
 
         <div v-if="currentStep === 3">
           <h1 class="mb-8 text-xl font-semibold text-center">
-            Überschrift Kernprozess
-          </h1>
-
-          <UInput
-            v-model="middleHeadRef"
-            placeholder="Überschrift Kernprozess"
-            icon="i-heroicons-document-text"
-            size="lg"
-            class="w-full"
-          />
-        </div>
-
-        <div v-if="currentStep === 4">
-          <h1 class="mb-8 text-xl font-semibold text-center">
             Kernprozess Inhalt
           </h1>
 
@@ -380,18 +376,7 @@ function clearForm() {
           </UButton>
         </div>
 
-        <div v-if="currentStep === 5">
-          <h1 class="mb-8 text-xl font-semibold text-center">
-            Bezug zur Kolping-Idee?
-          </h1>
-
-          <select v-model="orangeRef" class="w-full border rounded-lg p-2">
-            <option :value="true">Ja</option>
-            <option :value="false">Nein</option>
-          </select>
-        </div>
-
-        <div v-if="currentStep === 6">
+        <div v-if="currentStep === 4">
           <h1 class="mb-8 text-xl font-semibold text-center">
             Aufzeichnungen / Dokumentation
           </h1>
@@ -460,7 +445,7 @@ function clearForm() {
           </UButton>
         </div>
 
-        <div v-if="currentStep === 7">
+        <div v-if="currentStep === 5">
           <h1 class="mb-8 text-xl font-semibold text-center">
             Verantwortliche/r
           </h1>
@@ -471,10 +456,8 @@ function clearForm() {
             autoresize
             class="w-full"
           />
-        </div>
 
-        <div v-if="currentStep === 8">
-          <h1 class="mb-8 text-xl font-semibold text-center">Information an</h1>
+          <h1 class="my-8 text-xl font-semibold text-center">Information an</h1>
 
           <UTextarea
             v-model="informationOrangeRef"

@@ -740,8 +740,9 @@ async function rename(newName: string) {
                         ? enterSubSub(subSubIndex)
                         : leaveSubSub(true)
                     "
-                    >{{ category }}</b
                   >
+                    {{ category }}
+                  </b>
                 </div>
               </li>
             </ul>
