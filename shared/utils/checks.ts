@@ -38,4 +38,7 @@ export const FOLDER_ERROR_MSG =
 export const FILE_ERROR_MSG =
   "Der Dateiname muss mindestens 2 Zeichen lang sein";
 
+export const MENU_ERROR_MSG =
+  "Der Menuname muss mindestens 4 Zeichen lang sein";
+
 export const PASSWORD_MATCH_ERROR_MSG = "Passwörter stimmen nicht überein";

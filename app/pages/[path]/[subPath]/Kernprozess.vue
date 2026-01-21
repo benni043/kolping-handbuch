@@ -504,7 +504,7 @@ onMounted(() => {
       <div
         class="flex justify-center"
         :class="
-          width <= 1024
+          width <= MOBILE_WIDTH
             ? 'flex-col mx-5 mt-5 mb-20 gap-5'
             : 'mx-20 mb-20 mt-10 gap-20'
         "
@@ -512,8 +512,8 @@ onMounted(() => {
         <div
           class="flex-1"
           :class="{
-            'justify-center': width <= 1024,
-            flex: width <= 1024,
+            'justify-center': width <= MOBILE_WIDTH,
+            flex: width <= MOBILE_WIDTH,
           }"
         >
           <div class="w-full max-w-[600px]">
@@ -639,8 +639,8 @@ onMounted(() => {
         <div
           class="flex-1"
           :class="{
-            'justify-center': width <= 1024,
-            flex: width <= 1024,
+            'justify-center': width <= MOBILE_WIDTH,
+            flex: width <= MOBILE_WIDTH,
           }"
         >
           <div class="w-full max-w-[600px]">

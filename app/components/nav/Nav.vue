@@ -285,7 +285,7 @@ function navigateToHome() {
             </svg>
           </button>
 
-          <button v-if="width <= 1024" @click="isActive = !isActive">
+          <button v-if="width <= MOBILE_WIDTH" @click="isActive = !isActive">
             <svg
               v-if="!isActive"
               xmlns="http://www.w3.org/2000/svg"
@@ -324,9 +324,9 @@ function navigateToHome() {
       <div
         class="flex justify-center items-start gap-1"
         :class="{
-          'mb-0': !isActive && width <= 1024,
-          'mb-5': isActive && width <= 1024,
-          'mb-10': width > 1024,
+          'mb-0': !isActive && width <= MOBILE_WIDTH,
+          'mb-5': isActive && width <= MOBILE_WIDTH,
+          'mb-10': width > MOBILE_WIDTH,
         }"
       >
         <NavMenuElement
@@ -341,7 +341,9 @@ function navigateToHome() {
         ></NavMenuElement>
 
         <div
-          v-if="(isActive && !(width <= 1024)) || !(width <= 1024)"
+          v-if="
+            (isActive && !(width <= MOBILE_WIDTH)) || !(width <= MOBILE_WIDTH)
+          "
           class="relative block"
         >
           <div class="flex flex-col absolute h-full justify-center ml-20">
