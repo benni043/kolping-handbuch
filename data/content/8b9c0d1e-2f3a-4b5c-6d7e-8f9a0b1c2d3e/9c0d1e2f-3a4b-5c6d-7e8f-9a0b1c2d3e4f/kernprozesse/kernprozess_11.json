@@ -1,8 +1,17 @@
 {
   "schrittCount": 11,
   "vorgabenBlue": [
-    { "text": "KP 07.2 „Öffentlichkeitsarbeit“", "hasLink": true, "link": "" },
-    { "text": "AH 03 „Bundesjugendförderung“", "hasLink": true, "link": "" }
+    {
+      "text": "KP 07.2 „Öffentlichkeitsarbeit“",
+      "hasLink": true,
+      "link": "/5c6d7e8f-9a0b-1c2d-3e4f-5a6b7c8d9e0a/7e8f9a0b-1c2d-3e4f-5a6b-7c8d9e0a1b2c/arbeitshilfen",
+      "redirect": true
+    },
+    {
+      "text": "AH 03 „Bundesjugendförderung“",
+      "hasLink": true,
+      "link": ""
+    }
   ],
   "vorlagenBlue": [],
   "middleHead": "„Projektmarketing“",
@@ -18,7 +27,11 @@
     }
   ],
   "aufzeichnungOrange": [
-    { "text": "PR-Konzept", "hasLink": false, "link": "" }
+    {
+      "text": "PR-Konzept",
+      "hasLink": false,
+      "link": ""
+    }
   ],
   "verantwortlicherOrange": "ProjektleiterIn",
   "informationOrange": "Jugendvorstand",

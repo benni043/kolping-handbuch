@@ -3,8 +3,9 @@
   "vorgabenBlue": [
     {
       "text": "Schematismus KÖ",
-      "hasLink": true,
-      "link": "http://www.kolpingjugend.at"
+      "hasLink": false,
+      "link": "",
+      "redirect": false
     }
   ],
   "vorlagenBlue": [],
@@ -13,13 +14,16 @@
     {
       "text": "Infos einholen von benachbarten Kolpingsfamilien, von Diözesan­ und Bundesverband;"
     },
-    { "text": "vorhandenes Knowhow nutzen!" }
+    {
+      "text": "vorhandenes Knowhow nutzen!"
+    }
   ],
   "aufzeichnungOrange": [
     {
       "text": "werden in einer Dokumentensammlung abgelegt",
       "hasLink": false,
-      "link": ""
+      "link": "https://kolpingjugend.at/",
+      "redirect": false
     }
   ],
   "verantwortlicherOrange": "ProjektleiterIn",

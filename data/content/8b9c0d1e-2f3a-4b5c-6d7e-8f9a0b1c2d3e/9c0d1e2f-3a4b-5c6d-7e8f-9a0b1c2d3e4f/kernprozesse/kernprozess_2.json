@@ -3,17 +3,30 @@
   "vorgabenBlue": [
     {
       "text": "Bausteine „Jugend bei Kolping“ (Bildungskonf. 2007)",
-      "hasLink": true,
+      "hasLink": false,
+      "link": "",
+      "redirect": false
+    },
+    {
+      "text": "Jahreskalender des Vorjahrs",
+      "hasLink": false,
       "link": ""
     },
-    { "text": "Jahreskalender des Vorjahrs", "hasLink": false, "link": "" },
-    { "text": "AH 01 „Jahreskalender“", "hasLink": true, "link": "" }
+    {
+      "text": "AH 01 „Jahreskalender“",
+      "hasLink": true,
+      "link": ""
+    }
   ],
   "vorlagenBlue": [],
   "middleHead": "Kick-Off Veranstaltung durchführen",
   "middleList": [
-    { "text": "zum Zweck der Konkretisierung der Jahresplanung" },
-    { "text": "mind. 1x/Jahr" },
+    {
+      "text": "zum Zweck der Konkretisierung der Jahresplanung"
+    },
+    {
+      "text": "mind. 1x/Jahr"
+    },
     {
       "text": "Einbeziehung von Jugendlichen von innerhalb und außerhalb der KF"
     }
