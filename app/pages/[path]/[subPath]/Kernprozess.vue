@@ -2,9 +2,7 @@
 import { useRoute } from "#imports";
 import type { Kernprozess } from "~/utils/kernprozess/kernprozess";
 import { fetchData } from "~/utils/file/file";
-import CreateKernprozessForm from "~/components/content/CreateKernprozessForm.vue";
-import ChangeKernprozessForm from "~/components/content/ChangeKernprozessForm.vue";
-import ChangeKernprozessNumberForm from "~/components/content/ChangeKernprozessNumberForm.vue";
+import KernprozessForm from "~/components/content/KernprozessForm.vue";
 import { getSegment } from "~/utils/nav/nav-menu";
 import type { NuxtError } from "#app";
 import { useWindowSize } from "@vueuse/core";
@@ -22,7 +20,7 @@ const { user } = useUserSession();
 
 const kernprozesseRef: Ref<Kernprozess[]> = ref([]);
 
-type ModalType = "create" | "edit" | "changeNumber" | null;
+type ModalType = "create" | "edit" | null;
 
 const modalState = ref<{
   type: ModalType;
@@ -52,10 +50,6 @@ function openEdit(step: number) {
   modalState.value = { type: "edit", step };
 }
 
-function openChangeNumber(step: number) {
-  modalState.value = { type: "changeNumber", step };
-}
-
 function closeModal() {
   modalState.value = { type: null };
 }
@@ -80,6 +74,11 @@ async function fetchKernprozesse() {
 }
 
 async function send(kernprozess: Kernprozess) {
+  if (
+    !confirm("Sind Sie sicher, dass sie diesen Kernprozess erstellen möchten?")
+  )
+    return;
+
   try {
     await $fetch("/api/kernprozess/", {
       method: "POST",
@@ -109,7 +108,8 @@ async function send(kernprozess: Kernprozess) {
     if (error.statusCode === 409) {
       toast.add({
         title: "Warnung",
-        description: "Ein Kernprozess mit dieser Nummer existiert bereits!",
+        description:
+          "Beim Erstellen dieses Kernprozesses würde eine Lücke entstehen!",
         color: "warning",
         icon: "i-heroicons-x-mark",
         duration: DURATION,
@@ -140,6 +140,11 @@ async function send(kernprozess: Kernprozess) {
 }
 
 async function change(kernprozess: Kernprozess) {
+  if (
+    !confirm("Sind Sie sicher, dass sie diesen Kernprozess verändern möchten?")
+  )
+    return;
+
   try {
     await $fetch("/api/kernprozess/", {
       method: "PUT",
@@ -147,7 +152,8 @@ async function change(kernprozess: Kernprozess) {
       body: {
         path: getSegment(0),
         subPath: getSegment(1),
-        kernprozessNumber: kernprozess.schrittCount,
+        currentNumber: activeKernprozess.value?.schrittCount,
+        newNumber: kernprozess.schrittCount,
         data: JSON.stringify(kernprozess),
       },
     });
@@ -169,7 +175,8 @@ async function change(kernprozess: Kernprozess) {
     if (error.statusCode === 409) {
       toast.add({
         title: "Warnung",
-        description: "Ein Kernprozess mit dieser Nummer existiert bereits!",
+        description:
+          "Beim Erstellen dieses Kernprozesses würde eine Lücke entstehen!",
         color: "warning",
         icon: "i-heroicons-x-mark",
         duration: DURATION,
@@ -186,7 +193,28 @@ async function change(kernprozess: Kernprozess) {
       });
 
       return;
+    } else if (error.statusCode === 404) {
+      toast.add({
+        title: "Warnung",
+        description: "Kernprozess nicht gefunden!",
+        color: "warning",
+        icon: "i-heroicons-x-mark",
+        duration: DURATION,
+      });
+
+      return;
+    } else if (error.statusCode === 500) {
+      toast.add({
+        title: "Fehler",
+        description: "invalid schrittCount sequence on disk",
+        color: "error",
+        icon: "i-heroicons-x-mark",
+        duration: DURATION,
+      });
+
+      return;
     }
+
     toast.add({
       title: "Fehler",
       description: "Beim Ändern des Kernprozesses ist ein Fehler aufgetreten!",
@@ -195,71 +223,6 @@ async function change(kernprozess: Kernprozess) {
       duration: DURATION,
     });
   }
-}
-
-async function changeNumber(
-  kernprozessNumberOld: number,
-  kernprozessNumberNew: number,
-) {
-  try {
-    await $fetch("/api/kernprozess/rename", {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: {
-        path: getSegment(0),
-        subPath: getSegment(1),
-        kernprozessNumberOld: kernprozessNumberOld,
-        kernprozessNumberNew: kernprozessNumberNew,
-      },
-    });
-
-    await fetchKernprozesse();
-
-    toast.add({
-      title: "Erfolg",
-      description: `Der Kernprozess mit der Nummer: ${kernprozessNumberOld} hat nun die Nummer: ${kernprozessNumberNew}!`,
-      color: "success",
-      icon: "i-heroicons-check",
-      duration: DURATION,
-    });
-
-    closeModal();
-  } catch (err) {
-    const error = err as NuxtError;
-
-    if (error.statusCode === 409) {
-      toast.add({
-        title: "Warnung",
-        description: "Ein Kernprozess mit dieser Nummer existiert bereits!",
-        color: "warning",
-        icon: "i-heroicons-x-mark",
-        duration: DURATION,
-      });
-
-      return;
-    } else if (error.statusCode === 406) {
-      toast.add({
-        title: "Warnung",
-        description: "Die Kernprozessnummer MUSS eine Zahl sein!",
-        color: "warning",
-        icon: "i-heroicons-x-mark",
-        duration: DURATION,
-      });
-
-      return;
-    }
-
-    toast.add({
-      title: "Fehler",
-      description:
-        "Beim Ändern der Kernprozessnummer ist ein Fehler aufgetreten!",
-      color: "error",
-      icon: "i-heroicons-x-mark",
-      duration: DURATION,
-    });
-  }
-
-  closeModal();
 }
 
 async function deleteKernprozess(kernprozessNumber: number) {
@@ -279,9 +242,7 @@ async function deleteKernprozess(kernprozessNumber: number) {
         },
       });
 
-      kernprozesseRef.value = kernprozesseRef.value.filter(
-        (k) => k.schrittCount !== kernprozessNumber,
-      );
+      await fetchKernprozesse();
 
       toast.add({
         title: "Erfolg",
@@ -372,9 +333,7 @@ onMounted(() => {
       :title="
         modalState.type === 'create'
           ? 'Kernprozess erstellen'
-          : modalState.type === 'edit'
-            ? 'Kernprozess bearbeiten'
-            : 'Kernprozess verschieben'
+          : 'Kernprozess bearbeiten'
       "
       :close="{
         color: 'primary',
@@ -383,42 +342,22 @@ onMounted(() => {
       }"
     >
       <template #body>
-        <CreateKernprozessForm
-          v-if="modalState.type === 'create'"
-          :schritt-count="kernprozesseRef.length + 1"
-          :vorgaben-blue="undefined"
-          :vorlagen-blue="undefined"
-          :middle-head="undefined"
-          :middle-list="undefined"
-          :aufzeichnung-orange="undefined"
-          :verantwortlicher-orange="undefined"
-          :information-orange="undefined"
-          :orange="false"
-          @send="send"
-          @cancle="closeModal"
-        />
-
-        <ChangeKernprozessForm
-          v-if="modalState.type === 'edit' && activeKernprozess"
-          :schritt-count="activeKernprozess.schrittCount"
-          :vorgaben-blue="activeKernprozess.vorgabenBlue"
-          :vorlagen-blue="activeKernprozess.vorlagenBlue"
-          :middle-head="activeKernprozess.middleHead"
-          :middle-list="activeKernprozess.middleList"
-          :aufzeichnung-orange="activeKernprozess.aufzeichnungOrange"
-          :verantwortlicher-orange="activeKernprozess.verantwortlicherOrange"
-          :information-orange="activeKernprozess.informationOrange"
-          :orange="activeKernprozess.orange"
-          @send="change"
-          @cancle="closeModal"
-        />
-
-        <ChangeKernprozessNumberForm
-          v-if="modalState.type === 'changeNumber' && activeKernprozess"
-          :schritt-count="activeKernprozess.schrittCount"
+        <KernprozessForm
+          :schritt-count="
+            modalState.type === 'create'
+              ? kernprozesseRef.length + 1
+              : activeKernprozess?.schrittCount
+          "
+          :vorgaben-blue="activeKernprozess?.vorgabenBlue"
+          :vorlagen-blue="activeKernprozess?.vorlagenBlue"
+          :middle-head="activeKernprozess?.middleHead"
+          :middle-list="activeKernprozess?.middleList"
+          :aufzeichnung-orange="activeKernprozess?.aufzeichnungOrange"
+          :verantwortlicher-orange="activeKernprozess?.verantwortlicherOrange"
+          :information-orange="activeKernprozess?.informationOrange"
+          :orange="activeKernprozess?.orange"
           @send="
-            (newNumber: number) =>
-              changeNumber(activeKernprozess?.schrittCount!, newNumber)
+            (data) => (modalState.type === 'create' ? send(data) : change(data))
           "
           @cancle="closeModal"
         />
@@ -452,28 +391,6 @@ onMounted(() => {
               stroke-linecap="round"
               stroke-linejoin="round"
               d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10"
-            />
-          </svg>
-        </UButton>
-
-        <UButton
-          color="neutral"
-          variant="outline"
-          class="px-4 py-2 rounded cursor-pointer"
-          @click="openChangeNumber(kernprozess.schrittCount)"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-            class="size-6"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5"
             />
           </svg>
         </UButton>

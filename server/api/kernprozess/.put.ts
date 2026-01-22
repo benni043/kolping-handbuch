@@ -1,4 +1,3 @@
-// server/api/kernprozess.put.ts
 import { readdir, readFile, writeFile } from "fs/promises";
 import path from "node:path";
 import { CONTENT_ROOT, safeJoin } from "~~/server/utils/traversal";
@@ -51,7 +50,6 @@ export default defineEventHandler(async (event) => {
 
   const n = items.length;
 
-  // Lückenprüfung
   for (let i = 0; i < n; i++) {
     if (items[i]!.json.schrittCount !== i + 1) {
       throw createError({
@@ -77,7 +75,6 @@ export default defineEventHandler(async (event) => {
     });
   }
 
-  // Keine Positionsänderung → nur Inhalt ersetzen
   if (currentNumber === newNumber) {
     const data = JSON.parse(body.data);
     data.schrittCount = currentNumber;
@@ -87,10 +84,8 @@ export default defineEventHandler(async (event) => {
     return { success: true, schrittCount: currentNumber };
   }
 
-  // Entfernen
   const remaining = items.filter((i) => i !== current);
 
-  // Nach oben verschieben (z. B. 4 → 2)
   if (newNumber < currentNumber) {
     for (const item of remaining) {
       if (
@@ -107,7 +102,6 @@ export default defineEventHandler(async (event) => {
     }
   }
 
-  // Nach unten verschieben (z. B. 2 → 5)
   if (newNumber > currentNumber) {
     for (const item of remaining) {
       if (

@@ -23,42 +23,6 @@ const placeholderRedirect = "/[uuid]/{uuid}/{file.md}";
 
 const emit = defineEmits(["cancle", "send"]);
 
-const schrittCountRef = ref(props.schrittCount || 1);
-const vorgabenBlueRef = ref<KernprozessElementLink[]>(
-  structuredClone(
-    toRaw(
-      props.vorgabenBlue || [
-        { text: "", hasLink: false, link: "", redirect: false },
-      ],
-    ),
-  ),
-);
-const vorlagenBlueRef = ref<KernprozessElementLink[]>(
-  structuredClone(
-    toRaw(
-      props.vorlagenBlue || [
-        { text: "", hasLink: false, link: "", redirect: false },
-      ],
-    ),
-  ),
-);
-const middleHeadRef = ref(props.middleHead || "");
-const middleListRef = ref<{ text: string }[]>(
-  structuredClone(toRaw(props.middleList || [{ text: "" }])),
-);
-const aufzeichnungOrangeRef = ref<KernprozessElementLink[]>(
-  structuredClone(
-    toRaw(
-      props.aufzeichnungOrange || [
-        { text: "", hasLink: false, link: "", redirect: false },
-      ],
-    ),
-  ),
-);
-const verantwortlicherOrangeRef = ref(props.verantwortlicherOrange || "");
-const informationOrangeRef = ref(props.informationOrange || "");
-const orangeRef = ref(props.orange || false);
-
 const STEPS = 6;
 const currentStep = ref(0);
 
@@ -72,6 +36,35 @@ function prevStep() {
   else currentStep.value = STEPS - 1;
 }
 
+const schrittCountRef: Ref<number> = ref(props.schrittCount || 1);
+const vorgabenBlueRef = ref<KernprozessElementLink[]>(
+  props.vorgabenBlue || [
+    { text: "", hasLink: false, link: "", redirect: false },
+  ],
+);
+const vorlagenBlueRef = ref<KernprozessElementLink[]>(
+  props.vorlagenBlue || [
+    { text: "", hasLink: false, link: "", redirect: false },
+  ],
+);
+
+const middleHeadRef: Ref<string> = ref(props.middleHead || "");
+const middleListRef = ref<{ text: string }[]>(
+  props.middleList || [{ text: "" }],
+);
+
+const aufzeichnungOrangeRef = ref<KernprozessElementLink[]>(
+  props.aufzeichnungOrange || [
+    { text: "", hasLink: false, link: "", redirect: false },
+  ],
+);
+const verantwortlicherOrangeRef: Ref<string> = ref(
+  props.verantwortlicherOrange || "",
+);
+const informationOrangeRef: Ref<string> = ref(props.informationOrange || "");
+
+const orangeRef: Ref<boolean> = ref(props.orange || false);
+
 function addVorgabeBlue() {
   vorgabenBlueRef.value.push({
     text: "",
@@ -80,9 +73,11 @@ function addVorgabeBlue() {
     redirect: false,
   });
 }
-function removeVorgabeBlue(i: number) {
-  vorgabenBlueRef.value.splice(i, 1);
+
+function removeVorgabeBlue(index: number) {
+  vorgabenBlueRef.value.splice(index, 1);
 }
+
 function addVorlagenBlue() {
   vorlagenBlueRef.value.push({
     text: "",
@@ -91,15 +86,19 @@ function addVorlagenBlue() {
     redirect: false,
   });
 }
-function removeVorlagenBlue(i: number) {
-  vorlagenBlueRef.value.splice(i, 1);
+
+function removeVorlagenBlue(index: number) {
+  vorlagenBlueRef.value.splice(index, 1);
 }
+
 function addMiddleList() {
   middleListRef.value.push({ text: "" });
 }
-function removeMiddleList(i: number) {
-  middleListRef.value.splice(i, 1);
+
+function removeMiddleList(index: number) {
+  middleListRef.value.splice(index, 1);
 }
+
 function addAufzeichnungOrange() {
   aufzeichnungOrangeRef.value.push({
     text: "",
@@ -108,16 +107,12 @@ function addAufzeichnungOrange() {
     redirect: false,
   });
 }
-function removeAufzeichnungOrange(i: number) {
-  aufzeichnungOrangeRef.value.splice(i, 1);
+
+function removeAufzeichnungOrange(index: number) {
+  aufzeichnungOrangeRef.value.splice(index, 1);
 }
 
 async function postForm() {
-  if (
-    !confirm("Sind Sie sicher, dass sie diesen Kernprozess verändern möchten?")
-  )
-    return;
-
   const data: Kernprozess = {
     schrittCount: schrittCountRef.value,
     vorgabenBlue: vorgabenBlueRef.value,
@@ -134,8 +129,14 @@ async function postForm() {
 }
 
 function clearForm() {
-  if (!confirm("Alle Eigenschaften löschen?")) return;
+  if (
+    !confirm(
+      "Sind Sie sicher, dass Sie alle Eigenschaften dieses Kernprozesses löschen wollen?",
+    )
+  )
+    return;
 
+  schrittCountRef.value = 0;
   vorgabenBlueRef.value = [];
   vorlagenBlueRef.value = [];
   middleHeadRef.value = "";
@@ -148,7 +149,7 @@ function clearForm() {
 </script>
 
 <template>
-  <div class="relative h-[75vh] max-w-xl mx-auto flex flex-col overflow-hidden">
+  <div class="relative h-[80vh] max-w-xl mx-auto flex flex-col overflow-hidden">
     <div class="flex flex-1 min-h-0">
       <div>
         <UButton
@@ -158,9 +159,21 @@ function clearForm() {
         />
       </div>
 
-      <div class="flex-1 h-full overflow-y-auto mx-2">
+      <div class="flex-1 h-full overflow-y-auto px-3">
         <div v-if="currentStep === 0">
-          <h1 class="mb-8 text-xl font-semibold text-center">
+          <h1 class="mb-8 text-xl font-semibold text-center">Schritt</h1>
+
+          <UInput
+            v-model="schrittCountRef"
+            placeholder="Schritt"
+            type="number"
+            icon="i-heroicons-document-plus"
+            size="lg"
+            class="w-full"
+            min="1"
+          />
+
+          <h1 class="my-8 text-xl font-semibold text-center">
             Überschrift Kernprozess
           </h1>
 
@@ -175,6 +188,7 @@ function clearForm() {
           <h1 class="my-8 text-xl font-semibold text-center">
             Bezug zur Kolping-Idee?
           </h1>
+
           <select v-model="orangeRef" class="w-full border rounded-lg p-2">
             <option :value="true">Ja</option>
             <option :value="false">Nein</option>
@@ -185,7 +199,6 @@ function clearForm() {
           <h1 class="mb-8 text-xl font-semibold text-center">
             Vorgaben / Arbeitshilfen
           </h1>
-
           <div
             v-for="(item, index) in vorgabenBlueRef"
             :key="index"
@@ -277,6 +290,7 @@ function clearForm() {
                 @click="removeVorlagenBlue(index)"
               />
             </div>
+
             <UCheckbox
               v-model="item.hasLink"
               label="Als Link hinzufügen"
@@ -294,6 +308,7 @@ function clearForm() {
               label="Als Weiterleitung hinzufügen"
               class="my-3 ml-1"
             />
+
             <UInput
               v-if="item.hasLink"
               v-model="item.link"
@@ -306,6 +321,7 @@ function clearForm() {
             />
             <hr class="mt-5 mb-10" />
           </div>
+
           <UButton
             color="neutral"
             variant="soft"
@@ -321,6 +337,7 @@ function clearForm() {
           <h1 class="mb-8 text-xl font-semibold text-center">
             Kernprozess Inhalt
           </h1>
+
           <div
             v-for="(item, index) in middleListRef"
             :key="index"
@@ -342,6 +359,7 @@ function clearForm() {
               @click="removeMiddleList(index)"
             />
           </div>
+
           <UButton
             color="neutral"
             variant="soft"
@@ -357,6 +375,7 @@ function clearForm() {
           <h1 class="mb-8 text-xl font-semibold text-center">
             Aufzeichnungen / Dokumentation
           </h1>
+
           <div
             v-for="(item, index) in aufzeichnungOrangeRef"
             :key="index"
@@ -379,6 +398,7 @@ function clearForm() {
                 @click="removeAufzeichnungOrange(index)"
               />
             </div>
+
             <UCheckbox
               v-model="item.hasLink"
               label="Als Link hinzufügen"
@@ -396,6 +416,7 @@ function clearForm() {
               label="Als Weiterleitung hinzufügen"
               class="my-3 ml-1"
             />
+
             <UInput
               v-if="item.hasLink"
               v-model="item.link"
@@ -408,7 +429,6 @@ function clearForm() {
             />
             <hr class="mt-5 mb-10" />
           </div>
-
           <UButton
             color="neutral"
             variant="soft"
@@ -470,10 +490,11 @@ function clearForm() {
         class="cursor-pointer"
         @click="postForm"
       >
-        Ändern
+        Erstellen
       </UButton>
     </div>
   </div>
 </template>
 
+<style scoped></style>
 <style scoped></style>

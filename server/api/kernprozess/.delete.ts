@@ -1,10 +1,15 @@
-import { stat, unlink } from "fs/promises";
+import { readdir, readFile, writeFile, unlink } from "fs/promises";
 import { CONTENT_ROOT, safeJoin } from "~~/server/utils/traversal";
+
+type KernprozessFile = {
+  schrittCount: number;
+  [key: string]: any;
+};
 
 export default defineEventHandler(async (event) => {
   const { user } = await requireUserSession(event);
 
-  if (user.role !== "admin" && user.role! !== "editor")
+  if (user.role !== "admin" && user.role !== "editor")
     throw createError({ statusCode: 403, statusMessage: "Forbidden" });
 
   const body: {
@@ -13,20 +18,60 @@ export default defineEventHandler(async (event) => {
     kernprozessNumber: number;
   } = await readBody(event);
 
-  const filePath = safeJoin(
+  if (!Number.isFinite(body.kernprozessNumber))
+    throw createError({
+      statusCode: 406,
+      statusMessage: "kernprozessNumber must be a number",
+    });
+
+  const dirPath = safeJoin(
     CONTENT_ROOT,
-    `${body.path}/${body.subPath}/kernprozesse/kernprozess_${body.kernprozessNumber}.json`,
+    `${body.path}/${body.subPath}/kernprozesse`,
   );
 
-  try {
-    await stat(filePath);
+  const files = await readdir(dirPath);
 
-    await unlink(filePath);
-    return { success: true, path: filePath };
-  } catch (err: any) {
+  const kernprozesse: {
+    file: string;
+    data: KernprozessFile;
+  }[] = [];
+
+  for (const file of files) {
+    if (!file.endsWith(".json")) continue;
+
+    const fullPath = safeJoin(dirPath, file);
+    const data = JSON.parse(
+      await readFile(fullPath, "utf-8"),
+    ) as KernprozessFile;
+
+    kernprozesse.push({ file, data });
+  }
+
+  const toDelete = kernprozesse.find(
+    (k) => k.data.schrittCount === body.kernprozessNumber,
+  );
+
+  if (!toDelete)
     throw createError({
       statusCode: 409,
-      statusMessage: `kernprozess with number ${body.kernprozessNumber} does not exist.`,
+      statusMessage: `kernprozess with number ${body.kernprozessNumber} does not exist`,
     });
+
+  await unlink(safeJoin(dirPath, toDelete.file));
+
+  const toShift = kernprozesse
+    .filter((k) => k.data.schrittCount > body.kernprozessNumber)
+    .sort((a, b) => a.data.schrittCount - b.data.schrittCount);
+
+  for (const kp of toShift) {
+    kp.data.schrittCount--;
+
+    await writeFile(
+      safeJoin(dirPath, kp.file),
+      JSON.stringify(kp.data, null, 2),
+      "utf-8",
+    );
   }
+
+  return { success: true };
 });
