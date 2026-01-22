@@ -1,0 +1,36 @@
+{
+  "schrittCount": 4,
+  "vorgabenBlue": [
+    {
+      "text": "",
+      "hasLink": false,
+      "link": "",
+      "redirect": false
+    }
+  ],
+  "vorlagenBlue": [
+    {
+      "text": "",
+      "hasLink": false,
+      "link": "",
+      "redirect": false
+    }
+  ],
+  "middleHead": "test3",
+  "middleList": [
+    {
+      "text": ""
+    }
+  ],
+  "aufzeichnungOrange": [
+    {
+      "text": "",
+      "hasLink": false,
+      "link": "",
+      "redirect": false
+    }
+  ],
+  "verantwortlicherOrange": "",
+  "informationOrange": "",
+  "orange": false
+}
