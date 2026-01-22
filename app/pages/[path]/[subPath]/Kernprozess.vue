@@ -356,6 +356,7 @@ onMounted(() => {
           :verantwortlicher-orange="activeKernprozess?.verantwortlicherOrange"
           :information-orange="activeKernprozess?.informationOrange"
           :orange="activeKernprozess?.orange"
+          :create="modalState.type === 'create'"
           @send="
             (data) => (modalState.type === 'create' ? send(data) : change(data))
           "

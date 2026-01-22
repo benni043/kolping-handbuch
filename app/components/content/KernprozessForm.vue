@@ -15,6 +15,7 @@ const props = defineProps<{
   verantwortlicherOrange: string | undefined;
   informationOrange: string | undefined;
   orange: boolean | undefined;
+  create: boolean;
 }>();
 
 const placeholderLink =
@@ -480,7 +481,7 @@ function clearForm() {
         class="cursor-pointer"
         @click="clearForm"
       >
-        Löschen
+        Leeren
       </UButton>
 
       <UButton
@@ -490,7 +491,8 @@ function clearForm() {
         class="cursor-pointer"
         @click="postForm"
       >
-        Erstellen
+        <span v-if="create">Erstellen</span>
+        <span v-else>Verändern</span>
       </UButton>
     </div>
   </div>
