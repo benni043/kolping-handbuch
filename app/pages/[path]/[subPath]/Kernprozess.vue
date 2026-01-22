@@ -517,7 +517,13 @@ onMounted(() => {
             flex: width <= MOBILE_WIDTH,
           }"
         >
-          <div :class="{ 'w-full': width <= MOBILE_WIDTH }">
+          <div
+            :class="{
+              'w-full': width <= HANDY_WIDTH,
+              'w-[60vw]': width >= HANDY_WIDTH && width <= BIG_HANDY_WIDTH,
+              'w-[50vw]': width >= BIG_HANDY_WIDTH && width <= MOBILE_WIDTH,
+            }"
+          >
             <h2 class="text-[#50A9CE] font-bold text-2xl">
               Schritt {{ kernprozess.schrittCount }}
             </h2>
@@ -576,9 +582,15 @@ onMounted(() => {
           </div>
         </div>
 
-        <div class="relative flex-2 mx-auto">
+        <div
+          class="relative flex-2 mx-auto"
+          :class="{
+            'w-[60vw]': width >= HANDY_WIDTH && width <= BIG_HANDY_WIDTH,
+            'w-[50vw]': width >= BIG_HANDY_WIDTH && width <= MOBILE_WIDTH,
+          }"
+        >
           <h3
-            class="absolute h-fit left-3 text-white font-bold text-md xl:text-xl z-10"
+            class="absolute left-3 text-white font-bold text-md xl:text-xl z-10"
           >
             {{ kernprozess.middleHead }}
           </h3>
@@ -644,7 +656,12 @@ onMounted(() => {
             flex: width <= MOBILE_WIDTH,
           }"
         >
-          <div :class="{ 'w-full': width <= MOBILE_WIDTH }">
+          <div
+            :class="{
+              'w-[60vw]': width >= HANDY_WIDTH && width <= BIG_HANDY_WIDTH,
+              'w-[50vw]': width >= BIG_HANDY_WIDTH && width <= MOBILE_WIDTH,
+            }"
+          >
             <div>
               <h2
                 v-if="kernprozess.aufzeichnungOrange.length >= 1"
