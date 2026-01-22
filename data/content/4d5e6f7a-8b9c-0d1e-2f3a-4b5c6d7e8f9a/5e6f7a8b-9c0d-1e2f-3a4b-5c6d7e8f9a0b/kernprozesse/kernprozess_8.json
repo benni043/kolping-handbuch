@@ -1,1 +1,27 @@
-{"schrittCount":8,"vorgabenBlue":[{"text":"AH 05 „Feedback-Bogen HausbewohnerInnen“","hasLink":true,"link":"02/02-1/kernprozesse/AH05-Feedback-Bogen-HausbewohnerInnen.pdf"}],"vorlagenBlue":[],"middleHead":"Evaluierung und Auswertung","middleList":[{"text":"Mittels „Feedback-Tools“: z.B. Fragebogen, Gespräch, „Briefkasten“"}],"aufzeichnungOrange":[{"text":"Fragebogen zusammengefasste Auswertung (AH 05)","hasLink":false,"link":""}],"verantwortlicherOrange":"Geschäftsführung / hauptamtliche MA","informationOrange":"Vorsitzende/r","orange":false}
+{
+  "schrittCount": 8,
+  "vorgabenBlue": [
+    {
+      "text": "AH 05 „Feedback-Bogen HausbewohnerInnen“",
+      "hasLink": true,
+      "link": "02/02-1/kernprozesse/AH05-Feedback-Bogen-HausbewohnerInnen.pdf"
+    }
+  ],
+  "vorlagenBlue": [],
+  "middleHead": "Evaluierung und Auswertung",
+  "middleList": [
+    {
+      "text": "Mittels „Feedback-Tools“: z.B. Fragebogen, Gespräch, „Briefkasten“"
+    }
+  ],
+  "aufzeichnungOrange": [
+    {
+      "text": "Fragebogen zusammengefasste Auswertung (AH 05)",
+      "hasLink": false,
+      "link": ""
+    }
+  ],
+  "verantwortlicherOrange": "Geschäftsführung / hauptamtliche MA",
+  "informationOrange": "Vorsitzende/r",
+  "orange": false
+}

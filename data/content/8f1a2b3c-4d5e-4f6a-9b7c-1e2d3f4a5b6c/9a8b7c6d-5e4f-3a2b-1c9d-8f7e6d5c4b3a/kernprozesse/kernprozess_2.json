@@ -1,1 +1,78 @@
-{"schrittCount":2,"vorgabenBlue":[{"text":"Statuten und Leitbild","hasLink":false,"link":""},{"text":"Bausteine \"Kolping belebt, Quellen unseres Handelns\"","hasLink":false,"link":""},{"text":"AH03 \"Tagesordnung Generalversammlung\"","hasLink":true,"link":"01/01-1/kernprozesse/AH03-Generalversammlung-Tagesordnung.docx"}],"vorlagenBlue":[{"text":"KP 03.1 AH 06 „Projekt-Abschlussbericht“","hasLink":true,"link":"01/01-1/kernprozesse/AH06-Projekt-Abschlussbericht.pdf"},{"text":"KP 04.1 AH 06 „Jugendprojekte“","hasLink":true,"link":"01/01-1/kernprozesse/AH06-Projekt-Abschlussbericht_2.pdf"},{"text":"KP 05.1 AH 06 „Evaluierungsteam“","hasLink":true,"link":"01/01-1/kernprozesse/AH06-Schlussbericht-Evaluierung.pdf"},{"text":"KP 07.1 AH 06 „Bildungsteam“","hasLink":true,"link":"01/01-1/kernprozesse/AH06-Schlussbericht-Bildungsteam.pdf"},{"text":"KP 07.2 AH 09 „Öffentlichkeitsarbeit“","hasLink":true,"link":"01/01-1/kernprozesse/AH09-Merkblatt-Evaluierung-Oeffentlichkeitsarbeit.pdf"}],"middleHead":"Tagesordnung für GV erarbeiten","middleList":[{"text":"Berichte werden erstellt"},{"text":"Jahresabschluss wird vorbereitet"},{"text":"Entwürfe für Jahresthema/-schwerpunkte (Bezug zur Kolping-Idee!)"},{"text":"Anträge werden formuliert (Bezug zur Kolping-Idee!)"},{"text":"Bereitstellung von Unterlagen (z.B. bei Statutenänderungen)"}],"aufzeichnungOrange":[{"text":"Bericht des VS","hasLink":false,"link":""},{"text":"Bericht des/der VS des Wirtschaftsvorstandes","hasLink":false,"link":""},{"text":"Jahresabschluss (WIVO)","hasLink":false,"link":""},{"text":"ausgefüllte Schlussberichte der TeamleiterInnen","hasLink":false,"link":""},{"text":"Vorschläge für Jahres-Schwerpunkte","hasLink":false,"link":""},{"text":"Veranstaltungsplan","hasLink":false,"link":""},{"text":"Wahlvorschläge","hasLink":false,"link":""},{"text":"Anträge, etc.","hasLink":false,"link":""}],"verantwortlicherOrange":"Vorsitzende/r\nLeiterIn Wirtschaftsvorstand\nTeamleiterInnen","informationOrange":"Vereinsmitglieder\nInfo an Diözesanverband\nund Bundessekretariat","orange":true}
+{
+  "schrittCount": 2,
+  "vorgabenBlue": [
+    { "text": "Statuten und Leitbild", "hasLink": false, "link": "" },
+    {
+      "text": "Bausteine \"Kolping belebt, Quellen unseres Handelns\"",
+      "hasLink": false,
+      "link": ""
+    },
+    {
+      "text": "AH03 \"Tagesordnung Generalversammlung\"",
+      "hasLink": true,
+      "link": "01/01-1/kernprozesse/AH03-Generalversammlung-Tagesordnung.docx"
+    }
+  ],
+  "vorlagenBlue": [
+    {
+      "text": "KP 03.1 AH 06 „Projekt-Abschlussbericht“",
+      "hasLink": true,
+      "link": "01/01-1/kernprozesse/AH06-Projekt-Abschlussbericht.pdf"
+    },
+    {
+      "text": "KP 04.1 AH 06 „Jugendprojekte“",
+      "hasLink": true,
+      "link": "01/01-1/kernprozesse/AH06-Projekt-Abschlussbericht_2.pdf"
+    },
+    {
+      "text": "KP 05.1 AH 06 „Evaluierungsteam“",
+      "hasLink": true,
+      "link": "01/01-1/kernprozesse/AH06-Schlussbericht-Evaluierung.pdf"
+    },
+    {
+      "text": "KP 07.1 AH 06 „Bildungsteam“",
+      "hasLink": true,
+      "link": "01/01-1/kernprozesse/AH06-Schlussbericht-Bildungsteam.pdf"
+    },
+    {
+      "text": "KP 07.2 AH 09 „Öffentlichkeitsarbeit“",
+      "hasLink": true,
+      "link": "01/01-1/kernprozesse/AH09-Merkblatt-Evaluierung-Oeffentlichkeitsarbeit.pdf"
+    }
+  ],
+  "middleHead": "Tagesordnung für GV erarbeiten",
+  "middleList": [
+    { "text": "Berichte werden erstellt" },
+    { "text": "Jahresabschluss wird vorbereitet" },
+    {
+      "text": "Entwürfe für Jahresthema/-schwerpunkte (Bezug zur Kolping-Idee!)"
+    },
+    { "text": "Anträge werden formuliert (Bezug zur Kolping-Idee!)" },
+    { "text": "Bereitstellung von Unterlagen (z.B. bei Statutenänderungen)" }
+  ],
+  "aufzeichnungOrange": [
+    { "text": "Bericht des VS", "hasLink": false, "link": "" },
+    {
+      "text": "Bericht des/der VS des Wirtschaftsvorstandes",
+      "hasLink": false,
+      "link": ""
+    },
+    { "text": "Jahresabschluss (WIVO)", "hasLink": false, "link": "" },
+    {
+      "text": "ausgefüllte Schlussberichte der TeamleiterInnen",
+      "hasLink": false,
+      "link": ""
+    },
+    {
+      "text": "Vorschläge für Jahres-Schwerpunkte",
+      "hasLink": false,
+      "link": ""
+    },
+    { "text": "Veranstaltungsplan", "hasLink": false, "link": "" },
+    { "text": "Wahlvorschläge", "hasLink": false, "link": "" },
+    { "text": "Anträge, etc.", "hasLink": false, "link": "" }
+  ],
+  "verantwortlicherOrange": "Vorsitzende/r\nLeiterIn Wirtschaftsvorstand\nTeamleiterInnen",
+  "informationOrange": "Vereinsmitglieder\nInfo an Diözesanverband\nund Bundessekretariat",
+  "orange": true
+}

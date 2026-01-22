@@ -1,1 +1,16 @@
-{"schrittCount":2,"vorgabenBlue":[{"text":"Statuten","hasLink":false,"link":""}],"vorlagenBlue":[],"middleHead":"\"Stellvertretung\" thematisieren","middleList":[{"text":"ggf. laut Statut geregelt"},{"text":"geeignete Personen ins Auge fassen"}],"aufzeichnungOrange":[{"text":"Protokoll der Vorstandssitzung","hasLink":false,"link":""}],"verantwortlicherOrange":"FunktionsträgerIn","informationOrange":"Vereinsmitglieder","orange":false}
+{
+  "schrittCount": 2,
+  "vorgabenBlue": [{ "text": "Statuten", "hasLink": false, "link": "" }],
+  "vorlagenBlue": [],
+  "middleHead": "\"Stellvertretung\" thematisieren",
+  "middleList": [
+    { "text": "ggf. laut Statut geregelt" },
+    { "text": "geeignete Personen ins Auge fassen" }
+  ],
+  "aufzeichnungOrange": [
+    { "text": "Protokoll der Vorstandssitzung", "hasLink": false, "link": "" }
+  ],
+  "verantwortlicherOrange": "FunktionsträgerIn",
+  "informationOrange": "Vereinsmitglieder",
+  "orange": false
+}

@@ -35,7 +35,7 @@ async function updateNote(note: string) {
       icon: "i-heroicons-check",
       duration: DURATION,
     });
-  } catch (e: unknown) {
+  } catch {
     toast.add({
       title: "Fehler",
       description: "Beim Ändern der Datei ist ein Fehler aufgetreten!",

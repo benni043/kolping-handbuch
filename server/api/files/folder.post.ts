@@ -28,8 +28,10 @@ export default defineEventHandler(async (event) => {
       statusCode: 409,
       statusMessage: "folder already exists",
     });
-  } catch (err: any) {
-    if (err.code !== "ENOENT") throw err;
+  } catch (err) {
+    const error = err as NodeJS.ErrnoException;
+
+    if (error.code !== "ENOENT") throw err;
   }
 
   await mkdir(targetPath, { recursive: true });

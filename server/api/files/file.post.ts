@@ -1,4 +1,3 @@
-import { log } from "console";
 import { stat, writeFile } from "fs/promises";
 import { FILE_ROOT, safeJoin } from "~~/server/utils/traversal";
 
@@ -29,8 +28,10 @@ export default defineEventHandler(async (event) => {
       statusCode: 409,
       statusMessage: "File already exists",
     });
-  } catch (err: any) {
-    if (err.code !== "ENOENT") throw err;
+  } catch (err) {
+    const error = err as NodeJS.ErrnoException;
+
+    if (error.code !== "ENOENT") throw err;
   }
 
   await writeFile(targetFile, file.data);

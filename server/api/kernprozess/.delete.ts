@@ -3,7 +3,7 @@ import { CONTENT_ROOT, safeJoin } from "~~/server/utils/traversal";
 
 type KernprozessFile = {
   schrittCount: number;
-  [key: string]: any;
+  [key: string]: unknown;
 };
 
 export default defineEventHandler(async (event) => {

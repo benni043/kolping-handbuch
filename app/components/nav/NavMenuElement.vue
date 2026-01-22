@@ -129,7 +129,7 @@ async function addLvl2Menu(subMenuName: string) {
       icon: "i-heroicons-check",
       duration: DURATION,
     });
-  } catch (e: unknown) {
+  } catch {
     toast.add({
       title: "Fehler",
       description: "Beim Hinzufügen des Benutzers ist ein Fehler aufgetreten!",
@@ -162,7 +162,7 @@ async function addLvl1Menu(menuName: string, subMenuName: string) {
       icon: "i-heroicons-check",
       duration: DURATION,
     });
-  } catch (e: unknown) {
+  } catch {
     toast.add({
       title: "Fehler",
       description: "Beim Hinzufügen des Benutzers ist ein Fehler aufgetreten!",
@@ -207,7 +207,7 @@ async function deleteLvl1(uuid: string, id: string) {
       icon: "i-heroicons-check",
       duration: DURATION,
     });
-  } catch (e: unknown) {
+  } catch {
     toast.add({
       title: "Fehler",
       description: "Beim Löschen des Menupunkts ist ein Fehler aufgetreten!",
@@ -244,7 +244,7 @@ async function deleteLvl2(id: string, subId: string) {
       icon: "i-heroicons-check",
       duration: DURATION,
     });
-  } catch (e: unknown) {
+  } catch {
     toast.add({
       title: "Fehler",
       description: "Beim Löschen des Subenupunkts ist ein Fehler aufgetreten!",
@@ -274,7 +274,7 @@ async function rename(newName: string) {
       icon: "i-heroicons-check",
       duration: DURATION,
     });
-  } catch (e: unknown) {
+  } catch {
     toast.add({
       title: "Fehler",
       description: "Beim Umbennenen des Menupunkts ist ein Fehler aufgetreten!",

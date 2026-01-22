@@ -1,1 +1,21 @@
-{"schrittCount":1,"vorgabenBlue":[{"text":"Statuten","hasLink":false,"link":""}],"vorlagenBlue":[],"middleHead":"Funktionsübernahme durch den Funktionsträger","middleList":[{"text":"Durch Wahl bei lt. Statut geregelten Funktionen"},{"text":"Durch Beauftragung (z.B. TeamleiterInnen)"}],"aufzeichnungOrange":[{"text":"Protokoll der Generalversammlung","hasLink":false,"link":""},{"text":"Protokoll Vorstandssitzung u.a.","hasLink":false,"link":""}],"verantwortlicherOrange":"FunktionsträgerIn z.B. Vorsitzende/r, LeiterIn Kolpingjugend, LeiterIn \"Ehrenamts-Team\", etc.","informationOrange":"alle Im Verein\n(Info durch z.B. Anschlag im KH, Newsletter, Zeitschrift, Website...)","orange":false}
+{
+  "schrittCount": 1,
+  "vorgabenBlue": [{ "text": "Statuten", "hasLink": false, "link": "" }],
+  "vorlagenBlue": [],
+  "middleHead": "Funktionsübernahme durch den Funktionsträger",
+  "middleList": [
+    { "text": "Durch Wahl bei lt. Statut geregelten Funktionen" },
+    { "text": "Durch Beauftragung (z.B. TeamleiterInnen)" }
+  ],
+  "aufzeichnungOrange": [
+    {
+      "text": "Protokoll der Generalversammlung",
+      "hasLink": false,
+      "link": ""
+    },
+    { "text": "Protokoll Vorstandssitzung u.a.", "hasLink": false, "link": "" }
+  ],
+  "verantwortlicherOrange": "FunktionsträgerIn z.B. Vorsitzende/r, LeiterIn Kolpingjugend, LeiterIn \"Ehrenamts-Team\", etc.",
+  "informationOrange": "alle Im Verein\n(Info durch z.B. Anschlag im KH, Newsletter, Zeitschrift, Website...)",
+  "orange": false
+}

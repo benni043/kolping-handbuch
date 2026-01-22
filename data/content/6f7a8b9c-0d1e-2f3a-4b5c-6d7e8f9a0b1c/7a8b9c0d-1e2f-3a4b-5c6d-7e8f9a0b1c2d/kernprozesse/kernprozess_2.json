@@ -1,1 +1,27 @@
-{"schrittCount":2,"vorgabenBlue":[{"text":"AH 01 \"Projektdefinition\"","hasLink":true,"link":"03/03-1/kernprozesse/AH01-Projektdefinition.pdf"}],"vorlagenBlue":[],"middleHead":"Vorlage / Besprechung","middleList":[{"text":"im Rahmen des Vereinsvorstandes oder"},{"text":"im WIVO (je nach Thema) oder"},{"text":"in der Generalversammlung"}],"aufzeichnungOrange":[{"text":"AH 01 \"Projektdefinition\" (ausgefüllte Vorlage)","hasLink":true,"link":"03/03-1/kernprozesse/AH01-Projektdefinition.pdf"}],"verantwortlicherOrange":"Vorstand, Wirtschaftsvorstand\noder eine „Sub-Gruppe“ (z.B. Kolpingjugend)\n","informationOrange":"","orange":false}
+{
+  "schrittCount": 2,
+  "vorgabenBlue": [
+    {
+      "text": "AH 01 \"Projektdefinition\"",
+      "hasLink": true,
+      "link": "03/03-1/kernprozesse/AH01-Projektdefinition.pdf"
+    }
+  ],
+  "vorlagenBlue": [],
+  "middleHead": "Vorlage / Besprechung",
+  "middleList": [
+    { "text": "im Rahmen des Vereinsvorstandes oder" },
+    { "text": "im WIVO (je nach Thema) oder" },
+    { "text": "in der Generalversammlung" }
+  ],
+  "aufzeichnungOrange": [
+    {
+      "text": "AH 01 \"Projektdefinition\" (ausgefüllte Vorlage)",
+      "hasLink": true,
+      "link": "03/03-1/kernprozesse/AH01-Projektdefinition.pdf"
+    }
+  ],
+  "verantwortlicherOrange": "Vorstand, Wirtschaftsvorstand\noder eine „Sub-Gruppe“ (z.B. Kolpingjugend)\n",
+  "informationOrange": "",
+  "orange": false
+}

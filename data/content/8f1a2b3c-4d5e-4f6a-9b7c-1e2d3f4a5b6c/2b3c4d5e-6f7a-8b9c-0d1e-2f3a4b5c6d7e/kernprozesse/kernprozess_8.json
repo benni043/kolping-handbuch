@@ -1,1 +1,26 @@
-{"schrittCount":8,"vorgabenBlue":[{"text":"KP 03.1 AH 03 \"Aktionsplan\"","hasLink":true,"link":"01/01-2/kernprozesse/AH03-Aktionsplan.pdf"}],"vorlagenBlue":[],"middleHead":"Entscheidung über die weitere Vorgehensweise","middleList":[{"text":"Kein/e NachfolgerIn/Stv. gefunden: zurück zu Schritt 05"},{"text":"Nachfolger/Stv gefunden: weiter zu Schritt 09"}],"aufzeichnungOrange":[{"text":"Wenn kein/e Stv/NachfolgerIn gefunden: Erstellung eines Aktionsplans","hasLink":false,"link":""}],"verantwortlicherOrange":"Vorstand","informationOrange":"","orange":false}
+{
+  "schrittCount": 8,
+  "vorgabenBlue": [
+    {
+      "text": "KP 03.1 AH 03 \"Aktionsplan\"",
+      "hasLink": true,
+      "link": "01/01-2/kernprozesse/AH03-Aktionsplan.pdf"
+    }
+  ],
+  "vorlagenBlue": [],
+  "middleHead": "Entscheidung über die weitere Vorgehensweise",
+  "middleList": [
+    { "text": "Kein/e NachfolgerIn/Stv. gefunden: zurück zu Schritt 05" },
+    { "text": "Nachfolger/Stv gefunden: weiter zu Schritt 09" }
+  ],
+  "aufzeichnungOrange": [
+    {
+      "text": "Wenn kein/e Stv/NachfolgerIn gefunden: Erstellung eines Aktionsplans",
+      "hasLink": false,
+      "link": ""
+    }
+  ],
+  "verantwortlicherOrange": "Vorstand",
+  "informationOrange": "",
+  "orange": false
+}
