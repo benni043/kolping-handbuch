@@ -4,17 +4,17 @@
     {
       "text": "AH 01 „Jährliche Befragung der Mitglieder“ (ausgefüllte Vorlage)",
       "hasLink": true,
-      "link": ""
+      "link": "05/05-1/kernprozesse/AH01-Jaehrliche-Mitgliederbefragung.pdf"
     },
     {
       "text": "AH 02 „Kennzahlen für die Arbeit der Kolpingsfamilie“ (ausgefüllte Vorlage)",
       "hasLink": true,
-      "link": ""
+      "link": "05/05-1/kernprozesse/AH02-Kennzahlen-fuer-die-Arbeit-der-Kolpingsfamilie.pdf"
     },
     {
       "text": "KP 04.1 AH 07 „Erhebung aller Kolping-Aktivitäten“ (ausgefüllte Vorlage)",
       "hasLink": true,
-      "link": ""
+      "link": "04/04-1/kernprozesse/AH07-Erhebung-der-Kolpingaktivitaeten.pdf"
     },
     {
       "text": "AH 06 „Schlussbericht Evaluierung“",
@@ -22,18 +22,24 @@
       "link": ""
     }
   ],
-  "vorlagenBlue": [{ "text": "", "hasLink": false, "link": "" }],
+  "vorlagenBlue": [],
   "middleHead": "Aus- und Bewertung der Jahresarbeit der KF",
   "middleList": [
-    { "text": "Der Leiter/die Leiterin des Evaluierungsteams führt zusammen:" },
+    {
+      "text": "Der Leiter/die Leiterin des Evaluierungsteams führt zusammen:"
+    },
     {
       "text": "Ergebnisse der jährlichen Mitglieder­Befragung (vgl Schritt 01)"
     },
-    { "text": "Ergebnisse der Kennzahlen­Analyse (vgl Schritt 01)" },
+    {
+      "text": "Ergebnisse der Kennzahlen­Analyse (vgl Schritt 01)"
+    },
     {
       "text": "Erkenntnisse aus den Berichten der Projektteams und erstellt einen Schlussbericht mit Handlungsempfehlungen."
     },
-    { "text": "Der Endbericht soll:" },
+    {
+      "text": "Der Endbericht soll:"
+    },
     {
       "text": "über die einzelnen Schwerpunkt­Themen kurz und prägnant berichten"
     },
@@ -45,7 +51,7 @@
     {
       "text": "Schlussbericht mit Handlungsempfehlungen ausgefülltes Datenblatt: „Erhebung aller Kolping-Aktivitäten“ (AH 07) wurde an das Bundessekretariat geschickt",
       "hasLink": true,
-      "link": ""
+      "link": "04/04-1/kernprozesse/AH07-Erhebung-der-Kolpingaktivitaeten.pdf"
     }
   ],
   "verantwortlicherOrange": "LeiterIn des Evaluierungsteams",

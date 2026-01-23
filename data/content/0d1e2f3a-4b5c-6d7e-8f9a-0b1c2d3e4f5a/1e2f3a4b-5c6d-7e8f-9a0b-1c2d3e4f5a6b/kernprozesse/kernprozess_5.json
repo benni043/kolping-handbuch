@@ -4,37 +4,45 @@
     {
       "text": "KP 03.1 AH 06 „Projekt- Abschlussbericht“",
       "hasLink": true,
-      "link": ""
+      "link": "03/03-1/kernprozesse/AH06-Projekt-Abschlussbericht.pdf"
     },
     {
       "text": "KP 03.1 AH 05 „Feedback- Bogen für Projektteam“",
       "hasLink": true,
-      "link": ""
+      "link": "03/03-1/kernprozesse/AH05-Feedback-Bogen-fuer-das-Projektteam.pdf"
     }
   ],
   "vorlagenBlue": [],
   "middleHead": "Abschluss der Einzel-Projekte",
   "middleList": [
-    { "text": "Auswertung der Feedbackbögen" },
-    { "text": "Zusammenfassung der ggf. erstellten Zwischenberichte" },
-    { "text": "Auswertung der Abschlussberichte über einzelne Projekte" },
-    { "text": "Erhebung der Zufriedenheit der Mitglieder der Projektteams" }
+    {
+      "text": "Auswertung der Feedbackbögen"
+    },
+    {
+      "text": "Zusammenfassung der ggf. erstellten Zwischenberichte"
+    },
+    {
+      "text": "Auswertung der Abschlussberichte über einzelne Projekte"
+    },
+    {
+      "text": "Erhebung der Zufriedenheit der Mitglieder der Projektteams"
+    }
   ],
   "aufzeichnungOrange": [
     {
       "text": "Ausgefüllte Projekt-Abschlussberichte, (KP 03.1 AH 06) Ausfüllte Feedbackbögen:",
       "hasLink": true,
-      "link": ""
+      "link": "03/03-1/kernprozesse/AH06-Projekt-Abschlussbericht.pdf"
     },
     {
       "text": "von VeranstaltungsteilnehmerInnen (AH 04)",
       "hasLink": true,
-      "link": ""
+      "link": "03/03-1/kernprozesse/AH04-Projektkostenplan.pdf"
     },
     {
       "text": "von den Mitgliedern der Projektteams (KP 03.1 AH 05)",
       "hasLink": true,
-      "link": ""
+      "link": "03/03-1/kernprozesse/AH05-Feedback-Bogen-fuer-das-Projektteam.pdf"
     }
   ],
   "verantwortlicherOrange": "Mitglieder des Evaluierungsteams",

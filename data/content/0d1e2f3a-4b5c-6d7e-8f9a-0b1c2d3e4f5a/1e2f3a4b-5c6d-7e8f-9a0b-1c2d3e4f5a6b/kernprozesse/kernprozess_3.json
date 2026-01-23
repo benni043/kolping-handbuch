@@ -1,19 +1,31 @@
 {
   "schrittCount": 3,
   "vorgabenBlue": [
-    { "text": "KP 03.1 AH 02 „Projektplan“", "hasLink": true, "link": "" },
-    { "text": "KP 03.1 AH 03 „Aktionsplan“", "hasLink": true, "link": "" },
+    {
+      "text": "KP 03.1 AH 02 „Projektplan“",
+      "hasLink": true,
+      "link": "03/03-1/kernprozesse/AH02-Projektplan.pdf"
+    },
+    {
+      "text": "KP 03.1 AH 03 „Aktionsplan“",
+      "hasLink": true,
+      "link": "03/03-1/kernprozesse/AH03-Aktionsplan.pdf"
+    },
     {
       "text": "KP 03.1 AH 04 „Projektkostenplan“",
       "hasLink": true,
-      "link": ""
+      "link": "03/03-1/kernprozesse/AH04-Projektkostenplan.pdf"
     },
     {
       "text": "KP 03.1 AH 06 „Projektabschlussbericht“",
       "hasLink": true,
       "link": ""
     },
-    { "text": "AH 03 „Zwischenbericht“", "hasLink": true, "link": "" },
+    {
+      "text": "AH 03 „Zwischenbericht“",
+      "hasLink": true,
+      "link": ""
+    },
     {
       "text": "AH 04 „Feedback-Bogen für TeilnehmerInnen an Veranstaltungen“",
       "hasLink": true,
