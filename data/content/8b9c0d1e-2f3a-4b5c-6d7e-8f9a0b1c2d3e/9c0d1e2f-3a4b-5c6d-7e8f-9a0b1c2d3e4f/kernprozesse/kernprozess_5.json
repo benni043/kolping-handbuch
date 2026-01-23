@@ -1,15 +1,29 @@
 {
   "schrittCount": 5,
   "vorgabenBlue": [
-    { "text": "AH 02 \"Projektplan\"", "hasLink": true, "link": "" },
-    { "text": "\"Check-Liste\" (siehe Anhang)", "hasLink": false, "link": "" }
+    {
+      "text": "AH 02 \"Projektplan\"",
+      "hasLink": true,
+      "link": "04/04-1/kernprozesse/AH02-Projektplan.pdf"
+    },
+    {
+      "text": "\"Check-Liste\" (siehe Anhang)",
+      "hasLink": false,
+      "link": ""
+    }
   ],
   "vorlagenBlue": [],
   "middleHead": "Besprechung und Beschluss",
   "middleList": [
-    { "text": "im Rahmen des Jugendvorstandes Klärung folgender Fragen: " },
-    { "text": "WAS wollen wir? WER macht mit? " },
-    { "text": "Zu welchen KOSTEN? und: bis WANN? " },
+    {
+      "text": "im Rahmen des Jugendvorstandes Klärung folgender Fragen: "
+    },
+    {
+      "text": "WAS wollen wir? WER macht mit? "
+    },
+    {
+      "text": "Zu welchen KOSTEN? und: bis WANN? "
+    },
     {
       "text": "Abgrenzung der Ziele und Nicht­Ziele (Projekt braucht einen Fokus!)"
     }
@@ -20,7 +34,11 @@
       "hasLink": false,
       "link": ""
     },
-    { "text": "AH 02 „Projektplan“ (ausgefüllt)", "hasLink": true, "link": "" }
+    {
+      "text": "AH 02 „Projektplan“ (ausgefüllt)",
+      "hasLink": true,
+      "link": "04/04-1/kernprozesse/AH02-Projektplan.pdf"
+    }
   ],
   "verantwortlicherOrange": "Vorstand der Kolpingjugend",
   "informationOrange": "Vereinsvorstand",

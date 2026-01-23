@@ -1,16 +1,30 @@
 {
   "schrittCount": 3,
   "vorgabenBlue": [
-    { "text": "AH 01 „Jahreskalender\"", "hasLink": true, "link": "" }
+    {
+      "text": "AH 01 „Jahreskalender\"",
+      "hasLink": true,
+      "link": "04/04-1/kernprozesse/KP 4 AH 01_Muster_Jahreskalender.docx"
+    }
   ],
   "vorlagenBlue": [],
   "middleHead": "Jugendarbeits-Plan erstellen",
   "middleList": [
-    { "text": "Angabe der Schwerpunkte für das nächste Arbeitsjahr/Quartal …" }
+    {
+      "text": "Angabe der Schwerpunkte für das nächste Arbeitsjahr/Quartal …"
+    }
   ],
   "aufzeichnungOrange": [
-    { "text": "Projektübersicht u./o. ", "hasLink": false, "link": "" },
-    { "text": "Jahreskalender", "hasLink": true, "link": "" }
+    {
+      "text": "Projektübersicht u./o. ",
+      "hasLink": false,
+      "link": ""
+    },
+    {
+      "text": "Jahreskalender",
+      "hasLink": true,
+      "link": "04/04-1/kernprozesse/KP 4 AH 01_Muster_Jahreskalender.docx"
+    }
   ],
   "verantwortlicherOrange": "Vorstand Kolpingjugend",
   "informationOrange": "",

@@ -4,11 +4,19 @@
   "vorlagenBlue": [],
   "middleHead": "Dank u. Würdigung bei d. Generalversammlung",
   "middleList": [
-    { "text": "an den Vorstand der Kolpingjugend" },
-    { "text": "an die Projektteams und deren LeiterInnen" }
+    {
+      "text": "an den Vorstand der Kolpingjugend"
+    },
+    {
+      "text": "an die Projektteams und deren LeiterInnen"
+    }
   ],
   "aufzeichnungOrange": [
-    { "text": "Protokoll der Generalversammlung", "hasLink": false, "link": "" }
+    {
+      "text": "Protokoll der Generalversammlung",
+      "hasLink": false,
+      "link": ""
+    }
   ],
   "verantwortlicherOrange": "Vorsitzende/r und Präses der Kolpingsfamilie",
   "informationOrange": "Alle im Verein\nDV, BV\nMedienpartner",

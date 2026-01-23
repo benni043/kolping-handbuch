@@ -1,20 +1,36 @@
 {
   "schrittCount": 12,
   "vorgabenBlue": [
-    { "text": "AH 02 „Projektplan“", "hasLink": true, "link": "" },
-    { "text": "AH 04 „Aktionsplan“", "hasLink": true, "link": "" },
+    {
+      "text": "AH 02 „Projektplan“",
+      "hasLink": true,
+      "link": "04/04-1/kernprozesse/AH02-Projektplan.pdf"
+    },
+    {
+      "text": "AH 04 „Aktionsplan“",
+      "hasLink": true,
+      "link": "04/04-1/kernprozesse/AH04-Aktionsplan.pdf"
+    },
     {
       "text": "AH 05 „Feedback-Bogen Projektteam“",
       "hasLink": true,
-      "link": ""
+      "link": "04/04-1/kernprozesse/AH05-Feedback-Bogen-Projektteam.pdf"
     },
-    { "text": "AH 03 „Bundesjugendförderung“", "hasLink": true, "link": "" }
+    {
+      "text": "AH 03 „Bundesjugendförderung“",
+      "hasLink": true,
+      "link": "04/04-1/kernprozesse/AH03-Bundesjugendfoerderung.pdf"
+    }
   ],
   "vorlagenBlue": [],
   "middleHead": "Arbeiten am Auftrag u.laufende Erfolgskontrolle",
   "middleList": [
-    { "text": "Läuft das Projekt gut?" },
-    { "text": "bei JA weitermachen bei NEIN zurück zu Schritt 06" },
+    {
+      "text": "Läuft das Projekt gut?"
+    },
+    {
+      "text": "bei JA weitermachen bei NEIN zurück zu Schritt 06"
+    },
     {
       "text": "bei BJF­Projekten: mitlaufende Ergebnissicherung mittels AH 03 „Bundesjugendförderung“"
     }
@@ -23,7 +39,7 @@
     {
       "text": "AH 05 \"Feedbackbogen Projektteam\" (ausgefüllt) Fotos, Feedback-Bogen, Beleg-Sammlung lt. Merkblatt",
       "hasLink": true,
-      "link": ""
+      "link": "04/04-1/kernprozesse/AH05-Feedback-Bogen-Projektteam.pdf"
     }
   ],
   "verantwortlicherOrange": "ProjektleiterIn und Team",

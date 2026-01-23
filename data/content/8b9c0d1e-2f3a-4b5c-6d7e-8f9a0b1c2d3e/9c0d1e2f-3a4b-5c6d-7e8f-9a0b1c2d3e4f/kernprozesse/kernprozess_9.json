@@ -1,25 +1,37 @@
 {
   "schrittCount": 9,
   "vorgabenBlue": [
-    { "text": "AH 02 „Projektplan“", "hasLink": true, "link": "" },
-    { "text": "AH 04 „Aktionsplan“", "hasLink": true, "link": "" }
+    {
+      "text": "AH 02 „Projektplan“",
+      "hasLink": true,
+      "link": "04/04-1/kernprozesse/AH02-Projektplan.pdf"
+    },
+    {
+      "text": "AH 04 „Aktionsplan“",
+      "hasLink": true,
+      "link": "04/04-1/kernprozesse/AH04-Aktionsplan.pdf"
+    }
   ],
   "vorlagenBlue": [],
   "middleHead": "Detailplanung durchführen",
   "middleList": [
-    { "text": "um den Auftrag zu erfüllen" },
-    { "text": "um die Ziele zu erreichen" }
+    {
+      "text": "um den Auftrag zu erfüllen"
+    },
+    {
+      "text": "um die Ziele zu erreichen"
+    }
   ],
   "aufzeichnungOrange": [
     {
       "text": "Erstellung eines Aktionsplans (AH 04) ",
       "hasLink": true,
-      "link": ""
+      "link": "04/04-1/kernprozesse/AH04-Aktionsplan.pdf"
     },
     {
       "text": "bzw. einer ToDo Liste ausgefüllter Projektplan (AH 02)",
       "hasLink": true,
-      "link": ""
+      "link": "04/04-1/kernprozesse/AH02-Projektplan.pdf"
     }
   ],
   "verantwortlicherOrange": "ProjektleiterIn und -team",

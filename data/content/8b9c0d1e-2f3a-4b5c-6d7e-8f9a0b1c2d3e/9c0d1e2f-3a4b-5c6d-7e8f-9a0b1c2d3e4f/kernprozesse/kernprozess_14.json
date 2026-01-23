@@ -1,18 +1,26 @@
 {
   "schrittCount": 14,
   "vorgabenBlue": [
-    { "text": "AH 06 „Projekt-Abschlussbericht“", "hasLink": true, "link": "" },
+    {
+      "text": "AH 06 „Projekt-Abschlussbericht“",
+      "hasLink": true,
+      "link": "04/04-1/kernprozesse/AH06-Projekt-Abschlussbericht.pdf"
+    },
     {
       "text": "AH 07 „Erhebung der Kolping-Aktivitäten“",
       "hasLink": true,
-      "link": ""
+      "link": "04/04-1/kernprozesse/AH07-Erhebung-der-Kolpingaktivitaeten.pdf"
     }
   ],
   "vorlagenBlue": [],
   "middleHead": "Dokumentation des Projekterfolges",
   "middleList": [
-    { "text": "anhand der gesetzten Ziele" },
-    { "text": "„Tue Gutes und rede darüber“" },
+    {
+      "text": "anhand der gesetzten Ziele"
+    },
+    {
+      "text": "„Tue Gutes und rede darüber“"
+    },
     {
       "text": "AH 07 Erhebung der Kolping­Aktivitäten ausgefüllt an das KÖ­Jugendreferat senden!"
     }
@@ -21,12 +29,12 @@
     {
       "text": "AH 06 \"Projekt-Abschlussbericht\" (ausgefüllt);",
       "hasLink": true,
-      "link": ""
+      "link": "04/04-1/kernprozesse/AH06-Projekt-Abschlussbericht.pdf"
     },
     {
       "text": "AH 07 \"Erhebung der Kolping-Aktivitäten\" (ausgefüllt);",
       "hasLink": true,
-      "link": ""
+      "link": "04/04-1/kernprozesse/AH07-Erhebung-der-Kolpingaktivitaeten.pdf"
     },
     {
       "text": "Artikel an Zeitungen von KF, DV, BV, Pfarr-/ Bezirksblatt, Web und Social Media",

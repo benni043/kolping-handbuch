@@ -1,8 +1,16 @@
 {
   "schrittCount": 13,
   "vorgabenBlue": [
-    { "text": "AH 06 „Projekt-Abschlussbericht“", "hasLink": true, "link": "" },
-    { "text": "AH 03 „Bundesjugendförderung“", "hasLink": true, "link": "" }
+    {
+      "text": "AH 06 „Projekt-Abschlussbericht“",
+      "hasLink": true,
+      "link": "04/04-1/kernprozesse/AH06-Projekt-Abschlussbericht.pdf"
+    },
+    {
+      "text": "AH 03 „Bundesjugendförderung“",
+      "hasLink": true,
+      "link": "04/04-1/kernprozesse/AH03-Bundesjugendfoerderung.pdf"
+    }
   ],
   "vorlagenBlue": [],
   "middleHead": "Projektabschluss u. -bericht d. JugendleiterIn",
@@ -10,18 +18,20 @@
     {
       "text": "Rückgabe der Verantwortung an den Auftraggeber (Jugendvorstand)"
     },
-    { "text": "Dank und Entlastung durch den Auftraggeber (Jugendvorstand)" }
+    {
+      "text": "Dank und Entlastung durch den Auftraggeber (Jugendvorstand)"
+    }
   ],
   "aufzeichnungOrange": [
     {
       "text": "AH 06 \"Projekt-Abschlussbericht\" (ausgefüllt)",
       "hasLink": true,
-      "link": ""
+      "link": "04/04-1/kernprozesse/AH06-Projekt-Abschlussbericht.pdf"
     },
     {
       "text": "Bei BJF-Projekten: Projekt-Bericht mit Beilagen lt. AH 03 „Bundesjugendförderung“",
       "hasLink": true,
-      "link": ""
+      "link": "04/04-1/kernprozesse/AH03-Bundesjugendfoerderung.pdf"
     }
   ],
   "verantwortlicherOrange": "ProjektleiterIn",

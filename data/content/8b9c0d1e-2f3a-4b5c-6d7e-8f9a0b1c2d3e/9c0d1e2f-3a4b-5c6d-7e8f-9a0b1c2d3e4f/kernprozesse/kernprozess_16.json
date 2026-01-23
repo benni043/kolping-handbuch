@@ -4,14 +4,22 @@
     {
       "text": "AH 08 „Jahres-Abschlussbericht der Kolpingjugend\" (ausgefüllte Vorlage)",
       "hasLink": true,
-      "link": ""
+      "link": "04/04-1/kernprozesse/AH08-Jahres-Abschlussbericht-der-Kolpingjugend.pdf"
     }
   ],
   "vorlagenBlue": [],
   "middleHead": "Jahresbericht d. JugendleiterIn",
-  "middleList": [{ "text": "in der Generalversammlung der Kolpingsfamilie" }],
+  "middleList": [
+    {
+      "text": "in der Generalversammlung der Kolpingsfamilie"
+    }
+  ],
   "aufzeichnungOrange": [
-    { "text": "Protokoll der Generalversammlung", "hasLink": false, "link": "" }
+    {
+      "text": "Protokoll der Generalversammlung",
+      "hasLink": false,
+      "link": ""
+    }
   ],
   "verantwortlicherOrange": "JugendleiterIn",
   "informationOrange": "General­versammlung",
