@@ -5,6 +5,11 @@ import CreateFolderForm from "~/components/filemanagement/CreateFolderForm.vue";
 import RenameForm from "~/components/filemanagement/RenameForm.vue";
 import { fetchData, type Item } from "~/utils/file/file";
 
+definePageMeta({
+  middleware: ["authenticated"],
+  allowedRoles: ["admin", "editor"],
+});
+
 const toast = useToast();
 
 const items: Ref<Item[]> = ref([]);
