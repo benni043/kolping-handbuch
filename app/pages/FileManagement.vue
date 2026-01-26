@@ -388,7 +388,7 @@ onMounted(() => {
         :key="i.name"
         class="hover:bg-gray-100 rounded py-1 transition flex items-center gap-3 text-xl"
       >
-        <div class="cursor-pointer" @click="open(i)">
+        <div class="cursor-pointer flex-1" @click="open(i)">
           <div
             v-if="i.type === 'dir'"
             class="flex gap-2 items-start min-w-0 [overflow-wrap:anywhere]"
