@@ -4,9 +4,13 @@
     {
       "text": "AH 02 „Bildungsplan Kolpingsfamilie“",
       "hasLink": true,
-      "link": ""
+      "link": "07/07-1/kernprozesse/AH02-Bildungsplan-Kolpingfamilie.pdf"
     },
-    { "text": "AH 02a „ExpertInnen-Pool“", "hasLink": true, "link": "" }
+    {
+      "text": "AH 02a „ExpertInnen-Pool“",
+      "hasLink": true,
+      "link": "07/07-1/kernprozesse/KP_7-1_AH_2a_Info-Pool_Weiterbildung.docx"
+    }
   ],
   "vorlagenBlue": [],
   "middleHead": "Bildungsplan für die gesamte KF erstellen",
@@ -19,7 +23,7 @@
     {
       "text": "Ausgefüllter „Bildungsplan Kolpingsfamilie“ (AH 02)",
       "hasLink": true,
-      "link": ""
+      "link": "07/07-1/kernprozesse/AH02-Bildungsplan-Kolpingfamilie.pdf"
     }
   ],
   "verantwortlicherOrange": "LeiterIn\nBildungsteam",

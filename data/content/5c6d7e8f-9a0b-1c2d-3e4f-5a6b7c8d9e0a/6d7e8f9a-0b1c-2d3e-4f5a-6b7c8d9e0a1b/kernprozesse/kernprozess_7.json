@@ -9,17 +9,17 @@
     {
       "text": "AH 05 „Bildungsangebote Kolpingsfamilie“",
       "hasLink": true,
-      "link": ""
+      "link": "07/07-1/kernprozesse/AH05-Bildungsangebote-Kolpingsfamilie.pdf"
     },
     {
       "text": "AH 02 „Bildungsplan/ Kolpingsfamilie“",
       "hasLink": true,
-      "link": ""
+      "link": "07/07-1/kernprozesse/AH02-Bildungsplan-Kolpingfamilie.pdf"
     },
     {
       "text": "AH 04 „Bildungspläne für Einzelpersonen“",
       "hasLink": true,
-      "link": ""
+      "link": "07/07-1/kernprozesse/AH04-Bildungsplan-Einzelperson.pdf"
     }
   ],
   "vorlagenBlue": [],
@@ -31,8 +31,12 @@
     {
       "text": "Bewerbung von Bildungsmaßnahmen mit „großer Zielgruppe“ – z.B. ganze Kolpingsfamilie – in internen und externen Print- und Online-Medien, Flugzetteln, Aushang z.B. Pfarre ..."
     },
-    { "text": "Koordination der Maßnahmen" },
-    { "text": "Durchführung" }
+    {
+      "text": "Koordination der Maßnahmen"
+    },
+    {
+      "text": "Durchführung"
+    }
   ],
   "aufzeichnungOrange": [],
   "verantwortlicherOrange": "LeiterIn Bildungsteam",

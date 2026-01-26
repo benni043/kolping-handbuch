@@ -4,16 +4,24 @@
     {
       "text": "AH 04 „Der Weg zur Mitgliedschaft“",
       "hasLink": true,
-      "link": ""
+      "link": "06/06-1/kernprozesse/AH04-Der-Weg-zur-Mitgliedschaft.pdf"
     }
   ],
   "vorlagenBlue": [],
   "middleHead": "Einstieg bei Kolping gestalten",
   "middleList": [
-    { "text": "Formales rasch abwickeln" },
-    { "text": "Service herausstellen" },
-    { "text": "Einladung aussprechen" },
-    { "text": "Aufnahme-Ritual gestalten" }
+    {
+      "text": "Formales rasch abwickeln"
+    },
+    {
+      "text": "Service herausstellen"
+    },
+    {
+      "text": "Einladung aussprechen"
+    },
+    {
+      "text": "Aufnahme-Ritual gestalten"
+    }
   ],
   "aufzeichnungOrange": [],
   "verantwortlicherOrange": "TeamleiterIn",

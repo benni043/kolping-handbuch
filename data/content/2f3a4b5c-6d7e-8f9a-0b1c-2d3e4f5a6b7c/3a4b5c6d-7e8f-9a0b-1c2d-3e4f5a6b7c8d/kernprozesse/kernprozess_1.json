@@ -1,8 +1,16 @@
 {
   "schrittCount": 1,
   "vorgabenBlue": [
-    { "text": "AH 01 \"Zielgruppen\"", "hasLink": true, "link": "" },
-    { "text": "AH 02 \"Aktivitäten-Jahresplan\"", "hasLink": true, "link": "" }
+    {
+      "text": "AH 01 \"Zielgruppen\"",
+      "hasLink": true,
+      "link": "06/06-1/kernprozesse/AH01-moegliche-Zielgruppen.pdf"
+    },
+    {
+      "text": "AH 02 \"Aktivitäten-Jahresplan\"",
+      "hasLink": true,
+      "link": "06/06-1/kernprozesse/AH02-Aktivitaeten-Jahresplan.pdf"
+    }
   ],
   "vorlagenBlue": [],
   "middleHead": "Konkrete Ziele formulieren",
@@ -10,12 +18,26 @@
     {
       "text": "Diese können für jede Kolpingsfamilie unterschiedlich aussehen; zB:"
     },
-    { "text": "„Plus 10 % in einem Jahr“;" },
-    { "text": "„Kolpingjugend-Gruppe bis Weihnachten“;" },
-    { "text": "HelferInnen für Flohmarkt finden;" },
-    { "text": "„10 Lese-Patinnen gewinnen“." }
+    {
+      "text": "„Plus 10 % in einem Jahr“;"
+    },
+    {
+      "text": "„Kolpingjugend-Gruppe bis Weihnachten“;"
+    },
+    {
+      "text": "HelferInnen für Flohmarkt finden;"
+    },
+    {
+      "text": "„10 Lese-Patinnen gewinnen“."
+    }
   ],
-  "aufzeichnungOrange": [{ "text": "Protokoll", "hasLink": false, "link": "" }],
+  "aufzeichnungOrange": [
+    {
+      "text": "Protokoll",
+      "hasLink": false,
+      "link": ""
+    }
+  ],
   "verantwortlicherOrange": "Vorstand",
   "informationOrange": "alle im Verein",
   "orange": false

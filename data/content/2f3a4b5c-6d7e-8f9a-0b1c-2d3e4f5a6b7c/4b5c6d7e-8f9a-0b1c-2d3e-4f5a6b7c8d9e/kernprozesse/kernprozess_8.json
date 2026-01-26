@@ -8,8 +8,9 @@
     },
     {
       "text": "Onlineberatung von Kolping Österreich",
-      "hasLink": true,
-      "link": "www.kolping.at"
+      "hasLink": false,
+      "link": "www.kolping.at",
+      "redirect": false
     }
   ],
   "vorlagenBlue": [],
@@ -18,7 +19,9 @@
     {
       "text": "Mit dem ehrenamtlichen Engagement wächst zumeist der Wunsch nach tiefer gehender Information und Weiterbildung; dem kommen wir nach durch:"
     },
-    { "text": "hausinterne Weiterbildungsangebote und Veranstaltungen;" },
+    {
+      "text": "hausinterne Weiterbildungsangebote und Veranstaltungen;"
+    },
     {
       "text": "Angebote auf diözesaner und Bundesebene (insbes. Veranstaltungen der „Freiwilligenakademie“); "
     },
@@ -30,7 +33,11 @@
     }
   ],
   "aufzeichnungOrange": [
-    { "text": "Weiterbildungsplan", "hasLink": false, "link": "" },
+    {
+      "text": "Weiterbildungsplan",
+      "hasLink": false,
+      "link": ""
+    },
     {
       "text": "Verzeichnis erfolgter Weiter ­ bildungsangebote",
       "hasLink": false,

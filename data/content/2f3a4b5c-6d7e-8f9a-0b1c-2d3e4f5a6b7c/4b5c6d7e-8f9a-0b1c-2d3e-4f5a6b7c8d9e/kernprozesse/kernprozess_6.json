@@ -1,16 +1,29 @@
 {
   "schrittCount": 6,
   "vorgabenBlue": [
-    { "text": "AH 04 „Vereinbarung“", "hasLink": true, "link": "" }
+    {
+      "text": "AH 04 „Vereinbarung“",
+      "hasLink": false,
+      "link": "",
+      "redirect": false
+    }
   ],
   "vorlagenBlue": [],
   "middleHead": "Jemand sagt „JA“ (wird ehrenamtl. HelferIn)",
   "middleList": [
-    { "text": "Festlegung Aufgabe/Einsatzgebiet Schwerpunkte der Tätigkeit" },
-    { "text": "Angaben zu Ansprechperson /Einsatzzeiten, ggf. Kostenersatz" }
+    {
+      "text": "Festlegung Aufgabe/Einsatzgebiet Schwerpunkte der Tätigkeit"
+    },
+    {
+      "text": "Angaben zu Ansprechperson /Einsatzzeiten, ggf. Kostenersatz"
+    }
   ],
   "aufzeichnungOrange": [
-    { "text": "Unterzeichnete Vereinbarung", "hasLink": false, "link": "" }
+    {
+      "text": "Unterzeichnete Vereinbarung",
+      "hasLink": false,
+      "link": ""
+    }
   ],
   "verantwortlicherOrange": "Vorsitzende/r\nGeschäftsführerIn",
   "informationOrange": "TeamleiterIn\nEA",

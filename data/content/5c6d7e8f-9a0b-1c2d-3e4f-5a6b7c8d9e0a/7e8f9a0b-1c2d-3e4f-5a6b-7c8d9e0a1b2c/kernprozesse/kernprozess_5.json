@@ -4,31 +4,85 @@
     {
       "text": "AH 03 „AnsprechpartnerIn Presse“ *",
       "hasLink": true,
-      "link": ""
+      "link": "07/07-2/kernprozesse/AH03-Ansprechperson-fuer-die-Presse.pdf"
     },
-    { "text": "AH 04 „Presseverteiler“ *", "hasLink": true, "link": "" },
+    {
+      "text": "AH 04 „Presseverteiler“ *",
+      "hasLink": true,
+      "link": "07/07-2/kernprozesse/AH04-Presseverteiler.pdf"
+    },
     {
       "text": "AH 05 „Pressemitteilungen verfassen“ *",
       "hasLink": true,
+      "link": "07/07-2/kernprozesse/AH05-Pressemitteilungen-verfassen.pdf"
+    },
+    {
+      "text": "AH 06 „Presseeinladung“ *",
+      "hasLink": true,
+      "link": "07/07-2/kernprozesse/AH06-Presseeinladung.pdf"
+    },
+    {
+      "text": "AH 07 „Nachbereitung“ *",
+      "hasLink": true,
+      "link": "07/07-2/kernprozesse/AH07-Nachbereitung.pdf"
+    },
+    {
+      "text": "AH 08 „Newsletter verfassen“ *",
+      "hasLink": true,
+      "link": "07/07-2/kernprozesse/AH08-Newsletter-verfassen.pdf"
+    },
+    {
+      "text": "AH 09 „Evaluierungsbogen ÖA“ *",
+      "hasLink": true,
+      "link": "07/07-2/kernprozesse/AH09-Merkblatt-Evaluierung-Oeffentlichkeitsarbeit.pdf"
+    },
+    {
+      "text": "AH 10 „Social Media“",
+      "hasLink": false,
       "link": ""
     },
-    { "text": "AH 06 „Presseeinladung“ *", "hasLink": true, "link": "" },
-    { "text": "AH 07 „Nachbereitung“ *", "hasLink": true, "link": "" },
-    { "text": "AH 08 „Newsletter verfassen“ *", "hasLink": true, "link": "" },
-    { "text": "AH 09 „Evaluierungsbogen ÖA“ *", "hasLink": true, "link": "" },
-    { "text": "AH 10 „Social Media“", "hasLink": false, "link": "" },
-    { "text": "AH 11 „Website“", "hasLink": false, "link": "" },
-    { "text": "AH 12 „Kolping als Marke“", "hasLink": false, "link": "" },
-    { "text": "Vorlagen / Muster:", "hasLink": false, "link": "" },
-    { "text": "AH 05a „Pressemitteilung“", "hasLink": true, "link": "" },
-    { "text": "AH 6a „Presseeinladung“", "hasLink": true, "link": "" },
-    { "text": "AH 6b „Kolping- Textbausteine“", "hasLink": true, "link": "" },
-    { "text": "AH 8a „Newsletter“", "hasLink": true, "link": "" }
+    {
+      "text": "AH 11 „Website“",
+      "hasLink": false,
+      "link": ""
+    },
+    {
+      "text": "AH 12 „Kolping als Marke“",
+      "hasLink": false,
+      "link": ""
+    },
+    {
+      "text": "Vorlagen / Muster:",
+      "hasLink": false,
+      "link": ""
+    },
+    {
+      "text": "AH 05a „Pressemitteilung“",
+      "hasLink": true,
+      "link": "07/07-2/kernprozesse/KP 7-2 AH 5a_MUSTER Pressemitteilung.docx"
+    },
+    {
+      "text": "AH 6a „Presseeinladung“",
+      "hasLink": true,
+      "link": "07/07-2/kernprozesse/KP 7-2 AH 6a_MUSTER Presseeinladung.docx"
+    },
+    {
+      "text": "AH 6b „Kolping- Textbausteine“",
+      "hasLink": true,
+      "link": "07/07-2/kernprozesse/KP 7-2 AH 6b_Textbausteine fuer die Pressearbeit.docx"
+    },
+    {
+      "text": "AH 8a „Newsletter“",
+      "hasLink": true,
+      "link": "07/07-2/kernprozesse/KP 7-2 AH 8a_MUSTER Newsletter (Kolpingsfamilie).docx"
+    }
   ],
   "vorlagenBlue": [],
   "middleHead": "Konkrete Maßnahmen für die Öffentlichkeitsarbeit festlegen und umsetzen",
   "middleList": [
-    { "text": "Für die „Kern-Zielgruppen“" },
+    {
+      "text": "Für die „Kern-Zielgruppen“"
+    },
     {
       "text": "Optional auch für alle anderen „Ansprech-Partner“, die auf der ÖA-Landkarte festgehalten sind"
     },
@@ -37,7 +91,11 @@
     }
   ],
   "aufzeichnungOrange": [
-    { "text": "Maßnahmen-Plan", "hasLink": false, "link": "" }
+    {
+      "text": "Maßnahmen-Plan",
+      "hasLink": false,
+      "link": ""
+    }
   ],
   "verantwortlicherOrange": "Zuständige lt. Organigramm\n(z.B. LeiterIn Kolpingjugend für die\nJugendlichen,Vorsitzende/r für den Kontakt\nzu den politisch Verantwortlichen …)\nsubsidiär kann auch ein/e „LeiterIn ÖA“ im DV Agenden im Land und der Bundessekretär den Kontakt zu Partnern auf Österreich-Ebene übernehmen.\n",
   "informationOrange": "",

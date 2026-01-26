@@ -4,19 +4,31 @@
     {
       "text": "AH 05 Feedbackbogen „Einführungsphase für Ehrenamtliche“",
       "hasLink": true,
-      "link": ""
+      "link": "06/06-2/kernprozesse/AH05-Handreichung-fuer-MentorInnen.pdf"
     }
   ],
   "vorlagenBlue": [],
   "middleHead": "Lfd. Evaluierung „Hinschauen & reagieren“",
   "middleList": [
-    { "text": "Erwartungen der Ehrenamtlichen und deren Erfüllung" },
-    { "text": "Motive für die ehrenamtliche Tätigkeit" },
-    { "text": "Qualität der Beratung und Begleitung" },
-    { "text": "Qualität der Weiterbildungsangebote" }
+    {
+      "text": "Erwartungen der Ehrenamtlichen und deren Erfüllung"
+    },
+    {
+      "text": "Motive für die ehrenamtliche Tätigkeit"
+    },
+    {
+      "text": "Qualität der Beratung und Begleitung"
+    },
+    {
+      "text": "Qualität der Weiterbildungsangebote"
+    }
   ],
   "aufzeichnungOrange": [
-    { "text": "Ausgefüllter Feedbackbogen", "hasLink": false, "link": "" }
+    {
+      "text": "Ausgefüllter Feedbackbogen",
+      "hasLink": false,
+      "link": ""
+    }
   ],
   "verantwortlicherOrange": "Teamleiter GeschäftsführerIn bzw.\nder oder die von ihm/ihr beauftragte\nhauptamtliche MitarbeiterIn",
   "informationOrange": "LeiterIn Evaluierungsteam (vgl. KP 05.1)",

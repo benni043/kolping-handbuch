@@ -4,7 +4,7 @@
     {
       "text": "AH 06 „Schlussbericht Bildungsteam“ (ausgefüllte Vorlage)",
       "hasLink": true,
-      "link": ""
+      "link": "07/07-1/kernprozesse/AH06-Schlussbericht-Bildungsteam.pdf"
     }
   ],
   "vorlagenBlue": [],
@@ -15,7 +15,11 @@
     }
   ],
   "aufzeichnungOrange": [
-    { "text": "Protokoll der GenVers.", "hasLink": false, "link": "" }
+    {
+      "text": "Protokoll der GenVers.",
+      "hasLink": false,
+      "link": ""
+    }
   ],
   "verantwortlicherOrange": "LeiterIn Bildungsteam bzw.\nVorsitzende/r",
   "informationOrange": "GenVers",

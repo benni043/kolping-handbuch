@@ -4,20 +4,26 @@
     {
       "text": "AH 01 „Jede Hand zählt – Einsatzbereiche für ehrenamtliches Engagement in unserer Kolpingsfamilie“",
       "hasLink": true,
-      "link": ""
+      "link": "06/06-2/kernprozesse/AH01-Jede-Hand-zaehlt.pdf"
     },
     {
       "text": "Folder „Kommen auch Sie ins Team!“ der Kolpinghäuser „Gemeinsam leben“",
       "hasLink": true,
-      "link": ""
+      "link": "06/06-2/kernprozesse/folder_freiwillige.pdf"
     }
   ],
   "vorlagenBlue": [],
   "middleHead": "Möglichkeiten f. ehrenamtl. Mitarbeit sammeln",
   "middleList": [
-    { "text": "Jobs definieren:" },
-    { "text": "innerhalb der Kolpingsfamilie" },
-    { "text": "im eigenen Kolpinghaus" },
+    {
+      "text": "Jobs definieren:"
+    },
+    {
+      "text": "innerhalb der Kolpingsfamilie"
+    },
+    {
+      "text": "im eigenen Kolpinghaus"
+    },
     {
       "text": "teilweise auch außerhalb der Kolpingsfamilie, wenn die Tätigkeit gut zur „Kolping­Idee“ passt (zB Mitglieder von Kolpingsfamilien ohne Haus helfen im städtischen Altersheim mit, geben Gitarre-Unterricht im örtlichen Jugendzentrum, etc.)"
     }
@@ -28,7 +34,11 @@
       "hasLink": false,
       "link": ""
     },
-    { "text": "im Verein", "hasLink": false, "link": "" },
+    {
+      "text": "im Verein",
+      "hasLink": false,
+      "link": ""
+    },
     {
       "text": "im Kolpinghaus (unter Einbeziehung von „Anregungen von außen“ – Partnern, Gemeinde …)",
       "hasLink": false,

@@ -4,26 +4,32 @@
     {
       "text": "KP 05.1 AH 04 „Feedbackbogen für TeilnehmerInnen an Veranstaltungen“",
       "hasLink": true,
-      "link": ""
+      "link": "05/05-1/kernprozesse/AH04-Feedbackbogen-fuer-die-TeilnehmerInnen-an-Veranstaltungen.pdf"
     },
     {
       "text": "AH 06 „Schlussbericht Bildungsteam“",
       "hasLink": true,
-      "link": ""
+      "link": "07/07-1/kernprozesse/AH06-Schlussbericht-Bildungsteam.pdf"
     }
   ],
   "vorlagenBlue": [],
   "middleHead": "Abschluss/Auswertung d. Bildungsmaßnahmen",
   "middleList": [
-    { "text": "Wurden die Ziele erreicht?" },
-    { "text": "Sind die Zielgruppen mit dem Angebot zufrieden gewesen?" },
-    { "text": "Was könnte verbessert werden?" }
+    {
+      "text": "Wurden die Ziele erreicht?"
+    },
+    {
+      "text": "Sind die Zielgruppen mit dem Angebot zufrieden gewesen?"
+    },
+    {
+      "text": "Was könnte verbessert werden?"
+    }
   ],
   "aufzeichnungOrange": [
     {
       "text": "AH 06 „Schlussbericht Bildungsteam“ (ausgefüllt)",
       "hasLink": true,
-      "link": ""
+      "link": "07/07-1/kernprozesse/AH06-Schlussbericht-Bildungsteam.pdf"
     }
   ],
   "verantwortlicherOrange": "LeiterIn Bildungsteam in Kooperation\nmit LeiterIn Evaluierungsteam\n",

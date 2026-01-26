@@ -4,7 +4,7 @@
     {
       "text": "AH 03 „Komm zu Kolping!“ (zur Überarbeitung und Anpassung durch jede Kolpingsfamilie)",
       "hasLink": true,
-      "link": ""
+      "link": "06/06-1/kernprozesse/AH03-Komm-zu-Kolping.pdf"
     }
   ],
   "vorlagenBlue": [],
@@ -15,7 +15,11 @@
     }
   ],
   "aufzeichnungOrange": [
-    { "text": "Protokoll der Teamsitzung", "hasLink": false, "link": "" }
+    {
+      "text": "Protokoll der Teamsitzung",
+      "hasLink": false,
+      "link": ""
+    }
   ],
   "verantwortlicherOrange": "TeamleiterIn",
   "informationOrange": "Vorstand\nalle im Verein",

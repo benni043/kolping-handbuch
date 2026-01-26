@@ -4,20 +4,34 @@
     {
       "text": "AH 06 „Ehrenamtszeugnis schreiben“",
       "hasLink": true,
-      "link": ""
+      "link": "06/06-2/kernprozesse/AH06-Ehrenamtszeugnis-schreiben.pdf"
     }
   ],
   "vorlagenBlue": [
-    { "text": "AH 06a „Ehrenamtszeugnis“", "hasLink": true, "link": "" }
+    {
+      "text": "AH 06a „Ehrenamtszeugnis“",
+      "hasLink": true,
+      "link": "06/06-2/kernprozesse/KP_6-2_AH_6a_MUSTER_Ehrenamtszeugnis.docx"
+    }
   ],
   "middleHead": "Nachweis ehrenamtlicher Tätigkeit",
   "middleList": [
-    { "text": "Mithilfe eines „Ehrenamtszeugnisses“:" },
-    { "text": "Anerkennung ehrenamtlichen Engagements in objektiver Form" },
-    { "text": "schafft einen „Benefit“ bei Bewerbungen etc." }
+    {
+      "text": "Mithilfe eines „Ehrenamtszeugnisses“:"
+    },
+    {
+      "text": "Anerkennung ehrenamtlichen Engagements in objektiver Form"
+    },
+    {
+      "text": "schafft einen „Benefit“ bei Bewerbungen etc."
+    }
   ],
   "aufzeichnungOrange": [
-    { "text": "Ehrenamtszeugnis", "hasLink": false, "link": "" }
+    {
+      "text": "Ehrenamtszeugnis",
+      "hasLink": false,
+      "link": ""
+    }
   ],
   "verantwortlicherOrange": "TeamleiterIn EA\nGeschäftsführerIn",
   "informationOrange": "",

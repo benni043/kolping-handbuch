@@ -1,11 +1,15 @@
 {
   "schrittCount": 1,
   "vorgabenBlue": [
-    { "text": "AH 01 „Zielgruppen“", "hasLink": true, "link": "" },
+    {
+      "text": "AH 01 „Zielgruppen“",
+      "hasLink": true,
+      "link": "07/07-2/kernprozesse/AH01-Zielgruppen.pdf"
+    },
     {
       "text": "AH 02 „Landkarte Öffentlichkeitsarbeit“",
       "hasLink": true,
-      "link": ""
+      "link": "07/07-2/kernprozesse/AH02-Landkarte-Oeffentlichkeitsarbeit.pdf"
     }
   ],
   "vorlagenBlue": [],

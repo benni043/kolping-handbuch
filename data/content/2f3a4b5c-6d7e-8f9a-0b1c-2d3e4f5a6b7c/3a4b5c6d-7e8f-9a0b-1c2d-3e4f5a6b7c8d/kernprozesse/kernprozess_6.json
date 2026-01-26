@@ -4,7 +4,7 @@
     {
       "text": "AH 05 „Handreichung für MentorInnen“",
       "hasLink": true,
-      "link": ""
+      "link": "06/06-1/kernprozesse/AH05-Handreichung-fuer-MentorInnen.pdf"
     },
     {
       "text": "Ideensammlung „Mögliche Einsatzfelder“ (je nach „Angebot“ von der Kolpingsfamilie selbst zu erstellen)",
@@ -15,8 +15,12 @@
   "vorlagenBlue": [],
   "middleHead": "Einführungsphase gestalten",
   "middleList": [
-    { "text": "Übertragung kleinerer Aufgaben und Erst-Ausbildung für diese" },
-    { "text": "PatInnen/MentorInnen begleiten die Neuen" }
+    {
+      "text": "Übertragung kleinerer Aufgaben und Erst-Ausbildung für diese"
+    },
+    {
+      "text": "PatInnen/MentorInnen begleiten die Neuen"
+    }
   ],
   "aufzeichnungOrange": [
     {
