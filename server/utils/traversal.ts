@@ -3,7 +3,6 @@ import { resolve } from "path";
 export const CONTENT_ROOT = resolve(process.cwd(), "data/content");
 export const FILE_ROOT = resolve(process.cwd(), "data/files");
 export const METADATA_ROOT = resolve(process.cwd(), "data/metadata");
-export const DOKU_ROOT = resolve(process.cwd(), "data/doku");
 export const PUBLIC_ROOT = resolve(process.cwd(), "data");
 
 export function safeJoin(root: string, unsafePath: string) {
