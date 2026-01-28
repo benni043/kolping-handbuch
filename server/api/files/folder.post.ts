@@ -1,6 +1,4 @@
 import { mkdir, stat } from "fs/promises";
-import { validateFolder } from "~~/shared/utils/checks";
-import { FILE_ROOT, safeJoin } from "~~/server/utils/traversal";
 
 export default defineEventHandler(async (event) => {
   const { user } = await requireUserSession(event);

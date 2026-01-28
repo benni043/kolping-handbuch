@@ -1,6 +1,5 @@
 import { existsSync, readFileSync } from "fs";
 import { extname, basename } from "path";
-import { FILE_ROOT, safeJoin } from "~~/server/utils/traversal";
 import mime from "mime-types";
 
 export default defineEventHandler(async (event) => {

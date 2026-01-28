@@ -1,6 +1,5 @@
 import { join } from "path";
 import { readdir, stat } from "fs/promises";
-import { FILE_ROOT, safeJoin } from "~~/server/utils/traversal";
 
 export default defineEventHandler(async (event) => {
   const { user } = await requireUserSession(event);
@@ -15,7 +14,7 @@ export default defineEventHandler(async (event) => {
 
   const entries = await readdir(targetPath, { withFileTypes: true });
 
-  const items = await Promise.all(
+  return await Promise.all(
     entries.map(async (e) => {
       const full = join(targetPath, e.name);
       const s = await stat(full);
@@ -27,6 +26,4 @@ export default defineEventHandler(async (event) => {
       };
     }),
   );
-
-  return items;
 });

@@ -1,6 +1,5 @@
 import { writeFile, readFile } from "fs/promises";
 import { join } from "path";
-import { MAPPINGS_PATH } from "~~/server/utils/types";
 
 export default defineEventHandler(async (event) => {
   const { user } = await requireUserSession(event);

@@ -1,5 +1,4 @@
 import { existsSync, readFileSync, readdirSync } from "fs";
-import { CONTENT_ROOT, safeJoin } from "~~/server/utils/traversal";
 
 export default defineEventHandler(async (event) => {
   await requireUserSession(event);

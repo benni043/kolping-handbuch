@@ -1,9 +1,7 @@
 import { existsSync, readFileSync } from "fs";
-import { PUBLIC_ROOT, safeJoin } from "~~/server/utils/traversal";
 
 export default defineEventHandler(async (event) => {
   const query = getQuery(event);
-
   const file = query.file as string;
 
   if (!file)

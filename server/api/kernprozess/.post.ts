@@ -1,7 +1,6 @@
 import { readdir, readFile, writeFile } from "fs/promises";
 import path from "node:path";
 import { v4 as uuidv4 } from "uuid";
-import { CONTENT_ROOT, safeJoin } from "~~/server/utils/traversal";
 
 export default defineEventHandler(async (event) => {
   const { user } = await requireUserSession(event);

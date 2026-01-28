@@ -1,5 +1,4 @@
 import { writeFile } from "fs/promises";
-import { PUBLIC_ROOT, safeJoin } from "~~/server/utils/traversal";
 
 export default defineEventHandler(async (event) => {
   const { user } = await requireUserSession(event);

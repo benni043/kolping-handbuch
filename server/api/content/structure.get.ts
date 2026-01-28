@@ -1,12 +1,16 @@
 import { readFile } from "fs/promises";
-import { join } from "path";
+import { existsSync } from "fs";
 
 export default defineEventHandler(async () => {
-  const basePath = join(process.cwd(), "data");
+  const baseDir = safeJoin(METADATA_ROOT, "mappings.json");
 
-  const json = JSON.parse(
-    await readFile(`${basePath}/metadata/mappings.json`, "utf-8"),
-  );
+  if (!existsSync(baseDir))
+    throw createError({
+      statusCode: 404,
+      statusMessage: "File not found",
+    });
+
+  const json = JSON.parse(await readFile(baseDir, "utf-8"));
 
   return transformToNestedStructure(json);
 });

@@ -1,5 +1,3 @@
-import { validateRole } from "~~/shared/utils/checks";
-
 export default defineEventHandler(async (event) => {
   const { user } = await requireUserSession(event);
 

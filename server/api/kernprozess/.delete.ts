@@ -1,5 +1,4 @@
 import { readdir, readFile, writeFile, unlink } from "fs/promises";
-import { CONTENT_ROOT, safeJoin } from "~~/server/utils/traversal";
 
 type KernprozessFile = {
   schrittCount: number;

@@ -269,22 +269,6 @@ async function changeFolder(newName: string) {
   renameFolderModalOpen.value = false;
 }
 
-async function downloadInstructions() {
-  try {
-    await $fetch("/api/files/instruction", {
-      method: "GET",
-    });
-  } catch {
-    toast.add({
-      title: "Fehler",
-      description: "Es ist ein unerwarteter Fehler aufgetreten",
-      color: "error",
-      icon: "i-heroicons-x-mark",
-      duration: DURATION,
-    });
-  }
-}
-
 async function copyPath(path: string) {
   try {
     const copy =

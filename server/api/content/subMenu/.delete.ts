@@ -1,7 +1,5 @@
 import { writeFile, readFile, rm } from "fs/promises";
 import { join } from "path";
-import { CONTENT_ROOT, safeJoin } from "~~/server/utils/traversal";
-import { MAPPINGS_PATH } from "~~/server/utils/types";
 
 export default defineEventHandler(async (event) => {
   const { user } = await requireUserSession(event);
