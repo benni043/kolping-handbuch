@@ -18,9 +18,6 @@ async function login() {
       body: credentials,
     });
 
-    console.log(response);
-    console.log(new Date(Date.parse(response.last_login!)));
-
     localStorage.setItem("lastLogin", response.last_login!);
     lastLogin.value = new Date(Date.parse(response.last_login!));
 
