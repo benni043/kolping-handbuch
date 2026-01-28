@@ -39,11 +39,14 @@ CREATE TABLE users (
     id SERIAL PRIMARY KEY,
     username VARCHAR(50) NOT NULL UNIQUE,
     password_hash VARCHAR(255) NOT NULL,
-    role VARCHAR(20) NOT NULL CHECK (role IN ('user','editor','admin'))
+    role VARCHAR(20) NOT NULL CHECK (role IN ('user','editor','admin')),
+    last_login TIMESTAMP WITH TIME ZONE
 );
 
-INSERT INTO users (username, password_hash, role) VALUES
-('admin', '$scrypt$n=16384,r=8,p=1$zG7Pe68fB3MZX4wup6Vq2Q$AwztDEp4/6vbqA7TdmpSNO9YRKo/6fc3uJUZuisFWJ/tISX+UKtCcDNsifaDTG5gC3Yp+QQXi/hZ9ec4CMhlDg', 'admin');
+INSERT INTO users (username, password_hash, role, last_login) VALUES
+('admin', '$scrypt$n=16384,r=8,p=1$zG7Pe68fB3MZX4wup6Vq2Q$AwztDEp4/6vbqA7TdmpSNO9YRKo/6fc3uJUZuisFWJ/tISX+UKtCcDNsifaDTG5gC3Yp+QQXi/hZ9ec4CMhlDg', 'admin', NULL);
 
 SELECT * FROM users;
+
+DROP TABLE users;
 ```

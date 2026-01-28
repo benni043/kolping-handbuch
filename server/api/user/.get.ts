@@ -14,7 +14,7 @@ export default defineEventHandler(async (event) => {
 
   const sql = usePostgres();
 
-  const response = await sql`SELECT id, username, role FROM users`;
+  const response = await sql`SELECT id, username, role, last_login FROM users`;
 
   event.waitUntil(sql.end());
 

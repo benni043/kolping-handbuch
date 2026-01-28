@@ -9,13 +9,20 @@ const credentials = reactive({
 });
 
 const visible = ref(false);
+const lastLogin: Ref<Date | null> = ref(null);
 
 async function login() {
   try {
-    await $fetch("/api/login", {
+    const response = await $fetch("/api/login", {
       method: "POST",
       body: credentials,
     });
+
+    console.log(response);
+    console.log(new Date(Date.parse(response.last_login!)));
+
+    localStorage.setItem("lastLogin", response.last_login!);
+    lastLogin.value = new Date(Date.parse(response.last_login!));
 
     toast.add({
       title: "Anmeldung erfolgreich!",
@@ -50,12 +57,17 @@ async function logout(username: string) {
 
   await clearSession();
 }
+
+onMounted(() => {
+  if (localStorage.getItem("lastLogin") !== null)
+    lastLogin.value = new Date(Date.parse(localStorage.getItem("lastLogin")!));
+});
 </script>
 
 <template>
-  <div class="flex justify-center mb-10">
-    <div v-if="!user" class="w-100 p-8">
-      <h1 class="text-2xl font-semibold text-center mb-10">Anmelden</h1>
+  <div class="flex justify-center items-center flex-col">
+    <div v-if="!user" class="w-[90vw] lg:w-[60vw] flex flex-col items-center">
+      <h1 class="text-2xl font-semibold text-center mb-5">Anmelden</h1>
 
       <UForm class="space-y-5">
         <div>
@@ -134,17 +146,34 @@ async function logout(username: string) {
       </UForm>
     </div>
 
-    <div v-else class="w-100 px-10">
-      <h1 class="text-2xl font-semibold text-center my-5">
+    <div v-else class="w-[90vw] lg:w-[60vw] flex flex-col items-center">
+      <div class="text-2xl font-semibold mb-3 text-center">
         Eingeloggt als <b>{{ user?.username }}</b>
-      </h1>
+      </div>
+
+      <div class="mb-3 text-center">
+        <span>Zuletzt angemeldet am:</span>
+
+        <br />
+
+        <NuxtTime
+          v-if="lastLogin !== null"
+          :datetime="lastLogin!"
+          year="numeric"
+          month="long"
+          day="numeric"
+          hour="2-digit"
+          minute="2-digit"
+          second="2-digit"
+        ></NuxtTime>
+      </div>
 
       <UButton
         color="error"
         variant="outline"
         size="xl"
         icon="i-heroicons-arrow-left-start-on-rectangle"
-        class="cursor-pointer"
+        class="cursor-pointer w-min"
         block
         @click="logout(user?.username)"
       >

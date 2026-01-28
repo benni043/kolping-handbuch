@@ -11,8 +11,6 @@ export default defineEventHandler(async (event) => {
   const [response] =
     await sql`SELECT * FROM users WHERE username = ${body.username.toLowerCase()}`;
 
-  event.waitUntil(sql.end());
-
   if (!response)
     throw createError({
       statusCode: 401,
@@ -27,6 +25,15 @@ export default defineEventHandler(async (event) => {
       message: "Bad credentials - wrong user/password comibnation",
     });
 
+  await sql`UPDATE users SET last_login = NOW() WHERE username = ${body.username.toLowerCase()}`;
+
+  const [last_login] = await sql<{ last_login: Date | null }[]>`
+    SELECT last_login
+    FROM users
+    WHERE username = ${body.username.toLowerCase()}
+  `;
+  event.waitUntil(sql.end());
+
   await setUserSession(
     event,
     {
@@ -37,11 +44,14 @@ export default defineEventHandler(async (event) => {
       },
     },
     {
+      maxAge: 60 * 60 * 24 * 7,
       cookie: {
         secure: import.meta.dev ? false : true,
       },
     },
   );
 
-  return {};
+  return {
+    last_login: last_login?.last_login?.toISOString() ?? null,
+  };
 });

@@ -40,7 +40,7 @@ export default defineEventHandler(async (event) => {
 
   const sql = usePostgres();
 
-  await sql`INSERT INTO users (username, password_hash, role) VALUES (${username}, ${hashedPassword}, ${body.role})`;
+  await sql`INSERT INTO users (username, password_hash, role, last_login) VALUES (${username}, ${hashedPassword}, ${body.role}, null)`;
 
   event.waitUntil(sql.end());
 });
