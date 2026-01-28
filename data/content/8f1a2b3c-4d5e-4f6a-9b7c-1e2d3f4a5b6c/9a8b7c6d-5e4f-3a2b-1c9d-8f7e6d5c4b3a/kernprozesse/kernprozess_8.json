@@ -13,11 +13,19 @@
     {
       "text": "Prioritätensetzung für die Kolpingarbeit der nächsten Periode vornehmen"
     },
-    { "text": "Generalversammlung vorbereiten und durchführen" },
-    { "text": "Dank / Würdigung die geleistete Arbeit" }
+    {
+      "text": "Generalversammlung vorbereiten und durchführen"
+    },
+    {
+      "text": "Dank / Würdigung die geleistete Arbeit"
+    }
   ],
   "aufzeichnungOrange": [
-    { "text": "Memo/Protokoll", "hasLink": false, "link": "" }
+    {
+      "text": "Memo/Protokoll",
+      "hasLink": false,
+      "link": ""
+    }
   ],
   "verantwortlicherOrange": "Vorstand",
   "informationOrange": "",

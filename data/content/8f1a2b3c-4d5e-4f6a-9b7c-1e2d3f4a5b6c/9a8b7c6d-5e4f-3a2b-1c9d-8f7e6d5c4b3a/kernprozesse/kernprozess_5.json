@@ -22,7 +22,11 @@
     }
   ],
   "aufzeichnungOrange": [
-    { "text": "Dokumentensammlung", "hasLink": false, "link": "" },
+    {
+      "text": "Dokumentensammlung",
+      "hasLink": false,
+      "link": ""
+    },
     {
       "text": "ausgefüllter Projektplan (KP 03.1 AH 02)",
       "hasLink": true,

@@ -11,12 +11,22 @@
   "vorlagenBlue": [],
   "middleHead": "Bewertung der Arbeit der Kolpingsfamilie",
   "middleList": [
-    { "text": "durch den Vorstand" },
-    { "text": "gemeinsam mit Evaluierungsteam" },
-    { "text": "im Rahmen einer Klausur / Wochenende mit Gottesdienst …" }
+    {
+      "text": "durch den Vorstand"
+    },
+    {
+      "text": "gemeinsam mit Evaluierungsteam"
+    },
+    {
+      "text": "im Rahmen einer Klausur / Wochenende mit Gottesdienst …"
+    }
   ],
   "aufzeichnungOrange": [
-    { "text": "Protokoll der Vorstandsklausur", "hasLink": false, "link": "" }
+    {
+      "text": "Protokoll der Vorstandsklausur",
+      "hasLink": false,
+      "link": ""
+    }
   ],
   "verantwortlicherOrange": "Vorsitzender\nLeiterIn EvaluierungsteamVorsitzender\nLeiterIn Evaluierungsteam",
   "informationOrange": "",

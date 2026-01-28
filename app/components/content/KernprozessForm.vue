@@ -1,9 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import type {
-  Kernprozess,
-  KernprozessElementLink,
-} from "~/utils/kernprozess/kernprozess";
+import type { KernprozessElementLink } from "~/utils/kernprozess/kernprozess";
 
 const props = defineProps<{
   schrittCount: number | undefined;
@@ -27,6 +24,10 @@ const emit = defineEmits(["cancle", "send"]);
 const STEPS = 6;
 const currentStep = ref(0);
 
+function deepCopy<T>(v: T): T {
+  return JSON.parse(JSON.stringify(v));
+}
+
 function nextStep() {
   if (currentStep.value < STEPS - 1) currentStep.value++;
   else currentStep.value = 0;
@@ -37,37 +38,73 @@ function prevStep() {
   else currentStep.value = STEPS - 1;
 }
 
-const schrittCountRef: Ref<number> = ref(props.schrittCount || 1);
-const vorgabenBlueRef = ref<KernprozessElementLink[]>(
-  props.vorgabenBlue || [
-    { text: "", hasLink: false, link: "", redirect: false },
-  ],
-);
-const vorlagenBlueRef = ref<KernprozessElementLink[]>(
-  props.vorlagenBlue || [
-    { text: "", hasLink: false, link: "", redirect: false },
-  ],
-);
+// const schrittCountRef: Ref<number> = ref(props.schrittCount || 1);
+// const vorgabenBlueRef = ref<KernprozessElementLink[]>(
+//   props.vorgabenBlue || [
+//     { text: "", hasLink: false, link: "", redirect: false },
+//   ],
+// );
+// const vorlagenBlueRef = ref<KernprozessElementLink[]>(
+//   props.vorlagenBlue || [
+//     { text: "", hasLink: false, link: "", redirect: false },
+//   ],
+// );
 
-const middleHeadRef: Ref<string> = ref(props.middleHead || "");
-const middleListRef = ref<{ text: string }[]>(
-  props.middleList || [{ text: "" }],
-);
+// const middleHeadRef: Ref<string> = ref(props.middleHead || "");
+// const middleListRef = ref<{ text: string }[]>(
+//   props.middleList || [{ text: "" }],
+// );
 
-const aufzeichnungOrangeRef = ref<KernprozessElementLink[]>(
-  props.aufzeichnungOrange || [
-    { text: "", hasLink: false, link: "", redirect: false },
-  ],
-);
-const verantwortlicherOrangeRef: Ref<string> = ref(
-  props.verantwortlicherOrange || "",
-);
-const informationOrangeRef: Ref<string> = ref(props.informationOrange || "");
+// const aufzeichnungOrangeRef = ref<KernprozessElementLink[]>(
+//   props.aufzeichnungOrange || [
+//     { text: "", hasLink: false, link: "", redirect: false },
+//   ],
+// );
+// const verantwortlicherOrangeRef: Ref<string> = ref(
+//   props.verantwortlicherOrange || "",
+// );
+// const informationOrangeRef: Ref<string> = ref(props.informationOrange || "");
 
-const orangeRef: Ref<boolean> = ref(props.orange || false);
+// const orangeRef: Ref<boolean> = ref(props.orange || false);
+//
+const form = ref({
+  schrittCount: 1,
+  vorgabenBlue: [{ text: "", hasLink: false, link: "", redirect: false }],
+  vorlagenBlue: [{ text: "", hasLink: false, link: "", redirect: false }],
+  middleHead: "",
+  middleList: [{ text: "" }],
+  aufzeichnungOrange: [{ text: "", hasLink: false, link: "", redirect: false }],
+  verantwortlicherOrange: "",
+  informationOrange: "",
+  orange: false,
+});
+
+watch(
+  () => props,
+  () => {
+    form.value = deepCopy({
+      schrittCount: props.schrittCount ?? 1,
+      vorgabenBlue: props.vorgabenBlue ?? [
+        { text: "", hasLink: false, link: "", redirect: false },
+      ],
+      vorlagenBlue: props.vorlagenBlue ?? [
+        { text: "", hasLink: false, link: "", redirect: false },
+      ],
+      middleHead: props.middleHead ?? "",
+      middleList: props.middleList ?? [{ text: "" }],
+      aufzeichnungOrange: props.aufzeichnungOrange ?? [
+        { text: "", hasLink: false, link: "", redirect: false },
+      ],
+      verantwortlicherOrange: props.verantwortlicherOrange ?? "",
+      informationOrange: props.informationOrange ?? "",
+      orange: props.orange ?? false,
+    });
+  },
+  { immediate: true, deep: true },
+);
 
 function addVorgabeBlue() {
-  vorgabenBlueRef.value.push({
+  form.value.vorgabenBlue.push({
     text: "",
     hasLink: false,
     link: "",
@@ -76,11 +113,11 @@ function addVorgabeBlue() {
 }
 
 function removeVorgabeBlue(index: number) {
-  vorgabenBlueRef.value.splice(index, 1);
+  form.value.vorgabenBlue.splice(index, 1);
 }
 
 function addVorlagenBlue() {
-  vorlagenBlueRef.value.push({
+  form.value.vorlagenBlue.push({
     text: "",
     hasLink: false,
     link: "",
@@ -89,19 +126,19 @@ function addVorlagenBlue() {
 }
 
 function removeVorlagenBlue(index: number) {
-  vorlagenBlueRef.value.splice(index, 1);
+  form.value.vorlagenBlue.splice(index, 1);
 }
 
 function addMiddleList() {
-  middleListRef.value.push({ text: "" });
+  form.value.middleList.push({ text: "" });
 }
 
 function removeMiddleList(index: number) {
-  middleListRef.value.splice(index, 1);
+  form.value.middleList.splice(index, 1);
 }
 
 function addAufzeichnungOrange() {
-  aufzeichnungOrangeRef.value.push({
+  form.value.aufzeichnungOrange.push({
     text: "",
     hasLink: false,
     link: "",
@@ -110,23 +147,11 @@ function addAufzeichnungOrange() {
 }
 
 function removeAufzeichnungOrange(index: number) {
-  aufzeichnungOrangeRef.value.splice(index, 1);
+  form.value.aufzeichnungOrange.splice(index, 1);
 }
 
-async function postForm() {
-  const data: Kernprozess = {
-    schrittCount: schrittCountRef.value,
-    vorgabenBlue: vorgabenBlueRef.value,
-    vorlagenBlue: vorlagenBlueRef.value,
-    middleHead: middleHeadRef.value,
-    middleList: middleListRef.value,
-    aufzeichnungOrange: aufzeichnungOrangeRef.value,
-    verantwortlicherOrange: verantwortlicherOrangeRef.value,
-    informationOrange: informationOrangeRef.value,
-    orange: orangeRef.value,
-  };
-
-  emit("send", data);
+function postForm() {
+  emit("send", deepCopy(form.value));
 }
 
 function clearForm() {
@@ -137,15 +162,19 @@ function clearForm() {
   )
     return;
 
-  schrittCountRef.value = 0;
-  vorgabenBlueRef.value = [];
-  vorlagenBlueRef.value = [];
-  middleHeadRef.value = "";
-  middleListRef.value = [];
-  aufzeichnungOrangeRef.value = [];
-  verantwortlicherOrangeRef.value = "";
-  informationOrangeRef.value = "";
-  orangeRef.value = false;
+  form.value = deepCopy({
+    schrittCount: 1,
+    vorgabenBlue: [{ text: "", hasLink: false, link: "", redirect: false }],
+    vorlagenBlue: [{ text: "", hasLink: false, link: "", redirect: false }],
+    middleHead: "",
+    middleList: [{ text: "" }],
+    aufzeichnungOrange: [
+      { text: "", hasLink: false, link: "", redirect: false },
+    ],
+    verantwortlicherOrange: "",
+    informationOrange: "",
+    orange: false,
+  });
 }
 </script>
 
@@ -165,7 +194,7 @@ function clearForm() {
           <h1 class="mb-8 text-xl font-semibold text-center">Schritt</h1>
 
           <UInput
-            v-model="schrittCountRef"
+            v-model="form.schrittCount"
             placeholder="Schritt"
             type="number"
             icon="i-heroicons-document-plus"
@@ -179,7 +208,7 @@ function clearForm() {
           </h1>
 
           <UInput
-            v-model="middleHeadRef"
+            v-model="form.middleHead"
             placeholder="Überschrift Kernprozess"
             icon="i-heroicons-document-text"
             size="lg"
@@ -190,7 +219,7 @@ function clearForm() {
             Bezug zur Kolping-Idee?
           </h1>
 
-          <select v-model="orangeRef" class="w-full border rounded-lg p-2">
+          <select v-model="form.orange" class="w-full border rounded-lg p-2">
             <option :value="true">Ja</option>
             <option :value="false">Nein</option>
           </select>
@@ -201,7 +230,7 @@ function clearForm() {
             Vorgaben / Arbeitshilfen
           </h1>
           <div
-            v-for="(item, index) in vorgabenBlueRef"
+            v-for="(item, index) in form.vorgabenBlue"
             :key="index"
             class="mb-5 relative"
           >
@@ -270,7 +299,7 @@ function clearForm() {
             Vorlagen Schlussberichte
           </h1>
           <div
-            v-for="(item, index) in vorlagenBlueRef"
+            v-for="(item, index) in form.vorlagenBlue"
             :key="index"
             class="mb-5 relative"
           >
@@ -340,7 +369,7 @@ function clearForm() {
           </h1>
 
           <div
-            v-for="(item, index) in middleListRef"
+            v-for="(item, index) in form.middleList"
             :key="index"
             class="mb-6 flex gap-5"
           >
@@ -378,7 +407,7 @@ function clearForm() {
           </h1>
 
           <div
-            v-for="(item, index) in aufzeichnungOrangeRef"
+            v-for="(item, index) in form.aufzeichnungOrange"
             :key="index"
             class="mb-6 relative"
           >
@@ -447,7 +476,7 @@ function clearForm() {
           </h1>
 
           <UTextarea
-            v-model="verantwortlicherOrangeRef"
+            v-model="form.verantwortlicherOrange"
             placeholder="Verantwortliche/r"
             autoresize
             class="w-full"
@@ -456,7 +485,7 @@ function clearForm() {
           <h1 class="my-8 text-xl font-semibold text-center">Information an</h1>
 
           <UTextarea
-            v-model="informationOrangeRef"
+            v-model="form.informationOrange"
             placeholder="Information an"
             autoresize
             class="w-full"

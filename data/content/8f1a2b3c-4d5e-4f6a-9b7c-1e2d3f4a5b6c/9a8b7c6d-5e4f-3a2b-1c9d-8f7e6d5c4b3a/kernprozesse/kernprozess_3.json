@@ -10,13 +10,29 @@
   "vorlagenBlue": [],
   "middleHead": "Generalversammlung durchführen",
   "middleList": [
-    { "text": "Verantwortliche werden entlassen" },
-    { "text": "Jahresabschluss wird angenommen" },
-    { "text": "inhaltliche Vorschläge werden beschlossen (oder nicht)" },
-    { "text": "Aufruf zu Mitarbeit in Teams" },
-    { "text": "Dank und Würdigung für geleistete Arbeit" }
+    {
+      "text": "Verantwortliche werden entlassen"
+    },
+    {
+      "text": "Jahresabschluss wird angenommen"
+    },
+    {
+      "text": "inhaltliche Vorschläge werden beschlossen (oder nicht)"
+    },
+    {
+      "text": "Aufruf zu Mitarbeit in Teams"
+    },
+    {
+      "text": "Dank und Würdigung für geleistete Arbeit"
+    }
   ],
-  "aufzeichnungOrange": [{ "text": "Protokoll", "hasLink": false, "link": "" }],
+  "aufzeichnungOrange": [
+    {
+      "text": "Protokoll",
+      "hasLink": false,
+      "link": ""
+    }
+  ],
   "verantwortlicherOrange": "Vorsitzende(r)",
   "informationOrange": "alle Mitglieder; DV, BV",
   "orange": false
