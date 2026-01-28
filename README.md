@@ -10,6 +10,8 @@ NUXT_SESSION_PASSWORD=[password]
 NUXT_POSTGRES_URL=postgres://[POSTGRES_USER]:[POSTGRES_PASSWORD]@[POSTGRES_DB]:5432/postgres
 ```
 
+NUXT_SESSION_PASSWORD must have at least 32 characters
+
 ## setup ports in compose.yaml
 
 ```
