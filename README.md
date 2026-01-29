@@ -1,6 +1,20 @@
 # KOLPING HANDBUCH
 
-## create .env file with following params:
+## Project Setup
+
+1. Create a folder (e.g. `kolping`)
+2. Clone the Nuxt project into the created folder
+3. Inside `kolping`, there should now be a folder named `kolping-handbuch`
+4. Navigate into `kolping-handbuch` and create a `.env` file
+
+Note:
+The outer folder kolping is required because the database initialization process will create a new folder named postgres-data. 
+This folder stores all PostgreSQL data, including user information, and must persist outside the project directory to 
+prevent data loss when rebuilding or updating the application.
+
+## Create `.env` File
+
+Create a `.env` file with the following variables:
 
 ```
 POSTGRES_PASSWORD=[password]
@@ -12,7 +26,7 @@ NUXT_POSTGRES_URL=postgres://[POSTGRES_USER]:[POSTGRES_PASSWORD]@postgres:5432/[
 
 NUXT_SESSION_PASSWORD must have at least 32 characters
 
-## setup ports in compose.yaml
+## Configure ports in compose.yaml
 
 ```
 postgres:
@@ -23,18 +37,27 @@ handbuch:
     - "[port]:3000"
 ```
 
-the port for "handbuch" must match the port setup with the subdomain "handbuch.kolping.at"
+Note:
+The port for handbuch must match the port configured for the subdomain
 
-## build docker
+## Build and Start Docker
 
 ```
 sudo docker compose up --build
 ```
 
-if started for the first time the database is empty, the postgres db init section creates the useres table and an admin account with the password "pw"
-after the first login IMEDIATELY CHANGE THE PASSWORD
+First Startup Notice
 
-## postgres db init
+When starting for the first time, the database is empty.
+The PostgreSQL initialization script will:
+
+Create the users table
+
+Create an admin account with the default password: `pw`
+
+After the first login, CHANGE THE PASSWORD IMMEDIATELY.
+
+## PostgreSQL Database Initialization Script
 
 ```
 CREATE TABLE users (
