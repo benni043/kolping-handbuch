@@ -31,6 +31,8 @@ async function fetchUsers() {
       },
     );
 
+    console.log(response.data);
+
     users.value = response.data;
     users.value.sort((user, user2) => user.id - user2.id);
   } catch {
@@ -250,6 +252,20 @@ fetchUsers();
         <div class="text-lg font-bold">{{ user.username }}</div>
         <div class="text-lg">ID: {{ user.id }}</div>
         <div class="text-lg">Rolle: {{ user.role }}</div>
+        <div class="text-lg">
+          Letzer Login:
+          <NuxtTime
+            v-if="user.last_login !== null"
+            :datetime="user.last_login!"
+            year="numeric"
+            month="long"
+            day="numeric"
+            hour="2-digit"
+            minute="2-digit"
+            second="2-digit"
+          ></NuxtTime>
+          <span v-else>---</span>
+        </div>
 
         <div class="flex gap-3 mt-3">
           <UButton

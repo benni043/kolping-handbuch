@@ -15,9 +15,8 @@ const isEditing = ref(false);
 const render = useTemplateRef("render");
 
 watch(isEditing, async () => {
-  if (!isEditing.value && render.value) {
+  if (!isEditing.value && render.value)
     render.value!.innerHTML = await marked.parse(note.value ?? "");
-  }
 });
 
 watch(
@@ -25,9 +24,7 @@ watch(
   async (newVal) => {
     note.value = newVal;
 
-    if (render.value) {
-      render.value.innerHTML = await marked.parse(newVal ?? "");
-    }
+    if (render.value) render.value.innerHTML = await marked.parse(newVal ?? "");
   },
 );
 
@@ -50,9 +47,8 @@ async function cancle() {
   note.value = props.note;
   isEditing.value = false;
 
-  if (render.value) {
+  if (render.value)
     render.value.innerHTML = await marked.parse(props.note ?? "");
-  }
 }
 </script>
 
