@@ -13,14 +13,10 @@ const lastLogin: Ref<Date | null> = ref(null);
 
 async function login() {
   try {
-    // const response =
     await $fetch("/api/login", {
       method: "POST",
       body: credentials,
     });
-
-    // localStorage.setItem("lastLogin", response.last_login!);
-    // lastLogin.value = new Date(Date.parse(response.last_login!));
 
     toast.add({
       title: "Anmeldung erfolgreich!",

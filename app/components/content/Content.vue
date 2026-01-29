@@ -46,8 +46,13 @@ function send() {
   }
 }
 
-function cancle() {
+async function cancle() {
+  note.value = props.note;
   isEditing.value = false;
+
+  if (render.value) {
+    render.value.innerHTML = await marked.parse(props.note ?? "");
+  }
 }
 </script>
 

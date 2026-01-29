@@ -6,12 +6,22 @@ const toast = useToast();
 const segment = getSegment(1);
 const current = segment === undefined ? "startpage" : segment;
 
-const { data } = await useFetch<string>("/api/content/public", {
-  method: "GET",
-  query: {
-    file: current,
-  },
-});
+const data = ref("");
+
+async function fetchNote() {
+  try {
+    const response = await $fetch("/api/content/public", {
+      method: "GET",
+      query: {
+        file: current,
+      },
+    });
+
+    data.value = response;
+  } catch {
+    console.error("error");
+  }
+}
 
 async function updateNote(note: string) {
   try {
@@ -23,6 +33,8 @@ async function updateNote(note: string) {
         data: note,
       },
     });
+
+    fetchNote();
 
     toast.add({
       title: "Erfolg",
@@ -41,6 +53,10 @@ async function updateNote(note: string) {
     });
   }
 }
+
+onMounted(() => {
+  fetchNote();
+});
 </script>
 
 <template>

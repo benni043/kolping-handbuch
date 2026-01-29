@@ -8,14 +8,24 @@ definePageMeta({
 const toast = useToast();
 const route = useRoute();
 
-const { data } = await useFetch<string>("/api/content/", {
-  method: "GET",
-  query: {
-    path: route.params.path,
-    subPath: route.params.subPath,
-    page: route.params.page,
-  },
-});
+const data = ref("");
+
+async function fetchNote() {
+  try {
+    const response = await $fetch("/api/content/", {
+      method: "GET",
+      query: {
+        path: route.params.path,
+        subPath: route.params.subPath,
+        page: route.params.page,
+      },
+    });
+
+    data.value = response;
+  } catch {
+    console.error("error");
+  }
+}
 
 async function updateNote(note: string) {
   try {
@@ -27,6 +37,8 @@ async function updateNote(note: string) {
         data: note,
       },
     });
+
+    fetchNote();
 
     toast.add({
       title: "Erfolg",
@@ -45,6 +57,10 @@ async function updateNote(note: string) {
     });
   }
 }
+
+onMounted(() => {
+  fetchNote();
+});
 </script>
 
 <template>

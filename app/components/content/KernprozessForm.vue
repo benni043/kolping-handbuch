@@ -38,35 +38,6 @@ function prevStep() {
   else currentStep.value = STEPS - 1;
 }
 
-// const schrittCountRef: Ref<number> = ref(props.schrittCount || 1);
-// const vorgabenBlueRef = ref<KernprozessElementLink[]>(
-//   props.vorgabenBlue || [
-//     { text: "", hasLink: false, link: "", redirect: false },
-//   ],
-// );
-// const vorlagenBlueRef = ref<KernprozessElementLink[]>(
-//   props.vorlagenBlue || [
-//     { text: "", hasLink: false, link: "", redirect: false },
-//   ],
-// );
-
-// const middleHeadRef: Ref<string> = ref(props.middleHead || "");
-// const middleListRef = ref<{ text: string }[]>(
-//   props.middleList || [{ text: "" }],
-// );
-
-// const aufzeichnungOrangeRef = ref<KernprozessElementLink[]>(
-//   props.aufzeichnungOrange || [
-//     { text: "", hasLink: false, link: "", redirect: false },
-//   ],
-// );
-// const verantwortlicherOrangeRef: Ref<string> = ref(
-//   props.verantwortlicherOrange || "",
-// );
-// const informationOrangeRef: Ref<string> = ref(props.informationOrange || "");
-
-// const orangeRef: Ref<boolean> = ref(props.orange || false);
-//
 const form = ref({
   schrittCount: 1,
   vorgabenBlue: [{ text: "", hasLink: false, link: "", redirect: false }],
