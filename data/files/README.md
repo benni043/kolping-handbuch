@@ -8,7 +8,7 @@
 4. Navigate into `kolping-handbuch` and create a `.env` file
 
 Note:
-The outer folder `kolping` is required because the database initialization process will create a new folder named `postgres-data`. 
+The outer folder kolping is required because the database initialization process will create a new folder named postgres-data. 
 This folder stores all PostgreSQL data, including user information, and must persist outside the project directory to 
 prevent data loss when rebuilding or updating the application.
 
@@ -24,9 +24,9 @@ NUXT_SESSION_PASSWORD=[password]
 NUXT_POSTGRES_URL=postgres://[POSTGRES_USER]:[POSTGRES_PASSWORD]@postgres:5432/[POSTGRES_DB]
 ```
 
-`NUXT_SESSION_PASSWORD` must have at least 32 characters
+NUXT_SESSION_PASSWORD must have at least 32 characters
 
-## Configure ports in `compose.yaml`
+## Configure ports in compose.yaml
 
 ```
 postgres:
@@ -46,15 +46,16 @@ The port for handbuch must match the port configured for the subdomain
 sudo docker compose up --build
 ```
 
-Note:
+First Startup Notice
 
 When starting for the first time, the database is empty.
 The PostgreSQL initialization script will:
 
-- Create the `users` table
-- Create an `admin` account with the default password: `pw`
+Create the users table
 
-After the first login, CHANGE THE PASSWORD IMMEDIATELY. 
+Create an admin account with the default password: `pw`
+
+After the first login, CHANGE THE PASSWORD IMMEDIATELY.
 
 ## PostgreSQL Database Initialization Script
 
@@ -71,4 +72,6 @@ INSERT INTO users (username, password_hash, role, last_login) VALUES
 ('admin', '$scrypt$n=16384,r=8,p=1$zG7Pe68fB3MZX4wup6Vq2Q$AwztDEp4/6vbqA7TdmpSNO9YRKo/6fc3uJUZuisFWJ/tISX+UKtCcDNsifaDTG5gC3Yp+QQXi/hZ9ec4CMhlDg', 'admin', NULL);
 
 SELECT * FROM users;
+
+DROP TABLE users;
 ```
