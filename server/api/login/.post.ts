@@ -27,11 +27,12 @@ export default defineEventHandler(async (event) => {
 
   await sql`UPDATE users SET last_login = NOW() WHERE username = ${body.username.toLowerCase()}`;
 
-  const [last_login] = await sql<{ last_login: Date | null }[]>`
-    SELECT last_login
-    FROM users
-    WHERE username = ${body.username.toLowerCase()}
-  `;
+  // const [last_login] = await sql<{ last_login: Date | null }[]>`
+  //   SELECT last_login
+  //   FROM users
+  //   WHERE username = ${body.username.toLowerCase()}
+  // `;
+
   event.waitUntil(sql.end());
 
   await setUserSession(
@@ -51,7 +52,7 @@ export default defineEventHandler(async (event) => {
     },
   );
 
-  return {
-    last_login: last_login?.last_login?.toISOString() ?? null,
-  };
+  // return {
+  // last_login: last_login?.last_login?.toISOString() ?? null,
+  // };
 });

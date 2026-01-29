@@ -13,13 +13,14 @@ const lastLogin: Ref<Date | null> = ref(null);
 
 async function login() {
   try {
-    const response = await $fetch("/api/login", {
+    // const response =
+    await $fetch("/api/login", {
       method: "POST",
       body: credentials,
     });
 
-    localStorage.setItem("lastLogin", response.last_login!);
-    lastLogin.value = new Date(Date.parse(response.last_login!));
+    // localStorage.setItem("lastLogin", response.last_login!);
+    // lastLogin.value = new Date(Date.parse(response.last_login!));
 
     toast.add({
       title: "Anmeldung erfolgreich!",
@@ -55,9 +56,26 @@ async function logout(username: string) {
   await clearSession();
 }
 
+async function fetchLastLogin() {
+  try {
+    const response = await $fetch("/api/login/last-login", {
+      method: "GET",
+    });
+
+    lastLogin.value = new Date(Date.parse(response.last_login!));
+  } catch {
+    toast.add({
+      title: "Fehler",
+      description: "Anmeldung fehlgeschlagen! Sie müssen angemeldet sein!",
+      color: "error",
+      icon: "i-heroicons-x-mark",
+      duration: DURATION,
+    });
+  }
+}
+
 onMounted(() => {
-  if (localStorage.getItem("lastLogin") !== null)
-    lastLogin.value = new Date(Date.parse(localStorage.getItem("lastLogin")!));
+  fetchLastLogin();
 });
 </script>
 
