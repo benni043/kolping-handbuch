@@ -14,4 +14,7 @@ export default defineNuxtConfig({
     "@nuxtjs/device",
   ],
   srcDir: "app/",
+  ui: {
+    colorMode: false,
+  },
 });
