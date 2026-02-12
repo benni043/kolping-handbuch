@@ -8,8 +8,8 @@
 4. Navigate into `kolping-handbuch` and create a `.env` file
 
 Note:
-The outer folder `kolping` is required because the database initialization process will create a new folder named `postgres-data`. 
-This folder stores all PostgreSQL data, including user information, and must persist outside the project directory to 
+The outer folder `kolping` is required because the database initialization process will create a new folder named `postgres-data`.
+This folder stores all PostgreSQL data, including user information, and must persist outside the project directory to
 prevent data loss when rebuilding or updating the application.
 
 ## Create `.env` File
@@ -54,7 +54,7 @@ The PostgreSQL initialization script will:
 - Create the `users` table
 - Create an `admin` account with the default password: `pw`
 
-After the first login, CHANGE THE PASSWORD IMMEDIATELY. 
+After the first login, CHANGE THE PASSWORD IMMEDIATELY.
 
 ## PostgreSQL Database Initialization Script
 
