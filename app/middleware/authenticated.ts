@@ -11,12 +11,12 @@ export default defineNuxtRouteMiddleware((to) => {
       icon: "i-heroicons-x-mark",
       duration: DURATION,
     });
+
     return navigateTo(`/kolping/login`);
   }
 
   const allowedRoles = (to.meta.allowedRoles as string[]) ?? [];
 
-  if (allowedRoles.length && !allowedRoles.includes(user.value!.role)) {
+  if (allowedRoles.length && !allowedRoles.includes(user.value!.role))
     return navigateTo("/kolping/startpage");
-  }
 });
