@@ -31,8 +31,6 @@ async function fetchUsers() {
       },
     );
 
-    console.log(response.data);
-
     users.value = response.data;
     users.value.sort((user, user2) => user.id - user2.id);
   } catch {
