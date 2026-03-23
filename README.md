@@ -21,7 +21,7 @@ POSTGRES_PASSWORD=[password]
 POSTGRES_USER=[user]
 POSTGRES_DB=[db]
 NUXT_SESSION_PASSWORD=[password]
-NUXT_POSTGRES_URL=postgres://[POSTGRES_USER]:[POSTGRES_PASSWORD]@postgres:5432/[POSTGRES_DB]
+NUXT_POSTGRES_URL=postgres://[POSTGRES_USER]:[POSTGRES_PASSWORD]@handbuch-postgres:5432/[POSTGRES_DB]
 ```
 
 `NUXT_SESSION_PASSWORD` must have at least 32 characters
@@ -38,7 +38,7 @@ handbuch:
 ```
 
 Note:
-The port for handbuch must match the port configured for the subdomain
+The port for handbuch must match the port configured for the subdomain.
 
 ## Build and Start Docker
 
@@ -55,6 +55,12 @@ The PostgreSQL initialization script will:
 - Create an `admin` account with the default password: `pw`
 
 After the first login, CHANGE THE PASSWORD IMMEDIATELY.
+
+## Connect to DB
+
+```
+docker exec -it [container-id] psql -U [postgres-user] -d [postgres-db]
+```
 
 ## PostgreSQL Database Initialization Script
 
