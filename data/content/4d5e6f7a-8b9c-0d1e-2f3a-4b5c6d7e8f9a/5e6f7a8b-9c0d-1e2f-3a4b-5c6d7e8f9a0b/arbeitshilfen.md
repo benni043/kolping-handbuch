@@ -18,7 +18,7 @@
 ## Anhänge:
 
 - [Anhang 01 „Rollen im Verband“](/api/files?path=02/02-1/arbeitshilfen/Anhang-1-INFOBLATT-Rollen-im-Verband.docx)
-- [Anhang 02 Funktionsbeschreibung: „GeschäftsführerIn“](https://kolping.at)
+- [Anhang 02 Funktionsbeschreibung: „GeschäftsführerIn“](/api/files?path=02/02-1/arbeitshilfen/Anhang-2-Funktionsbeschreibung-GF.docx)
 - [Anhang 03 „Allgemeine Dienstpflichten GF“](/api/files?path=02/02-1/arbeitshilfen/Anhang-3-Allg.-Dienstpflichten-GF.docx)
 - [Anhang 04 Muster „Geschäftsordnung“](/api/files?path=02/02-1/arbeitshilfen/Anhang-4-MUSTER-Geschaeftsordnung.docx)
 

@@ -30,13 +30,13 @@ Diese Dokumente sollen dabei helfen, die einzelnen Schritte des Kernprozesses le
 
 ## Vorlagen
 
-- [„Pressemitteilung“](/api/files?path=07/07-2/kernprozesse/KP 7-2 AH 5a_MUSTER Pressemitteilung.docx)
-- [„Presseeinladung“](/api/files?path=07/07-2/kernprozesse/KP 7-2 AH 6a_MUSTER Presseeinladung.docx)
-- [„Kolping-Textbausteine“](/api/files?path=07/07-2/kernprozesse/KP 7-2 AH 6b_Textbausteine fuer die Pressearbeit.docx)
-- ["Kolping-Newsletter"](/api/files?path=07/07-2/kernprozesse/KP 7-2 AH 8a_MUSTER Newsletter (Kolpingsfamilie).docx)
+- [„Pressemitteilung“](/api/files?path=07/07-2/kernprozesse/KP_7-2_AH_5a_MUSTER_Pressemitteilung.docx)
+- [„Presseeinladung“](/api/files?path=07/07-2/kernprozesse/KP_7-2_AH_6a_MUSTER_Presseeinladung.docx)
+- [„Kolping-Textbausteine“](/api/files?path=07/07-2/kernprozesse/KP_7-2_AH_6b_Textbausteine_fuer_die_Pressearbeit.docx)
+- ["Kolping-Newsletter"](/api/files?path=07/07-2/kernprozesse/KP_7-2_AH_8a_MUSTER_Newsletter_(Kolpingsfamilie).docx)
 
 <br>
 
 ## Zur Professionalisierung der internen Kommunikation
 
-- [Merkblatt „Online-Mitgliederdatenbank“](/api/files?path=07/07-2/kernprozesse/Online Mitgliederdatenbank.doc)
+- [Merkblatt „Online-Mitgliederdatenbank“](/api/files?path=07/07-2/kernprozesse/Online_Mitgliederdatenbank.doc)
