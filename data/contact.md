@@ -20,9 +20,18 @@ A-1040 Wien
 
 <b>Spendenkonto:</b>
 <br style="margin:0;padding:0;line-height:1;">
-BAWAG-P.S.K.-Konto Nr. 1.953.008, BLZ 60000
+Zahlungsempfänger: Kolping Österreich
 <br style="margin:0;padding:0;line-height:1;">
-BIC: OPSKATWW, IBAN: 246000000001953008
+Paulanergasse 11, 1040 Wien
+
+BAWAG-PSK-Kontonummer: 1.953.008
+<br style="margin:0;padding:0;line-height:1;">
+BLZ: 60000
+<br style="margin:0;padding:0;line-height:1;">
+BIC: BAWAATWW
+<br style="margin:0;padding:0;line-height:1;">
+IBAN: AT24 6000 0000 0195 3008
+<br style="margin:0;padding:0;line-height:1;">
 
 <br>
 
@@ -36,6 +45,4 @@ BIC: OPSKATWW, IBAN: 246000000001953008
 
 <br>
 
-<b>Geschäftsführung:</b>
-<br style="margin:0;padding:0;line-height:1;">
-Vereinsobfrau: Mag. Christine LEOPOLD
+<b>Präsident Kolping Österreich</b>: Mag. Wolfgang Engelmaier
