@@ -33,6 +33,10 @@ export const navMappings: NavMapping[] = [
     redirect: "contact",
   },
   {
+    displayName: "Datenschutz",
+    redirect: "datenschutz",
+  },
+  {
     displayName: "Impressum",
     redirect: "impressum",
   },

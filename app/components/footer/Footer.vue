@@ -7,6 +7,10 @@ function impressum() {
   navigateTo(`/kolping/impressum`);
 }
 
+function datenschutz() {
+  navigateTo(`/kolping/datenschutz`);
+}
+
 function scrollToTop() {
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
@@ -47,6 +51,7 @@ function scrollToTop() {
 
       <div class="flex gap-5 text-xl flex-col lg:flex-row">
         <button class="cursor-pointer" @click="contact()">Kontakt</button>
+        <button class="cursor-pointer" @click="datenschutz()">Datenschutz</button>
         <button class="cursor-pointer" @click="impressum()">Impressum</button>
       </div>
     </div>
