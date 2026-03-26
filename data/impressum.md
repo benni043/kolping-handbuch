@@ -7,13 +7,10 @@ Herausgeber und Medieninhaber: Kolping Österreich | Für den Inhalt verantwortl
 <br>
 
 Redaktion: Mag. Wolfgang Engelmaier | Adresse: 1040 Wien | Paulanergasse 11 | Tel: (01) 587 35 42 | www.kolping.at
-Graphische Gestaltung: www.barus.at (Bernhard Jakšik, Dominik Roitner, Richard Barus) | Umsetzung der Online-Version: www.cool-it.at (cool IT GmbH)
+
+Graphische Gestaltung: www.barus.at (Bernhard Jakšik, Dominik Roitner, Richard Barus) | Umsetzung der Online-Version: Benedikt Huff
 
 <br>
 
-Bundespräsidium: Chr. Leopold, G. Gump, R. Lexer, A. Pribyl, W. Engelmaier, M. Praschberger, N. Hauer, R. Stefan, R.
-Draskovits, M. Wachernig
+Bundespräsidium: Christine Leopold, Gerald Gump, Reinhold Lexer, Wolfgang Engelmaier, Albert Pribyl,  Norbert Hauer, Benjamin Purner, Günter Bärnthaler, Renate Draskovits, Martina Wachernig
 
-<br>
-
-Bankverbindung: BAWAG-P.S.K. Kto Nr. 1.953.008, BLZ 60000, BIC: OPSKATWW, IBAN: AT246000000001953008
