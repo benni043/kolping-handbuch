@@ -149,6 +149,10 @@ function navigatoToIntroduction() {
   isActive.value = false;
 }
 
+function navigateToContact() {
+  navigateTo(`/kolping/contact`);
+}
+
 function navigateToAdmin() {
   navigateTo(`/usermanagement`);
   isActive.value = false;
@@ -224,24 +228,15 @@ function navigateToHome() {
             </svg>
           </button>
 
+          <button class="text-xl cursor-pointer" @click="navigateToContact()">
+            Kontakt
+          </button>
+
           <button
             class="text-xl cursor-pointer"
             @click="navigatoToIntroduction()"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              :class="{ 'size-8': width >= 450, 'size-6': width <= 450 }"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"
-              />
-            </svg>
+            Einleitung
           </button>
 
           <button
@@ -249,40 +244,14 @@ function navigateToHome() {
             class="text-xl cursor-pointer"
             @click="navigateToLoginPage()"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              :class="{ 'size-8': width >= 450, 'size-6': width <= 450 }"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15M12 9l-3 3m0 0 3 3m-3-3h12.75"
-              />
-            </svg>
+            Anmelden
           </button>
           <button
             v-if="loggedIn"
             class="text-xl cursor-pointer"
             @click="navigateToLoginPage()"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              :class="{ 'size-8': width >= 450, 'size-6': width <= 450 }"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15m-3 0-3-3m0 0 3-3m-3 3H15"
-              />
-            </svg>
+            Abmelden
           </button>
 
           <button v-if="width <= MOBILE_WIDTH" @click="isActive = !isActive">

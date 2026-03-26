@@ -152,7 +152,7 @@ onMounted(() => {
           class="cursor-pointer"
           @click="login()"
         >
-          Login
+          Anmelden
         </UButton>
       </UForm>
     </div>
@@ -188,7 +188,7 @@ onMounted(() => {
         block
         @click="logout(user?.username)"
       >
-        Logout
+        Abmelden
       </UButton>
     </div>
   </div>

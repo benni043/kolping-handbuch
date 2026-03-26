@@ -1,8 +1,6 @@
-# Datenschutz
+# Datenschutz- und Nutzungshinweise für Webseiten von Kolping Österreich
 
 ---
-
-# Datenschutz- und Nutzungshinweise für Webseiten von Kolping Österreich
 
 ## Geltungsbereich
 

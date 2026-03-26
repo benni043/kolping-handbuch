@@ -1,8 +1,4 @@
 <script setup lang="ts">
-function contact() {
-  navigateTo(`/kolping/contact`);
-}
-
 function impressum() {
   navigateTo(`/kolping/impressum`);
 }
@@ -50,8 +46,9 @@ function scrollToTop() {
       <img src="/img/logo.png" alt="logo" class="w-60 mb-5 lg:mt-0 lg:mb-0" />
 
       <div class="flex gap-5 text-xl flex-col lg:flex-row">
-        <button class="cursor-pointer" @click="contact()">Kontakt</button>
-        <button class="cursor-pointer" @click="datenschutz()">Datenschutz</button>
+        <button class="cursor-pointer" @click="datenschutz()">
+          Datenschutz
+        </button>
         <button class="cursor-pointer" @click="impressum()">Impressum</button>
       </div>
     </div>
