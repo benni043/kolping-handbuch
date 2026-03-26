@@ -6,6 +6,8 @@ const {
   clear: clearSession,
 } = useUserSession();
 
+const router = useRouter();
+
 const toast = useToast();
 
 const credentials = reactive({
@@ -79,6 +81,8 @@ async function fetchLastLogin() {
 
 onMounted(() => {
   fetchLastLogin();
+
+  router.push({ hash: "#login" });
 });
 </script>
 
@@ -165,7 +169,7 @@ onMounted(() => {
     </div>
 
     <div v-else class="w-[90vw] lg:w-[60vw] flex flex-col items-center">
-      <div class="text-2xl font-semibold mb-3 text-center">
+      <div id="login" class="text-2xl font-semibold mb-3 text-center">
         Eingeloggt als <b>{{ user?.username }}</b>
       </div>
 

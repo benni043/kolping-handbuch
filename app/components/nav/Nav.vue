@@ -337,9 +337,14 @@ function navigateToHome() {
 
       <div class="flex justify-center items-center mb-5">
         <div class="w-[90vw] lg:w-[60vw]">
-          <UBreadcrumb :items="items">
+          <UBreadcrumb :items="items" class="custom-breadcrumb">
             <template #item-label="{ item }">
-              <div :class="{ 'text-lg': width >= 450 }">
+              <div
+                :class="[
+                  'break-words leading-tight',
+                  width >= 450 ? 'text-lg' : '',
+                ]"
+              >
                 {{ item.label }}
               </div>
             </template>
