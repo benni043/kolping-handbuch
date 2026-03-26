@@ -2,7 +2,6 @@ export default defineNuxtRouteMiddleware((to) => {
   const { loggedIn, user } = useUserSession();
   const toast = useToast();
 
-  // redirect the user to the login screen if they're not authenticated
   if (!loggedIn.value) {
     toast.add({
       title: "Fehler",
@@ -17,6 +16,7 @@ export default defineNuxtRouteMiddleware((to) => {
 
   const allowedRoles = (to.meta.allowedRoles as string[]) ?? [];
 
-  if (allowedRoles.length && !allowedRoles.includes(user.value!.role))
+  if (allowedRoles.length && !allowedRoles.includes(user.value!.role)) {
     return navigateTo("/kolping/startpage");
+  }
 });

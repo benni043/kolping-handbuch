@@ -1,5 +1,10 @@
 <script setup lang="ts">
-const { user, fetch: refreshSession, clear: clearSession } = useUserSession();
+const {
+  loggedIn,
+  user,
+  fetch: refreshSession,
+  clear: clearSession,
+} = useUserSession();
 
 const toast = useToast();
 
@@ -53,6 +58,8 @@ async function logout(username: string) {
 }
 
 async function fetchLastLogin() {
+  if (!loggedIn.value) return;
+
   try {
     const response = await $fetch("/api/login/last-login", {
       method: "GET",
