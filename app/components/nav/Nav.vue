@@ -408,14 +408,9 @@ function navigateToHome() {
 
       <div class="flex justify-center items-center mb-5">
         <div class="w-[90vw] lg:w-[60vw]">
-          <UBreadcrumb
-            :items="items"
-            class="custom-breadcrumb flex-wrap gap-y-1"
-          >
+          <UBreadcrumb :items="items" class="breadcrumb-fix">
             <template #item-label="{ item }">
-              <div
-                class="text-lg leading-tight whitespace-normal break-words min-w-0"
-              >
+              <div class="text-lg leading-tight whitespace-normal break-words">
                 {{ item.label }}
               </div>
             </template>
@@ -426,4 +421,15 @@ function navigateToHome() {
   </ClientOnly>
 </template>
 
-<style></style>
+<style scoped>
+.breadcrumb-fix :deep(ol) {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center;
+  gap: 6px;
+}
+
+.breadcrumb-fix :deep(li) {
+  min-width: 0; /* wichtig für korrektes Wrapping */
+}
+</style>
