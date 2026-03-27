@@ -8,6 +8,8 @@ defineProps<{
   active: boolean;
 }>();
 
+const { loggedIn } = useUserSession();
+
 const emit = defineEmits(["emit-route", "refetch", "active"]);
 
 const toast = useToast();
@@ -289,6 +291,21 @@ async function rename(newName: string) {
   currentName.value = "";
   currentUUID.value = "";
 }
+
+function navigatoToIntroduction() {
+  navigateTo(`/kolping/introduction`);
+  emit("active");
+}
+
+function navigateToContact() {
+  navigateTo(`/kolping/contact`);
+  emit("active");
+}
+
+function navigateToLoginPage() {
+  navigateTo(`/kolping/login`);
+  emit("active");
+}
 </script>
 
 <template>
@@ -529,6 +546,107 @@ async function rename(newName: string) {
     </ul>
 
     <ul :class="{ hidden: !(width <= MOBILE_WIDTH) }">
+      <li>
+        <div
+          class="flex items-center h-13 bg-[#ABE0D9] min-w-88 border-b-1 border-b-gray-400"
+          @click.stop="navigateToLoginPage()"
+        >
+          <b v-if="loggedIn" class="text-[#F18700] ml-3 mr-3">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="size-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15M12 9l-3 3m0 0 3 3m-3-3h12.75"
+              />
+            </svg>
+          </b>
+          <b v-if="loggedIn">
+            <span>Anmelden</span>
+          </b>
+
+          <b v-if="!loggedIn" class="text-[#F18700] ml-3 mr-3">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="size-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15m-3 0-3-3m0 0 3-3m-3 3H15"
+              />
+            </svg>
+          </b>
+          <b v-if="!loggedIn">
+            <span>Abmelden</span>
+          </b>
+        </div>
+      </li>
+
+      <li>
+        <div
+          class="flex items-center h-13 bg-[#ABE0D9] min-w-88 border-b-1 border-b-gray-400"
+          @click.stop="navigateToContact()"
+        >
+          <b class="text-[#F18700] ml-3 mr-3">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="size-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
+              />
+            </svg>
+          </b>
+          <b>
+            <span>Kontakt</span>
+          </b>
+        </div>
+      </li>
+
+      <li>
+        <div
+          class="flex items-center h-13 bg-[#ABE0D9] min-w-88 border-b-1 border-b-gray-400"
+          @click.stop="navigatoToIntroduction()"
+        >
+          <b class="text-[#F18700] ml-3 mr-3">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="size-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"
+              />
+            </svg>
+          </b>
+          <b>
+            <span>Einleitung</span>
+          </b>
+        </div>
+      </li>
+
       <li v-for="(path, index) in data" :key="path.id">
         <div
           class="flex items-center min-h-13 bg-[#50A9CE]/[0.33] border-b-1 border-b-gray-400"
