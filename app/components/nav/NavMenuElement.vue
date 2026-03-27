@@ -8,13 +8,11 @@ defineProps<{
   active: boolean;
 }>();
 
-const { loggedIn } = useUserSession();
-
 const emit = defineEmits(["emit-route", "refetch", "active"]);
 
 const toast = useToast();
 
-const { user } = useUserSession();
+const { user, loggedIn } = useUserSession();
 
 const hoveredCategory = ref<number | null>(null);
 const hoveredSub = ref<number | null>(null);
@@ -551,7 +549,7 @@ function navigateToLoginPage() {
           class="flex items-center h-13 bg-[#ABE0D9] min-w-88 border-b-1 border-b-gray-400"
           @click.stop="navigateToLoginPage()"
         >
-          <b v-if="loggedIn" class="text-[#F18700] ml-3 mr-3">
+          <b v-if="!loggedIn" class="text-[#F18700] ml-3 mr-3">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -567,11 +565,11 @@ function navigateToLoginPage() {
               />
             </svg>
           </b>
-          <b v-if="loggedIn">
+          <b v-if="!loggedIn">
             <span>Anmelden</span>
           </b>
 
-          <b v-if="!loggedIn" class="text-[#F18700] ml-3 mr-3">
+          <b v-if="loggedIn" class="text-[#F18700] ml-3 mr-3">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -587,7 +585,7 @@ function navigateToLoginPage() {
               />
             </svg>
           </b>
-          <b v-if="!loggedIn">
+          <b v-if="loggedIn">
             <span>Abmelden</span>
           </b>
         </div>
