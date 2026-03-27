@@ -25,7 +25,7 @@ export default defineEventHandler(async (event) => {
   setHeader(
     event,
     "Content-Disposition",
-    `attachment; filename*=UTF-8''${encodeURIComponent(fileName)}`,
+    `inline; filename*=UTF-8''${encodeURIComponent(fileName)}`,
   );
 
   return buffer;
