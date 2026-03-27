@@ -6,7 +6,7 @@ const {
   clear: clearSession,
 } = useUserSession();
 
-const router = useRouter();
+// const router = useRouter();
 
 const toast = useToast();
 
@@ -79,15 +79,26 @@ async function fetchLastLogin() {
   }
 }
 
+const loginScroll = ref<HTMLElement | null>(null);
+
+onMounted(async () => {
+  await nextTick();
+
+  setTimeout(() => {
+    loginScroll.value?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  }, 50);
+});
+
 onMounted(() => {
   fetchLastLogin();
-
-  router.push({ hash: "#login" });
 });
 </script>
 
 <template>
-  <div class="flex justify-center items-center flex-col">
+  <div ref="loginScroll" class="flex justify-center items-center flex-col">
     <div v-if="!user" class="w-[90vw] lg:w-[60vw] flex flex-col items-center">
       <h1 class="text-2xl font-semibold text-center mb-5">Anmelden</h1>
 
@@ -169,7 +180,7 @@ onMounted(() => {
     </div>
 
     <div v-else class="w-[90vw] lg:w-[60vw] flex flex-col items-center">
-      <div id="login" class="text-2xl font-semibold mb-3 text-center">
+      <div class="text-2xl font-semibold mb-3 text-center">
         Eingeloggt als <b>{{ user?.username }}</b>
       </div>
 
