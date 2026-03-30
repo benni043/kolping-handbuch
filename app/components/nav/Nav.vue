@@ -430,6 +430,6 @@ function navigateToHome() {
 }
 
 .breadcrumb-fix :deep(li) {
-  min-width: 0; /* wichtig für korrektes Wrapping */
+  min-width: 0;
 }
 </style>
