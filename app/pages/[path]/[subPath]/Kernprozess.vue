@@ -276,9 +276,14 @@ async function deleteKernprozess(kernprozessNumber: number) {
 }
 
 async function fetchFile(link: string) {
-  const res = await fetchData(link);
+  try {
+    await $fetch(`/api/files/exists?path=${encodeURIComponent(link)}`);
 
-  if (!res) {
+    const a = document.createElement("a");
+    a.href = `/api/files?path=${encodeURIComponent(link)}`;
+    a.target = "_blank";
+    a.click();
+  } catch {
     toast.add({
       title: "Fehler",
       description:
