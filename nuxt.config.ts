@@ -5,7 +5,12 @@ export default defineNuxtConfig({
   compatibilityDate: "2025-10-30",
   devtools: { enabled: true },
   css: ["~/assets/css/main.css"],
-  vite: { plugins: [tailwindcss()] },
+  vite: {
+    plugins: [tailwindcss()],
+    optimizeDeps: {
+      include: ["@vueuse/core"],
+    },
+  },
   modules: [
     "@nuxt/ui",
     "@nuxt/eslint",
