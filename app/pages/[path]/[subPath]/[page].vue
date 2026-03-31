@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useRoute } from "#imports";
+import {useRoute} from "#imports";
 
 definePageMeta({
   middleware: ["authenticated"],
@@ -12,7 +12,7 @@ const data = ref("");
 
 async function fetchNote() {
   try {
-    const response = await $fetch("/api/content/", {
+    data.value = await $fetch("/api/content/", {
       method: "GET",
       query: {
         path: route.params.path,
@@ -20,8 +20,6 @@ async function fetchNote() {
         page: route.params.page,
       },
     });
-
-    data.value = response;
   } catch {
     console.error("error");
   }
@@ -38,7 +36,7 @@ async function updateNote(note: string) {
       },
     });
 
-    fetchNote();
+    await fetchNote();
 
     toast.add({
       title: "Erfolg",

@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type { NuxtError } from "#app";
-import { ref } from "vue";
+import type {NuxtError} from "#app";
+import {ref} from "vue";
 import CreateFolderForm from "~/components/filemanagement/CreateFolderForm.vue";
 import RenameForm from "~/components/filemanagement/RenameForm.vue";
-import type { Item } from "~/utils/file/file";
+import type {Item} from "~/utils/file/file";
 
 definePageMeta({
   middleware: ["authenticated"],
@@ -28,11 +28,9 @@ async function load(path = "") {
   currentPath.value = path;
 
   try {
-    const res = await $fetch<Item[]>("/api/files/structure", {
-      query: { path: currentPath.value },
+    items.value = await $fetch<Item[]>("/api/files/structure", {
+      query: {path: currentPath.value},
     });
-
-    items.value = res;
   } catch {
     console.error("unauthorized");
   }
@@ -45,7 +43,7 @@ async function open(item: Item) {
         ? item.name
         : `${currentPath.value}/${item.name}`;
 
-    load(next);
+    await load(next);
   } else {
     window.open(
       `/api/files?path=${encodeURIComponent(
@@ -86,7 +84,7 @@ async function onFileSelected(e: Event) {
       body: fd,
     });
 
-    load(currentPath.value);
+    await load(currentPath.value);
 
     toast.add({
       title: "Erfolg",
@@ -98,7 +96,7 @@ async function onFileSelected(e: Event) {
   } catch (err) {
     const error = err as NuxtError;
 
-    if (error.statusCode === 409) {
+    if (error.status === 409) {
       toast.add({
         title: "Warnung",
         description: "Es existiert bereits ein Datei mit diesem Namen",
@@ -134,7 +132,7 @@ async function createFolder(folder: string) {
       },
     });
 
-    load(currentPath.value);
+    await load(currentPath.value);
 
     toast.add({
       title: "Erfolg",
@@ -146,7 +144,7 @@ async function createFolder(folder: string) {
   } catch (err) {
     const error = err as NuxtError;
 
-    if (error.statusCode === 409)
+    if (error.status === 409)
       toast.add({
         title: "Warnung",
         description: "Es existiert bereits ein Order mit diesem Namen",
@@ -172,8 +170,7 @@ async function deleteFolder(item: string, type: "dir" | "file") {
   const folderMsg = "Sind Sie sicher, dass sie dieseen Ordner löschen möchten?";
   const fileMsg = "Sind Sie sicher, dass sie diese Datei löschen möchten?";
 
-  if (type === "dir") isFolder.value = true;
-  else isFolder.value = false;
+  isFolder.value = type === "dir";
 
   if (!confirm(isFolder.value ? folderMsg : fileMsg)) return;
 
@@ -188,7 +185,7 @@ async function deleteFolder(item: string, type: "dir" | "file") {
       },
     });
 
-    load(currentPath.value);
+    await load(currentPath.value);
 
     toast.add({
       title: "Erfolg",
@@ -213,8 +210,7 @@ function openRenameFolderModal(item: string, type: "dir" | "file") {
   renameFolderModalOpen.value = true;
   currentFolderName.value = item;
 
-  if (type === "dir") isFolder.value = true;
-  else isFolder.value = false;
+  isFolder.value = type === "dir";
 }
 
 async function changeFolder(newName: string) {
@@ -228,7 +224,7 @@ async function changeFolder(newName: string) {
       },
     });
 
-    load(currentPath.value);
+    await load(currentPath.value);
 
     toast.add({
       title: "Erfolg",
@@ -240,7 +236,7 @@ async function changeFolder(newName: string) {
   } catch (err) {
     const error = err as NuxtError;
 
-    if (error.statusCode === 409)
+    if (error.status === 409)
       toast.add({
         title: "Warnung",
         description: "Es existiert bereits ein Order/Datei mit diesem Namen",
@@ -300,7 +296,7 @@ onMounted(() => {
       <UButton
         color="neutral"
         variant="outline"
-        class="cursor-pointer text-center w-[160px] whitespace-nowrap"
+        class="cursor-pointer text-center w-40 whitespace-nowrap"
         @click="openCreateFolderModal()"
       >
         <svg
@@ -324,7 +320,7 @@ onMounted(() => {
       <UButton
         color="neutral"
         variant="outline"
-        class="cursor-pointer text-center w-[160px] whitespace-nowrap"
+        class="cursor-pointer text-center w-40 whitespace-nowrap"
         @click="upload()"
       >
         <svg
@@ -384,7 +380,7 @@ onMounted(() => {
         <div class="cursor-pointer flex-1" @click="open(i)">
           <div
             v-if="i.type === 'dir'"
-            class="flex gap-2 items-start min-w-0 [overflow-wrap:anywhere]"
+            class="flex gap-2 items-start min-w-0 wrap-anywhere"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -405,7 +401,7 @@ onMounted(() => {
 
           <div
             v-else
-            class="flex gap-2 items-start min-w-0 [overflow-wrap:anywhere]"
+            class="flex gap-2 items-start min-w-0 wrap-anywhere"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

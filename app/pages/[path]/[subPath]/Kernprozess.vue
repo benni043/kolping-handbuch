@@ -104,7 +104,7 @@ async function send(kernprozess: Kernprozess) {
   } catch (err) {
     const error = err as NuxtError;
 
-    if (error.statusCode === 409) {
+    if (error.status === 409) {
       toast.add({
         title: "Warnung",
         description:
@@ -115,7 +115,7 @@ async function send(kernprozess: Kernprozess) {
       });
 
       return;
-    } else if (error.statusCode === 406) {
+    } else if (error.status === 406) {
       toast.add({
         title: "Warnung",
         description: "Die Kernprozessnummer MUSS eine Zahl sein!",
@@ -171,7 +171,7 @@ async function change(kernprozess: Kernprozess) {
   } catch (err) {
     const error = err as NuxtError;
 
-    if (error.statusCode === 409) {
+    if (error.status === 409) {
       toast.add({
         title: "Warnung",
         description:
@@ -182,7 +182,7 @@ async function change(kernprozess: Kernprozess) {
       });
 
       return;
-    } else if (error.statusCode === 406) {
+    } else if (error.status === 406) {
       toast.add({
         title: "Warnung",
         description: "Die Kernprozessnummer MUSS eine Zahl sein!",
@@ -192,7 +192,7 @@ async function change(kernprozess: Kernprozess) {
       });
 
       return;
-    } else if (error.statusCode === 404) {
+    } else if (error.status === 404) {
       toast.add({
         title: "Warnung",
         description: "Kernprozess nicht gefunden!",
@@ -202,7 +202,7 @@ async function change(kernprozess: Kernprozess) {
       });
 
       return;
-    } else if (error.statusCode === 500) {
+    } else if (error.status === 500) {
       toast.add({
         title: "Fehler",
         description: "invalid schrittCount sequence on disk",
@@ -252,7 +252,7 @@ async function deleteKernprozess(kernprozessNumber: number) {
     } catch (err) {
       const error = err as NuxtError;
 
-      if (error.statusCode === 409) {
+      if (error.status === 409) {
         toast.add({
           title: "Fehler",
           description: "Es existiert kein Kernprozess mit dieser Nummer!",

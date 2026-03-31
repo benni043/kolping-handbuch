@@ -133,7 +133,7 @@ async function cancle() {
         v-if="isEditing"
         v-model="note"
         data-testid="note-input"
-        class="w-full h-[100vh] rounded border-1 mt-2 pl-1"
+        class="w-full h-screen rounded border mt-2 pl-1"
       />
 
       <div ref="render" class="markdown test" :hidden="isEditing"></div>

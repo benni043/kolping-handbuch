@@ -321,7 +321,7 @@ function navigateToLoginPage() {
         <div
           v-for="(path, index) in data"
           :key="path.id"
-          class="relative h-11 bg-[#50A9CE]/[0.33] min-w-88 border-b-1 border-b-gray-400"
+          class="relative h-11 bg-[#50A9CE]/33 min-w-88 border-b border-b-gray-400"
           :class="{
             'rounded-tl-2xl': index === 0,
             'rounded-bl-2xl':
@@ -353,7 +353,7 @@ function navigateToLoginPage() {
               <div
                 v-for="(subPath, subIndex) in path.children"
                 :key="subPath.id"
-                class="relative h-11 bg-[#50A9CE]/[0.33] border-b-1 border-b-gray-400 min-w-88"
+                class="relative h-11 bg-[#50A9CE]/33 border-b border-b-gray-400 min-w-88"
                 @mouseenter="enterSub(subIndex)"
                 @mouseleave="leaveSub(false)"
                 @click.stop="click(path.uuid, subPath.uuid, null)"
@@ -376,7 +376,7 @@ function navigateToLoginPage() {
                   <li
                     v-for="(category, subSubIndex) in categories"
                     :key="category"
-                    class="relative h-11 bg-[#50A9CE]/[0.33]"
+                    class="relative h-11 bg-[#50A9CE]/33"
                     @mouseenter="enterSubSub(subSubIndex)"
                     @mouseleave="leaveSubSub(false)"
                     @click.stop="click(path.uuid, subPath.uuid, category)"
@@ -419,7 +419,7 @@ function navigateToLoginPage() {
                 <div
                   v-for="subPath in path.children"
                   :key="subPath.id"
-                  class="relative h-11 flex items-center justify-center bg-[#ABE0D9] ml-1 min-w-12 hover:text-[#F18700] cursor-pointer border-b-1 border-b-gray-400"
+                  class="relative h-11 flex items-center justify-center bg-[#ABE0D9] ml-1 min-w-12 hover:text-[#F18700] cursor-pointer border-b border-b-gray-400"
                   @click.stop="openRenameForm(subPath.uuid, subPath.name)"
                 >
                   <b>
@@ -445,7 +445,7 @@ function navigateToLoginPage() {
                 <div
                   v-for="subPath in path.children"
                   :key="subPath.id"
-                  class="relative h-11 flex items-center justify-center bg-[#ABE0D9] ml-1 min-w-12 cursor-pointer hover:text-red-600 border-b-1 border-b-gray-400"
+                  class="relative h-11 flex items-center justify-center bg-[#ABE0D9] ml-1 min-w-12 cursor-pointer hover:text-red-600 border-b border-b-gray-400"
                   @click.stop="deleteLvl2(path.uuid, subPath.uuid)"
                 >
                   <b>
@@ -493,7 +493,7 @@ function navigateToLoginPage() {
           <div
             v-for="path in data"
             :key="path.id"
-            class="relative h-11 flex items-center justify-center bg-[#ABE0D9] ml-1 min-w-12 cursor-pointer hover:text-[#F18700] border-b-1 border-b-gray-400"
+            class="relative h-11 flex items-center justify-center bg-[#ABE0D9] ml-1 min-w-12 cursor-pointer hover:text-[#F18700] border-b border-b-gray-400"
             @click.stop="openRenameForm(path.uuid, path.name)"
           >
             <b>
@@ -519,7 +519,7 @@ function navigateToLoginPage() {
           <div
             v-for="path in data"
             :key="path.id"
-            class="relative h-11 flex items-center justify-center bg-[#ABE0D9] ml-1 min-w-12 cursor-pointer hover:text-red-600 border-b-1 border-b-gray-400"
+            class="relative h-11 flex items-center justify-center bg-[#ABE0D9] ml-1 min-w-12 cursor-pointer hover:text-red-600 border-b border-b-gray-400"
             @click.stop="deleteLvl1(path.uuid, path.id)"
           >
             <b>
@@ -546,7 +546,7 @@ function navigateToLoginPage() {
     <ul :class="{ hidden: !(width <= MOBILE_WIDTH) }">
       <li>
         <div
-          class="flex items-center h-13 bg-[#ABE0D9] min-w-88 border-b-1 border-b-gray-400"
+          class="flex items-center h-13 bg-[#ABE0D9] min-w-88 border-b border-b-gray-400"
           @click.stop="navigateToLoginPage()"
         >
           <b v-if="!loggedIn" class="text-[#F18700] ml-3 mr-3">
@@ -593,7 +593,7 @@ function navigateToLoginPage() {
 
       <li>
         <div
-          class="flex items-center h-13 bg-[#ABE0D9] min-w-88 border-b-1 border-b-gray-400"
+          class="flex items-center h-13 bg-[#ABE0D9] min-w-88 border-b border-b-gray-400"
           @click.stop="navigateToContact()"
         >
           <b class="text-[#F18700] ml-3 mr-3">
@@ -620,7 +620,7 @@ function navigateToLoginPage() {
 
       <li>
         <div
-          class="flex items-center h-13 bg-[#ABE0D9] min-w-88 border-b-1 border-b-gray-400"
+          class="flex items-center h-13 bg-[#ABE0D9] min-w-88 border-b border-b-gray-400"
           @click.stop="navigatoToIntroduction()"
         >
           <b class="text-[#F18700] ml-3 mr-3">
@@ -647,7 +647,7 @@ function navigateToLoginPage() {
 
       <li v-for="(path, index) in data" :key="path.id">
         <div
-          class="flex items-center min-h-13 bg-[#50A9CE]/[0.33] border-b-1 border-b-gray-400"
+          class="flex items-center min-h-13 bg-[#50A9CE]/33 border-b border-b-gray-400"
           @click="
             hoveredCategory === null || hoveredCategory !== index
               ? enterCategory(index)
@@ -745,7 +745,7 @@ function navigateToLoginPage() {
         <ul v-if="hoveredCategory === index">
           <li v-for="(subPath, subIndex) in path.children" :key="subPath.id">
             <div
-              class="flex items-center min-h-13 bg-[#50A9CE]/[0.33] min-w-88 border-b-1 border-b-gray-400"
+              class="flex items-center min-h-13 bg-[#50A9CE]/33 min-w-88 border-b border-b-gray-400"
               @click="
                 hoveredSub === null || hoveredSub !== subIndex
                   ? enterSub(subIndex)
@@ -843,7 +843,7 @@ function navigateToLoginPage() {
             <ul v-if="hoveredSub === subIndex">
               <li v-for="(category, subSubIndex) in categories" :key="category">
                 <div
-                  class="flex items-center h-13 bg-[#50A9CE]/[0.33] min-w-88 border-b-1 border-b-gray-400"
+                  class="flex items-center h-13 bg-[#50A9CE]/33 min-w-88 border-b border-b-gray-400"
                   @click.stop="click(path.uuid, subPath.uuid, category)"
                 >
                   <b
@@ -866,7 +866,7 @@ function navigateToLoginPage() {
 
           <li v-if="user?.role === 'admin' || user?.role === 'editor'">
             <div
-              class="flex items-center h-13 bg-[#ABE0D9] min-w-88 border-b-1 border-b-gray-400"
+              class="flex items-center h-13 bg-[#ABE0D9] min-w-88 border-b border-b-gray-400"
               @click.stop="addLvl2(path.uuid, path.id)"
             >
               <b class="text-[#F18700] ml-6 mr-3">+</b>
@@ -880,7 +880,7 @@ function navigateToLoginPage() {
 
       <li v-if="user?.role === 'admin' || user?.role === 'editor'">
         <div
-          class="flex items-center h-13 bg-[#ABE0D9] min-w-88 border-b-1 border-b-gray-400"
+          class="flex items-center h-13 bg-[#ABE0D9] min-w-88 border-b border-b-gray-400"
           @click.stop="addLvl1()"
         >
           <b class="text-[#F18700] ml-3 mr-3">+</b>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { getSegment } from "~/utils/nav/nav-menu";
+import {getSegment} from "~/utils/nav/nav-menu";
 
 const toast = useToast();
 
@@ -10,14 +10,12 @@ const data = ref("");
 
 async function fetchNote() {
   try {
-    const response = await $fetch("/api/content/public", {
+    data.value = await $fetch("/api/content/public", {
       method: "GET",
       query: {
         file: current,
       },
     });
-
-    data.value = response;
   } catch {
     console.error("error");
   }
@@ -34,7 +32,7 @@ async function updateNote(note: string) {
       },
     });
 
-    fetchNote();
+    await fetchNote();
 
     toast.add({
       title: "Erfolg",
