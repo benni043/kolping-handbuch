@@ -3,7 +3,7 @@ import type { NuxtError } from "#app";
 import { ref } from "vue";
 import CreateFolderForm from "~/components/filemanagement/CreateFolderForm.vue";
 import RenameForm from "~/components/filemanagement/RenameForm.vue";
-import { fetchData, type Item } from "~/utils/file/file";
+import type { Item } from "~/utils/file/file";
 
 definePageMeta({
   middleware: ["authenticated"],
@@ -47,21 +47,14 @@ async function open(item: Item) {
 
     load(next);
   } else {
-    const res = await fetchData(
-      currentPath.value === ""
-        ? item.name
-        : currentPath.value + "/" + item.name,
+    window.open(
+      `/api/files?path=${encodeURIComponent(
+        currentPath.value === ""
+          ? item.name
+          : currentPath.value + "/" + item.name,
+      )}`,
+      "_blank",
     );
-
-    if (!res)
-      toast.add({
-        title: "Fehler",
-        description:
-          "Beim Herunterladen des Dokuments ist ein Fehler aufgetreten! Wenden Sie sich an Ihren Administrator!",
-        color: "error",
-        icon: "i-heroicons-x-mark",
-        duration: DURATION,
-      });
   }
 }
 

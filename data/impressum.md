@@ -12,5 +12,4 @@ Graphische Gestaltung: www.barus.at (Bernhard Jakšik, Dominik Roitner, Richard 
 
 <br>
 
-Bundespräsidium: Christine Leopold, Gerald Gump, Reinhold Lexer, Wolfgang Engelmaier, Albert Pribyl,  Norbert Hauer, Benjamin Purner, Günter Bärnthaler, Renate Draskovits, Martina Wachernig
-
+Bundespräsidium: Christine Leopold, Gerald Gump, Reinhold Lexer, Wolfgang Engelmaier, Albert Pribyl, Norbert Hauer, Benjamin Purner, Günter Bärnthaler, Renate Draskovits, Martina Wachernig

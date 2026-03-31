@@ -22,4 +22,5 @@ diesem Buch wenden wir uns dem „Wie“ zu: „wie“ wir arbeiten, um das Vere
 Kolpings heute zu verwirklichen. Weil unsere Vereinswirklichkeit auf diese Weise sehr authentisch dargestellt werden
 konnte, hat das Buch die Chance, den neu Ankommenden und Interessierten bei Kolping eine wirkliche Hilfe für die
 konkrete Arbeit zu geben.
+
 </div>

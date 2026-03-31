@@ -33,7 +33,7 @@ Diese Dokumente sollen dabei helfen, die einzelnen Schritte des Kernprozesses le
 - [„Pressemitteilung“](/api/files?path=07/07-2/kernprozesse/KP_7-2_AH_5a_MUSTER_Pressemitteilung.docx)
 - [„Presseeinladung“](/api/files?path=07/07-2/kernprozesse/KP_7-2_AH_6a_MUSTER_Presseeinladung.docx)
 - [„Kolping-Textbausteine“](/api/files?path=07/07-2/kernprozesse/KP_7-2_AH_6b_Textbausteine_fuer_die_Pressearbeit.docx)
-- ["Kolping-Newsletter"](/api/files?path=07/07-2/kernprozesse/KP_7-2_AH_8a_MUSTER_Newsletter_(Kolpingsfamilie).docx)
+- ["Kolping-Newsletter"](</api/files?path=07/07-2/kernprozesse/KP_7-2_AH_8a_MUSTER_Newsletter_(Kolpingsfamilie).docx>)
 
 <br>
 

@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { useRoute } from "#imports";
 import type { Kernprozess } from "~/utils/kernprozess/kernprozess";
-import { fetchData } from "~/utils/file/file";
 import KernprozessForm from "~/components/content/KernprozessForm.vue";
 import { getSegment } from "~/utils/nav/nav-menu";
 import type { NuxtError } from "#app";
@@ -276,22 +275,7 @@ async function deleteKernprozess(kernprozessNumber: number) {
 }
 
 async function fetchFile(link: string) {
-  try {
-    await $fetch(`/api/files/exists?path=${encodeURIComponent(link)}`);
-
-    const a = document.createElement("a");
-    a.href = `/api/files?path=${encodeURIComponent(link)}`;
-    a.target = "_blank";
-    a.click();
-  } catch {
-    toast.add({
-      title: "Fehler",
-      description:
-        "Beim Herunterladen des Dokuments ist ein Fehler aufgetreten! Wenden Sie sich an Ihren Administrator!",
-      color: "error",
-      icon: "i-heroicons-x-mark",
-    });
-  }
+  await $fetch(`/api/files/exists?path=${encodeURIComponent(link)}`);
 }
 
 function redirect(link: string) {

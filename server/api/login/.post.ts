@@ -36,6 +36,7 @@ export default defineEventHandler(async (event) => {
         id: response.id,
         username: response.username,
         role: response.role,
+        last_login: response.last_login,
       },
     },
     {

@@ -8,12 +8,12 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "lint": "bun lint:eslint && bun lint:prettier",
+    "lint": "pnpm lint:eslint && pnpm lint:prettier",
     "lint:eslint": "eslint .",
     "lint:prettier": "prettier . --check",
     "lint:typecheck": "nuxi typecheck",
-    "lintfull": "bun lint && bun lint:typecheck",
-    "lintfix": "bun eslint . --fix && bun prettier --write --list-different ."
+    "lintfull": "pnpm lint && pnpm lint:typecheck",
+    "lintfix": "pnpm eslint . --fix && pnpm prettier --write --list-different ."
   },
   "dependencies": {
     "@nuxt/eslint": "1.15.2",
@@ -36,8 +36,10 @@
   "devDependencies": {
     "@iconify-json/heroicons": "^1.2.3",
     "@pinia/nuxt": "^0.11.3",
+    "@vue/language-core": "^3.2.6",
     "baseline-browser-mapping": "^2.10.12",
     "prettier": "^3.8.1",
-    "typescript": "^6.0.2"
+    "typescript": "^6.0.2",
+    "vue-tsc": "^3.2.6"
   }
 }

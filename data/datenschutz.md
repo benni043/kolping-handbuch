@@ -34,12 +34,9 @@ Ein Widerruf der Zustimmung der Datenverwendung kann jederzeit formfrei schriftl
 ## Wir sammeln folgende Informationen
 
 - Informationen, die Sie uns geben:
-Wir erfassen und speichern alle Informationen, die Sie auf unserer Website per Formular eingeben oder uns in anderer Weise, etwa telefonisch, per E-Mail oder persönlich übermitteln. Dies sind beispielsweise: Anrede (Geschlecht), Titel, Vor- und Nachname, Anschrift, Telefonnummer, E-Mail Adresse, Geburtsdatum.
-     
+  Wir erfassen und speichern alle Informationen, die Sie auf unserer Website per Formular eingeben oder uns in anderer Weise, etwa telefonisch, per E-Mail oder persönlich übermitteln. Dies sind beispielsweise: Anrede (Geschlecht), Titel, Vor- und Nachname, Anschrift, Telefonnummer, E-Mail Adresse, Geburtsdatum.
 - Im Rahmen der üblichen Bürotätigkeit speichern wir auch einen allfälligen E-Mailverkehr mit Ihnen. Die Speicherung erfolgt in unserem Mailprogramm (Outlook), die E-Mails werden regelmäßig - soweit nicht erforderlich - archiviert oder gelöscht.
-     
 - Automatische Informationen: Wenn Sie per Formular auf der Website, persönlich, telefonisch oder per E-Mail Kontakt mit uns aufnehmen, werden Ihre angegebenen Daten zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen für (i) die gesetzlich vorgesehene Frist, oder (ii) bis der jeweilige Zweck für die Bereitstellung der konkreten Daten nicht mehr existiert, bei uns gespeichert und verwendet. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter. Zudem verwenden wir Cookies und erhalten bestimmte Informationen, sobald Ihr Webbrowser diese Website sowie jene der Kolpingjugend Österreich, die durch oder im Namen von Kolping Österreich auf anderen Webseiten bereitgestellt werden, öffnet. Hierzu zählen Ihre IP Adresse und IP Standort; Referrer URL (die zuvor und anschließend besuchte Internetseite); Anzahl, Dauer und Zeit der Aufrufe (Ihre Interaktion mit der Website); Suchmaschinen und Schlüsselwörter, die Sie benutzt haben, um uns zu finden; Browsertyp, Bildschirmgröße und Betriebssystem. Die erhobenen Daten werden dabei lediglich in aggregierter und daher nicht individuell zuordenbarer Form aufbewahrt.
-
 
 ## Widerruf, Änderungen, Berichtigungen, Aktualisierungen und Auskunftsrecht
 
@@ -131,6 +128,7 @@ Wenn Sie nicht möchten, dass Google, Facebook, Instagram, Twitter oder WhatsApp
 Sie haben jederzeit das Recht auf unentgeltliche Auskunft über ihre gespeicherten personenbezogenen Daten, deren Herkunft und Empfänger und den Zweck der Datenverarbeitung sowie ein Recht auf Berichtigung, Sperrung oder Löschung dieser Daten. Hierzu sowie zu weiteren Fragen zum Thema personenbezogenen Daten können Sie sich jederzeit unter der nachfolgenden und im Impressum angegebenen Adresse an uns wenden.
 
 ## Kontakt
+
 Kolping Österreich
 Paulanergasse 11
 A-1040 Wien
