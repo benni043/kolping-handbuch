@@ -49,7 +49,7 @@ export const navMappings: NavMapping[] = [
     redirect: "login",
   },
   {
-    displayName: "Benutzerverwaltng",
+    displayName: "Benutzerverwaltung",
     redirect: "usermanagement",
   },
   {

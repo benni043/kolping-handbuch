@@ -275,7 +275,10 @@ async function deleteKernprozess(kernprozessNumber: number) {
 }
 
 async function fetchFile(link: string) {
-  await $fetch(`/api/files/exists?path=${encodeURIComponent(link)}`);
+  window.open(
+      `/api/files?path=${encodeURIComponent(link)}`,
+      "_blank",
+  );
 }
 
 function redirect(link: string) {
