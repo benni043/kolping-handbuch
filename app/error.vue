@@ -21,14 +21,12 @@ const handleError = () => clearError({ redirect: "/" });
 
 <style scoped>
 .error-page {
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 1rem;
   text-align: center;
-  background-color: #f9fafb;
 }
 
 .logo {

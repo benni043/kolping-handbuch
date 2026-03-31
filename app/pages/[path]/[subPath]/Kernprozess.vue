@@ -275,10 +275,7 @@ async function deleteKernprozess(kernprozessNumber: number) {
 }
 
 async function fetchFile(link: string) {
-  window.open(
-      `/api/files?path=${encodeURIComponent(link)}`,
-      "_blank",
-  );
+  window.open(`/api/files?path=${encodeURIComponent(link)}`, "_blank");
 }
 
 function redirect(link: string) {
