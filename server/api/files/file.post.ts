@@ -1,4 +1,6 @@
-import { stat, writeFile } from "fs/promises";
+import { stat, writeFile, readFile } from "fs/promises";
+import { join } from "path";
+import { v4 as uuidv4 } from "uuid";
 
 export default defineEventHandler(async (event) => {
   const { user } = await requireUserSession(event);
@@ -19,6 +21,16 @@ export default defineEventHandler(async (event) => {
 
   const targetDir = safeJoin(FILE_ROOT, relPath);
   const targetFile = safeJoin(targetDir, file.filename!);
+
+  const uuid = uuidv4();
+
+  const metadataPath = join(process.cwd(), "data/metadata/file_mappings.json");
+
+  const data = JSON.parse(await readFile(metadataPath, "utf-8"));
+
+  data[uuid] = relPath ? `${relPath}/${file.filename!}` : file.filename!;
+
+  await writeFile(metadataPath, JSON.stringify(data, null, 2), "utf-8");
 
   try {
     await stat(targetFile);

@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type {NuxtError} from "#app";
-import {ref} from "vue";
+import type { NuxtError } from "#app";
+import { ref } from "vue";
 import CreateFolderForm from "~/components/filemanagement/CreateFolderForm.vue";
 import RenameForm from "~/components/filemanagement/RenameForm.vue";
-import type {Item} from "~/utils/file/file";
+import type { Item } from "~/utils/file/file";
 
 definePageMeta({
   middleware: ["authenticated"],
@@ -29,7 +29,7 @@ async function load(path = "") {
 
   try {
     items.value = await $fetch<Item[]>("/api/files/structure", {
-      query: {path: currentPath.value},
+      query: { path: currentPath.value },
     });
   } catch {
     console.error("unauthorized");
@@ -399,10 +399,7 @@ onMounted(() => {
             {{ i.name }}
           </div>
 
-          <div
-            v-else
-            class="flex gap-2 items-start min-w-0 wrap-anywhere"
-          >
+          <div v-else class="flex gap-2 items-start min-w-0 wrap-anywhere">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
