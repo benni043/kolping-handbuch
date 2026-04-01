@@ -275,15 +275,24 @@ async function deleteKernprozess(kernprozessNumber: number) {
 }
 
 async function fetchFile(link: string) {
-  const res = await $fetch("/api/files/path", {
-    method: "GET",
-    headers: { "Content-Type": "application/json" },
-    query: {
-      uuid: link,
-    },
-  });
+  try {
+    const res = await $fetch("/api/files/path/byId", {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+      query: {
+        uuid: link,
+      },
+    });
 
-  window.open(`/api/files?path=${encodeURIComponent(res)}`, "_blank");
+    window.open(`/api/files?path=${encodeURIComponent(res)}`, "_blank");
+  } catch {
+    toast.add({
+      title: "Fehler",
+      description: "Beim Herunterladen ist ein Fehler aufgetreten!",
+      color: "error",
+      icon: "i-heroicons-x-mark",
+    });
+  }
 }
 
 function redirect(link: string) {

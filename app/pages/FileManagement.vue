@@ -263,7 +263,14 @@ async function copyPath(path: string) {
     const copy =
       currentPath.value === "" ? path : currentPath.value + "/" + path;
 
-    await navigator.clipboard.writeText(copy);
+    const res = await $fetch("/api/files/path/byPath", {
+      method: "GET",
+      query: {
+        path: copy,
+      },
+    });
+
+    await navigator.clipboard.writeText(res);
 
     toast.add({
       title: "Erfolg",
@@ -463,6 +470,7 @@ onMounted(() => {
         </UButton>
 
         <UButton
+          v-if="i.type !== 'dir'"
           color="neutral"
           variant="outline"
           class="cursor-pointer"

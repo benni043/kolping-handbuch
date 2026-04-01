@@ -15,5 +15,12 @@ export default defineEventHandler(async (event) => {
 
   const data = JSON.parse(await readFile(fileMappingsPath, "utf-8"));
 
+  if (!uuid || !data[uuid]) {
+    throw createError({
+      statusCode: 404,
+      statusMessage: "File not found",
+    });
+  }
+
   return data[uuid];
 });
